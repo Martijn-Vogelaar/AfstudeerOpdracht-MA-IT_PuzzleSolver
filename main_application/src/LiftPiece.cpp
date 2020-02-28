@@ -1,24 +1,24 @@
-#include "Init.hpp"
+#include "LiftPiece.hpp"
 #include <iostream>
 #include <memory>
 
-Init::Init()
+LiftPiece::LiftPiece()
 {
 }
 
-Init::~Init() {}
+LiftPiece::~LiftPiece() {}
 
-void Init::entryAction(Context *)
-{
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
-}
-
-void Init::doActivity(Context *)
+void LiftPiece::entryAction(Context *)
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-void Init::exitAction(Context *)
+void LiftPiece::doActivity(Context *)
+{
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void LiftPiece::exitAction(Context *)
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }

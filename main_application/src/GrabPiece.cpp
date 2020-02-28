@@ -1,24 +1,24 @@
-#include "Init.hpp"
+#include "GrabPiece.hpp"
 #include <iostream>
 #include <memory>
 
-Init::Init()
+GrabPiece::GrabPiece()
 {
 }
 
-Init::~Init() {}
+GrabPiece::~GrabPiece() {}
 
-void Init::entryAction(Context *)
-{
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
-}
-
-void Init::doActivity(Context *)
+void GrabPiece::entryAction(Context *)
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-void Init::exitAction(Context *)
+void GrabPiece::doActivity(Context *)
+{
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void GrabPiece::exitAction(Context *)
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }

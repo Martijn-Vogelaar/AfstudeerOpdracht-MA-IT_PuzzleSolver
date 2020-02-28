@@ -1,32 +1,32 @@
-#ifndef INIT_HPP
-#define INIT_HPP
+#ifndef READY_HPP
+#define READY_HPP
 
 // Local
 #include "Context.hpp"
 #include "State.hpp"
 /**
-   * @class Init
+   * @class Ready
    *
-   * @brief Init is the class which represents the Init state.
+   * @brief Ready is the class which represents the Ready state.
    *
    */
-class Init : public State
+class Ready : public State
 {
 public:
     /**
-     * @brief Construct a new Init object
+     * @brief Construct a new Ready object
      *
      */
-    Init();
+    Ready();
     /**
-     * @brief Destroy the Init object
+     * @brief Destroy the Ready object
      *
      */
-    ~Init();
+    ~Ready();
     /**
-     * @brief entryAction is being called when the Init state is being entered.
+     * @brief entryAction is being called when the Ready state is being entered.
      *
-     * @details When the Init state is entered the robotarm will be set to the
+     * @details When the Ready state is entered the robotarm will be set to the
      * begin position.
      *
      * @param aContext is an object which gives the states an interface to the
@@ -36,18 +36,18 @@ public:
 
     /**
      * @brief doActivity is continiously being called while the system is in the
-     * Init.
+     * Ready.
      *
      * @param aContext is an object which gives the states an interface to the
      * "outside world".
      */
     void doActivity(Context *aContext) override;
     /**
-     * @brief exitAction is being called when the Init state is being exited.
+     * @brief exitAction is being called when the Ready state is being exited.
      *
      * @param aContext is an object which gives the states an interface to the
      * "outside world".
      */
     void exitAction(Context *aContext) override;
 };
-#endif // INIT_HPP
+#endif // READY_HPP

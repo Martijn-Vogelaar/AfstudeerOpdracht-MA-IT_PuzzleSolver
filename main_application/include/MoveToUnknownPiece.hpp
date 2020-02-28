@@ -1,32 +1,32 @@
-#ifndef INIT_HPP
-#define INIT_HPP
+#ifndef MOVE_TO_UNKNOWN_PIECE_HPP
+#define MOVE_TO_UNKNOWN_PIECE_HPP
 
 // Local
 #include "Context.hpp"
 #include "State.hpp"
 /**
-   * @class Init
+   * @class MoveToUnknownPiece
    *
-   * @brief Init is the class which represents the Init state.
+   * @brief MoveToUnknownPiece is the class which represents the MoveToUnknownPiece state.
    *
    */
-class Init : public State
+class MoveToUnknownPiece : public State
 {
 public:
     /**
-     * @brief Construct a new Init object
+     * @brief Construct a new MoveToUnknownPiece object
      *
      */
-    Init();
+    MoveToUnknownPiece();
     /**
-     * @brief Destroy the Init object
+     * @brief Destroy the MoveToUnknownPiece object
      *
      */
-    ~Init();
+    ~MoveToUnknownPiece();
     /**
-     * @brief entryAction is being called when the Init state is being entered.
+     * @brief entryAction is being called when the MoveToUnknownPiece state is being entered.
      *
-     * @details When the Init state is entered the robotarm will be set to the
+     * @details When the MoveToUnknownPiece state is entered the robotarm will be set to the
      * begin position.
      *
      * @param aContext is an object which gives the states an interface to the
@@ -36,18 +36,18 @@ public:
 
     /**
      * @brief doActivity is continiously being called while the system is in the
-     * Init.
+     * MoveToUnknownPiece.
      *
      * @param aContext is an object which gives the states an interface to the
      * "outside world".
      */
     void doActivity(Context *aContext) override;
     /**
-     * @brief exitAction is being called when the Init state is being exited.
+     * @brief exitAction is being called when the MoveToUnknownPiece state is being exited.
      *
      * @param aContext is an object which gives the states an interface to the
      * "outside world".
      */
     void exitAction(Context *aContext) override;
 };
-#endif // INIT_HPP
+#endif // MOVE_TO_UNKNOWN_PIECE_HPP

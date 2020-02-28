@@ -1,24 +1,24 @@
-#include "Init.hpp"
+#include "Ready.hpp"
 #include <iostream>
 #include <memory>
 
-Init::Init()
+Ready::Ready()
 {
 }
 
-Init::~Init() {}
+Ready::~Ready() {}
 
-void Init::entryAction(Context *)
-{
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
-}
-
-void Init::doActivity(Context *)
+void Ready::entryAction(Context *)
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-void Init::exitAction(Context *)
+void Ready::doActivity(Context *)
+{
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void Ready::exitAction(Context *)
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }

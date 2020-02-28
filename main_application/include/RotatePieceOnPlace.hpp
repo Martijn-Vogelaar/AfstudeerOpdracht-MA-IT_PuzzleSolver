@@ -1,32 +1,32 @@
-#ifndef INIT_HPP
-#define INIT_HPP
+#ifndef ROTATE_PIECE_ON_PLACE_HPP
+#define ROTATE_PIECE_ON_PLACE_HPP
 
 // Local
 #include "Context.hpp"
 #include "State.hpp"
 /**
-   * @class Init
+   * @class RotatePieceOnPlace
    *
-   * @brief Init is the class which represents the Init state.
+   * @brief RotatePieceOnPlace is the class which represents the RotatePieceOnPlace state.
    *
    */
-class Init : public State
+class RotatePieceOnPlace : public State
 {
 public:
     /**
-     * @brief Construct a new Init object
+     * @brief Construct a new RotatePieceOnPlace object
      *
      */
-    Init();
+    RotatePieceOnPlace();
     /**
-     * @brief Destroy the Init object
+     * @brief Destroy the RotatePieceOnPlace object
      *
      */
-    ~Init();
+    ~RotatePieceOnPlace();
     /**
-     * @brief entryAction is being called when the Init state is being entered.
+     * @brief entryAction is being called when the RotatePieceOnPlace state is being entered.
      *
-     * @details When the Init state is entered the robotarm will be set to the
+     * @details When the RotatePieceOnPlace state is entered the robotarm will be set to the
      * begin position.
      *
      * @param aContext is an object which gives the states an interface to the
@@ -36,18 +36,18 @@ public:
 
     /**
      * @brief doActivity is continiously being called while the system is in the
-     * Init.
+     * RotatePieceOnPlace.
      *
      * @param aContext is an object which gives the states an interface to the
      * "outside world".
      */
     void doActivity(Context *aContext) override;
     /**
-     * @brief exitAction is being called when the Init state is being exited.
+     * @brief exitAction is being called when the RotatePieceOnPlace state is being exited.
      *
      * @param aContext is an object which gives the states an interface to the
      * "outside world".
      */
     void exitAction(Context *aContext) override;
 };
-#endif // INIT_HPP
+#endif // ROTATE_PIECE_ON_PLACE_HPP

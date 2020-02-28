@@ -1,24 +1,24 @@
-#include "Init.hpp"
+#include "PowerOff.hpp"
 #include <iostream>
 #include <memory>
 
-Init::Init()
+PowerOff::PowerOff()
 {
 }
 
-Init::~Init() {}
+PowerOff::~PowerOff() {}
 
-void Init::entryAction(Context *)
-{
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
-}
-
-void Init::doActivity(Context *)
+void PowerOff::entryAction(Context *)
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
-void Init::exitAction(Context *)
+void PowerOff::doActivity(Context *)
+{
+    std::cout << __PRETTY_FUNCTION__ << std::endl;
+}
+
+void PowerOff::exitAction(Context *)
 {
     std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
