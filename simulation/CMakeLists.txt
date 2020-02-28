@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.1.3)
-project(robot_controller
+project(simulation
 
 )
 
@@ -50,9 +50,6 @@ catkin_package(
 
 include_directories(${THIS_PACKAGE_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIR} ${EIGEN3_INCLUDE_DIRS})
 
-add_executable(robot_controller src/main.cpp)
-target_link_libraries(robot_controller ${catkin_LIBRARIES} ${Boost_LIBRARIES})
-install(TARGETS robot_controller RUNTIME DESTINATION bin DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(DIRECTORY launch RUNTIME DESTINATION bin DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 ## System dependencies are found with CMake's conventions
@@ -146,7 +143,7 @@ install(DIRECTORY launch RUNTIME DESTINATION bin DESTINATION ${CATKIN_PACKAGE_SH
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES robot_controller
+#  LIBRARIES simulation
 #  CATKIN_DEPENDS moveit roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
@@ -164,7 +161,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/robot_controller.cpp
+#   src/${PROJECT_NAME}/simulation.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -175,7 +172,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/robot_controller_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/simulation_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -239,7 +236,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_robot_controller.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_simulation.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
