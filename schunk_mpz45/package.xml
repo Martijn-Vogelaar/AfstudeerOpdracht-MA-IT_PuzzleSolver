@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>schunk_mpz45</name>
+  <version>1.0.0</version>
+  <description>
+    <p>
+      This package contains urdf files for the schunk mpz45 gripper.
+    </p>
+    
+  </description>
+  <maintainer email="martijn@todo.todo">martijn</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>

@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+<xacro:include filename="$(find schunk_mpz45)/urdf/schunk_mpz45_macro_2.xacro"/>
+<xacro:macro name="schunk_mpz45_g" params="prefix">
+
+  <!-- get base  schunk mpz45 model -->
+  <xacro:schunk_mpz45 prefix="${prefix}" />
+
+  <!-- transmission list -->
+  <transmission name="${prefix}tran7">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${prefix}joint_7">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}motor7">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="${prefix}tran8">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${prefix}joint_8">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}motor8">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="${prefix}tran9">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${prefix}joint_9">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${prefix}motor9">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <!-- end of transmission list -->
+
+  <!-- Gazebo-specific link properties -->
+  <gazebo reference="${prefix}link_7">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  <gazebo reference="${prefix}link_8">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  <gazebo reference="${prefix}link_9">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>  
+
+  </xacro:macro>
+</robot>

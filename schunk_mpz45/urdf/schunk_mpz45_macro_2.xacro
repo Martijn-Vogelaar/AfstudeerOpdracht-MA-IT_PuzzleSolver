@@ -1,0 +1,131 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:include filename="$(find abb_resources)/urdf/common_materials.xacro" />
+    <xacro:macro name="schunk_mpz45" params="prefix">
+        <link name="${prefix}head">
+            <inertial>
+                <mass value="1" />
+                <origin rpy="0 0 -1.57079" xyz="0 0 0" />
+                <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+            </inertial>
+            <visual>
+                <origin rpy="0 0 -1.57079" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://schunk_mpz45/stl/SchunkGripperNoGripperCorrect.stl" />
+                </geometry>
+                <xacro:material_abb_black />
+            </visual>
+            <collision>
+                <origin rpy="0 0 -1.57079" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://schunk_mpz45/stl/SchunkGripperNoGripperCorrect.stl" />
+                </geometry>
+                <material name="">
+                    <color rgba="1 1 0 1" />
+                </material>
+            </collision>
+        </link>
+        <link name="${prefix}gripper1">
+            <inertial>
+                <mass value="1" />
+                <origin rpy="0 0 -1.57079" xyz="0 0 0" />
+                <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+            </inertial>
+            <visual>
+                <origin rpy="0 0 -1.57079" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper1.stl" />
+                </geometry>
+                <xacro:material_abb_black />
+            </visual>
+            <collision>
+                <origin rpy="0 0 -1.57079" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper1.stl" />
+                </geometry>
+                <material name="">
+                    <color rgba="1 1 0 1" />
+                </material>
+            </collision>
+        </link>
+        <link name="${prefix}gripper2">
+            <inertial>
+                <mass value="1" />
+                <origin rpy="0 0 -1.57079" xyz="0 0 0" />
+                <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+            </inertial>
+            <visual>
+                <origin rpy="0 0 -1.57079" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper2.stl" />
+                </geometry>
+                <xacro:material_abb_black />
+            </visual>
+            <collision>
+                <origin rpy="0 0 -1.57079" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper2.stl" />
+                </geometry>
+                <material name="">
+                    <color rgba="1 1 0 1" />
+                </material>
+            </collision>
+        </link>
+        <link name="${prefix}gripper3">
+            <inertial>
+                <mass value="1" />
+                <origin rpy="0 0 -1.57079" xyz="0 0 0" />
+                <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+            </inertial>
+            <visual>
+                <origin rpy="0 0 -1.57079" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper3.stl" />
+                </geometry>
+                <xacro:material_abb_black />
+            </visual>
+            <collision>
+                <origin rpy="0 0 -1.57079" xyz="0 0 0" />
+                <geometry>
+                    <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper3.stl" />
+                </geometry>
+                <material name="">
+                    <color rgba="1 1 0 1" />
+                </material>
+            </collision>
+        </link>
+
+        <joint name="${prefix}joint_7" type="prismatic">
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <parent link="${prefix}head" />
+            <child link="${prefix}gripper1" />
+            <limit effort="0" lower="0" upper="0" velocity="0" />
+            <axis xyz="1 0 0" />
+            <dynamics damping="0.0" friction="100.0" />
+        </joint>
+        <joint name="${prefix}joint_8" type="prismatic">
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <parent link="${prefix}head" />
+            <child link="${prefix}gripper2" />
+            <limit effort="0" lower="0" upper="0" velocity="0" />
+            <axis xyz="1 0 0" />
+            <dynamics damping="0.0" friction="100.0" />
+        </joint>
+        <joint name="${prefix}joint_9" type="prismatic">
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <parent link="${prefix}head" />
+            <child link="${prefix}gripper3" />
+            <limit effort="0" lower="0" upper="0" velocity="0" />
+            <axis xyz="1 0 0" />
+            <dynamics damping="0.0" friction="100.0" />
+        </joint>
+        <joint name="${prefix}joint_10" type="fixed">
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <parent link="${prefix}tool0" />
+            <child link="${prefix}head" />
+            <limit effort="0" lower="0" upper="0" velocity="0" />
+            <axis xyz="1 0 0" />
+            <dynamics damping="0.0" friction="100.0" />
+        </joint>
+    </xacro:macro>
+</robot>
