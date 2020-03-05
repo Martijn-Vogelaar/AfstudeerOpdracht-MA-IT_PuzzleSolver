@@ -3,11 +3,4 @@
 <robot name="schunk_mpz45" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find schunk_mpz45)/urdf/schunk_mpz45_macro.xacro"/>	
   <xacro:schunk_mpz45_g prefix=""/>
-
-  <!-- Fix robot to Gazebo world -->
-  <!-- <link name="world"/>
-  <joint name="world-base_link-fixed" type="fixed">
-    <parent link="world"/>
-    <child link="base_link"/>
-  </joint> -->
 </robot>

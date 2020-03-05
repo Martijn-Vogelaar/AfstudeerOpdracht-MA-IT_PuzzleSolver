@@ -10,7 +10,7 @@
   <transmission name="${prefix}tran7">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="${prefix}joint_7">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="${prefix}motor7">
       <mechanicalReduction>1</mechanicalReduction>
@@ -19,7 +19,7 @@
   <transmission name="${prefix}tran8">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="${prefix}joint_8">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="${prefix}motor8">
       <mechanicalReduction>1</mechanicalReduction>
@@ -28,7 +28,7 @@
   <transmission name="${prefix}tran9">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="${prefix}joint_9">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="${prefix}motor9">
       <mechanicalReduction>1</mechanicalReduction>
@@ -55,6 +55,7 @@
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/</robotNamespace>
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
     </plugin>
   </gazebo>  
 
