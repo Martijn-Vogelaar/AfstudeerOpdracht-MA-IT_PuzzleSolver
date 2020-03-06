@@ -9,6 +9,7 @@
         <parent link="tool0" />
         <child link="head" />
     </joint>
+    
     <xacro:macro name="abb_irb120_schunk_mpz45" params="">
         <xacro:abb_irb120_3_58 prefix="" />
         <xacro:schunk_mpz45 prefix="" />
