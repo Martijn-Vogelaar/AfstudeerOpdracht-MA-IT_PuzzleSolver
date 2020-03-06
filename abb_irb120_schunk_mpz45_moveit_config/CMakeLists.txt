@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(abb-irb120_schunk-mpz45_moveit_config)
+project(abb_irb120_schunk_mpz45_moveit_config)
 
 find_package(catkin REQUIRED)
 
