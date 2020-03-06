@@ -37,16 +37,20 @@
   <!-- end of transmission list -->
 
   <!-- Gazebo-specific link properties -->
-  <gazebo reference="${prefix}link_7">
-    <material>Gazebo/Black</material>
+  <gazebo reference="${prefix}head">
+    <material>Gazebo/Grey</material>
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
-  <gazebo reference="${prefix}link_8">
-    <material>Gazebo/Black</material>
+  <gazebo reference="${prefix}gripper1">
+    <material>Gazebo/White</material>
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
-  <gazebo reference="${prefix}link_9">
-    <material>Gazebo/Black</material>
+  <gazebo reference="${prefix}gripper2">
+    <material>Gazebo/White</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+  <gazebo reference="${prefix}gripper3">
+    <material>Gazebo/White</material>
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
 

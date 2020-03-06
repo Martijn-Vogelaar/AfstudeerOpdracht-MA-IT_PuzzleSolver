@@ -5,18 +5,18 @@
         <link name="${prefix}head">
             <inertial>
                 <mass value="1" />
-                <origin rpy="0 0 -1.57079632679" xyz="0 0 0" />
+                <origin rpy="0 0 ${-1 / 2 * pi}" xyz="0 0 0" />
                 <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
             </inertial>
             <visual>
-                <origin rpy="0 0 -1.57079632679" xyz="0 0 0" />
+                <origin rpy="0 0 ${-1 / 2 * pi}" xyz="0 0 0" />
                 <geometry>
                     <mesh filename="package://schunk_mpz45/stl/SchunkGripperNoGripperCorrect.stl" />
                 </geometry>
                 <xacro:material_abb_black />
             </visual>
             <collision>
-                <origin rpy="0 0 -1.57079632679" xyz="0 0 0" />
+                <origin rpy="0 0 ${-1 / 2 * pi}" xyz="0 0 0" />
                 <geometry>
                     <mesh filename="package://schunk_mpz45/stl/SchunkGripperNoGripperCorrect.stl" />
                 </geometry>
@@ -28,18 +28,18 @@
         <link name="${prefix}gripper1">
             <inertial>
                 <mass value="1" />
-                <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0" />
+                <origin rpy="${1 / 2 * pi} 0  ${-1 / 2 * pi}" xyz="0 0 0" />
                 <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
             </inertial>
             <visual>
-                <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0" />
+                <origin rpy="${1 / 2 * pi} 0  ${-1 / 2 * pi}" xyz="0 0 0" />
                 <geometry>
                     <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper3.stl" />
                 </geometry>
                 <xacro:material_abb_white />
             </visual>
             <collision>
-                <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0" />
+                <origin rpy="${1 / 2 * pi} 0  ${-1 / 2 * pi}" xyz="0 0 0" />
                 <geometry>
                     <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper3.stl" />
                 </geometry>
@@ -51,18 +51,18 @@
         <link name="${prefix}gripper2">
             <inertial>
                 <mass value="1" />
-                <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0" />
+                <origin rpy="${1 / 2 * pi} 0  ${-1 / 2 * pi}" xyz="0 0 0" />
                 <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
             </inertial>
             <visual>
-                <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0" />
+                <origin rpy="${1 / 2 * pi} 0  ${-1 / 2 * pi}" xyz="0 0 0" />
                 <geometry>
                     <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper3.stl" />
                 </geometry>
                 <xacro:material_abb_white />
             </visual>
             <collision>
-                <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0" />
+                <origin rpy="${1 / 2 * pi} 0  ${-1 / 2 * pi}" xyz="0 0 0" />
                 <geometry>
                     <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper3.stl" />
                 </geometry>
@@ -74,18 +74,18 @@
         <link name="${prefix}gripper3">
             <inertial>
                 <mass value="1" />
-                <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0" />
+                <origin rpy="${1 / 2 * pi} 0  ${-1 / 2 * pi}" xyz="0 0 0" />
                 <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
             </inertial>
             <visual>
-                <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0" />
+                <origin rpy="${1 / 2 * pi} 0  ${-1 / 2 * pi}" xyz="0 0 0" />
                 <geometry>
                     <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper3.stl" />
                 </geometry>
                 <xacro:material_abb_white />
             </visual>
             <collision>
-                <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0" />
+                <origin rpy="${1 / 2 * pi} 0  ${-1 / 2 * pi}" xyz="0 0 0" />
                 <geometry>
                     <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper3.stl" />
                 </geometry>
@@ -95,31 +95,26 @@
             </collision>
         </link>
         <joint name="${prefix}joint_7" type="prismatic">
-            <origin rpy="-1.57079632679 -2.61799387799 -1.57079632679" xyz="0 0 0" />
+            <origin rpy="${-1 / 2 * pi} ${-5 / 6 * pi} ${-1 / 2 * pi}" xyz="0 0 0" />
             <parent link="${prefix}head" />
             <child link="${prefix}gripper1" />
-            <limit effort="0" lower="0" upper="0.005" velocity="0" />
-            <axis xyz="1 0 0" />
-            <dynamics damping="0.0" friction="100.0" />
+            <limit effort="310" lower="0" upper="0.005" velocity="0.1"/>
         </joint>
         <joint name="${prefix}joint_8" type="prismatic">
-            <origin rpy="-1.57079632679 -0.52359877559 -1.57079632679" xyz="0 0 0" />
+            <origin rpy="${-1 / 2 * pi} ${-1 / 6 * pi} ${-1 / 2 * pi}" xyz="0 0 0" />
             <parent link="${prefix}head" />
             <child link="${prefix}gripper2" />
-            <limit effort="0" lower="0" upper="0.005" velocity="0" />
-            <axis xyz="1 0 0" />
-            <mimic joint="${prefix}joint_7" multiplier="1" offset="0"/> 
-            <dynamics damping="0.0" friction="100.0" />
+            <limit effort="310" lower="0" upper="0.005" velocity="0.1" />
+            <mimic joint="${prefix}joint_7"/> 
         </joint>
         <joint name="${prefix}joint_9" type="prismatic">
-            <origin rpy="0 1.57079632679632679 0" xyz="0 0 0" />
+            <origin rpy="0 ${1 / 2 * pi} 0" xyz="0 0 0" />
             <parent link="${prefix}head" />
             <child link="${prefix}gripper3" />
-            <limit effort="0" lower="0" upper="0.005" velocity="0" />
-            <axis xyz="1 0 0" />
-            <mimic joint="${prefix}joint_7" multiplier="1" offset="0"/> 
-            <dynamics damping="0.0" friction="100.0" />
+            <limit effort="310" lower="0" upper="0.005" velocity="0.1" />
+            <mimic joint="${prefix}joint_7"/> 
         </joint>
-
     </xacro:macro>
 </robot>
+
+<!-- Schunk specifications according to:  https://schunk.com/fileadmin/pim/docs/IM0020092.PDF-->
