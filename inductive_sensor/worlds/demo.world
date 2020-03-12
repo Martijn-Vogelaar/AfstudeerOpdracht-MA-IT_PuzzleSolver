@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<sdf version='1.6'>
+  <world name='default'>
+    <model name='unit_box'>
+      <pose>0 0 2.5 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+    <model name='sensor/0/'>
+      <pose>0.0 0.0 0.5 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <sensor name="webcam" type="camera">
+          <update_rate>2.0</update_rate>
+          <plugin name="webcam_plugin" filename="libgazebo_ros_camera.so">
+            <robotNamespace>camera_plugin</robotNamespace>
+            <cameraName>webcam</cameraName>
+          </plugin>
+          <camera>
+            <save enabled="true">
+              <path>/tmp/camera_save_tutorial</path>
+            </save>
+            <horizontal_fov>0.1</horizontal_fov>
+            <image>
+              <width>10</width>
+              <height>10</height>
+              <format>R8G8B8</format>
+            </image>
+
+            <aspect_ratio>1</aspect_ratio>
+          </camera>
+          <visualize>true</visualize>
+          <always_on>1</always_on>
+        </sensor>
+      </link>
+    </model>
+  </world>
+</sdf>
