@@ -1,7 +1,12 @@
 <launch>
-  <!-- <env name="GAZEBO_MODEL_PATH" value="$(find sim_world)/models"/> -->
+  <!-- <arg name="world" default="current_world" />
+  <arg name="verbose" default="false" />
+  <arg name="all_nodes" default="true" />
+  <arg name="paused" default="true" /> -->
+
+  <env name="GAZEBO_MODEL_PATH" value="$(find simulation)/models"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find inductive_sensor)/worlds/test.world"/>
+    <arg name="world_name" value="$(find simulation)/worlds/demoCap.world"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>

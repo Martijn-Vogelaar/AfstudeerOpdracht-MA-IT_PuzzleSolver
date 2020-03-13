@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<sdf version='1.6'>
+  <world name='default'>
+    <model name='unit_box'>
+      <pose>0 0 2.5 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <include>
+      <uri>model://InductiveSensor0</uri>
+      <pose>0.0 0 0.5 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://InductiveSensor1</uri>
+      <pose>0 0.3 0.5 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://InductiveSensor2</uri>
+      <pose>0 0.6 0.5 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://InductiveSensor3</uri>
+      <pose>0 0.9 0.5 0 0 0</pose>
+    </include>
+  </world>
+</sdf> 

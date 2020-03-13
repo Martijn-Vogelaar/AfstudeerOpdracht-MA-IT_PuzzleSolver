@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.1.3)
-project(simulation
-
-)
+project(simulation)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -22,6 +20,7 @@ find_package(catkin REQUIRED
     tf2_ros
     tf2_eigen
     tf2_geometry_msgs
+    gazebo_ros
 )
 
 find_package(Eigen3 REQUIRED)
@@ -48,7 +47,7 @@ catkin_package(
 ## Build ##
 ###########
 
-include_directories(${THIS_PACKAGE_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIR} ${EIGEN3_INCLUDE_DIRS})
+include_directories(${THIS_PACKAGE_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIR} ${EIGEN3_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
 
 
 install(DIRECTORY launch RUNTIME DESTINATION bin DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})

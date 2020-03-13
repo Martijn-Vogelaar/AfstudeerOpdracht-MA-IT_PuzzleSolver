@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<robot name="abb_irb120_3_58_schunk" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="abb_irb120_schunk_mpz45" xmlns:xacro="http://ros.org/wiki/xacro">
 
     <xacro:include filename="$(find abb_irb120_gazebo)/urdf/irb120_3_58.xacro" />
     <xacro:include filename="$(find schunk_mpz45)/urdf/schunk_mpz45.xacro" />
