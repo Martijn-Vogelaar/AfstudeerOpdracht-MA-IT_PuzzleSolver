@@ -23,7 +23,7 @@
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>/media/sf_SharedFolder/catkin_ws/src/simulation/stl/EmptyPuzzle.stl</uri>
+            <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/EmptyPuzzle.stl</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -50,7 +50,7 @@
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>/media/sf_SharedFolder/catkin_ws/src/simulation/stl/EmptyPuzzle.stl</uri>
+            <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/EmptyPuzzle.stl</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -199,6 +199,23 @@
         </surface>
       </collision>
     </link>
+    <joint name='link_0_JOINT_0' type='fixed'>
+      <parent>link_0</parent>
+      <child>link_1</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
     <static>0</static>
     <allow_auto_disable>1</allow_auto_disable>
   </model>
