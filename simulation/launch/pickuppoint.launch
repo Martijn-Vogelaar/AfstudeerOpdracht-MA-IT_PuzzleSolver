@@ -1,0 +1,18 @@
+<launch>
+  <arg name="paused" default="false" doc="Start gazebo in paused mode" />
+  <!-- remap topics to conform to ROS-I specifications -->
+
+  <!-- urdf xml robot description loaded on the Parameter Server, converting the xacro into a proper urdf file-->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find pickuppoint)/urdf/pickuppoint.xacro'" />
+  <node name="pickuppoint_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model pickuppoint" />
+
+  <!-- startup simulated world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/empty.world" />
+    <arg name="gui" value="true" />
+    <arg name="paused" value="$(arg paused)" />
+  </include>
+
+
+
+</launch>

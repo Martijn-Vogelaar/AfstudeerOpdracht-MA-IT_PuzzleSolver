@@ -10,7 +10,7 @@
 
   <!-- startup simulated world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="/media/sf_SharedFolder/catkin_ws/src/simulation/puzzle.world" />
+    <arg name="world_name" value="/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/puzzle.world" />
     <arg name="gui" value="true" />
     <arg name="paused" value="$(arg paused)" />
   </include>
