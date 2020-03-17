@@ -3,24 +3,27 @@
     xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:include filename="$(find abb_resources)/urdf/common_materials.xacro" />
     <link name='world'/>
+    <gazebo reference="base_link">
+        <material>Gazebo/Yellow</material>
+    </gazebo>
     <link name='base_link'>
-    <inertial>
-      <mass value="100" />
-      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
-    </inertial>
-        <visual name='visual'>
-            <origin rpy="0 0 0" xyz="0.025 0.395 0" />
+        <inertial>
+            <mass value="100" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0.00 0.395 0" />
             <geometry>
-                <mesh filename="package://pickuppoint/stl/lowResPickupPoint.stl" />
+                <mesh filename="package://pickuppoint/stl/lowResPickupPointNoFrontWall.stl" />
             </geometry>
-            <material name="Red">
+            <material name="red">
                 <color rgba="1 0 0 1.0"/>
             </material>
         </visual>
         <collision>
-            <origin rpy="0 0 0" xyz="0.025 0.395 0" />
+            <origin rpy="0 0 0" xyz="0.0 0.395 0" />
             <geometry>
-                <mesh filename="package://pickuppoint/stl/lowResPickupPoint.stl" />
+                <mesh filename="package://pickuppoint/stl/lowResPickupPointNoFrontWall.stl" />
             </geometry>
             <material name="">
                 <color rgba="1 1 0 1" />
@@ -29,7 +32,7 @@
     </link>
     <link name='link_1'>
         <inertial>
-            <mass value="1"/>
+            <mass value="5"/>
             <origin rpy="0 0 -1.57" xyz="0 0 0" />
             <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
         </inertial>
@@ -59,7 +62,7 @@
             <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
         </inertial>
         <visual name='visual'>
-            <origin rpy="0 0 0" xyz="0 -0.27 0.273" />
+            <origin rpy="0 0 0" xyz="0 -0.2645 0.271" />
             <geometry>
                 <box size="0.26 0.36 0.002"/>
             </geometry>
@@ -77,8 +80,85 @@
             </material>
         </collision>
     </link>
+    <link name='link_3'>
+        <inertial>
+            <mass value="1"/>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0.02 -0.1 0.345" />
+            <geometry>
+                <box size="0.3 0.03 0.1"/>
+            </geometry>
+            <material name="Green">
+                <color rgba="0 1.0 0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0.02 -0.1 0.345" />
+            <geometry>
+                <box size="0.3 0.03 0.1"/>
+            </geometry>
+            <material name="Green">
+                <color rgba="0 1.0 0 1.0"/>
+            </material>
+        </collision>
+    </link>
+
+    <link name='link_4'>
+        <inertial>
+            <mass value="1"/>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+        </inertial>
+        <visual>
+            <origin rpy="-0.39 0.38 0.70" xyz="-0.10 0.245 0.1" />
+            <geometry>
+                <box size="0.34 0.035 0.035"/>
+            </geometry>
+            <material name="Green">
+                <color rgba="0 1.0 0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="-0.39 0.38 0.70" xyz="-0.10 0.245 0.1" />
+            <geometry>
+                <box size="0.34 0.035 0.035"/>
+            </geometry>
+            <material name="Green">
+                <color rgba="0 1.0 0 1.0"/>
+            </material>
+        </collision>
+    </link>
+    <link name='link_5'>
+        <inertial>
+            <mass value="1"/>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+        </inertial>
+        <visual>
+            <origin rpy="-0.39 -0.38 -0.7" xyz="0.15 0.245 0.1" />
+            <geometry>
+                <box size="0.34 0.035 0.035"/>
+            </geometry>
+            <material name="Green">
+                <color rgba="0 1.0 0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="-0.39 -0.38 -0.7" xyz="0.15 0.245 0.1" />
+            <geometry>
+                <box size="0.34 0.035 0.035"/>
+            </geometry>
+            <material name="Green">
+                <color rgba="0 1.0 0 1.0"/>
+            </material>
+        </collision>
+    </link>
+
     <joint name="base_link_JOINT_1" type="prismatic">
-        <origin rpy="0 0 1.57" xyz="0 0 0" />
+        <origin rpy="0 0 1.57" xyz="-0.025 0 0" />
         <parent link="base_link" />
         <child link="link_1" />
         <limit effort="310" lower="0" upper="0.23" velocity="0.1" />
@@ -89,10 +169,27 @@
         <child link="base_link" />
     </joint>
 
-     <joint name="base_link2" type="fixed">
+    <joint name="base_link2" type="fixed">
         <origin rpy="0 0 0" xyz="0 0 0" />
         <parent link="base_link" />
         <child link="link_2" />
     </joint>
+    <joint name="base_link3" type="fixed">
+        <origin rpy="0 0 0" xyz="-0.025 0 0" />
+        <parent link="base_link" />
+        <child link="link_3" />
+    </joint>
+    <joint name="base_link4" type="fixed">
+        <origin rpy="0 0 0" xyz="-0.025 0 0" />
+        <parent link="base_link" />
+        <child link="link_4" />
+    </joint>
+    <joint name="base_link5" type="fixed">
+        <origin rpy="0 0 0" xyz="-0.025 0 0" />
+        <parent link="base_link" />
+        <child link="link_5" />
+    </joint>
+
     <!-- </xacro:macro> -->
 </robot>
+        
