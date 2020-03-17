@@ -1,9 +1,9 @@
 #include "CapacitiveSensor.hpp"
-#include "Capacitive_sensor/capacitive_sensor_measurements.h"
+#include "capacitive_sensor/capacitive_sensor_measurements.h"
 #include <gazebo/gazebo_client.hh>
 
 #define MAX_NUMBER_OF_SENSORS 8
-#define MAX_DISTANCE_TO_BE_ACTIVE 0.08
+#define MAX_DISTANCE_TO_BE_ACTIVE 0.025
 
 CapacitiveSensor::CapacitiveSensor(uint8_t aId, uint8_t aNumberOfSensors) : id(aId), sensorValue(0), numberOfSensors(aNumberOfSensors)
 {
@@ -43,14 +43,14 @@ void CapacitiveSensor::runMeasurements(int argc, char **argv)
 void CapacitiveSensor::distanceSensorCallback(ConstLaserScanStampedPtr &msg)
 {
 
-    uint8_t id = (uint8_t)msg->scan().frame()[6] - 48;  //Temporary ugly solution
+    uint8_t senderID = (uint8_t)msg->scan().frame()[6] - 48;  //Temporary ugly solution
     if (msg->scan().ranges(0) <= MAX_DISTANCE_TO_BE_ACTIVE)
     {
-        sensorValue |= (1u << id);
+        sensorValue |= (1u << senderID);
     }
     else
     {
-        sensorValue &= (0u << id);
+        sensorValue &= (0u << senderID);
     }
     capacitive_sensor::capacitive_sensor_measurements message;
     message.id = id;

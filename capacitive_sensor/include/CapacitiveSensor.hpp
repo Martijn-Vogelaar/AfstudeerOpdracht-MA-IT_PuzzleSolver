@@ -70,6 +70,13 @@ private:
     /**
      * @brief sensorValue holds the last known values of all sensors.
      * 
+     * @details 0 means no sensors active
+     *          1 means sensor number 1 active
+     *          2 means sensor number 2 active
+     *          4 means sensor number 3 is active
+     *          8 means sensor number 4 is active
+     *          a combination of these numbers means that a combination of sensors is active.
+     * 
      */
     uint8_t sensorValue;
 
