@@ -102,7 +102,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>/media/sf_SharedFolder/catkin_ws/src/simulation/stl/EmptyPuzzle.stl</uri>
+              <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/EmptyPuzzle.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -129,7 +129,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>/media/sf_SharedFolder/catkin_ws/src/simulation/stl/EmptyPuzzle.stl</uri>
+              <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/EmptyPuzzle.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -206,7 +206,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>/media/sf_SharedFolder/catkin_ws/src/simulation/stl/Square.stl</uri>
+              <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/Square.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -233,7 +233,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>/media/sf_SharedFolder/catkin_ws/src/simulation/stl/Square.stl</uri>
+              <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/Square.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -310,7 +310,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>/media/sf_SharedFolder/catkin_ws/src/simulation/stl/Circle1.stl</uri>
+              <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/Circle1.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -337,7 +337,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>/media/sf_SharedFolder/catkin_ws/src/simulation/stl/Circle1.stl</uri>
+              <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/Circle1.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -414,7 +414,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>/media/sf_SharedFolder/catkin_ws/src/simulation/stl/Circle1.stl</uri>
+              <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/Circle1.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>
@@ -441,7 +441,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>/media/sf_SharedFolder/catkin_ws/src/simulation/stl/Circle1.stl</uri>
+              <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/Circle1.stl</uri>
               <scale>1 1 1</scale>
             </mesh>
           </geometry>

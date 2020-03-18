@@ -4,7 +4,7 @@
 #include <gazebo/msgs/msgs.hh>
 #include <gazebo/transport/transport.hh>
 
-#define IMAGE_TOPIC_1 "/gazebo/default/sensor/" 
+#define IMAGE_TOPIC_1 "/gazebo/default/EmptyPuzzle/sensor/" 
 #define IMAGE_TOPIC_2 "/link/webcam/image"
 
 /**

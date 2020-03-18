@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <sdf version='1.6'>
   <model name='EmptyPuzzle'>
-    <link name='link_2'>
+    <link name='link_0'>
       <inertial>
         <mass>1</mass>
         <inertia>
@@ -20,7 +20,7 @@
       <kinematic>0</kinematic>
       <enable_wind>0</enable_wind>
       <visual name='visual'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose frame=''>0 0 0 0 0 -1.57</pose>
         <geometry>
           <mesh>
             <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/EmptyPuzzle.stl</uri>
@@ -47,7 +47,7 @@
       <collision name='collision'>
         <laser_retro>0</laser_retro>
         <max_contacts>10</max_contacts>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose frame=''>0 0 0 0 0 -1.57</pose>
         <geometry>
           <mesh>
             <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/EmptyPuzzle.stl</uri>
@@ -101,7 +101,7 @@
         </surface>
       </collision>
     </link>
-    <link name='link_3'>
+    <link name='link_1'>
       <inertial>
         <mass>1</mass>
         <inertia>
@@ -114,7 +114,7 @@
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
-      <pose frame=''>0 0 0.00 0 -0 0</pose>
+        <pose frame=''>0 0 0 0 0 -1.57</pose>
       <gravity>1</gravity>
       <self_collide>0</self_collide>
       <kinematic>0</kinematic>
@@ -146,7 +146,7 @@
       <collision name='collision'>
         <laser_retro>0</laser_retro>
         <max_contacts>10</max_contacts>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose frame=''>0 0 0 0 0 -1.57</pose>
         <geometry>
           <box>
             <size>0.1 0.1 0.001</size>
@@ -199,22 +199,46 @@
         </surface>
       </collision>
     </link>
+    <include>
+      <uri>model://InductiveSensor0</uri>
+      <pose>0.0385 0.02 -0.0001 0 -1.57 0</pose>
+    </include>
+     <include>
+      <uri>model://InductiveSensor1</uri>
+      <pose>-0.0665 0.0975 -0.0001 0 -1.57 0</pose>
+    </include>
+    <include>
+      <uri>model://InductiveSensor2</uri>
+      <pose>-0.0765 -0.02 -0.0001 0 -1.57 0</pose>
+    </include>
+    <include>
+      <uri>model://InductiveSensor3</uri>
+      <pose>0.0735 -0.06 -0.0001 0 -1.57 0</pose>
+    </include>
     <joint name='link_0_JOINT_0' type='fixed'>
       <parent>link_0</parent>
       <child>link_1</child>
       <pose frame=''>0 0 0 0 -0 0</pose>
-      <physics>
-        <ode>
-          <limit>
-            <cfm>0</cfm>
-            <erp>0.2</erp>
-          </limit>
-          <suspension>
-            <cfm>0</cfm>
-            <erp>0.2</erp>
-          </suspension>
-        </ode>
-      </physics>
+    </joint>
+    <joint name='InductiveSensor0_to_puzzle' type='fixed'>
+      <parent>InductiveSensor0::link</parent>
+      <child>link_0</child>
+      <pose frame=''>0 0 0 0 0 0</pose>
+    </joint>
+    <joint name='InductiveSensor1_to_puzzle' type='fixed'>
+      <parent>InductiveSensor0::link</parent>
+      <child>link_0</child>
+      <pose frame=''>0 0 0 0 0 0</pose>
+    </joint>
+    <joint name='InductiveSensor2_to_puzzle' type='fixed'>
+      <parent>InductiveSensor0::link</parent>
+      <child>link_0</child>
+      <pose frame=''>0 0 0 0 0 0</pose>
+    </joint>
+    <joint name='InductiveSensor3_to_puzzle' type='fixed'>
+      <parent>InductiveSensor0::link</parent>
+      <child>link_0</child>
+      <pose frame=''>0 0 0 0 0 0</pose>
     </joint>
     <static>0</static>
     <allow_auto_disable>1</allow_auto_disable>

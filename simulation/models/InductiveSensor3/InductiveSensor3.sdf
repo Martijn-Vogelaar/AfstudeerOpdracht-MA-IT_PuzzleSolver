@@ -1,11 +1,11 @@
 <?xml version='1.0'?>
 <sdf version="1.6">
-    <model name='sensor/3/'>
+    <model name='sensor/3'>
         <pose>0.0 0.0 0.5 0 0 0</pose>
         <static>true</static>
         <link name="link">
             <sensor name="webcam" type="camera">
-                <update_rate>2.0</update_rate>
+                <update_rate>10.0</update_rate>
                 <plugin name="webcam_plugin" filename="libgazebo_ros_camera.so">
                     <imageTopicName>image_raw</imageTopicName>
                     <robotNamespace>camera_plugin</robotNamespace>
@@ -15,12 +15,16 @@
                     <save enabled="true">
                         <path>/tmp/camera_save_tutorial</path>
                     </save>
-                    <horizontal_fov>0.1</horizontal_fov>
+                    <horizontal_fov>1</horizontal_fov>
                     <image>
-                        <width>10</width>
-                        <height>10</height>
+                        <width>100</width>
+                        <height>100</height>
                         <format>R8G8B8</format>
                     </image>
+                    <clip>
+                        <near>0.00001</near>
+                        <far>0.1</far>
+                    </clip>
                 </camera>
                 <visualize>true</visualize>
                 <always_on>1</always_on>

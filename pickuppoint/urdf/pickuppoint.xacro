@@ -105,7 +105,6 @@
             </material>
         </collision>
     </link>
-
     <link name='link_4'>
         <inertial>
             <mass value="1"/>
@@ -157,6 +156,8 @@
         </collision>
     </link>
 
+    
+
     <joint name="base_link_JOINT_1" type="prismatic">
         <origin rpy="0 0 1.57" xyz="-0.025 0 0" />
         <parent link="base_link" />
@@ -189,7 +190,5 @@
         <parent link="base_link" />
         <child link="link_5" />
     </joint>
-
-    <!-- </xacro:macro> -->
 </robot>
         
