@@ -1,6 +1,9 @@
 #include "InductiveSensor.hpp"
 #include "inductive_sensor/inductive_sensor_measurements.h"
 #include <gazebo/gazebo_client.hh>
+
+#define DEBUG false
+
 InductiveSensor::InductiveSensor(uint8_t aId) : id(aId)
 {
     p = n.advertise<inductive_sensor::inductive_sensor_measurements>("inductive_sensor", 1000);
@@ -35,21 +38,24 @@ void InductiveSensor::runMeasurements(int argc, char **argv)
 bool InductiveSensor::isActivated(cv::Mat image)
 {
     cv::Mat test, combinedRed, lowRed, highRed;
-    cv::cvtColor(image, image, cv::COLOR_RGB2BGR);
-    cv::cvtColor(image, image, cv::COLOR_BGR2HSV);
-    cv::inRange(image, cv::Scalar(0, 20, 20), cv::Scalar(80, 255, 255), lowRed);
-    cv::inRange(image, cv::Scalar(170, 20, 20), cv::Scalar(180, 255, 255), highRed);
-    cv::bitwise_or(lowRed, highRed,combinedRed);
-    cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE); // Create a window for display.
-    cv::imshow("Display window", image);
-    cv::namedWindow("Display window1", cv::WINDOW_AUTOSIZE); // Create a window for display.
-    cv::imshow("Display window1", lowRed);
-    cv::namedWindow("Display window2", cv::WINDOW_AUTOSIZE); // Create a window for display.
-    cv::imshow("Display window2", highRed);
-    cv::namedWindow("Display window3", cv::WINDOW_AUTOSIZE); // Create a window for display.
-    cv::imshow("Display window3", combinedRed);
-    cv::waitKey(1); // Wait for a keystroke in the window
+    cv::cvtColor(image, image, cv::COLOR_RGB2HSV);
+    cv::inRange(image, cv::Scalar(0, 50, 20), cv::Scalar(5, 255, 255), lowRed);
+    cv::inRange(image, cv::Scalar(175, 50, 20), cv::Scalar(180, 255, 255), highRed);
+    cv::bitwise_or(lowRed, highRed, combinedRed);
 
+    if (DEBUG)
+    {
+        cv::cvtColor(image, test, cv::COLOR_RGB2BGR);
+        cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE); // Create a window for display.
+        cv::imshow("Display window", test);
+        cv::namedWindow("Display window1", cv::WINDOW_AUTOSIZE); // Create a window for display.
+        cv::imshow("Display window1", lowRed);
+        cv::namedWindow("Display window2", cv::WINDOW_AUTOSIZE); // Create a window for display.
+        cv::imshow("Display window2", highRed);
+        cv::namedWindow("Display window3", cv::WINDOW_AUTOSIZE); // Create a window for display.
+        cv::imshow("Display window3", combinedRed);
+        cv::waitKey(1); // Wait for a keystroke in the window
+    }
     return cv::countNonZero(combinedRed) == combinedRed.rows * combinedRed.cols;
 }
 
