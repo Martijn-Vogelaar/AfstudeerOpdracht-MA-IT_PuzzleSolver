@@ -38,6 +38,7 @@ void InductiveSensor::runMeasurements(int argc, char **argv)
 bool InductiveSensor::isActivated(cv::Mat image)
 {
     cv::Mat test, combinedRed, lowRed, highRed;
+    cv::cvtColor(image, test, cv::COLOR_RGB2BGR);
     cv::cvtColor(image, image, cv::COLOR_RGB2HSV);
     cv::inRange(image, cv::Scalar(0, 50, 20), cv::Scalar(5, 255, 255), lowRed);
     cv::inRange(image, cv::Scalar(175, 50, 20), cv::Scalar(180, 255, 255), highRed);
@@ -45,7 +46,7 @@ bool InductiveSensor::isActivated(cv::Mat image)
 
     if (DEBUG)
     {
-        cv::cvtColor(image, test, cv::COLOR_RGB2BGR);
+        // cv::cvtColor(image, test, cv::COLOR_RGB2BGR);
         cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE); // Create a window for display.
         cv::imshow("Display window", test);
         cv::namedWindow("Display window1", cv::WINDOW_AUTOSIZE); // Create a window for display.
