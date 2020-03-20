@@ -14,7 +14,7 @@
         <visual>
             <origin rpy="0 0 0" xyz="0.00 0.395 0" />
             <geometry>
-                <mesh filename="package://pickuppoint/stl/lowResPickupPointNoFrontWall.stl" />
+                <mesh filename="package://pickuppoint/stl/ultimateLowResPickupPoint2.0.stl" />
             </geometry>
             <material name="red">
                 <color rgba="1 0 0 1.0"/>
@@ -23,14 +23,14 @@
         <collision>
             <origin rpy="0 0 0" xyz="0.0 0.395 0" />
             <geometry>
-                <mesh filename="package://pickuppoint/stl/lowResPickupPointNoFrontWall.stl" />
+                <mesh filename="package://pickuppoint/stl/ultimateLowResPickupPoint2.0.stl" />
             </geometry>
             <material name="">
                 <color rgba="1 1 0 1" />
             </material>
         </collision>
     </link>
-    <link name='link_1'>
+    <link name='slider'>
         <inertial>
             <mass value="5"/>
             <origin rpy="0 0 -1.57" xyz="0 0 0" />
@@ -55,14 +55,14 @@
             </material>
         </collision>
     </link>
-    <link name='link_2'>
+    <link name='plateau'>
         <inertial>
             <mass value="1"/>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
         </inertial>
         <visual name='visual'>
-            <origin rpy="0 0 0" xyz="0 -0.2645 0.271" />
+            <origin rpy="0 0 0" xyz="0 -0.2645 0.273" />
             <geometry>
                 <box size="0.26 0.36 0.002"/>
             </geometry>
@@ -80,7 +80,32 @@
             </material>
         </collision>
     </link>
-    <link name='link_3'>
+    <link name='slope'>
+        <inertial>
+            <mass value="1"/>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+        </inertial>
+        <visual name='visual'>
+            <origin rpy="-0.53 0 0" xyz="0 0.014 0.204" />
+            <geometry>
+                <box size="0.24 0.24 0.02"/>
+            </geometry>
+            <material name="Green">
+                <color rgba="0 1.0 0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin rpy="-0.53 0 0" xyz="0 0.014 0.204" />
+            <geometry>
+                <box size="0.24 0.24 0.02"/>
+            </geometry>
+            <material name="Green">
+                <color rgba="0 1.0 0 1.0"/>
+            </material>
+        </collision>
+    </link>
+    <link name='front_blocker'>
         <inertial>
             <mass value="1"/>
             <origin rpy="0 0 0" xyz="0 0 0" />
@@ -105,7 +130,7 @@
             </material>
         </collision>
     </link>
-    <link name='link_4'>
+    <link name='right_bottom_blocker'>
         <inertial>
             <mass value="1"/>
             <origin rpy="0 0 0" xyz="0 0 0" />
@@ -130,7 +155,7 @@
             </material>
         </collision>
     </link>
-    <link name='link_5'>
+    <link name='left_bottom_blocker'>
         <inertial>
             <mass value="1"/>
             <origin rpy="0 0 0" xyz="0 0 0" />
@@ -156,12 +181,12 @@
         </collision>
     </link>
 
-    
+
 
     <joint name="base_link_JOINT_1" type="prismatic">
         <origin rpy="0 0 1.57" xyz="-0.025 0 0" />
         <parent link="base_link" />
-        <child link="link_1" />
+        <child link="slider" />
         <limit effort="310" lower="0" upper="0.23" velocity="0.1" />
     </joint>
     <joint name="world_base" type="fixed">
@@ -169,26 +194,30 @@
         <parent link="world" />
         <child link="base_link" />
     </joint>
-
-    <joint name="base_link2" type="fixed">
+    <joint name="base_slope" type="fixed">
         <origin rpy="0 0 0" xyz="0 0 0" />
         <parent link="base_link" />
-        <child link="link_2" />
+        <child link="slope" />
     </joint>
-    <joint name="base_link3" type="fixed">
+    <joint name="base_plateau" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="base_link" />
+        <child link="plateau" />
+    </joint>
+    <joint name="base_front_blocker" type="fixed">
         <origin rpy="0 0 0" xyz="-0.025 0 0" />
         <parent link="base_link" />
-        <child link="link_3" />
+        <child link="front_blocker" />
     </joint>
-    <joint name="base_link4" type="fixed">
+    <joint name="base_right_bottom_blocker" type="fixed">
         <origin rpy="0 0 0" xyz="-0.025 0 0" />
         <parent link="base_link" />
-        <child link="link_4" />
+        <child link="right_bottom_blocker" />
     </joint>
-    <joint name="base_link5" type="fixed">
+    <joint name="base_left_bottom_blocker" type="fixed">
         <origin rpy="0 0 0" xyz="-0.025 0 0" />
         <parent link="base_link" />
-        <child link="link_5" />
+        <child link="left_bottom_blocker" />
     </joint>
 </robot>
         

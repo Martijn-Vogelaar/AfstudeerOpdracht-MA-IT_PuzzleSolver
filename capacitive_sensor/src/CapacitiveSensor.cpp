@@ -8,7 +8,9 @@
 CapacitiveSensor::CapacitiveSensor(uint8_t aId, uint8_t aNumberOfSensors) : id(aId), sensorValue(0), numberOfSensors(aNumberOfSensors)
 {
     p = n.advertise<capacitive_sensor::capacitive_sensor_measurements>("capacitive_sensor", 1000);
-    if(sensorValue > MAX_NUMBER_OF_SENSORS){
+    std::cout << (unsigned)numberOfSensors << std::endl;
+    if (numberOfSensors > MAX_NUMBER_OF_SENSORS)
+    {
         throw;
     }
 }
@@ -43,14 +45,14 @@ void CapacitiveSensor::runMeasurements(int argc, char **argv)
 void CapacitiveSensor::distanceSensorCallback(ConstLaserScanStampedPtr &msg)
 {
 
-    uint8_t senderID = (uint8_t)msg->scan().frame()[6] - 48;  //Temporary ugly solution
+    uint8_t senderID = (uint8_t)msg->scan().frame()[6] - 48; //Temporary ugly solution
     if (msg->scan().ranges(0) <= MAX_DISTANCE_TO_BE_ACTIVE)
     {
-        sensorValue |= (1u << senderID);
+        sensorValue |= (1UL << senderID);
     }
     else
     {
-        sensorValue &= (0u << senderID);
+        sensorValue &= ~(1UL << senderID);
     }
     capacitive_sensor::capacitive_sensor_measurements message;
     message.id = id;
