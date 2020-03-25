@@ -5,20 +5,20 @@
         <static>true</static>
         <link name="link">
             <sensor name="webcam" type="camera">
-                <update_rate>10.0</update_rate>
+                <update_rate>5.0</update_rate>
                 <plugin name="webcam_plugin" filename="libgazebo_ros_camera.so">
                     <imageTopicName>image_raw</imageTopicName>
                     <robotNamespace>camera_plugin</robotNamespace>
                     <cameraName>webcam3</cameraName>
                 </plugin>
                 <camera>
-                    <save enabled="true">
+                    <save enabled="false">
                         <path>/tmp/camera_save_tutorial</path>
                     </save>
                     <horizontal_fov>1</horizontal_fov>
                     <image>
-                        <width>100</width>
-                        <height>100</height>
+                        <width>10</width>
+                        <height>10</height>
                         <format>R8G8B8</format>
                     </image>
                     <clip>
@@ -26,7 +26,7 @@
                         <far>0.1</far>
                     </clip>
                 </camera>
-                <visualize>true</visualize>
+                <visualize>false</visualize>
                 <always_on>1</always_on>
             </sensor>
         </link>

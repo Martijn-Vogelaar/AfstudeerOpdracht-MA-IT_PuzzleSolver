@@ -1,0 +1,12 @@
+#goal
+uint8 robotID
+uint16 width
+---
+#result
+uint8 robotID
+bool success
+uint16 width
+---
+#feedback
+uint8 robotID
+uint16 width

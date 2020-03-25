@@ -1,0 +1,15 @@
+#goal
+uint8 robotID
+geometry_msgs/Point position
+geometry_msgs/Quaternion orientation
+---
+#result
+uint8 robotID
+bool success
+geometry_msgs/Point position
+geometry_msgs/Quaternion orientation
+---
+#feedback
+uint8 robotID
+geometry_msgs/Point position
+geometry_msgs/Quaternion orientation

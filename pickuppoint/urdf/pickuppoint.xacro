@@ -14,7 +14,7 @@
         <visual>
             <origin rpy="0 0 0" xyz="0.00 0.395 0" />
             <geometry>
-                <mesh filename="package://pickuppoint/stl/PickupPoint.stl" />
+                <mesh filename="package://pickuppoint/stl/ultimateLowResPickupPoint2.0.stl" />
             </geometry>
             <material name="red">
                 <color rgba="1 0 0 1.0"/>
