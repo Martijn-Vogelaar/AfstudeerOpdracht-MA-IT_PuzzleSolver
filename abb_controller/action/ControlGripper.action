@@ -1,12 +1,12 @@
 #goal
 uint8 robotID
-uint16 width
+bool open
 ---
 #result
 uint8 robotID
 bool success
-uint16 width
+bool open
 ---
 #feedback
 uint8 robotID
-uint16 width
+bool open

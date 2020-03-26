@@ -80,7 +80,13 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(abb_controller src/main.cpp src/MoveEndEffectorServer.cpp src/MoveEndEffectorStraightServer.cpp)
+add_executable(abb_controller 
+                src/main.cpp 
+                src/MoveEndEffectorServer.cpp 
+                src/MoveEndEffectorStraightServer.cpp
+                src/ControlGripperServer.cpp
+)
+
 target_link_libraries(abb_controller ${catkin_LIBRARIES} ${Boost_LIBRARIES})
 
 install(TARGETS abb_controller RUNTIME DESTINATION bin DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})

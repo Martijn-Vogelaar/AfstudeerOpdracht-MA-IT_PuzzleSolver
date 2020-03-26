@@ -1,0 +1,29 @@
+<launch>
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find schunk_mpz45)/config/config.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/" args="joint7_controller joint8_controller joint9_controller joint_state_controller"/>
+
+  <param name="robot_description" textfile="$(find abb_irb120_gazebo)/urdf/irb120_3_58.xacro"/>
+
+  <!-- <param name="robot_description" textfile="$(find schunk_mpz45)/urdf/schunk_mpz45.urdf"/> -->
+  <node name="pickuppoint_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model schunk_mpz45 -x 0.4" />
+
+  <!-- convert joint states to TF transforms for rviz, etc  -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="schunk_mpz45/joint_states" />
+  </node>
+
+  <!-- <env name="GAZEBO_MODEL_PATH" value="$(find prototype_simulation_al5d)"/> -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find simulation)/worlds/empty.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="recording" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+</launch>

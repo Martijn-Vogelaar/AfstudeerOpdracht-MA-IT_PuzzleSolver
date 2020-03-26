@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include "MoveEndEffectorServer.hpp"
 #include "MoveEndEffectorStraightServer.hpp"
+#include "ControlGripperServer.hpp"
 
 int main(int argc, char **argv)
 {
@@ -10,7 +11,7 @@ int main(int argc, char **argv)
   spinner.start();
   MoveEndEffectorServer server("MoveEndEffectorAction");
   MoveEndEffectorStraightServer server2("MoveEndEffectorStraightAction");
-
+  ControlGripperServer server3("ControlGripperAction");
   while (ros::ok)
   {
   }
