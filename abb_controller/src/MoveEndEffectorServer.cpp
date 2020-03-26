@@ -28,6 +28,7 @@ void MoveEndEffectorServer::goalCallback(const abb_controller::MoveEndEffectorGo
 
 bool MoveEndEffectorServer::executeMovement(geometry_msgs::Pose goalPose)
 {
+    ROS_ERROR("NoneStraight");
     move_group.setPoseTarget(goalPose);
     moveit::planning_interface::MoveGroupInterface::Plan my_plan;
 

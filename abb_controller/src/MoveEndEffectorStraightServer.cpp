@@ -1,15 +1,35 @@
 #include "MoveEndEffectorStraightServer.hpp"
 
-MoveEndEffectorStraightServer::MoveEndEffectorStraightServer(std::string name) : MoveEndEffectorServer(name){
-
+MoveEndEffectorStraightServer::MoveEndEffectorStraightServer(std::string aName) : actionServer(nodeHandler, aName, boost::bind(&MoveEndEffectorStraightServer::goalCallback, this, _1), false), move_group(PLANNING_GROUP),
+                                                                                  actionName(aName)
+{
+    actionServer.start();
+    move_group.getCurrentState()->getJointModelGroup(PLANNING_GROUP);
 }
 
-MoveEndEffectorStraightServer::~MoveEndEffectorStraightServer(){
+MoveEndEffectorStraightServer::~MoveEndEffectorStraightServer()
+{
+}
 
+void MoveEndEffectorStraightServer::goalCallback(const abb_controller::MoveEndEffectorStraightGoalConstPtr &goal)
+{
+    geometry_msgs::Pose goalPose;
+    goalPose.position = goal->position;
+    goalPose.orientation = goal->orientation;
+
+    actionResult.success = executeMovement(goalPose);
+
+    geometry_msgs::Pose currentPose = move_group.getCurrentPose().pose;
+    actionResult.robotID = goal->robotID;
+    actionResult.position = currentPose.position;
+    actionResult.orientation = currentPose.orientation;
+    actionServer.setSucceeded(actionResult);
 }
 
 bool MoveEndEffectorStraightServer::executeMovement(geometry_msgs::Pose goalPose)
 {
+    ROS_ERROR("Straight");
+
     bool success = false;
     std::vector<geometry_msgs::Pose> waypoints;
 

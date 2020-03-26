@@ -16,7 +16,7 @@
 
 #include <moveit_visual_tools/moveit_visual_tools.h>
 #include <tf/transform_datatypes.h>
-static const std::string PLANNING_GROUP = "manipulator";
+#define PLANNING_GROUP "manipulator"
 
 class MoveEndEffectorServer
 {
@@ -34,7 +34,7 @@ public:
 
     ~MoveEndEffectorServer();
 
-    void goalCallback(const abb_controller::MoveEndEffectorGoalConstPtr &goal);
+    virtual void goalCallback(const abb_controller::MoveEndEffectorGoalConstPtr &goal);
 };
 
 #endif //MOVE_END_EFFECTOR_SERVER_HPP
