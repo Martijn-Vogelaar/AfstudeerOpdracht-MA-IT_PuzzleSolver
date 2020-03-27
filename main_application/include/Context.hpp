@@ -3,6 +3,7 @@
 
 #include "State.hpp"
 #include <memory>
+#include "MoveRobotClient.hpp"
 
 class State;
 /**
@@ -15,25 +16,34 @@ class State;
 class Context
 {
 public:
-  /**
+   /**
      * @brief Construct a new Context object
      *
      */
-  Context();
+   Context();
 
-  /**
+   /**
+    * @brief Get the Move Robot Client object
+    * 
+    */
+   MoveRobotClient& getMoveRobotClient();
+
+   /**
      * @brief Set the currentState by supplying a shared_ptr to a state.
      *
      * @param state
      */
-  void setState(const std::shared_ptr<State> &state);
-  /**
+   void setState(const std::shared_ptr<State> &state);
+
+   /**
      * @brief Run is the function which takes care of the handling of the
      * EventQueue and calling the doActivity functions of the different states.
      */
-  void run();
+   void run();
 
 private:
-  std::shared_ptr<State> mCurrentState;
+   MoveRobotClient moveRobotClient;
+
+   std::shared_ptr<State> mCurrentState;
 };
 #endif // Context_HPP

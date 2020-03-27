@@ -31,15 +31,6 @@ pickuppoint - prepare2 - Straight
 
 pickuppoint -final
                 x  -0.235
-                y  0
-                z  0.5
-                x  0.0143044
-                y  0.695357
-                z -0.00627331
-                w  0.718494
-
-pickuppoint -final
-                x  -0.235
                 y  -0.16
                 z  0.25
                 x  0.0143044
@@ -56,3 +47,15 @@ toPickupUp -
                 z  0.0003
                 w -0.4915
 
+
+
+
+
+----------------------------------------------------------
+home:           x   0.424
+                y   0
+                z   0.63
+                x   0
+                y   0  
+                z   0
+                w   1

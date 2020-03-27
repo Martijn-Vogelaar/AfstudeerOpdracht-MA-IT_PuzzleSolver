@@ -23,6 +23,7 @@ find_package(catkin REQUIRED
     tf2_eigen
     tf2_geometry_msgs
     roscpp
+    abb_controller
 )
 
 find_package(Eigen3 REQUIRED)
@@ -63,6 +64,7 @@ include_directories(
 )
 
 add_library(lib_main
+src/MoveRobotClient.cpp
 src/Init.cpp
 src/Context.cpp
 src/State.cpp
@@ -72,6 +74,7 @@ src/LiftPiece.cpp
 src/MoveToRecognizedPiece.cpp
 src/MoveToUnknownPiece.cpp
 src/MoveUnknownPiece.cpp
+src/PutPieceInPickupPoint.cpp
 src/PlacePieceBackInPickupPoint.cpp
 src/PlacePieceInPuzzle.cpp
 src/PowerOff.cpp
@@ -95,11 +98,3 @@ target_link_libraries(main_application
 lib_main
 ${catkin_LIBRARIES}
 )
-
-#
-
-###########
-## Build ##
-###########
-
-
