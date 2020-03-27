@@ -29,6 +29,13 @@ void MoveEndEffectorServer::goalCallback(const abb_controller::MoveEndEffectorGo
 bool MoveEndEffectorServer::executeMovement(geometry_msgs::Pose goalPose)
 {
     ROS_ERROR("NoneStraight");
+
+    // tf::Quaternion q;
+    // q.setRPY(0, 3.14, 0);
+    // goalPose.orientation.w = q.w();
+    // goalPose.orientation.x = q.x();
+    // goalPose.orientation.y = q.y();
+    // goalPose.orientation.z = q.z();
     move_group.setPoseTarget(goalPose);
     moveit::planning_interface::MoveGroupInterface::Plan my_plan;
 
