@@ -1,0 +1,4 @@
+<launch>
+    <node name="abb_controller" type="abb_controller" pkg="abb_controller"/>
+    <node name="capacitive_sensor_plugin" type="capacitive_sensor_plugin" pkg="capacitive_sensor" args="0 4"/>
+</launch>

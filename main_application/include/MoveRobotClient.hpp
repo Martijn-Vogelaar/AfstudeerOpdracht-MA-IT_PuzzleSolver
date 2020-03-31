@@ -4,6 +4,7 @@
 #include <actionlib/client/simple_action_client.h>
 #include <abb_controller/MoveEndEffectorAction.h>
 #include <abb_controller/MoveEndEffectorStraightAction.h>
+#include <geometry_msgs/Pose.h>
 
 #define ACTION_NORMAL "MoveEndEffectorAction"
 
@@ -16,9 +17,9 @@ private:
     actionlib::SimpleActionClient<abb_controller::MoveEndEffectorStraightAction> actionClientStraight;
 
 public:
-    void MoveRobotStraight(uint8_t robotID, double x1, double y1, double z1, double x2, double y2, double z2, double w);
+    void MoveRobotStraight(uint8_t aRobotID, geometry_msgs::Pose aGoal);
 
-    void MoveRobotNormal(uint8_t robotID, double x1, double y1, double z1, double x2, double y2, double z2, double w);
+    void MoveRobotNormal(uint8_t aRobotID, geometry_msgs::Pose aGoal);
 
     MoveRobotClient();
 

@@ -3,6 +3,8 @@
 #include <memory>
 #include "MoveRobotClient.hpp"
 #include "RecognizePiece.hpp"
+#include "Poses.hpp"
+#include <geometry_msgs/Pose.h>
 
 PutPieceInPickupPoint::PutPieceInPickupPoint()
 {
@@ -12,19 +14,19 @@ PutPieceInPickupPoint::~PutPieceInPickupPoint() {}
 
 void PutPieceInPickupPoint::entryAction(Context *)
 {
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void PutPieceInPickupPoint::doActivity(Context *context)
 {
-    context->getMoveRobotClient().MoveRobotNormal(0, -0.48, -0.16, 0.42, 0.0143044, 0.695357, -0.00627331, 0.718494);
-    context->getMoveRobotClient().MoveRobotStraight(0, -0.48, -0.16, 0.25, 0.0143044, 0.695357, -0.00627331, 0.718494);
-    context->getMoveRobotClient().MoveRobotStraight(0, -0.235, -0.16, 0.25, 0.0143044, 0.695357, -0.00627331, 0.718494);
+    geometry_msgs::Pose pose1 = tf2Handler.calculatePosition(PICKUP_POINT, BASE, PICKUP_POINT_PREPERATION_POSE_1);
+    geometry_msgs::Pose pose2 = tf2Handler.calculatePosition(PICKUP_POINT, BASE, PICKUP_POINT_PREPERATION_POSE_2);
+    geometry_msgs::Pose pose3 = tf2Handler.calculatePosition(PICKUP_POINT, BASE, PICKUP_POINT_MOVE_SLIDER);
+    context->getMoveRobotClient().MoveRobotNormal(0, pose1);
+    context->getMoveRobotClient().MoveRobotStraight(0, pose2);
+    context->getMoveRobotClient().MoveRobotStraight(0, pose3);
     context->setState(std::make_shared<RecognizePiece>());
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void PutPieceInPickupPoint::exitAction(Context *)
 {
-    std::cout << __PRETTY_FUNCTION__ << std::endl;
 }

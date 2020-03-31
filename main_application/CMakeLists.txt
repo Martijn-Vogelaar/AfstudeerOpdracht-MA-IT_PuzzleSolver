@@ -24,6 +24,7 @@ find_package(catkin REQUIRED
     tf2_geometry_msgs
     roscpp
     abb_controller
+    capacitive_sensor
 )
 
 find_package(Eigen3 REQUIRED)
@@ -78,12 +79,15 @@ src/PutPieceInPickupPoint.cpp
 src/PlacePieceBackInPickupPoint.cpp
 src/PlacePieceInPuzzle.cpp
 src/PowerOff.cpp
+src/Poses.cpp
 src/Ready.cpp
 src/RecognizePiece.cpp
 src/ReleasePiece.cpp
 src/ReleaseUnknownPiece.cpp
 src/RotatePiece.cpp
 src/RotatePieceOnPlace.cpp
+src/UnknownPieceInPickupPoint.cpp
+src/TF2Handler.cpp
 )
 
 add_dependencies( lib_main

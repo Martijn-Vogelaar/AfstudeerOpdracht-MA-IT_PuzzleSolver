@@ -3,10 +3,10 @@
     xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:include filename="$(find abb_resources)/urdf/common_materials.xacro" />
     <link name='world'/>
-    <gazebo reference="base_link">
+    <gazebo reference="pickuppoint">
         <material>Gazebo/Yellow</material>
     </gazebo>
-    <link name='base_link'>
+    <link name='pickuppoint'>
         <inertial>
             <mass value="100" />
             <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
@@ -183,40 +183,40 @@
 
 
 
-    <joint name="base_link_JOINT_1" type="prismatic">
+    <joint name="pickuppoint_JOINT_1" type="prismatic">
         <origin rpy="0 0 1.57" xyz="-0.025 0 0" />
-        <parent link="base_link" />
+        <parent link="pickuppoint" />
         <child link="slider" />
         <limit effort="310" lower="0" upper="0.23" velocity="0.1" />
     </joint>
-    <joint name="world_base" type="fixed">
-        <origin rpy="0 0 0" xyz="0 0 0" />
+    <joint name="world_pickuppoint" type="fixed">
+        <origin rpy="0 0 0" xyz="0.4 0 0" />
         <parent link="world" />
-        <child link="base_link" />
+        <child link="pickuppoint" />
     </joint>
-    <joint name="base_slope" type="fixed">
+    <joint name="pickuppoint_slope" type="fixed">
         <origin rpy="0 0 0" xyz="0 0 0" />
-        <parent link="base_link" />
+        <parent link="pickuppoint" />
         <child link="slope" />
     </joint>
-    <joint name="base_plateau" type="fixed">
+    <joint name="pickuppoint_plateau" type="fixed">
         <origin rpy="0 0 0" xyz="0 0 0" />
-        <parent link="base_link" />
+        <parent link="pickuppoint" />
         <child link="plateau" />
     </joint>
-    <joint name="base_front_blocker" type="fixed">
+    <joint name="pickuppoint_front_blocker" type="fixed">
         <origin rpy="0 0 0" xyz="-0.025 0 0" />
-        <parent link="base_link" />
+        <parent link="pickuppoint" />
         <child link="front_blocker" />
     </joint>
-    <joint name="base_right_bottom_blocker" type="fixed">
+    <joint name="pickuppoint_right_bottom_blocker" type="fixed">
         <origin rpy="0 0 0" xyz="-0.025 0 0" />
-        <parent link="base_link" />
+        <parent link="pickuppoint" />
         <child link="right_bottom_blocker" />
     </joint>
-    <joint name="base_left_bottom_blocker" type="fixed">
+    <joint name="pickuppoint_left_bottom_blocker" type="fixed">
         <origin rpy="0 0 0" xyz="-0.025 0 0" />
-        <parent link="base_link" />
+        <parent link="pickuppoint" />
         <child link="left_bottom_blocker" />
     </joint>
 </robot>

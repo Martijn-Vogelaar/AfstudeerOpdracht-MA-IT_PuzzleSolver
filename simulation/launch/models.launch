@@ -1,4 +1,7 @@
 <launch>
-  <param name="pickuppoint_description" command="$(find xacro)/xacro '$(find pickuppoint)/urdf/pickuppoint.xacro'" />
-  <node name="pickuppoint_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param pickuppoint_description -model pickuppoint -x 0.4 -y 0.0" />
+  <group ns="pickuppoint">
+    <param name="robot_description" command="$(find xacro)/xacro '$(find pickuppoint)/urdf/pickuppoint.xacro'" />
+    <node name="pickuppoint_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model pickuppoint" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  </group>
 </launch>
