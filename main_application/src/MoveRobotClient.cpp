@@ -10,17 +10,17 @@ MoveRobotClient::~MoveRobotClient()
 {
 }
 
-void MoveRobotClient::MoveRobotStraight(uint8_t robotID, double x1, double y1, double z1, double x2, double y2, double z2, double w)
+void MoveRobotClient::MoveRobotStraight(uint8_t aRobotID, geometry_msgs::Pose aGoal)
 {
     abb_controller::MoveEndEffectorStraightGoal goal;
-    goal.robotID = robotID;
-    goal.position.x = x1;
-    goal.position.y = y1;
-    goal.position.z = z1;
-    goal.orientation.x = x2;
-    goal.orientation.y = y2;
-    goal.orientation.z = z2;
-    goal.orientation.w = w;
+    goal.robotID = aRobotID;
+    goal.position.x = aGoal.position.x;
+    goal.position.y = aGoal.position.y;
+    goal.position.z = aGoal.position.z;
+    goal.orientation.x = aGoal.orientation.x;
+    goal.orientation.y = aGoal.orientation.y;
+    goal.orientation.z = aGoal.orientation.z;
+    goal.orientation.w = aGoal.orientation.w;
 
     actionClientStraight.sendGoal(goal);
     actionClientStraight.waitForResult();
@@ -28,17 +28,17 @@ void MoveRobotClient::MoveRobotStraight(uint8_t robotID, double x1, double y1, d
     abb_controller::MoveEndEffectorResultConstPtr result = actionClientNormal.getResult();
 }
 
-void MoveRobotClient::MoveRobotNormal(uint8_t robotID, double x1, double y1, double z1, double x2, double y2, double z2, double w)
+void MoveRobotClient::MoveRobotNormal(uint8_t aRobotID, geometry_msgs::Pose aGoal)
 {
     abb_controller::MoveEndEffectorGoal goal;
-    goal.robotID = robotID;
-    goal.position.x = x1;
-    goal.position.y = y1;
-    goal.position.z = z1;
-    goal.orientation.x = x2;
-    goal.orientation.y = y2;
-    goal.orientation.z = z2;
-    goal.orientation.w = w;
+    goal.robotID = aRobotID;
+    goal.position.x = aGoal.position.x;
+    goal.position.y = aGoal.position.y;
+    goal.position.z = aGoal.position.z;
+    goal.orientation.x = aGoal.orientation.x;
+    goal.orientation.y = aGoal.orientation.y;
+    goal.orientation.z = aGoal.orientation.z;
+    goal.orientation.w = aGoal.orientation.w;
 
     actionClientNormal.sendGoal(goal);
 

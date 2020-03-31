@@ -34,7 +34,6 @@ void CapacitiveSensor::runMeasurements(int argc, char **argv)
     }
     while (ros::ok())
     {
-
         gazebo::common::Time::MSleep(10);
         ros::spinOnce();
         loop_rate.sleep();
@@ -44,7 +43,8 @@ void CapacitiveSensor::runMeasurements(int argc, char **argv)
 
 void CapacitiveSensor::distanceSensorCallback(ConstLaserScanStampedPtr &msg)
 {
-
+    static uint8_t count = 0;
+    count++;
     uint8_t senderID = (uint8_t)msg->scan().frame()[6] - 48; //Temporary ugly solution
     if (msg->scan().ranges(0) <= MAX_DISTANCE_TO_BE_ACTIVE)
     {
@@ -54,8 +54,11 @@ void CapacitiveSensor::distanceSensorCallback(ConstLaserScanStampedPtr &msg)
     {
         sensorValue &= ~(1UL << senderID);
     }
-    capacitive_sensor::capacitive_sensor_measurements message;
-    message.id = id;
-    message.value = sensorValue;
-    p.publish(message);
+    if (count % 4 == 0)
+    {
+        capacitive_sensor::capacitive_sensor_measurements message;
+        message.id = id;
+        message.value = sensorValue;
+        p.publish(message);
+    }
 }

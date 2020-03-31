@@ -1,5 +1,4 @@
 
-#include <iostream>
 #include "Context.hpp"
 #include "Init.hpp"
 
@@ -11,6 +10,11 @@ Context::Context()
 MoveRobotClient& Context::getMoveRobotClient(){
   return moveRobotClient;
 }
+
+  ros::NodeHandle& Context::getNodeHandler(){
+    return nodeHandler;
+  }
+
 
 void Context::setState(const std::shared_ptr<State> &state)
 {

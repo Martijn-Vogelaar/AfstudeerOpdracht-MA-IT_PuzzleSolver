@@ -4,6 +4,21 @@
 // Local
 #include "Context.hpp"
 #include "State.hpp"
+#include "capacitive_sensor/capacitive_sensor_measurements.h"
+
+#define CAPACITIVE_TOPIC "capacitive_sensor"
+
+#define CAPACITIVE_SENSOR_ID 0
+
+/**
+ * @brief Atleast 5 measurements in a row need to be equal to have a "Good" measurement 
+ * 
+ */
+#define NUMBER_OF_EQUAL_MEASUREMENTS 5
+
+static const int allowedMeasurements[] = {1,3,5,9};
+
+
 /**
    * @class RecognizePiece
    *
@@ -49,5 +64,14 @@ public:
      * "outside world".
      */
     void exitAction(Context *aContext) override;
+
+private:
+    ros::Subscriber capacitiveMeasurementSubscriber;
+
+    uint8_t equalMeasurementCount;
+
+    uint8_t currentMeasurement;
+
+    void measurementCallback(const capacitive_sensor::capacitive_sensor_measurementsConstPtr& msg);
 };
 #endif // RECOGNIZE_PIECE_HPP
