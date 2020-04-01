@@ -1,32 +1,34 @@
-#ifndef MOVE_TO_UNKNOWN_PIECE_HPP
-#define MOVE_TO_UNKNOWN_PIECE_HPP
+#ifndef PLACE_PIECE_HPP
+#define PLACE_PIECE_HPP
 
 // Local
 #include "Context.hpp"
 #include "State.hpp"
+#include "PlaceCorrectly/SubContext.hpp"
+
 /**
-   * @class MoveToUnknownPiece
+   * @class PlacePiece
    *
-   * @brief MoveToUnknownPiece is the class which represents the MoveToUnknownPiece state.
+   * @brief PlacePiece is the class which represents the PlacePiece state.
    *
    */
-class MoveToUnknownPiece : public State
+class PlacePiece : public State
 {
 public:
     /**
-     * @brief Construct a new MoveToUnknownPiece object
+     * @brief Construct a new PlacePiece object
      *
      */
-    MoveToUnknownPiece();
+    PlacePiece();
     /**
-     * @brief Destroy the MoveToUnknownPiece object
+     * @brief Destroy the PlacePiece object
      *
      */
-    ~MoveToUnknownPiece();
+    ~PlacePiece();
     /**
-     * @brief entryAction is being called when the MoveToUnknownPiece state is being entered.
+     * @brief entryAction is being called when the PlacePiece state is being entered.
      *
-     * @details When the MoveToUnknownPiece state is entered the robotarm will be set to the
+     * @details When the PlacePiece state is entered the robotarm will be set to the
      * begin position.
      *
      * @param aContext is an object which gives the states an interface to the
@@ -36,18 +38,21 @@ public:
 
     /**
      * @brief doActivity is continiously being called while the system is in the
-     * MoveToUnknownPiece.
+     * PlacePiece.
      *
      * @param aContext is an object which gives the states an interface to the
      * "outside world".
      */
     void doActivity(Context *aContext) override;
     /**
-     * @brief exitAction is being called when the MoveToUnknownPiece state is being exited.
+     * @brief exitAction is being called when the PlacePiece state is being exited.
      *
      * @param aContext is an object which gives the states an interface to the
      * "outside world".
      */
     void exitAction(Context *aContext) override;
+
+private:
+    std::shared_ptr<SubContext> subContext;
 };
-#endif // MOVE_TO_UNKNOWN_PIECE_HPP
+#endif // PLACE_PIECE_HPP

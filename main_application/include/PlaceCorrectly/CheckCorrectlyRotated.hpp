@@ -2,7 +2,7 @@
 #define CHECK_CORRECTLY_ROTATED_HPP
 
 // Local
-#include "Context.hpp"
+#include "PlaceCorrectly/SubContext.hpp"
 #include "State.hpp"
 /**
    * @class CheckCorrectlyRotated
@@ -29,25 +29,25 @@ public:
      * @details When the CheckCorrectlyRotated state is entered the robotarm will be set to the
      * begin position.
      *
-     * @param aContext is an object which gives the states an interface to the
+     * @param aSubContext is an object which gives the states an interface to the
      * "outside world".
      */
-    void entryAction(Context *aContext) override;
+    void entryAction(Context *aSubContext) override;
 
     /**
      * @brief doActivity is continiously being called while the system is in the
      * CheckCorrectlyRotated.
      *
-     * @param aContext is an object which gives the states an interface to the
+     * @param aSubContext is an object which gives the states an interface to the
      * "outside world".
      */
-    void doActivity(Context *aContext) override;
+    void doActivity(Context *aSubContext) override;
     /**
      * @brief exitAction is being called when the CheckCorrectlyRotated state is being exited.
      *
-     * @param aContext is an object which gives the states an interface to the
+     * @param aSubContext is an object which gives the states an interface to the
      * "outside world".
      */
-    void exitAction(Context *aContext) override;
+    void exitAction(Context *aSubContext) override;
 };
 #endif // CHECK_CORRECTLY_ROTATED_HPP

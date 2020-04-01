@@ -4,6 +4,7 @@
 // Local
 #include "Context.hpp"
 #include "State.hpp"
+#include "TF2Handler.hpp"
 /**
    * @class MoveToRecognizedPiece
    *
@@ -17,7 +18,7 @@ public:
      * @brief Construct a new MoveToRecognizedPiece object
      *
      */
-    MoveToRecognizedPiece();
+    MoveToRecognizedPiece(uint8_t aPuzzlePieceId);
     /**
      * @brief Destroy the MoveToRecognizedPiece object
      *
@@ -49,5 +50,9 @@ public:
      * "outside world".
      */
     void exitAction(Context *aContext) override;
+
+private:
+    uint8_t puzzlePieceId;
+    TF2Handler tf2Handler;
 };
 #endif // MOVE_TO_RECOGNIZED_PIECE_HPP

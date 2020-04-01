@@ -11,7 +11,9 @@
 
 
   <buildtool_depend>catkin</buildtool_depend>
-
+  <build_depend>gazebo_ros_link_attacher</build_depend>
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>gazebo</build_depend>
   <build_depend>std_msgs</build_depend>
   <build_depend>message_generation</build_depend>
   <build_depend>message_runtime</build_depend>
@@ -36,7 +38,8 @@
   <build_export_depend>message_generation</build_export_depend>
   <build_export_depend>geometry_msgs</build_export_depend>
 
-
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>gazebo</exec_depend>
   <exec_depend>panda_moveit_config</exec_depend>
   <exec_depend>pluginlib</exec_depend>
   <exec_depend>moveit_core</exec_depend>
@@ -57,7 +60,7 @@
   <exec_depend>message_generation</exec_depend>
   <exec_depend>tf2_eigen</exec_depend>
   <exec_depend>tf2_geometry_msgs</exec_depend>
-  <exec_depend>geometry_msgs</exec_depend> 
+  <exec_depend>geometry_msgs</exec_depend>
 
   <export>
 

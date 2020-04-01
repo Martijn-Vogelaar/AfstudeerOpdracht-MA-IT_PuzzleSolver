@@ -4,7 +4,9 @@
 // Local
 #include "Context.hpp"
 #include "State.hpp"
-/**
+#include "TF2Handler.hpp"
+
+  /**
    * @class GrabPiece
    *
    * @brief GrabPiece is the class which represents the GrabPiece state.
@@ -49,5 +51,7 @@ public:
      * "outside world".
      */
     void exitAction(Context *aContext) override;
+private:
+    TF2Handler tf2Handler;
 };
 #endif // GRAB_PIECE_HPP

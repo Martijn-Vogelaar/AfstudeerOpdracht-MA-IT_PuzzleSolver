@@ -2,7 +2,7 @@
 #define PLACE_PIECE_IN_PUZZLE_HPP
 
 // Local
-#include "Context.hpp"
+#include "PlaceCorrectly/SubContext.hpp"
 #include "State.hpp"
 /**
    * @class PlacePieceInPuzzle
@@ -29,25 +29,25 @@ public:
      * @details When the PlacePieceInPuzzle state is entered the robotarm will be set to the
      * begin position.
      *
-     * @param aContext is an object which gives the states an interface to the
+     * @param aSubContext is an object which gives the states an interface to the
      * "outside world".
      */
-    void entryAction(Context *aContext) override;
+    void entryAction(Context *aSubContext) override;
 
     /**
      * @brief doActivity is continiously being called while the system is in the
      * PlacePieceInPuzzle.
      *
-     * @param aContext is an object which gives the states an interface to the
+     * @param aSubContext is an object which gives the states an interface to the
      * "outside world".
      */
-    void doActivity(Context *aContext) override;
+    void doActivity(Context *aSubContext) override;
     /**
      * @brief exitAction is being called when the PlacePieceInPuzzle state is being exited.
      *
-     * @param aContext is an object which gives the states an interface to the
+     * @param aSubContext is an object which gives the states an interface to the
      * "outside world".
      */
-    void exitAction(Context *aContext) override;
+    void exitAction(Context *aSubContext) override;
 };
 #endif // PLACE_PIECE_IN_PUZZLE_HPP

@@ -1,32 +1,32 @@
-#ifndef ROTATE_PIECE_HPP
-#define ROTATE_PIECE_HPP
+#ifndef POWER_OFF_HPP
+#define POWER_OFF_HPP
 
 // Local
 #include "Context.hpp"
 #include "State.hpp"
 /**
-   * @class RotatePiece
+   * @class MoveToUnexploredSpot
    *
-   * @brief RotatePiece is the class which represents the RotatePiece state.
+   * @brief MoveToUnexploredSpot is the class which represents the MoveToUnexploredSpot state.
    *
    */
-class RotatePiece : public State
+class MoveToUnexploredSpot : public State
 {
 public:
     /**
-     * @brief Construct a new RotatePiece object
+     * @brief Construct a new MoveToUnexploredSpot object
      *
      */
-    RotatePiece();
+    MoveToUnexploredSpot();
     /**
-     * @brief Destroy the RotatePiece object
+     * @brief Destroy the MoveToUnexploredSpot object
      *
      */
-    ~RotatePiece();
+    ~MoveToUnexploredSpot();
     /**
-     * @brief entryAction is being called when the RotatePiece state is being entered.
+     * @brief entryAction is being called when the MoveToUnexploredSpot state is being entered.
      *
-     * @details When the RotatePiece state is entered the robotarm will be set to the
+     * @details When the MoveToUnexploredSpot state is entered the robotarm will be set to the
      * begin position.
      *
      * @param aContext is an object which gives the states an interface to the
@@ -36,18 +36,18 @@ public:
 
     /**
      * @brief doActivity is continiously being called while the system is in the
-     * RotatePiece.
+     * MoveToUnexploredSpot.
      *
      * @param aContext is an object which gives the states an interface to the
      * "outside world".
      */
     void doActivity(Context *aContext) override;
     /**
-     * @brief exitAction is being called when the RotatePiece state is being exited.
+     * @brief exitAction is being called when the MoveToUnexploredSpot state is being exited.
      *
      * @param aContext is an object which gives the states an interface to the
      * "outside world".
      */
     void exitAction(Context *aContext) override;
 };
-#endif // ROTATE_PIECE_HPP
+#endif // POWER_OFF_HPP

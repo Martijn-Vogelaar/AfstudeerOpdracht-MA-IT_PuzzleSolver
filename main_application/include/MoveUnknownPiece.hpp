@@ -4,6 +4,7 @@
 // Local
 #include "Context.hpp"
 #include "State.hpp"
+
 /**
    * @class MoveUnknownPiece
    *

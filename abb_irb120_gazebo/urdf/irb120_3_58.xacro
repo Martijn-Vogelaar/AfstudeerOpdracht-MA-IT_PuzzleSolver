@@ -349,7 +349,7 @@
   <link name="world"/>
   <joint name="world-base_link-fixed" type="fixed">
     <parent link="world"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
     <child link="base_link"/>
   </joint>
   <!-- Conversion were obtained from http://www.e-paint.co.uk/Lab_values.asp
@@ -394,7 +394,7 @@
         <color rgba="0.9254902 0.9254902 0.9058824 1"/>
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
       <geometry>
         <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper3.stl"/>
@@ -402,7 +402,7 @@
       <material name="">
         <color rgba="1 1 0 1"/>
       </material>
-    </collision>
+    </collision> -->
   </link>
   <link name="gripper2">
     <inertial>
@@ -419,7 +419,7 @@
         <color rgba="0.9254902 0.9254902 0.9058824 1"/>
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
       <geometry>
         <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper3.stl"/>
@@ -427,7 +427,7 @@
       <material name="">
         <color rgba="1 1 0 1"/>
       </material>
-    </collision>
+    </collision> -->
   </link>
   <link name="gripper3">
     <inertial>
@@ -444,7 +444,7 @@
         <color rgba="0.9254902 0.9254902 0.9058824 1"/>
       </material>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
       <geometry>
         <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper3.stl"/>
@@ -452,7 +452,7 @@
       <material name="">
         <color rgba="1 1 0 1"/>
       </material>
-    </collision>
+    </collision> -->
   </link>
   <link name="eef">
     <visual>
@@ -469,20 +469,20 @@
     <origin rpy="-1.57079632679 -2.61799387799 -1.57079632679" xyz="0 0 0"/>
     <parent link="head"/>
     <child link="gripper1"/>
-    <limit effort="310" lower="0" upper="0.005" velocity="0.1"/>
+    <limit effort="5" lower="0" upper="0.0035" velocity="0.01"/>
   </joint>
   <joint name="joint_8" type="prismatic">
     <origin rpy="-1.57079632679 -0.523598775598 -1.57079632679" xyz="0 0 0"/>
     <parent link="head"/>
     <child link="gripper2"/>
-    <limit effort="310" lower="0" upper="0.005" velocity="0.1"/>
+    <limit effort="5" lower="0" upper="0.0035" velocity="0.01"/>
     <mimic joint="joint_7"/>
   </joint>
   <joint name="joint_9" type="prismatic">
     <origin rpy="0 1.57079632679 0" xyz="0 0 0"/>
     <parent link="head"/>
     <child link="gripper3"/>
-    <limit effort="310" lower="0" upper="0.005" velocity="0.1"/>
+    <limit effort="5" lower="0" upper="0.0035" velocity="0.01"/>
     <mimic joint="joint_7"/>
   </joint>
   <joint name="eef-head" type="fixed">
@@ -538,6 +538,34 @@
   <gazebo reference="gripper3">
     <material>Gazebo/White</material>
     <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+  <gazebo reference="joint_1">
+    <implicitSpringDamper>1</implicitSpringDamper>
+  </gazebo>
+  <gazebo reference="joint_2">
+    <implicitSpringDamper>1</implicitSpringDamper>
+  </gazebo>
+  <gazebo reference="joint_3">
+    <implicitSpringDamper>1</implicitSpringDamper>
+  </gazebo>
+  <gazebo reference="joint_4">
+    <implicitSpringDamper>1</implicitSpringDamper>
+  </gazebo>
+  <gazebo reference="joint_5">
+    <implicitSpringDamper>1</implicitSpringDamper>
+  </gazebo>
+  <gazebo reference="joint_6">
+    <implicitSpringDamper>1</implicitSpringDamper>
+  </gazebo>
+  <gazebo reference="joint_7">
+    <implicitSpringDamper>1</implicitSpringDamper>
+  </gazebo>
+  <gazebo reference="joint_8">
+    <implicitSpringDamper>1</implicitSpringDamper>
+  </gazebo>
+  <gazebo reference="joint_9">
+    <implicitSpringDamper>1</implicitSpringDamper>
   </gazebo>
   <!-- ros_control plugin -->
   <joint name="joint_10" type="fixed">

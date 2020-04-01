@@ -27,6 +27,8 @@ void PutPieceInPickupPoint::doActivity(Context *context)
     context->setState(std::make_shared<RecognizePiece>());
 }
 
-void PutPieceInPickupPoint::exitAction(Context *)
+void PutPieceInPickupPoint::exitAction(Context *context)
 {
+    geometry_msgs::Pose moveBackPose = tf2Handler.calculatePosition(PICKUP_POINT, BASE, PICKUP_POINT_MOVE_BACK);
+    context->getMoveRobotClient().MoveRobotStraight(0, moveBackPose);
 }

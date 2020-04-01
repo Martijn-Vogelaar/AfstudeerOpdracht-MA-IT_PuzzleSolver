@@ -6,6 +6,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(catkin REQUIRED
   COMPONENTS
+    gazebo_ros
     interactive_markers
     moveit_core
     moveit_visual_tools
@@ -27,7 +28,11 @@ find_package(catkin REQUIRED
     roscpp 
     actionlib 
     actionlib_msgs
+    gazebo_ros_link_attacher
 )
+
+find_package(gazebo REQUIRED)
+
 
 find_package(Eigen3 REQUIRED)
 find_package(Boost REQUIRED system filesystem date_time)
@@ -59,8 +64,10 @@ catkin_package(
     message_runtime
     interactive_markers
     tf2_geometry_msgs
+    gazebo_ros
   DEPENDS
     EIGEN3
+    gazebo
 )
 
 ###########
@@ -72,6 +79,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS} 
   ${Boost_INCLUDE_DIR} 
   ${EIGEN3_INCLUDE_DIRS}
+  ${GAZEBO_INCLUDE_DIRS}
   )
 
 include_directories(
@@ -87,7 +95,7 @@ add_executable(abb_controller
                 src/ControlGripperServer.cpp
 )
 
-target_link_libraries(abb_controller ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+target_link_libraries(abb_controller ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${GAZEBO_LIBRARIES} )
 
 install(TARGETS abb_controller RUNTIME DESTINATION bin DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 

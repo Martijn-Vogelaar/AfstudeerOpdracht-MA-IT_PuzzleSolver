@@ -46,8 +46,11 @@ catkin_package(
 )
 
 catkin_package(
-  INCLUDE_DIRS include
-  LIBRARIES lib_main
+  INCLUDE_DIRS 
+    include
+    include/PlaceCorrectly
+  LIBRARIES 
+    lib_main
 )
 
 include_directories(
@@ -65,29 +68,32 @@ include_directories(
 )
 
 add_library(lib_main
-src/MoveRobotClient.cpp
-src/Init.cpp
+src/PlaceCorrectly/CheckCorrectlyRotated.cpp
+src/PlaceCorrectly/CheckCorrectlyRotated.cpp
+src/PlaceCorrectly/PlacePieceInPuzzle.cpp
+src/PlaceCorrectly/RotatePieceOnPlace.cpp
+src/PlaceCorrectly/LiftPiece.cpp
+src/PlaceCorrectly/RotatePieceInAir.cpp
+src/PlaceCorrectly/SubContext.cpp
+
 src/Context.cpp
-src/State.cpp
-src/CheckCorrectlyRotated.cpp
-src/GrabPiece.cpp
-src/LiftPiece.cpp
-src/MoveToRecognizedPiece.cpp
-src/MoveToUnknownPiece.cpp
-src/MoveUnknownPiece.cpp
-src/PutPieceInPickupPoint.cpp
-src/PlacePieceBackInPickupPoint.cpp
-src/PlacePieceInPuzzle.cpp
-src/PowerOff.cpp
 src/Poses.cpp
+src/GrabPiece.cpp
+src/PowerOff.cpp
+src/Init.cpp
+src/PutPieceInPickupPoint.cpp
+src/Main.cpp
 src/Ready.cpp
+src/MoveRobotClient.cpp
 src/RecognizePiece.cpp
+src/MoveToRecognizedPiece.cpp
 src/ReleasePiece.cpp
-src/ReleaseUnknownPiece.cpp
-src/RotatePiece.cpp
-src/RotatePieceOnPlace.cpp
-src/UnknownPieceInPickupPoint.cpp
+src/State.cpp
+src/MoveUnknownPiece.cpp
 src/TF2Handler.cpp
+src/UnknownPieceInPickupPoint.cpp
+src/PlacePiece.cpp
+src/MoveToUnexploredSpot.cpp
 )
 
 add_dependencies( lib_main

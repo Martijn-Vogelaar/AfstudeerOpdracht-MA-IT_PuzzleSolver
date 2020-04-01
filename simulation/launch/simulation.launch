@@ -1,7 +1,7 @@
 <launch>
     <include file="$(find simulation)/launch/models.launch" />
-    <include file="$(find abb_irb120_gazebo)/launch/irb120_gazebo.launch" /> -->
-    <include file="$(find abb_irb120_moveit_config)/launch/moveit_gazebo_no_rviz.launch" />
     <include file="$(find simulation)/launch/gripper.launch"/>
     <include file="$(find simulation)/launch/nodes.launch"/>
+    <include file="$(find abb_irb120_gazebo)/launch/irb120_gazebo.launch" /> -->
+    <include file="$(find abb_irb120_moveit_config)/launch/moveit_gazebo_no_rviz.launch" />
 </launch>

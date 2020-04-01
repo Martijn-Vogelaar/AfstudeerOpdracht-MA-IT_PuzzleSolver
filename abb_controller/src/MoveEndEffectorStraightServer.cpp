@@ -28,8 +28,6 @@ void MoveEndEffectorStraightServer::goalCallback(const abb_controller::MoveEndEf
 
 bool MoveEndEffectorStraightServer::executeMovement(geometry_msgs::Pose goalPose)
 {
-    ROS_ERROR("Straight");
-
     bool success = false;
     std::vector<geometry_msgs::Pose> waypoints;
 

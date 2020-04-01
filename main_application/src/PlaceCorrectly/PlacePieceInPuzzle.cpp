@@ -1,4 +1,4 @@
-#include "PlacePieceInPuzzle.hpp"
+#include "PlaceCorrectly/PlacePieceInPuzzle.hpp"
 #include <iostream>
 #include <memory>
 
@@ -10,6 +10,7 @@ PlacePieceInPuzzle::~PlacePieceInPuzzle() {}
 
 void PlacePieceInPuzzle::entryAction(Context *)
 {
+    
 }
 
 void PlacePieceInPuzzle::doActivity(Context *)

@@ -1,9 +1,10 @@
 #include "MoveRobotClient.hpp"
 
-MoveRobotClient::MoveRobotClient() : actionClientNormal(ACTION_NORMAL), actionClientStraight(ACTION_STRAIGHT)
+MoveRobotClient::MoveRobotClient() : actionClientNormal(ACTION_NORMAL), actionClientStraight(ACTION_STRAIGHT), actionClientControlGripper(ACTION_CONTROL_GRIPPER)
 {
     actionClientNormal.waitForServer();
     actionClientStraight.waitForServer();
+    actionClientControlGripper.waitForServer();
 }
 
 MoveRobotClient::~MoveRobotClient()
@@ -45,4 +46,16 @@ void MoveRobotClient::MoveRobotNormal(uint8_t aRobotID, geometry_msgs::Pose aGoa
     actionClientNormal.waitForResult();
 
     abb_controller::MoveEndEffectorResultConstPtr result = actionClientNormal.getResult();
+}
+
+void MoveRobotClient::ControlGripper(uint8_t aRobotID, bool aOpen)
+{
+    abb_controller::ControlGripperGoal goal;
+    goal.robotID = aRobotID;
+    goal.open = aOpen;
+    actionClientControlGripper.sendGoal(goal);
+
+    actionClientControlGripper.waitForResult();
+
+    abb_controller::ControlGripperResultConstPtr result = actionClientControlGripper.getResult();
 }

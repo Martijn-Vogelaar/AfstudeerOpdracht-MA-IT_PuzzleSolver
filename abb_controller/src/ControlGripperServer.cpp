@@ -1,8 +1,11 @@
 #include "ControlGripperServer.hpp"
 #include <std_msgs/Float64.h>
+
 ControlGripperServer::ControlGripperServer(std::string aName) : actionServer(nodeHandler, aName, boost::bind(&ControlGripperServer::goalCallback, this, _1), false),
                                                                 actionName(aName)
 {
+    attachClient = nodeHandler.serviceClient<gazebo_ros_link_attacher::Attach>("/link_attacher_node/attach");
+    detachClient = nodeHandler.serviceClient<gazebo_ros_link_attacher::Attach>("/link_attacher_node/detach");
     pub1 = nodeHandler.advertise<std_msgs::Float64>("/joint7_controller/command", 1000);
     pub2 = nodeHandler.advertise<std_msgs::Float64>("/joint8_controller/command", 1000);
     pub3 = nodeHandler.advertise<std_msgs::Float64>("/joint9_controller/command", 1000);
@@ -18,14 +21,34 @@ void ControlGripperServer::goalCallback(const abb_controller::ControlGripperGoal
 {
     uint8_t robotID = goal->robotID;
     bool open = goal->open;
-
+    gazebo_ros_link_attacher::Attach srv;
+    srv.request.model_name_1 = "abb_irb120_3_58";
+    srv.request.link_name_1 = "link_6";
+    srv.request.model_name_2 = "Circle1";
+    srv.request.link_name_2 = "circle_1_link_0";
     std_msgs::Float64 message;
     if (open)
     {
         message.data = 100;
+        if (attachClient.call(srv))
+        {
+            ROS_INFO("Attached!");
+        }
+        else
+        {
+            ROS_ERROR("Something went wrong attaching!!");
+        }
     }
     else
     {
+        if (detachClient.call(srv))
+        {
+            ROS_INFO("Detached!");
+        }
+        else
+        {
+            ROS_ERROR("Something went wrong detaching!!");
+        }
         message.data = -100;
     }
 

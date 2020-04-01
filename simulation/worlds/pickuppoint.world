@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
   <world name="default">
+    <plugin name="ros_link_attacher_plugin" filename="libgazebo_ros_link_attacher.so"/>
     <include>
       <uri>model://ground_plane</uri>
     </include>
@@ -8,7 +9,7 @@
     <include>
       <uri>model://sun</uri>
     </include>
-    <!-- <include>
+    <include>
       <uri>model://EmptyPuzzle</uri>
       <pose>-0.3 0 0.07 0 -0.5 0 </pose>
     </include>
@@ -20,7 +21,7 @@
     <include>
       <uri>model://CapacitiveSensor</uri>
       <name>lidar/1</name>
-      <pose>0.4 0.18 0.09 -0.5253 0 0 </pose>
+      <pose>0.4 0.17 0.1 -0.5253 0 0 </pose>
     </include>
     <include>
       <uri>model://CapacitiveSensor</uri>
@@ -34,7 +35,7 @@
     </include>
     <include>
       <uri>model://Circle1</uri>
-      <pose>0.4 -0.24 0.3 0 -0.5 0 </pose>
-    </include> -->
+      <pose>0.4 -0.2 0.51  0 0 1.57</pose>
+    </include>
   </world>
 </sdf>

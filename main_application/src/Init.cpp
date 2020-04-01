@@ -4,6 +4,8 @@
 #include "MoveRobotClient.hpp"
 #include "Ready.hpp"
 #include "Poses.hpp"
+#include "MoveToRecognizedPiece.hpp"
+
 Init::Init()
 {
 }
@@ -17,6 +19,7 @@ void Init::entryAction(Context *)
 void Init::doActivity(Context *context)
 {
     context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE);
+    context->getMoveRobotClient().ControlGripper(0, false);
     context->setState(std::make_shared<Ready>());
 }
 
