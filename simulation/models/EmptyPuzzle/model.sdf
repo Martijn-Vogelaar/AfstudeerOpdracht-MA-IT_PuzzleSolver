@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <sdf version='1.6'>
   <model name='EmptyPuzzle'>
-    <link name='link_0'>
+    <link name='EmptyPuzzle'>
       <inertial>
         <mass>1</mass>
         <inertia>
@@ -24,7 +24,7 @@
         <geometry>
           <mesh>
             <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/EmptyPuzzle.stl</uri>
-            <scale>1 1 1</scale>
+            <scale>1.1 1.1 1.1</scale>
           </mesh>
         </geometry>
         <material>
@@ -51,7 +51,7 @@
         <geometry>
           <mesh>
             <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/EmptyPuzzle.stl</uri>
-            <scale>1 1 1</scale>
+            <scale>1.1 1.1 1.1</scale>
           </mesh>
         </geometry>
         <surface>
@@ -101,7 +101,7 @@
         </surface>
       </collision>
     </link>
-    <link name='link_1'>
+    <link name='bottom_plate'>
       <inertial>
         <mass>1</mass>
         <inertia>
@@ -123,7 +123,7 @@
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
           <box>
-            <size>0.42 0.297 0.001</size>
+            <size>0.462 0.3267 0.001</size>
           </box>
         </geometry>
         <material>
@@ -146,10 +146,10 @@
       <collision name='collision'>
         <laser_retro>0</laser_retro>
         <max_contacts>10</max_contacts>
-        <pose frame=''>0 0 0 0 0 -1.57</pose>
+        <pose frame=''>0 0 0 0 0 0</pose>
         <geometry>
           <box>
-            <size>0.1 0.1 0.001</size>
+            <size>0.462 0.3267 0.001</size>
           </box>
         </geometry>
         <surface>
@@ -215,29 +215,29 @@
       <uri>model://InductiveSensor3</uri>
       <pose>0.0735 -0.06 -0.0001 0 -1.57 0</pose>
     </include>
-    <joint name='link_0_JOINT_0' type='fixed'>
-      <parent>link_0</parent>
-      <child>link_1</child>
+    <joint name='EmptyPuzzle_JOINT_0' type='fixed'>
+      <parent>EmptyPuzzle</parent>
+      <child>bottom_plate</child>
       <pose frame=''>0 0 0 0 -0 0</pose>
     </joint>
     <joint name='InductiveSensor0_to_puzzle' type='fixed'>
       <parent>InductiveSensor0::link</parent>
-      <child>link_0</child>
+      <child>EmptyPuzzle</child>
       <pose frame=''>0 0 0 0 0 0</pose>
     </joint>
     <joint name='InductiveSensor1_to_puzzle' type='fixed'>
       <parent>InductiveSensor0::link</parent>
-      <child>link_0</child>
+      <child>EmptyPuzzle</child>
       <pose frame=''>0 0 0 0 0 0</pose>
     </joint>
     <joint name='InductiveSensor2_to_puzzle' type='fixed'>
       <parent>InductiveSensor0::link</parent>
-      <child>link_0</child>
+      <child>EmptyPuzzle</child>
       <pose frame=''>0 0 0 0 0 0</pose>
     </joint>
     <joint name='InductiveSensor3_to_puzzle' type='fixed'>
       <parent>InductiveSensor0::link</parent>
-      <child>link_0</child>
+      <child>EmptyPuzzle</child>
       <pose frame=''>0 0 0 0 0 0</pose>
     </joint>
     <static>0</static>

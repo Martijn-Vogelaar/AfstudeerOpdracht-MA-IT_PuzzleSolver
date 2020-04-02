@@ -16,7 +16,9 @@ find_package(catkin REQUIRED
     geometric_shapes
     pcl_ros
     pcl_conversions
+    roscpp
     rosbag
+    tf2
     tf2_ros
     tf2_eigen
     tf2_geometry_msgs
@@ -158,6 +160,9 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+
+add_executable(PuzzleBroadcaster src/PuzzleBroadcaster.cpp)
+target_link_libraries(PuzzleBroadcaster  ${catkin_LIBRARIES} )
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/simulation.cpp

@@ -1,0 +1,12 @@
+#goal
+uint8 robotID
+float64 rotation
+---
+#result
+uint8 robotID
+bool success
+float64 rotation
+---
+#feedback
+uint8 robotID
+float64 rotation

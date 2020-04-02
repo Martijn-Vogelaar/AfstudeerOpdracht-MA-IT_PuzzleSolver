@@ -25,13 +25,6 @@ public:
      */
   SubContext(Context* aParentContext);
 
-  /**
-   * @brief Get the Context object
-   * 
-   * @return Context 
-   */
-  Context* getContext();
-
 private:
   Context* parentContext;
 };

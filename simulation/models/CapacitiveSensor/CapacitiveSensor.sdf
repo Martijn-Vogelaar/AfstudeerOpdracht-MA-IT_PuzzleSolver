@@ -16,7 +16,7 @@
             <sensor type="ray" name="sensor">
                 <pose>0 0 0.03 3.1415 0 0</pose>
                 <visualize>true</visualize>
-                <update_rate>4</update_rate>
+                <update_rate>10</update_rate>
                 <ray>
                     <scan>
                         <vertical>

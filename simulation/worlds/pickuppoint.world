@@ -35,7 +35,13 @@
     </include>
     <include>
       <uri>model://Circle1</uri>
-      <pose>0.4 -0.2 0.51  0 0 1.57</pose>
+      <pose>0.4 -0.2 0.90  0 0 1.57</pose>
     </include>
+    <physics type='ode'>
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+      <gravity>0 0 -40</gravity>
+    </physics>
   </world>
 </sdf>

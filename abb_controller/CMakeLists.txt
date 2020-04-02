@@ -41,6 +41,7 @@ find_package(Boost REQUIRED system filesystem date_time)
 add_action_files(
   DIRECTORY action
   FILES
+  RotateGripper.action
   ControlGripper.action
   MoveEndEffector.action
   MoveEndEffectorStraight.action
@@ -93,6 +94,7 @@ add_executable(abb_controller
                 src/MoveEndEffectorServer.cpp 
                 src/MoveEndEffectorStraightServer.cpp
                 src/ControlGripperServer.cpp
+                src/RotateGripperServer.cpp
 )
 
 target_link_libraries(abb_controller ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${GAZEBO_LIBRARIES} )

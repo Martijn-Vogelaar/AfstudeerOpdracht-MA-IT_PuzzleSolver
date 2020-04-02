@@ -4,7 +4,7 @@ MoveEndEffectorServer::MoveEndEffectorServer(std::string aName) : actionServer(n
                                                                   actionName(aName)
 {
     actionServer.start();
-    move_group.getCurrentState()->getJointModelGroup(PLANNING_GROUP);
+    // move_group.getCurrentState()->getJointModelGroup(PLANNING_GROUP);
 }
 
 MoveEndEffectorServer::~MoveEndEffectorServer()

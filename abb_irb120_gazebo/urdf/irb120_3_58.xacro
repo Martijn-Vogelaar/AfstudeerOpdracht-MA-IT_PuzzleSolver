@@ -356,7 +356,7 @@
        unless otherwise stated. -->
   <link name="head">
     <inertial>
-      <mass value="1"/>
+      <mass value="1000000"/>
       <origin rpy="0 0 -1.57079632679" xyz="0 0 0"/>
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
@@ -381,7 +381,7 @@
   </link>
   <link name="gripper1">
     <inertial>
-      <mass value="1"/>
+      <mass value="0.1"/>
       <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
@@ -406,7 +406,7 @@
   </link>
   <link name="gripper2">
     <inertial>
-      <mass value="1"/>
+      <mass value="0.1"/>
       <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
@@ -431,7 +431,7 @@
   </link>
   <link name="gripper3">
     <inertial>
-      <mass value="1"/>
+      <mass value="0.1"/>
       <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
@@ -540,7 +540,7 @@
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
 
-  <gazebo reference="joint_1">
+  <!-- <gazebo reference="joint_1">
     <implicitSpringDamper>1</implicitSpringDamper>
   </gazebo>
   <gazebo reference="joint_2">
@@ -566,7 +566,7 @@
   </gazebo>
   <gazebo reference="joint_9">
     <implicitSpringDamper>1</implicitSpringDamper>
-  </gazebo>
+  </gazebo> -->
   <!-- ros_control plugin -->
   <joint name="joint_10" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0"/>

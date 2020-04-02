@@ -4,6 +4,8 @@
 // Local
 #include "PlaceCorrectly/SubContext.hpp"
 #include "State.hpp"
+#include "TF2Handler.hpp"
+
 /**
    * @class PlacePieceInPuzzle
    *
@@ -49,5 +51,8 @@ public:
      * "outside world".
      */
     void exitAction(Context *aSubContext) override;
+
+private:
+    TF2Handler tf2Handler;
 };
 #endif // PLACE_PIECE_IN_PUZZLE_HPP

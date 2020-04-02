@@ -2,6 +2,7 @@
 #include "MoveEndEffectorServer.hpp"
 #include "MoveEndEffectorStraightServer.hpp"
 #include "ControlGripperServer.hpp"
+#include "RotateGripperServer.hpp"
 
 int main(int argc, char **argv)
 {
@@ -9,9 +10,10 @@ int main(int argc, char **argv)
   ros::AsyncSpinner spinner(1);
 
   spinner.start();
-  MoveEndEffectorServer server("MoveEndEffectorAction");
-  MoveEndEffectorStraightServer server2("MoveEndEffectorStraightAction");
-  ControlGripperServer server3("ControlGripperAction");
+  MoveEndEffectorServer moveNormalServer("MoveEndEffectorAction");
+  MoveEndEffectorStraightServer moveStraightServer("MoveEndEffectorStraightAction");
+  ControlGripperServer controlGripperServer("ControlGripperAction");
+  RotateGripperServer rotateGripperServer("RotateGripperAction");
   while (ros::ok)
   {
   }
