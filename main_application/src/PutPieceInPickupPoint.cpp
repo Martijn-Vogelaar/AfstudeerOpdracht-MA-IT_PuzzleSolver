@@ -29,6 +29,8 @@ void PutPieceInPickupPoint::doActivity(Context *context)
 
 void PutPieceInPickupPoint::exitAction(Context *context)
 {
-    geometry_msgs::Pose moveBackPose = tf2Handler.calculatePosition(PICKUP_POINT, BASE, PICKUP_POINT_MOVE_BACK);
-    context->getMoveRobotClient().MoveRobotStraight(0, moveBackPose);
+    geometry_msgs::Pose moveBackPose1 = tf2Handler.calculatePosition(PICKUP_POINT, BASE, PICKUP_POINT_MOVE_BACK_1);
+    context->getMoveRobotClient().MoveRobotStraight(0, moveBackPose1);
+    geometry_msgs::Pose moveBackPose2 = tf2Handler.calculatePosition(PICKUP_POINT, BASE, PICKUP_POINT_MOVE_BACK_2);
+    context->getMoveRobotClient().MoveRobotStraight(0, moveBackPose2);
 }

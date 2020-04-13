@@ -309,7 +309,7 @@
   <!-- Gazebo-specific link properties -->
   <gazebo reference="base_link">
     <material>Gazebo/Orange</material>
-    <turnGravityOff>true</turnGravityOff>
+    <turnGravityOff>false</turnGravityOff>
   </gazebo>
   <gazebo reference="link_1">
     <material>Gazebo/Orange</material>
@@ -356,7 +356,7 @@
        unless otherwise stated. -->
   <link name="head">
     <inertial>
-      <mass value="1000000"/>
+      <mass value="1"/>
       <origin rpy="0 0 -1.57079632679" xyz="0 0 0"/>
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
@@ -370,6 +370,7 @@
       </material>
     </visual>
     <collision>
+      <collide_bitmask>0x01</collide_bitmask>
       <origin rpy="0 0 -1.57079632679" xyz="0 0 0"/>
       <geometry>
         <mesh filename="package://schunk_mpz45/stl/SchunkGripperNoGripperCorrect.stl"/>
@@ -381,7 +382,7 @@
   </link>
   <link name="gripper1">
     <inertial>
-      <mass value="0.1"/>
+      <mass value="10000000000"/>
       <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
@@ -394,19 +395,10 @@
         <color rgba="0.9254902 0.9254902 0.9058824 1"/>
       </material>
     </visual>
-    <!-- <collision>
-      <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
-      <geometry>
-        <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper3.stl"/>
-      </geometry>
-      <material name="">
-        <color rgba="1 1 0 1"/>
-      </material>
-    </collision> -->
   </link>
   <link name="gripper2">
     <inertial>
-      <mass value="0.1"/>
+      <mass value="10000000000"/>
       <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
@@ -419,19 +411,10 @@
         <color rgba="0.9254902 0.9254902 0.9058824 1"/>
       </material>
     </visual>
-    <!-- <collision>
-      <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
-      <geometry>
-        <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper3.stl"/>
-      </geometry>
-      <material name="">
-        <color rgba="1 1 0 1"/>
-      </material>
-    </collision> -->
   </link>
   <link name="gripper3">
     <inertial>
-      <mass value="0.1"/>
+      <mass value="10000000000"/>
       <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
@@ -444,15 +427,7 @@
         <color rgba="0.9254902 0.9254902 0.9058824 1"/>
       </material>
     </visual>
-    <!-- <collision>
-      <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
-      <geometry>
-        <mesh filename="package://schunk_mpz45/stl/SchunkSingleGripper3.stl"/>
-      </geometry>
-      <material name="">
-        <color rgba="1 1 0 1"/>
-      </material>
-    </collision> -->
+
   </link>
   <link name="eef">
     <visual>

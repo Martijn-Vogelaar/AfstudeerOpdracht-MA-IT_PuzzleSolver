@@ -9,7 +9,7 @@ GrabPiece::GrabPiece()
 
 GrabPiece::~GrabPiece() {}
 
-void GrabPiece::entryAction(Context *context)
+void GrabPiece::entryAction(Context *)
 {
 }
 

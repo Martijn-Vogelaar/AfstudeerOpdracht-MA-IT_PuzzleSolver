@@ -8,14 +8,14 @@ RotatePieceInAir::RotatePieceInAir()
 
 RotatePieceInAir::~RotatePieceInAir() {}
 
-void RotatePieceInAir::entryAction(Context *)
+void RotatePieceInAir::entryAction(SubContext *)
 {
 }
 
-void RotatePieceInAir::doActivity(Context *)
+void RotatePieceInAir::doActivity(SubContext *)
 {
 }
 
-void RotatePieceInAir::exitAction(Context *)
+void RotatePieceInAir::exitAction(SubContext *)
 {
 }

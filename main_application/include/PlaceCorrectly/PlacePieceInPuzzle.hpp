@@ -3,16 +3,16 @@
 
 // Local
 #include "PlaceCorrectly/SubContext.hpp"
-#include "State.hpp"
+#include "SubState.hpp"
 #include "TF2Handler.hpp"
 
 /**
    * @class PlacePieceInPuzzle
    *
-   * @brief PlacePieceInPuzzle is the class which represents the PlacePieceInPuzzle state.
+   * @brief PlacePieceInPuzzle is the class which represents the PlacePieceInPuzzle SubState.
    *
    */
-class PlacePieceInPuzzle : public State
+class PlacePieceInPuzzle : public SubState
 {
 public:
     /**
@@ -26,15 +26,15 @@ public:
      */
     ~PlacePieceInPuzzle();
     /**
-     * @brief entryAction is being called when the PlacePieceInPuzzle state is being entered.
+     * @brief entryAction is being called when the PlacePieceInPuzzle SubState is being entered.
      *
-     * @details When the PlacePieceInPuzzle state is entered the robotarm will be set to the
+     * @details When the PlacePieceInPuzzle SubState is entered the robotarm will be set to the
      * begin position.
      *
      * @param aSubContext is an object which gives the states an interface to the
      * "outside world".
      */
-    void entryAction(Context *aSubContext) override;
+    void entryAction(SubContext *aSubContext) override;
 
     /**
      * @brief doActivity is continiously being called while the system is in the
@@ -43,14 +43,14 @@ public:
      * @param aSubContext is an object which gives the states an interface to the
      * "outside world".
      */
-    void doActivity(Context *aSubContext) override;
+    void doActivity(SubContext *aSubContext) override;
     /**
-     * @brief exitAction is being called when the PlacePieceInPuzzle state is being exited.
+     * @brief exitAction is being called when the PlacePieceInPuzzle SubState is being exited.
      *
      * @param aSubContext is an object which gives the states an interface to the
      * "outside world".
      */
-    void exitAction(Context *aSubContext) override;
+    void exitAction(SubContext *aSubContext) override;
 
 private:
     TF2Handler tf2Handler;

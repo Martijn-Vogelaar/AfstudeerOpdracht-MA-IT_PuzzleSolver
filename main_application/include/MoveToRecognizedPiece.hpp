@@ -18,7 +18,7 @@ public:
      * @brief Construct a new MoveToRecognizedPiece object
      *
      */
-    MoveToRecognizedPiece(uint8_t aPuzzlePieceId);
+    MoveToRecognizedPiece();
     /**
      * @brief Destroy the MoveToRecognizedPiece object
      *
@@ -52,7 +52,6 @@ public:
     void exitAction(Context *aContext) override;
 
 private:
-    uint8_t puzzlePieceId;
     TF2Handler tf2Handler;
 };
 #endif // MOVE_TO_RECOGNIZED_PIECE_HPP

@@ -3,14 +3,28 @@
 
 // Local
 #include "PlaceCorrectly/SubContext.hpp"
-#include "State.hpp"
+#include "SubState.hpp"
+#include "inductive_sensor/inductive_sensor_measurements.h"
+#include "capacitive_sensor/capacitive_sensor_measurements.h"
+#include "abb_controller/StopRobot.h"
+
+#include <map>
+
+#define INDUCTIVE_TOPIC "inductive_sensor"
+
+#define MIN_NR_OF_EQUAL_MEASUREMENTS 1
+
+#define MIN_NR_OF_MEASUREMENTS 1
+
+static const int allowedSensorIDs[] = {1,3,5,9};
+
 /**
    * @class CheckCorrectlyRotated
    *
-   * @brief CheckCorrectlyRotated is the class which represents the CheckCorrectlyRotated state.
+   * @brief CheckCorrectlyRotated is the class which represents the CheckCorrectlyRotated SubState.
    *
    */
-class CheckCorrectlyRotated : public State
+class CheckCorrectlyRotated : public SubState
 {
 public:
     /**
@@ -24,15 +38,15 @@ public:
      */
     ~CheckCorrectlyRotated();
     /**
-     * @brief entryAction is being called when the CheckCorrectlyRotated state is being entered.
+     * @brief entryAction is being called when the CheckCorrectlyRotated SubState is being entered.
      *
-     * @details When the CheckCorrectlyRotated state is entered the robotarm will be set to the
+     * @details When the CheckCorrectlyRotated SubState is entered the robotarm will be set to the
      * begin position.
      *
      * @param aSubContext is an object which gives the states an interface to the
      * "outside world".
      */
-    void entryAction(Context *aSubContext) override;
+    void entryAction(SubContext *aSubContext) override;
 
     /**
      * @brief doActivity is continiously being called while the system is in the
@@ -41,13 +55,26 @@ public:
      * @param aSubContext is an object which gives the states an interface to the
      * "outside world".
      */
-    void doActivity(Context *aSubContext) override;
+    void doActivity(SubContext *aSubContext) override;
     /**
-     * @brief exitAction is being called when the CheckCorrectlyRotated state is being exited.
+     * @brief exitAction is being called when the CheckCorrectlyRotated SubState is being exited.
      *
      * @param aSubContext is an object which gives the states an interface to the
      * "outside world".
      */
-    void exitAction(Context *aSubContext) override;
+    void exitAction(SubContext *aSubContext) override;
+
+private: 
+    ros::Subscriber inductiveMeasurementSubscriber;
+    ros::Publisher stopRobotPublisher;
+
+    ros::NodeHandle nodeHandler;
+
+    void measurementCallback(const inductive_sensor::inductive_sensor_measurementsConstPtr& msg);
+
+    std::map<uint8_t,bool> currentMeasurement;
+    std::map<uint8_t,uint8_t> consecutiveMeasurements;
+    std::map<uint8_t,uint8_t> numberOfMeasurements;
+
 };
 #endif // CHECK_CORRECTLY_ROTATED_HPP

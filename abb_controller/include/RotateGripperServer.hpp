@@ -19,6 +19,11 @@
 
 #define PLANNING_GROUP "manipulator"
 
+#define GRIPPER_JOINT_INDEX 5
+
+#define MAX_JOINT_BOUND 6.98132
+
+#define MIN_JOIN_BOUND -6.98132
 
 class RotateGripperServer
 {

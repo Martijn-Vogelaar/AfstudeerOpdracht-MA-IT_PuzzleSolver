@@ -16,6 +16,7 @@
 
 #include <moveit_visual_tools/moveit_visual_tools.h>
 #include <tf/transform_datatypes.h>
+
 #define PLANNING_GROUP "manipulator"
 
 class MoveEndEffectorServer

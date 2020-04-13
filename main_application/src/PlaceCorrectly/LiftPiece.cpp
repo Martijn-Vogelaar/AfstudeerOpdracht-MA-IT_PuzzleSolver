@@ -8,14 +8,14 @@ LiftPiece::LiftPiece()
 
 LiftPiece::~LiftPiece() {}
 
-void LiftPiece::entryAction(Context *)
+void LiftPiece::entryAction(SubContext *)
 {
 }
 
-void LiftPiece::doActivity(Context *)
+void LiftPiece::doActivity(SubContext *)
 {
 }
 
-void LiftPiece::exitAction(Context *)
+void LiftPiece::exitAction(SubContext *)
 {
 }

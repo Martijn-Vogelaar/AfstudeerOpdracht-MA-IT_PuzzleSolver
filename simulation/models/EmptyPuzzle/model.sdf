@@ -80,7 +80,7 @@
           <contact>
             <collide_without_contact>0</collide_without_contact>
             <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-            <collide_bitmask>1</collide_bitmask>
+            <collide_bitmask>0x03</collide_bitmask>
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
@@ -178,7 +178,7 @@
           <contact>
             <collide_without_contact>0</collide_without_contact>
             <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-            <collide_bitmask>1</collide_bitmask>
+            <collide_bitmask>0x03</collide_bitmask>
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
@@ -205,7 +205,7 @@
     </include>
      <include>
       <uri>model://InductiveSensor1</uri>
-      <pose>-0.0665 0.0975 -0.0001 0 -1.57 0</pose>
+      <pose>-0.0665 0.1075 -0.0001 0 -1.57 0</pose>
     </include>
     <include>
       <uri>model://InductiveSensor2</uri>

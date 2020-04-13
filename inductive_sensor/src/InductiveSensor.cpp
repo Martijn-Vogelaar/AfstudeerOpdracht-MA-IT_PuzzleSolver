@@ -19,19 +19,10 @@ void InductiveSensor::runMeasurements(int argc, char **argv)
     gazebo::transport::NodePtr node(new gazebo::transport::Node());
     gazebo::transport::SubscriberPtr sub;
 
-    ros::Rate loop_rate(2);
+    ros::Rate loop_rate(25);
     node->Init();
     sub = node->Subscribe(std::string(IMAGE_TOPIC_1 + std::to_string(id) + IMAGE_TOPIC_2), &InductiveSensor::cameraCallback, this);
-    std::cout << std::string(IMAGE_TOPIC_1 + std::to_string(id) + IMAGE_TOPIC_2) << std::endl;
-    // loop
-    while (ros::ok())
-    {
-
-        gazebo::common::Time::MSleep(10);
-        ros::spinOnce();
-        loop_rate.sleep();
-    }
-    // clean up
+    ros::spin();
     gazebo::client::shutdown();
 }
 

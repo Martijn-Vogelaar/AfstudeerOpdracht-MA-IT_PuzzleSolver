@@ -34,7 +34,6 @@ void CapacitiveSensor::runMeasurements(int argc, char **argv)
     }
     while (ros::ok())
     {
-        gazebo::common::Time::MSleep(10);
         ros::spinOnce();
         loop_rate.sleep();
     }

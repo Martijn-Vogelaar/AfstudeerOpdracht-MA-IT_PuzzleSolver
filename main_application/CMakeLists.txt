@@ -25,6 +25,7 @@ find_package(catkin REQUIRED
     roscpp
     abb_controller
     capacitive_sensor
+    inductive_sensor
 )
 
 find_package(Eigen3 REQUIRED)
@@ -75,6 +76,7 @@ src/PlaceCorrectly/RotatePieceOnPlace.cpp
 src/PlaceCorrectly/LiftPiece.cpp
 src/PlaceCorrectly/RotatePieceInAir.cpp
 src/PlaceCorrectly/SubContext.cpp
+src/PlaceCorrectly/SubState.cpp
 
 src/Context.cpp
 src/Poses.cpp
@@ -94,6 +96,7 @@ src/TF2Handler.cpp
 src/UnknownPieceInPickupPoint.cpp
 src/PlacePiece.cpp
 src/MoveToUnexploredSpot.cpp
+src/Shapes.cpp
 )
 
 add_dependencies( lib_main

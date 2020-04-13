@@ -4,7 +4,6 @@ MoveEndEffectorServer::MoveEndEffectorServer(std::string aName) : actionServer(n
                                                                   actionName(aName)
 {
     actionServer.start();
-    // move_group.getCurrentState()->getJointModelGroup(PLANNING_GROUP);
 }
 
 MoveEndEffectorServer::~MoveEndEffectorServer()
@@ -16,7 +15,6 @@ void MoveEndEffectorServer::goalCallback(const abb_controller::MoveEndEffectorGo
     geometry_msgs::Pose goalPose;
     goalPose.position = goal->position;
     goalPose.orientation = goal->orientation;
-
     actionResult.success = executeMovement(goalPose);
 
     geometry_msgs::Pose currentPose = move_group.getCurrentPose().pose;

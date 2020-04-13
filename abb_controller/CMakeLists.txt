@@ -37,6 +37,10 @@ find_package(gazebo REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(Boost REQUIRED system filesystem date_time)
 
+add_message_files(
+  FILES
+  StopRobot.msg
+)
 
 add_action_files(
   DIRECTORY action
@@ -95,6 +99,7 @@ add_executable(abb_controller
                 src/MoveEndEffectorStraightServer.cpp
                 src/ControlGripperServer.cpp
                 src/RotateGripperServer.cpp
+                src/StopRobotServer.cpp
 )
 
 target_link_libraries(abb_controller ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${GAZEBO_LIBRARIES} )

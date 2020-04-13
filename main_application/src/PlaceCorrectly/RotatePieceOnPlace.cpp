@@ -1,5 +1,5 @@
 #include "PlaceCorrectly/RotatePieceOnPlace.hpp"
-
+#include "PlaceCorrectly/CheckCorrectlyRotated.hpp"
 #include <iostream>
 #include <memory>
 
@@ -9,15 +9,16 @@ RotatePieceOnPlace::RotatePieceOnPlace()
 
 RotatePieceOnPlace::~RotatePieceOnPlace() {}
 
-void RotatePieceOnPlace::entryAction(Context *)
+void RotatePieceOnPlace::entryAction(SubContext *)
 {
 }
 
-void RotatePieceOnPlace::doActivity(Context *context)
+void RotatePieceOnPlace::doActivity(SubContext *context)
 {
-    context->getMoveRobotClient().RotateGripper(0,3.14);
+    context->getMoveRobotClient().RotateGripper(0, 2.0);
+    context->setState(std::make_shared<CheckCorrectlyRotated>());
 }
 
-void RotatePieceOnPlace::exitAction(Context *)
+void RotatePieceOnPlace::exitAction(SubContext *)
 {
 }

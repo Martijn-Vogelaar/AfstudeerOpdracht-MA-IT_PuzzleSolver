@@ -33,16 +33,28 @@ bool MoveEndEffectorStraightServer::executeMovement(geometry_msgs::Pose goalPose
 
     waypoints.push_back(goalPose);
     moveit::planning_interface::MoveGroupInterface::Plan my_plan;
-
     moveit_msgs::RobotTrajectory trajectory;
     const double jump_threshold = 0.0;
     const double eef_step = 0.01;
+    ROS_WARN("We plan");
+
     double fraction = move_group.computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
     success = fraction > -1.0;
+    moveit::planning_interface::MoveItErrorCode  status;
     if (success)
     {
         my_plan.trajectory_ = trajectory;
-        move_group.execute(my_plan);
+        ROS_WARN("We start");
+
+        status = move_group.execute(my_plan);
+
+        ROS_WARN("We end");
     }
+    if(status != moveit_msgs::MoveItErrorCodes::SUCCESS){
+        success = false;
+        ROS_ERROR("We failed and caught it!");
+    }
+    std::vector<double> joints;
+    joints = move_group.getCurrentJointValues();
     return success;
 }
