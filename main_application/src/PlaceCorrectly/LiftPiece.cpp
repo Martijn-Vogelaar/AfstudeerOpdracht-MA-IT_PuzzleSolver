@@ -1,6 +1,5 @@
 #include "PlaceCorrectly/LiftPiece.hpp"
-#include <iostream>
-#include <memory>
+#include "PlaceCorrectly/SubContext.hpp"
 
 LiftPiece::LiftPiece()
 {

@@ -1,9 +1,9 @@
 #include "PlaceCorrectly/CheckCorrectlyRotated.hpp"
 #include "PlaceCorrectly/RotatePieceOnPlace.hpp"
 #include "PlaceCorrectly/LiftPiece.hpp"
+#include "PlaceCorrectly/SubContext.hpp"
 #include "ReleasePiece.hpp"
 #include "Shapes.hpp"
-#include <iostream>
 #include <memory>
 
 CheckCorrectlyRotated::CheckCorrectlyRotated()
@@ -37,10 +37,9 @@ void CheckCorrectlyRotated::doActivity(SubContext *context)
 {
         Shape currentPuzzlePiece1 = context->getParentContext()->getCurrentPuzzlePiece();
         uint8_t currentPuzzlePiece = puzzlePieceToInt(currentPuzzlePiece1);
-
+ 
         if (currentMeasurement.at(currentPuzzlePiece) && consecutiveMeasurements.at(currentPuzzlePiece) > MIN_NR_OF_EQUAL_MEASUREMENTS)
         {
-                ROS_ERROR("Correctly Rotated!");
                 abb_controller::StopRobot msg;
                 msg.stop = true;
                 stopRobotPublisher.publish(msg);
@@ -48,9 +47,6 @@ void CheckCorrectlyRotated::doActivity(SubContext *context)
         }
         else if (!currentMeasurement.at(currentPuzzlePiece) && numberOfMeasurements.at(currentPuzzlePiece) >= MIN_NR_OF_MEASUREMENTS && currentPuzzlePiece1 != Shape::CIRCLE)
         {
-                ROS_ERROR("Not correctly rotated!");
-
-                ROS_ERROR("Not where we are supposed to be");
                 ROS_ERROR(std::string(std::to_string((int)Shape::CIRCLE)).c_str());
                 ROS_ERROR(std::string(std::to_string((int)currentPuzzlePiece1)).c_str());
 

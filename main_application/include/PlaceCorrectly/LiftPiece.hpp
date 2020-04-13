@@ -2,8 +2,8 @@
 #define LIFT_PIECE_HPP
 
 // Local
-#include "PlaceCorrectly/SubContext.hpp"
 #include "SubState.hpp"
+class SubContext;
 /**
    * @class LiftPiece
    *

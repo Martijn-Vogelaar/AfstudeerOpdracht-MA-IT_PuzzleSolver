@@ -2,8 +2,9 @@
 #define ROTATE_PIECE_ON_PLACE_HPP
 
 // Local
-#include "SubContext.hpp"
 #include "SubState.hpp"
+
+class SubContext;
 /**
    * @class RotatePieceOnPlace
    *

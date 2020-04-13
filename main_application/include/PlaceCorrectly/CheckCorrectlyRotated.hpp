@@ -2,12 +2,12 @@
 #define CHECK_CORRECTLY_ROTATED_HPP
 
 // Local
-#include "PlaceCorrectly/SubContext.hpp"
 #include "SubState.hpp"
+class SubContext;
 #include "inductive_sensor/inductive_sensor_measurements.h"
 #include "capacitive_sensor/capacitive_sensor_measurements.h"
 #include "abb_controller/StopRobot.h"
-
+#include "ros/ros.h"
 #include <map>
 
 #define INDUCTIVE_TOPIC "inductive_sensor"

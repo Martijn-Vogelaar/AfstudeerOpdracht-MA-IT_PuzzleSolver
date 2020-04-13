@@ -2,8 +2,9 @@
 #define INIT_HPP
 
 // Local
-#include "Context.hpp"
 #include "State.hpp"
+
+class Context;
 /**
    * @class Init
    *

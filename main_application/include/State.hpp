@@ -1,8 +1,6 @@
 #ifndef STATE_HPP
 #define STATE_HPP
 
-#include "Context.hpp"
-
 class Context;
 /**
    * @brief State is an abstract/interface class which can be used to create

@@ -19,7 +19,6 @@ void InductiveSensor::runMeasurements(int argc, char **argv)
     gazebo::transport::NodePtr node(new gazebo::transport::Node());
     gazebo::transport::SubscriberPtr sub;
 
-    ros::Rate loop_rate(25);
     node->Init();
     sub = node->Subscribe(std::string(IMAGE_TOPIC_1 + std::to_string(id) + IMAGE_TOPIC_2), &InductiveSensor::cameraCallback, this);
     ros::spin();
@@ -67,5 +66,5 @@ void InductiveSensor::cameraCallback(ConstImageStampedPtr &msg)
     message.id = id;
     message.activated = activated;
     p.publish(message);
-    delete data;
+    delete[] data;
 }

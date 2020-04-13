@@ -19,7 +19,6 @@ ControlGripperServer::~ControlGripperServer()
 
 void ControlGripperServer::goalCallback(const abb_controller::ControlGripperGoalConstPtr &goal)
 {
-    uint8_t robotID = goal->robotID;
     bool open = goal->open;
     gazebo_ros_link_attacher::Attach srv;
     srv.request.model_name_1 = "abb_irb120_3_58";

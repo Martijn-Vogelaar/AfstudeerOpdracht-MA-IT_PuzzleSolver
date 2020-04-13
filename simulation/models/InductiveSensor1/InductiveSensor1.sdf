@@ -5,7 +5,7 @@
         <static>true</static>
         <link name="link">
             <sensor name="webcam" type="camera">
-                <update_rate>25.0</update_rate>
+                <update_rate>100.0</update_rate>
                 <plugin name="webcam_plugin" filename="libgazebo_ros_camera.so">
                     <imageTopicName>image_raw</imageTopicName>
                     <robotNamespace>camera_plugin</robotNamespace>

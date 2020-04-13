@@ -1,6 +1,6 @@
 #include "PlaceCorrectly/RotatePieceOnPlace.hpp"
 #include "PlaceCorrectly/CheckCorrectlyRotated.hpp"
-#include <iostream>
+#include "PlaceCorrectly/SubContext.hpp"
 #include <memory>
 
 RotatePieceOnPlace::RotatePieceOnPlace()

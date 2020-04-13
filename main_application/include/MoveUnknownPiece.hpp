@@ -2,8 +2,8 @@
 #define MOVE_UNKNOWN_PIECE_HPP
 
 // Local
-#include "Context.hpp"
 #include "State.hpp"
+class Context;
 
 /**
    * @class MoveUnknownPiece

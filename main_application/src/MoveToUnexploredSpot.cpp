@@ -1,7 +1,7 @@
 #include "MoveToUnexploredSpot.hpp"
-#include <iostream>
-#include <memory>
+#include "Context.hpp"
 #include "PlacePiece.hpp"
+#include <memory>
 
 MoveToUnexploredSpot::MoveToUnexploredSpot()
 {

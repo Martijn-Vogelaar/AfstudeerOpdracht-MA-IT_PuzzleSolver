@@ -1,9 +1,9 @@
 #include "MoveToRecognizedPiece.hpp"
-#include <iostream>
-#include <memory>
 #include "Shapes.hpp"
 #include "Poses.hpp"
 #include "GrabPiece.hpp"
+#include "Context.hpp"
+#include <memory>
 
 MoveToRecognizedPiece::MoveToRecognizedPiece()
 {

@@ -2,9 +2,10 @@
 #define PLACE_PIECE_IN_PUZZLE_HPP
 
 // Local
-#include "PlaceCorrectly/SubContext.hpp"
 #include "SubState.hpp"
 #include "TF2Handler.hpp"
+
+class SubContext;
 
 /**
    * @class PlacePieceInPuzzle

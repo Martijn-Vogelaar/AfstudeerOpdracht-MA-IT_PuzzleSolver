@@ -1,11 +1,11 @@
 #include "Init.hpp"
-#include <iostream>
 #include <memory>
 #include "MoveRobotClient.hpp"
 #include "Ready.hpp"
 #include "Poses.hpp"
 #include "MoveToRecognizedPiece.hpp"
 #include "MoveToUnexploredSpot.hpp"
+#include "Context.hpp"
 
 Init::Init()
 {

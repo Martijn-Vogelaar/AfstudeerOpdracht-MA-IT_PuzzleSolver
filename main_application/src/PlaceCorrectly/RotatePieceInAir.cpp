@@ -1,6 +1,6 @@
 #include "PlaceCorrectly/RotatePieceInAir.hpp"
-#include <iostream>
-#include <memory>
+#include "PlaceCorrectly/SubContext.hpp"
+
 
 RotatePieceInAir::RotatePieceInAir()
 {

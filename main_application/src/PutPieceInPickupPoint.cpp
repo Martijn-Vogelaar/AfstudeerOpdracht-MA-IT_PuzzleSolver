@@ -1,10 +1,10 @@
 #include "PutPieceInPickupPoint.hpp"
-#include <iostream>
-#include <memory>
+#include "Context.hpp"
 #include "MoveRobotClient.hpp"
 #include "RecognizePiece.hpp"
 #include "Poses.hpp"
 #include <geometry_msgs/Pose.h>
+#include <memory>
 
 PutPieceInPickupPoint::PutPieceInPickupPoint()
 {

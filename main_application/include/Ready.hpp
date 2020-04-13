@@ -2,8 +2,8 @@
 #define READY_HPP
 
 // Local
-#include "Context.hpp"
 #include "State.hpp"
+class Context;
 /**
    * @class Ready
    *

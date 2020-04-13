@@ -2,8 +2,8 @@
 #define PLACE_PIECE_HPP
 
 // Local
-#include "Context.hpp"
 #include "State.hpp"
+class Context;
 #include "PlaceCorrectly/SubContext.hpp"
 
 /**

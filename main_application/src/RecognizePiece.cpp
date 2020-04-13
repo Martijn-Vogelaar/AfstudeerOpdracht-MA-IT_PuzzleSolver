@@ -1,9 +1,10 @@
 #include "RecognizePiece.hpp"
-#include <iostream>
-#include <memory>
+#include "Context.hpp"
 #include <algorithm>
 #include "UnknownPieceInPickupPoint.hpp"
 #include "MoveToRecognizedPiece.hpp"
+#include <memory>
+
 RecognizePiece::RecognizePiece() : equalMeasurementCount(0), currentMeasurement(0)
 {
 }

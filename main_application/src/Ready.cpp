@@ -1,7 +1,7 @@
 #include "Ready.hpp"
-#include <iostream>
-#include <memory>
+#include "Context.hpp"
 #include "PutPieceInPickupPoint.hpp"
+#include <memory>
 
 Ready::Ready()
 {

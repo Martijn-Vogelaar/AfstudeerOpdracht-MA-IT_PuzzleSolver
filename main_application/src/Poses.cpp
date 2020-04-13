@@ -109,7 +109,7 @@ void initializePoses()
 
     CirclePoses.placePose.position.x = -0.07315;
     CirclePoses.placePose.position.y = 0.143;
-    CirclePoses.placePose.position.z = 0.015;
+    CirclePoses.placePose.position.z = 0.012;
     CirclePoses.placePose.orientation.x = puzzleAngle.x();
     CirclePoses.placePose.orientation.y = puzzleAngle.y();
     CirclePoses.placePose.orientation.z = puzzleAngle.z();

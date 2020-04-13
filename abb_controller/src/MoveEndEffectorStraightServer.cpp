@@ -30,8 +30,6 @@ bool MoveEndEffectorStraightServer::executeMovement(geometry_msgs::Pose goalPose
 {
     bool success = false;
     std::vector<geometry_msgs::Pose> waypoints;
-    geometry_msgs::Pose currentPose = move_group.getCurrentPose().pose;
-    // waypoints.insert(waypoints.begin(),currentPose);
     waypoints.push_back(goalPose);
     moveit::planning_interface::MoveGroupInterface::Plan my_plan;
     moveit_msgs::RobotTrajectory trajectory;
@@ -61,7 +59,5 @@ bool MoveEndEffectorStraightServer::executeMovement(geometry_msgs::Pose goalPose
         ROS_ERROR("We failed and caught it!");
         // executeMovement(goalPose);
     }
-    std::vector<double> joints;
-    joints = move_group.getCurrentJointValues();
     return success;
 }

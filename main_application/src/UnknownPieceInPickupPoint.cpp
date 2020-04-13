@@ -1,5 +1,5 @@
 #include "UnknownPieceInPickupPoint.hpp"
-#include <iostream>
+#include "Context.hpp"
 #include <memory>
 
 UnknownPieceInPickupPoint::UnknownPieceInPickupPoint()

@@ -1,7 +1,6 @@
 #ifndef CONTEXT_HPP
 #define CONTEXT_HPP
 
-#include "State.hpp"
 #include <memory>
 #include "MoveRobotClient.hpp"
 #include "Shapes.hpp"

@@ -2,8 +2,8 @@
 #define UNKNOWN_PIECE_IN_PICKUP_POINT_HPP
 
 // Local
-#include "Context.hpp"
 #include "State.hpp"
+class Context;
 /**
    * @class UnknownPieceInPickupPoint
    *

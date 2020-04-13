@@ -2,8 +2,9 @@
 #define RECOGNIZE_PIECE_HPP
 
 // Local
-#include "Context.hpp"
 #include "State.hpp"
+class Context;
+#include "ros/ros.h"
 #include "capacitive_sensor/capacitive_sensor_measurements.h"
 
 #define CAPACITIVE_TOPIC "capacitive_sensor"

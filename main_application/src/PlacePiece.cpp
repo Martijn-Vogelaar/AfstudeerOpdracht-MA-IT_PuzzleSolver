@@ -1,5 +1,5 @@
 #include "PlacePiece.hpp"
-#include <iostream>
+#include "Context.hpp"
 #include <memory>
 
 PlacePiece::PlacePiece()

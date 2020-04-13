@@ -2,9 +2,10 @@
 #define GRAB_PIECE_HPP
 
 // Local
-#include "Context.hpp"
 #include "State.hpp"
 #include "TF2Handler.hpp"
+
+class Context;
 
   /**
    * @class GrabPiece

@@ -1,6 +1,6 @@
 #include "ReleasePiece.hpp"
 #include "Poses.hpp"
-#include <iostream>
+#include "Context.hpp"
 #include <memory>
 
 ReleasePiece::ReleasePiece()

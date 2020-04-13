@@ -1,5 +1,5 @@
 #include "PowerOff.hpp"
-#include <iostream>
+#include "Context.hpp"
 #include <memory>
 
 PowerOff::PowerOff()

@@ -1,9 +1,10 @@
 #include "GrabPiece.hpp"
-#include <iostream>
-#include <memory>
 #include "Poses.hpp"
 #include "MoveToUnexploredSpot.hpp"
 #include "Shapes.hpp"
+#include "Context.hpp"
+#include <memory>
+
 GrabPiece::GrabPiece()
 {
 }

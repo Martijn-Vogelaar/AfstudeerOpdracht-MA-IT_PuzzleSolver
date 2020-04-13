@@ -2,8 +2,10 @@
 #define ROTATE_PIECE_IN_AIR_HPP
 
 // Local
-#include "PlaceCorrectly/SubContext.hpp"
-#include "SubState.hpp"
+#include "TF2Handler.hpp"
+#include "PlaceCorrectly/SubState.hpp"
+
+class SubContext;
 /**
    * @class RotatePieceInAir
    *

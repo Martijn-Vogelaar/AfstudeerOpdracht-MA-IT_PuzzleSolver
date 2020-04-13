@@ -1,10 +1,10 @@
 #include "PlaceCorrectly/PlacePieceInPuzzle.hpp"
-#include <iostream>
-#include <memory>
+#include "PlaceCorrectly/SubContext.hpp"
 #include "Poses.hpp"
 #include "PlaceCorrectly/RotatePieceOnPlace.hpp"
 #include "PlaceCorrectly/LiftPiece.hpp"
 #include "Shapes.hpp"
+#include "Context.hpp"
 
 PlacePieceInPuzzle::PlacePieceInPuzzle()
 {
