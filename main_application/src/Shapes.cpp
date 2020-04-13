@@ -1,5 +1,5 @@
 #include "Shapes.hpp"
-
+#include "ros/ros.h"
 Shape puzzlePieceMeasurementToEnum(uint8_t measurement)
 {
     switch (measurement)
@@ -18,9 +18,9 @@ Shape puzzlePieceMeasurementToEnum(uint8_t measurement)
     return Shape::UNKNOWN;
 }
 
-
-uint8_t puzzlePieceToInt(Shape puzzlePiece){
-        switch (puzzlePiece)
+uint8_t puzzlePieceToInt(Shape puzzlePiece)
+{
+    switch (puzzlePiece)
     {
     case Shape::CIRCLE:
         return CIRCLE;

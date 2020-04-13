@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <sdf version='1.6'>
   <model name='Circle2'>
-    <link name='link_0'>
+    <link name='circle_2_link_0'>
       <inertial>
         <mass>10</mass>
         <inertia>
@@ -100,7 +100,7 @@
         </surface>
       </collision>
     </link>
-    <link name='link_1'>
+    <link name='circle_2_link_1'>
       <inertial>
         <mass>1e-05</mass>
         <inertia>
@@ -143,9 +143,9 @@
         <cast_shadows>1</cast_shadows>
       </visual>
     </link>
-    <joint name='link_0_JOINT_0' type='fixed'>
-      <parent>link_0</parent>
-      <child>link_1</child>
+    <joint name='circle_2_link_0_JOINT_0' type='fixed'>
+      <parent>circle_2_link_0</parent>
+      <child>circle_2_link_1</child>
       <pose frame=''>0 0 0 0 -0 0</pose>
       <physics>
         <ode>

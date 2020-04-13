@@ -3,6 +3,7 @@
 #include <memory>
 #include "Poses.hpp"
 #include "MoveToUnexploredSpot.hpp"
+#include "Shapes.hpp"
 GrabPiece::GrabPiece()
 {
 }
@@ -15,7 +16,7 @@ void GrabPiece::entryAction(Context *)
 
 void GrabPiece::doActivity(Context *context)
 {
-    context->getMoveRobotClient().ControlGripper(0, true);
+    context->getMoveRobotClient().ControlGripper(0, true, puzzlePieceToInt(context->getCurrentPuzzlePiece()));
     ros::Duration(0.2).sleep();
     context->setState(std::make_shared<MoveToUnexploredSpot>());
 }

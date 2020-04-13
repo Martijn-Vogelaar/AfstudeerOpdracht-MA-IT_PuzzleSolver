@@ -32,8 +32,6 @@ bool MoveEndEffectorStraightServer::executeMovement(geometry_msgs::Pose goalPose
     std::vector<geometry_msgs::Pose> waypoints;
     geometry_msgs::Pose currentPose = move_group.getCurrentPose().pose;
     // waypoints.insert(waypoints.begin(),currentPose);
-    // waypoints.push_back(currentPose);
-
     waypoints.push_back(goalPose);
     moveit::planning_interface::MoveGroupInterface::Plan my_plan;
     moveit_msgs::RobotTrajectory trajectory;

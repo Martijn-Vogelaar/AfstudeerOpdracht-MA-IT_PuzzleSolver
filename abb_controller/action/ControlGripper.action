@@ -1,6 +1,7 @@
 #goal
 uint8 robotID
 bool open
+uint8 puzzleID
 ---
 #result
 uint8 robotID

@@ -30,7 +30,7 @@ public:
 
     void MoveRobotNormal(uint8_t aRobotID, geometry_msgs::Pose aGoal);
 
-    void ControlGripper(uint8_t aRobotID, bool aOpen);
+    void ControlGripper(uint8_t aRobotID, bool aOpen, uint8_t aPuzzleID);
 
     void RotateGripper(uint8_t aRobotID, double aRotation);
 

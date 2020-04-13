@@ -11,7 +11,7 @@ ReleasePiece::~ReleasePiece() {}
 
 void ReleasePiece::entryAction(Context *context)
 {
-    context->getMoveRobotClient().ControlGripper(0, false);
+    context->getMoveRobotClient().ControlGripper(0, false, puzzlePieceToInt(context->getCurrentPuzzlePiece()));
     ros::Duration(0.2).sleep();
     context->setCurrentPuzzlePiece(Shape::UNKNOWN);
 }

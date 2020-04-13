@@ -1,6 +1,6 @@
 #include "Poses.hpp"
 #include <tf2/LinearMath/Quaternion.h>
-
+#include "ros/ros.h"
 geometry_msgs::Pose PICKUP_POINT_PREPERATION_POSE_1;
 geometry_msgs::Pose PICKUP_POINT_PREPERATION_POSE_2;
 geometry_msgs::Pose PICKUP_POINT_MOVE_BACK_1;
@@ -20,7 +20,7 @@ void initializePoses()
     pickupPointAngle.setRPY(0, 2.105, 1.57);
 
     tf2::Quaternion puzzleAngle;
-    puzzleAngle.setRPY(0, 1.57, 0);
+    puzzleAngle.setRPY(0, 1.57, 0.78539);
 
     tf2::Quaternion pickupPointMovementAngle;
     pickupPointMovementAngle.setRPY(0, 1.57, 0);
@@ -120,32 +120,32 @@ void initializePoses()
      *************************************/
 
     SquarePoses.preparePickupPose.position.x = 0;
-    SquarePoses.preparePickupPose.position.y = 0;
-    SquarePoses.preparePickupPose.position.z = 0;
+    SquarePoses.preparePickupPose.position.y = 0.255;
+    SquarePoses.preparePickupPose.position.z = 0.1;
     SquarePoses.preparePickupPose.orientation.x = pickupPointAngle.x();
     SquarePoses.preparePickupPose.orientation.y = pickupPointAngle.y();
     SquarePoses.preparePickupPose.orientation.z = pickupPointAngle.z();
     SquarePoses.preparePickupPose.orientation.w = pickupPointAngle.w();
 
     SquarePoses.pickupPose.position.x = 0;
-    SquarePoses.pickupPose.position.y = 0;
-    SquarePoses.pickupPose.position.z = 0;
+    SquarePoses.pickupPose.position.y = 0.2497;
+    SquarePoses.pickupPose.position.z = 0.084;
     SquarePoses.pickupPose.orientation.x = pickupPointAngle.x();
     SquarePoses.pickupPose.orientation.y = pickupPointAngle.y();
     SquarePoses.pickupPose.orientation.z = pickupPointAngle.z();
     SquarePoses.pickupPose.orientation.w = pickupPointAngle.w();
 
-    SquarePoses.preparePlacePose.position.x = 0.1;
-    SquarePoses.preparePlacePose.position.y = 0.1;
-    SquarePoses.preparePlacePose.position.z = 0.2;
+    SquarePoses.preparePlacePose.position.x = -0.081375;
+    SquarePoses.preparePlacePose.position.y = -0.07875;
+    SquarePoses.preparePlacePose.position.z = 0.08;
     SquarePoses.preparePlacePose.orientation.x = puzzleAngle.x();
     SquarePoses.preparePlacePose.orientation.y = puzzleAngle.y();
     SquarePoses.preparePlacePose.orientation.z = puzzleAngle.z();
     SquarePoses.preparePlacePose.orientation.w = puzzleAngle.w();
 
-    SquarePoses.placePose.position.x = 0.1;
-    SquarePoses.placePose.position.y = 0.1;
-    SquarePoses.placePose.position.z = 0.2;
+    SquarePoses.placePose.position.x = -0.081375;
+    SquarePoses.placePose.position.y = -0.07875;
+    SquarePoses.placePose.position.z = 0.01;
     SquarePoses.placePose.orientation.x = puzzleAngle.x();
     SquarePoses.placePose.orientation.y = puzzleAngle.y();
     SquarePoses.placePose.orientation.z = puzzleAngle.z();
@@ -281,16 +281,23 @@ geometry_msgs::Pose getPuzzlePiecePickup(Shape puzzlePiece)
 
 geometry_msgs::Pose getPuzzlePiecePreparePlace(Shape puzzlePiece)
 {
+    
     switch (puzzlePiece)
     {
     case Shape::CIRCLE:
+        ROS_ERROR("CIRCLE");
         return CirclePoses.preparePlacePose;
     case Shape::SQUARE:
+        ROS_ERROR("SQUARE");
         return SquarePoses.preparePlacePose;
     case Shape::RECTANGLE_1:
+        ROS_ERROR("RECTANGLE_1");
         return Rectangle1Poses.preparePlacePose;
     case Shape::RECTANGLE_2:
+        ROS_ERROR("RECTANGLE_2");
         return Rectangle2Poses.preparePlacePose;
+    case Shape::UNKNOWN:
+        ROS_ERROR("UNKNOWN");
     default:
         return CirclePoses.preparePlacePose;
     }

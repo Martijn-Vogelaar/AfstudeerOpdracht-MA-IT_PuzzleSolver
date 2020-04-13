@@ -24,8 +24,21 @@ void ControlGripperServer::goalCallback(const abb_controller::ControlGripperGoal
     gazebo_ros_link_attacher::Attach srv;
     srv.request.model_name_1 = "abb_irb120_3_58";
     srv.request.link_name_1 = "link_6";
-    srv.request.model_name_2 = "Circle1";
-    srv.request.link_name_2 = "circle_1_link_0";
+    if (goal->puzzleID == 1)
+    {
+        srv.request.model_name_2 = "Circle1";
+        srv.request.link_name_2 = "circle_1_link_0";
+    }
+    else if(goal->puzzleID == 3)
+    {
+        srv.request.model_name_2 = "Square";
+        srv.request.link_name_2 = "square_link_0";
+    }
+    else if(goal->puzzleID == 5 || goal->puzzleID == 7)
+    {
+        srv.request.model_name_2 = "Rectangle";
+        srv.request.link_name_2 = "rectangle_link_0";
+    }
     std_msgs::Float64 message;
     if (open)
     {

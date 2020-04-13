@@ -49,11 +49,12 @@ void MoveRobotClient::MoveRobotNormal(uint8_t aRobotID, geometry_msgs::Pose aGoa
     abb_controller::MoveEndEffectorResultConstPtr result = actionClientNormal.getResult();
 }
 
-void MoveRobotClient::ControlGripper(uint8_t aRobotID, bool aOpen)
+void MoveRobotClient::ControlGripper(uint8_t aRobotID, bool aOpen, uint8_t aPuzzleID)
 {
     abb_controller::ControlGripperGoal goal;
     goal.robotID = aRobotID;
     goal.open = aOpen;
+    goal.puzzleID = aPuzzleID;
     actionClientControlGripper.sendGoal(goal);
 
     actionClientControlGripper.waitForResult();

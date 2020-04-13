@@ -34,9 +34,13 @@
       <pose>0.49 0.22 0.07 -0.5253 0 0 </pose>
     </include>
     <include>
+      <uri>model://Square</uri>
+      <pose>0.4 -0.2 0.50  0 0 1.57</pose>
+    </include>
+    <!-- <include>
       <uri>model://Circle1</uri>
       <pose>0.4 -0.2 0.90  0 0 1.57</pose>
-    </include>
+    </include> -->
     <physics type='ode'>
       <max_step_size>0.005</max_step_size>
       <real_time_factor>1</real_time_factor>
@@ -46,3 +50,13 @@
 
   </world>
 </sdf>
+
+<!--x 0,4
+    y 0.2497
+    z 0.084
+    r -0.392116
+    p -0.361
+    y -0.708213
+    
+    
+-->
