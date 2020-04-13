@@ -53,7 +53,7 @@ void initializePoses()
     PICKUP_POINT_MOVE_SLIDER.orientation.w = pickupPointMovementAngle.w();
 
     PICKUP_POINT_MOVE_BACK_1.position.x = -0.23;
-    PICKUP_POINT_MOVE_BACK_1.position.y = -0.35;
+    PICKUP_POINT_MOVE_BACK_1.position.y = -0.3;
     PICKUP_POINT_MOVE_BACK_1.position.z = 0.25;
     PICKUP_POINT_MOVE_BACK_1.orientation.x = pickupPointMovementAngle.x();
     PICKUP_POINT_MOVE_BACK_1.orientation.y = pickupPointMovementAngle.y();
@@ -61,7 +61,7 @@ void initializePoses()
     PICKUP_POINT_MOVE_BACK_1.orientation.w = pickupPointMovementAngle.w();
 
     PICKUP_POINT_MOVE_BACK_2.position.x = -0.23;
-    PICKUP_POINT_MOVE_BACK_2.position.y = -0.35;
+    PICKUP_POINT_MOVE_BACK_2.position.y = -0.3;
     PICKUP_POINT_MOVE_BACK_2.position.z = 0.5;
     PICKUP_POINT_MOVE_BACK_2.orientation.x = pickupPointMovementAngle.x();
     PICKUP_POINT_MOVE_BACK_2.orientation.y = pickupPointMovementAngle.y();

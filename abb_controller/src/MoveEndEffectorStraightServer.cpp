@@ -30,6 +30,9 @@ bool MoveEndEffectorStraightServer::executeMovement(geometry_msgs::Pose goalPose
 {
     bool success = false;
     std::vector<geometry_msgs::Pose> waypoints;
+    geometry_msgs::Pose currentPose = move_group.getCurrentPose().pose;
+    // waypoints.insert(waypoints.begin(),currentPose);
+    // waypoints.push_back(currentPose);
 
     waypoints.push_back(goalPose);
     moveit::planning_interface::MoveGroupInterface::Plan my_plan;
@@ -40,19 +43,25 @@ bool MoveEndEffectorStraightServer::executeMovement(geometry_msgs::Pose goalPose
 
     double fraction = move_group.computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
     success = fraction > -1.0;
-    moveit::planning_interface::MoveItErrorCode  status;
+    moveit::planning_interface::MoveItErrorCode status;
+
     if (success)
     {
+
         my_plan.trajectory_ = trajectory;
         ROS_WARN("We start");
 
         status = move_group.execute(my_plan);
 
         ROS_WARN("We end");
+    }else{
+        ROS_WARN("No bueno");
     }
-    if(status != moveit_msgs::MoveItErrorCodes::SUCCESS){
+    if (status != moveit_msgs::MoveItErrorCodes::SUCCESS)
+    {
         success = false;
         ROS_ERROR("We failed and caught it!");
+        // executeMovement(goalPose);
     }
     std::vector<double> joints;
     joints = move_group.getCurrentJointValues();
