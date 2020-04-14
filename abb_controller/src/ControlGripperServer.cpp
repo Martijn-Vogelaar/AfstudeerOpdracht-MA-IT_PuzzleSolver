@@ -33,7 +33,7 @@ void ControlGripperServer::goalCallback(const abb_controller::ControlGripperGoal
         srv.request.model_name_2 = "Square";
         srv.request.link_name_2 = "square_link_0";
     }
-    else if(goal->puzzleID == 5 || goal->puzzleID == 7)
+    else if(goal->puzzleID == 5 || goal->puzzleID == 9)
     {
         srv.request.model_name_2 = "Rectangle";
         srv.request.link_name_2 = "rectangle_link_0";

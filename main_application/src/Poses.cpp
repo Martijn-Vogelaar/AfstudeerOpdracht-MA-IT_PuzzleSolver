@@ -14,6 +14,25 @@ PuzzlePiecePoses SquarePoses;
 PuzzlePiecePoses Rectangle1Poses;
 PuzzlePiecePoses Rectangle2Poses;
 
+
+// Coordinates rectangle 5
+// x 0.379464           - 0.3
+// y 0.245
+// z 0.0845
+// r -0.388776
+// p -0.36544
+// y -0.718
+
+
+// Coordinates rectangle 9
+// x 0.420568
+// y 0.249844
+// z 0.084530
+// r -0.388776
+// p -0.36544
+// y -0.718
+
+
 void initializePoses()
 {
     tf2::Quaternion pickupPointAngle;
@@ -152,20 +171,20 @@ void initializePoses()
     SquarePoses.placePose.orientation.w = puzzleAngle.w();
 
     /*************************************
-     * Rectangle1 POSES                  *
+     * Rectangle5 POSES                  *
      *************************************/
 
-    Rectangle1Poses.preparePickupPose.position.x = 0;
-    Rectangle1Poses.preparePickupPose.position.y = 0;
-    Rectangle1Poses.preparePickupPose.position.z = 0;
+    Rectangle1Poses.preparePickupPose.position.x = -0.02;
+    Rectangle1Poses.preparePickupPose.position.y = 0.2695;
+    Rectangle1Poses.preparePickupPose.position.z = 0.09295;
     Rectangle1Poses.preparePickupPose.orientation.x = pickupPointAngle.x();
     Rectangle1Poses.preparePickupPose.orientation.y = pickupPointAngle.y();
     Rectangle1Poses.preparePickupPose.orientation.z = pickupPointAngle.z();
     Rectangle1Poses.preparePickupPose.orientation.w = pickupPointAngle.w();
 
-    Rectangle1Poses.pickupPose.position.x = 0;
-    Rectangle1Poses.pickupPose.position.y = 0;
-    Rectangle1Poses.pickupPose.position.z = 0;
+    Rectangle1Poses.pickupPose.position.x = -0.02;
+    Rectangle1Poses.pickupPose.position.y = 0.245;
+    Rectangle1Poses.pickupPose.position.z = 0.0845;
     Rectangle1Poses.pickupPose.orientation.x = pickupPointAngle.x();
     Rectangle1Poses.pickupPose.orientation.y = pickupPointAngle.y();
     Rectangle1Poses.pickupPose.orientation.z = pickupPointAngle.z();
@@ -188,20 +207,20 @@ void initializePoses()
     Rectangle1Poses.placePose.orientation.w = puzzleAngle.w();
 
     /*************************************
-     * Rectangle2 POSES                  *
+     * Rectangle 9 POSES                  *
      *************************************/
 
-    Rectangle2Poses.preparePickupPose.position.x = 0;
-    Rectangle2Poses.preparePickupPose.position.y = 0;
-    Rectangle2Poses.preparePickupPose.position.z = 0;
+    Rectangle2Poses.preparePickupPose.position.x = 0.02;
+    Rectangle2Poses.preparePickupPose.position.y = 0.2739;
+    Rectangle2Poses.preparePickupPose.position.z = 0.09295;
     Rectangle2Poses.preparePickupPose.orientation.x = pickupPointAngle.x();
     Rectangle2Poses.preparePickupPose.orientation.y = pickupPointAngle.y();
     Rectangle2Poses.preparePickupPose.orientation.z = pickupPointAngle.z();
     Rectangle2Poses.preparePickupPose.orientation.w = pickupPointAngle.w();
 
-    Rectangle2Poses.pickupPose.position.x = 0;
-    Rectangle2Poses.pickupPose.position.y = 0;
-    Rectangle2Poses.pickupPose.position.z = 0;
+    Rectangle2Poses.pickupPose.position.x = 0.02;
+    Rectangle2Poses.pickupPose.position.y = 0.249844;
+    Rectangle2Poses.pickupPose.position.z = 0.08540;
     Rectangle2Poses.pickupPose.orientation.x = pickupPointAngle.x();
     Rectangle2Poses.pickupPose.orientation.y = pickupPointAngle.y();
     Rectangle2Poses.pickupPose.orientation.z = pickupPointAngle.z();
