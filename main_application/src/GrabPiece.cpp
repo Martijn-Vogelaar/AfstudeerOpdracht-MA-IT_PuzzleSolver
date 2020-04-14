@@ -26,4 +26,5 @@ void GrabPiece::exitAction(Context *context)
 {
     geometry_msgs::Pose movePieceUp = tf2Handler.calculatePosition(PICKUP_POINT, BASE, PICKUP_POINT_MOVE_PIECE);
     context->getMoveRobotClient().MoveRobotStraight(0, movePieceUp);
+    context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE);
 }

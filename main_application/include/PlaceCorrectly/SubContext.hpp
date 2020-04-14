@@ -19,6 +19,8 @@ class SubState;
 class SubContext : public Context
 {
 public:
+
+   SubContext();
   /**
      * @brief Construct a new SubContext object
      *

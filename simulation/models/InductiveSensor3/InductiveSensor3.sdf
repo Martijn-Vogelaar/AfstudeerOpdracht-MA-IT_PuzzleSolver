@@ -15,7 +15,7 @@
                     <save enabled="false">
                         <path>/tmp/camera_save_tutorial</path>
                     </save>
-                    <horizontal_fov>0.75</horizontal_fov>
+                    <horizontal_fov>0.85</horizontal_fov>
                     <image>
                         <width>10</width>
                         <height>10</height>
@@ -26,7 +26,7 @@
                         <far>0.1</far>
                     </clip>
                 </camera>
-                <visualize>false</visualize>
+                <visualize>true</visualize>
                 <always_on>1</always_on>
             </sensor>
         </link>

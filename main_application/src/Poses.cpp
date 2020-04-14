@@ -135,16 +135,16 @@ void initializePoses()
     SquarePoses.pickupPose.orientation.z = pickupPointAngle.z();
     SquarePoses.pickupPose.orientation.w = pickupPointAngle.w();
 
-    SquarePoses.preparePlacePose.position.x = -0.081375;
-    SquarePoses.preparePlacePose.position.y = -0.07875;
+    SquarePoses.preparePlacePose.position.x = -0.083375;
+    SquarePoses.preparePlacePose.position.y = -0.07575;
     SquarePoses.preparePlacePose.position.z = 0.08;
     SquarePoses.preparePlacePose.orientation.x = puzzleAngle.x();
     SquarePoses.preparePlacePose.orientation.y = puzzleAngle.y();
     SquarePoses.preparePlacePose.orientation.z = puzzleAngle.z();
     SquarePoses.preparePlacePose.orientation.w = puzzleAngle.w();
 
-    SquarePoses.placePose.position.x = -0.081375;
-    SquarePoses.placePose.position.y = -0.07875;
+    SquarePoses.placePose.position.x = -0.083375;
+    SquarePoses.placePose.position.y = -0.07575;
     SquarePoses.placePose.position.z = 0.01;
     SquarePoses.placePose.orientation.x = puzzleAngle.x();
     SquarePoses.placePose.orientation.y = puzzleAngle.y();

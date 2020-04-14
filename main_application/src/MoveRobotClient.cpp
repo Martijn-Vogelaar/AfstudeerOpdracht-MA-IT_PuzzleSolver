@@ -1,9 +1,10 @@
 #include "MoveRobotClient.hpp"
 
-MoveRobotClient::MoveRobotClient() : actionClientNormal(ACTION_NORMAL), actionClientStraight(ACTION_STRAIGHT), actionClientControlGripper(ACTION_CONTROL_GRIPPER), actionClientRotateGripper(ACTION_ROTATE_GRIPPER)
+MoveRobotClient::MoveRobotClient() : actionClientNormal(ACTION_NORMAL), actionClientStraight(ACTION_STRAIGHT), actionClientStraightNoRotation(ACTION_STRAIGHT_NO_ROTATION), actionClientControlGripper(ACTION_CONTROL_GRIPPER), actionClientRotateGripper(ACTION_ROTATE_GRIPPER)
 {
     actionClientNormal.waitForServer();
     actionClientStraight.waitForServer();
+    actionClientStraightNoRotation.waitForServer();
     actionClientControlGripper.waitForServer();
     actionClientRotateGripper.waitForServer();
 }
@@ -27,7 +28,25 @@ void MoveRobotClient::MoveRobotStraight(uint8_t aRobotID, geometry_msgs::Pose aG
     actionClientStraight.sendGoal(goal);
     actionClientStraight.waitForResult();
 
-    abb_controller::MoveEndEffectorResultConstPtr result = actionClientNormal.getResult();
+    abb_controller::MoveEndEffectorStraightResultConstPtr result = actionClientStraight.getResult();
+    if (result->success)
+    {
+        ROS_ERROR("Success");
+    }
+}
+
+void MoveRobotClient::MoveRobotStraightNoRotation(uint8_t aRobotID, geometry_msgs::Point aGoal)
+{
+    abb_controller::MoveEndEffectorStraightNoRotationGoal goal;
+    goal.robotID = aRobotID;
+    goal.position.x = aGoal.x;
+    goal.position.y = aGoal.y;
+    goal.position.z = aGoal.z;
+
+    actionClientStraightNoRotation.sendGoal(goal);
+    actionClientStraightNoRotation.waitForResult();
+
+    abb_controller::MoveEndEffectorStraightNoRotationResultConstPtr result = actionClientStraightNoRotation.getResult();
     if (result->success)
     {
         ROS_ERROR("Success");
@@ -74,11 +93,12 @@ void MoveRobotClient::ControlGripper(uint8_t aRobotID, bool aOpen, uint8_t aPuzz
     }
 }
 
-void MoveRobotClient::RotateGripper(uint8_t aRobotID, double aRotation)
+void MoveRobotClient::RotateGripper(uint8_t aRobotID, double aRotation, bool async)
 {
     abb_controller::RotateGripperGoal goal;
     goal.robotID = aRobotID;
     goal.rotation = aRotation;
+    goal.async = async;
     actionClientRotateGripper.sendGoal(goal);
 
     actionClientRotateGripper.waitForResult();

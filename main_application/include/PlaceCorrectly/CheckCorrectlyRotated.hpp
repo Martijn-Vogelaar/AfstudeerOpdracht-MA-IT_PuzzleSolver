@@ -3,7 +3,7 @@
 
 // Local
 #include "SubState.hpp"
-class SubContext;
+#include "SubContext.hpp"
 #include "inductive_sensor/inductive_sensor_measurements.h"
 #include "capacitive_sensor/capacitive_sensor_measurements.h"
 #include "abb_controller/StopRobot.h"
@@ -16,7 +16,7 @@ class SubContext;
 
 #define MIN_NR_OF_MEASUREMENTS 1
 
-static const int allowedSensorIDs[] = {1,3,5,9};
+static const int allowedSensorIDs[] = {1, 3, 5, 9};
 
 /**
    * @class CheckCorrectlyRotated
@@ -64,17 +64,14 @@ public:
      */
     void exitAction(SubContext *aSubContext) override;
 
-private: 
+private:
     ros::Subscriber inductiveMeasurementSubscriber;
     ros::Publisher stopRobotPublisher;
 
     ros::NodeHandle nodeHandler;
 
-    void measurementCallback(const inductive_sensor::inductive_sensor_measurementsConstPtr& msg);
-
-    std::map<uint8_t,bool> currentMeasurement;
-    std::map<uint8_t,uint8_t> consecutiveMeasurements;
-    std::map<uint8_t,uint8_t> numberOfMeasurements;
-
+    void measurementCallback(const inductive_sensor::inductive_sensor_measurementsConstPtr &msg);
+    SubContext* subContext;
+    uint16_t nonActivateCount;
 };
 #endif // CHECK_CORRECTLY_ROTATED_HPP

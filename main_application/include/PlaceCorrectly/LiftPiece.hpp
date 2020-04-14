@@ -3,6 +3,8 @@
 
 // Local
 #include "SubState.hpp"
+#include "TF2Handler.hpp"
+
 class SubContext;
 /**
    * @class LiftPiece
@@ -49,5 +51,8 @@ public:
      * "outside world".
      */
     void exitAction(SubContext *aSubContext) override;
+
+private:
+    TF2Handler tf2Handler;
 };
 #endif // LIFT_PIECE_HPP

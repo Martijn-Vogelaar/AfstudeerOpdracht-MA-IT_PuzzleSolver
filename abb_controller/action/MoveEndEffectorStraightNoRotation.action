@@ -1,13 +1,12 @@
 #goal
 uint8 robotID
-float64 rotation
-bool async
+geometry_msgs/Point position
 ---
 #result
 uint8 robotID
 bool success
-float64 rotation
+geometry_msgs/Point position
 ---
 #feedback
 uint8 robotID
-float64 rotation
+geometry_msgs/Point position

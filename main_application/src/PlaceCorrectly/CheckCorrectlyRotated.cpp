@@ -9,47 +9,20 @@
 CheckCorrectlyRotated::CheckCorrectlyRotated()
 {
         stopRobotPublisher = nodeHandler.advertise<abb_controller::StopRobot>("StopRobot", 1000);
-        currentMeasurement.insert(std::make_pair<uint8_t, bool>(0, false));
-        currentMeasurement.insert(std::make_pair<uint8_t, bool>(1, false));
-        currentMeasurement.insert(std::make_pair<uint8_t, bool>(3, false));
-        currentMeasurement.insert(std::make_pair<uint8_t, bool>(5, false));
-        currentMeasurement.insert(std::make_pair<uint8_t, bool>(9, false));
-        consecutiveMeasurements.insert(std::make_pair<uint8_t, uint8_t>(0, 0));
-        consecutiveMeasurements.insert(std::make_pair<uint8_t, uint8_t>(1, 0));
-        consecutiveMeasurements.insert(std::make_pair<uint8_t, uint8_t>(3, 0));
-        consecutiveMeasurements.insert(std::make_pair<uint8_t, uint8_t>(5, 0));
-        consecutiveMeasurements.insert(std::make_pair<uint8_t, uint8_t>(9, 0));
-        numberOfMeasurements.insert(std::make_pair<uint8_t, uint8_t>(0, 0));
-        numberOfMeasurements.insert(std::make_pair<uint8_t, uint8_t>(1, 0));
-        numberOfMeasurements.insert(std::make_pair<uint8_t, uint8_t>(3, 0));
-        numberOfMeasurements.insert(std::make_pair<uint8_t, uint8_t>(5, 0));
-        numberOfMeasurements.insert(std::make_pair<uint8_t, uint8_t>(9, 0));
 }
 
 CheckCorrectlyRotated::~CheckCorrectlyRotated() {}
 
 void CheckCorrectlyRotated::entryAction(SubContext *context)
 {
+        subContext = context;
         inductiveMeasurementSubscriber = context->getNodeHandler().subscribe(INDUCTIVE_TOPIC, QUEUE_SIZE, &CheckCorrectlyRotated::measurementCallback, this);
 }
 
 void CheckCorrectlyRotated::doActivity(SubContext *context)
 {
-        Shape currentPuzzlePiece1 = context->getParentContext()->getCurrentPuzzlePiece();
-        uint8_t currentPuzzlePiece = puzzlePieceToInt(currentPuzzlePiece1);
- 
-        if (currentMeasurement.at(currentPuzzlePiece) && consecutiveMeasurements.at(currentPuzzlePiece) > MIN_NR_OF_EQUAL_MEASUREMENTS)
+        if (nonActivateCount > 1000 && context->getParentContext()->getCurrentPuzzlePiece() != Shape::CIRCLE)
         {
-                abb_controller::StopRobot msg;
-                msg.stop = true;
-                stopRobotPublisher.publish(msg);
-                context->getParentContext()->setState(std::make_shared<ReleasePiece>());
-        }
-        else if (!currentMeasurement.at(currentPuzzlePiece) && numberOfMeasurements.at(currentPuzzlePiece) >= MIN_NR_OF_MEASUREMENTS && currentPuzzlePiece1 != Shape::CIRCLE)
-        {
-                ROS_ERROR(std::string(std::to_string((int)Shape::CIRCLE)).c_str());
-                ROS_ERROR(std::string(std::to_string((int)currentPuzzlePiece1)).c_str());
-
                 context->setState(std::make_shared<LiftPiece>());
         }
 }
@@ -66,16 +39,14 @@ void CheckCorrectlyRotated::measurementCallback(const inductive_sensor::inductiv
                 if (msg->activated)
                 {
                         ROS_WARN("inductive message received!");
-                }
-                if (currentMeasurement[msg->id] == msg->activated)
-                {
-                        consecutiveMeasurements[msg->id]++;
+                        abb_controller::StopRobot msg;
+                        msg.stop = true;
+                        stopRobotPublisher.publish(msg);
+                        subContext->getParentContext()->setState(std::make_shared<ReleasePiece>());
                 }
                 else
                 {
-                        currentMeasurement[msg->id] = msg->activated;
-                        consecutiveMeasurements[msg->id] = 0;
+                        nonActivateCount++;
                 }
-                numberOfMeasurements[msg->id]++;
         }
 }

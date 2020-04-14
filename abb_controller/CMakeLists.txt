@@ -49,6 +49,7 @@ add_action_files(
   ControlGripper.action
   MoveEndEffector.action
   MoveEndEffectorStraight.action
+  MoveEndEffectorStraightNoRotation.action
 )
 
 generate_messages(
@@ -97,6 +98,7 @@ add_executable(abb_controller
                 src/main.cpp 
                 src/MoveEndEffectorServer.cpp 
                 src/MoveEndEffectorStraightServer.cpp
+                src/MoveEndEffectorStraightNoRotationServer.cpp
                 src/ControlGripperServer.cpp
                 src/RotateGripperServer.cpp
                 src/StopRobotServer.cpp

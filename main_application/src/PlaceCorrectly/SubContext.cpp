@@ -6,6 +6,10 @@ SubContext::SubContext(Context *aParentContext) : parentContext(aParentContext)
   setState(std::make_shared<PlacePieceInPuzzle>());
 }
 
+SubContext::SubContext()
+{
+}
+
 Context* SubContext::getParentContext()
 {
   return parentContext;
