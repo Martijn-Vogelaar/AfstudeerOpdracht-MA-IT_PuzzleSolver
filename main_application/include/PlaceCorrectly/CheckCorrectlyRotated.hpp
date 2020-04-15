@@ -73,5 +73,6 @@ private:
     void measurementCallback(const inductive_sensor::inductive_sensor_measurementsConstPtr &msg);
     SubContext* subContext;
     uint16_t nonActivateCount;
+    uint8_t puzzlePieceID;
 };
 #endif // CHECK_CORRECTLY_ROTATED_HPP

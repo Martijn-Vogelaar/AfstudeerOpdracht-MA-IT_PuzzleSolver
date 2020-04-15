@@ -200,10 +200,6 @@
       </collision>
     </link>
     <include>
-      <uri>model://InductiveSensor0</uri>
-      <pose>0.0385 0.02 -0.0001 0 -1.57 0</pose>
-    </include>
-    <include>
       <uri>model://InductiveSensor1</uri>
       <pose>-0.0665 0.1075 -0.0001 0 -1.57 0</pose>
     </include>
@@ -215,13 +211,17 @@
       <uri>model://InductiveSensor3</uri>
       <pose>-0.08415 -0.02 -0.0001 0 -1.57 0</pose>
     </include>
+    <include>
+      <uri>model://InductiveSensor5</uri>
+      <pose>0.045 0.03 -0.0001 0 -1.57 0</pose>
+    </include>
     <joint name='EmptyPuzzle_JOINT_0' type='fixed'>
       <parent>EmptyPuzzle</parent>
       <child>bottom_plate</child>
       <pose frame=''>0 0 0 0 -0 0</pose>
     </joint>
-    <joint name='InductiveSensor0_to_puzzle' type='fixed'>
-      <parent>InductiveSensor0::link</parent>
+    <joint name='InductiveSensor5_to_puzzle' type='fixed'>
+      <parent>InductiveSensor5::link</parent>
       <child>EmptyPuzzle</child>
       <pose frame=''>0 0 0 0 0 0</pose>
     </joint>

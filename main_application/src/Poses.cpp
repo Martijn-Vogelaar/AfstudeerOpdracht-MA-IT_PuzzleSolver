@@ -1,6 +1,8 @@
 #include "Poses.hpp"
 #include <tf2/LinearMath/Quaternion.h>
 #include "ros/ros.h"
+#include <math.h> /* sin */
+
 geometry_msgs::Pose PICKUP_POINT_PREPERATION_POSE_1;
 geometry_msgs::Pose PICKUP_POINT_PREPERATION_POSE_2;
 geometry_msgs::Pose PICKUP_POINT_MOVE_BACK_1;
@@ -14,35 +16,26 @@ PuzzlePiecePoses SquarePoses;
 PuzzlePiecePoses Rectangle1Poses;
 PuzzlePiecePoses Rectangle2Poses;
 
+const double pickupPointAngle = 2.105; //radians
 
-// Coordinates rectangle 5
-// x 0.379464           - 0.3
-// y 0.245
-// z 0.0845
-// r -0.388776
-// p -0.36544
-// y -0.718
-
-
-// Coordinates rectangle 9
-// x 0.420568
-// y 0.249844
-// z 0.084530
-// r -0.388776
-// p -0.36544
-// y -0.718
-
+const double prepareDistance = 0.04; //cm
 
 void initializePoses()
 {
-    tf2::Quaternion pickupPointAngle;
-    pickupPointAngle.setRPY(0, 2.105, 1.57);
+    tf2::Quaternion pickupPointQuaternion;
+    pickupPointQuaternion.setRPY(0, 2.105, M_PI / 2);
 
     tf2::Quaternion puzzleAngle;
-    puzzleAngle.setRPY(0, 1.57, 0.78539);
+    puzzleAngle.setRPY(0, M_PI / 2, M_PI / 4);
+
+    tf2::Quaternion puzzleAngleRectangle;
+    puzzleAngleRectangle.setRPY(0, M_PI / 2, -M_PI / 4);
+    tf2::Quaternion puzzleAngleRectangle2;
+    puzzleAngleRectangle2.setRPY(0, M_PI / 2, M_PI / 4);
 
     tf2::Quaternion pickupPointMovementAngle;
-    pickupPointMovementAngle.setRPY(0, 1.57, 0);
+    pickupPointMovementAngle.setRPY(0, M_PI / 2, 0);
+
     /**
      * Poses seen from the "eyes" of the pickuppoint
     **/
@@ -102,65 +95,33 @@ void initializePoses()
      * Circle POSES                      *
      *************************************/
 
-    CirclePoses.preparePickupPose.position.x = 0;
-    CirclePoses.preparePickupPose.position.y = 0.255;
-    CirclePoses.preparePickupPose.position.z = 0.1;
-    CirclePoses.preparePickupPose.orientation.x = pickupPointAngle.x();
-    CirclePoses.preparePickupPose.orientation.y = pickupPointAngle.y();
-    CirclePoses.preparePickupPose.orientation.z = pickupPointAngle.z();
-    CirclePoses.preparePickupPose.orientation.w = pickupPointAngle.w();
-
     CirclePoses.pickupPose.position.x = 0;
     CirclePoses.pickupPose.position.y = 0.248;
     CirclePoses.pickupPose.position.z = 0.09;
-    CirclePoses.pickupPose.orientation.x = pickupPointAngle.x();
-    CirclePoses.pickupPose.orientation.y = pickupPointAngle.y();
-    CirclePoses.pickupPose.orientation.z = pickupPointAngle.z();
-    CirclePoses.pickupPose.orientation.w = pickupPointAngle.w();
-
-    CirclePoses.preparePlacePose.position.x = -0.07315;
-    CirclePoses.preparePlacePose.position.y = 0.143;
-    CirclePoses.preparePlacePose.position.z = 0.08;
-    CirclePoses.preparePlacePose.orientation.x = puzzleAngle.x();
-    CirclePoses.preparePlacePose.orientation.y = puzzleAngle.y();
-    CirclePoses.preparePlacePose.orientation.z = puzzleAngle.z();
-    CirclePoses.preparePlacePose.orientation.w = puzzleAngle.w();
+    CirclePoses.pickupPose.orientation.x = pickupPointQuaternion.x();
+    CirclePoses.pickupPose.orientation.y = pickupPointQuaternion.y();
+    CirclePoses.pickupPose.orientation.z = pickupPointQuaternion.z();
+    CirclePoses.pickupPose.orientation.w = pickupPointQuaternion.w();
 
     CirclePoses.placePose.position.x = -0.07315;
     CirclePoses.placePose.position.y = 0.143;
     CirclePoses.placePose.position.z = 0.012;
-    CirclePoses.placePose.orientation.x = puzzleAngle.x();
-    CirclePoses.placePose.orientation.y = puzzleAngle.y();
-    CirclePoses.placePose.orientation.z = puzzleAngle.z();
-    CirclePoses.placePose.orientation.w = puzzleAngle.w();
+    CirclePoses.placePose.orientation.x = pickupPointQuaternion.x();
+    CirclePoses.placePose.orientation.y = pickupPointQuaternion.y();
+    CirclePoses.placePose.orientation.z = pickupPointQuaternion.z();
+    CirclePoses.placePose.orientation.w = pickupPointQuaternion.w();
 
     /*************************************
      * Square POSES                      *
      *************************************/
 
-    SquarePoses.preparePickupPose.position.x = 0;
-    SquarePoses.preparePickupPose.position.y = 0.255;
-    SquarePoses.preparePickupPose.position.z = 0.1;
-    SquarePoses.preparePickupPose.orientation.x = pickupPointAngle.x();
-    SquarePoses.preparePickupPose.orientation.y = pickupPointAngle.y();
-    SquarePoses.preparePickupPose.orientation.z = pickupPointAngle.z();
-    SquarePoses.preparePickupPose.orientation.w = pickupPointAngle.w();
-
     SquarePoses.pickupPose.position.x = 0;
     SquarePoses.pickupPose.position.y = 0.2497;
     SquarePoses.pickupPose.position.z = 0.084;
-    SquarePoses.pickupPose.orientation.x = pickupPointAngle.x();
-    SquarePoses.pickupPose.orientation.y = pickupPointAngle.y();
-    SquarePoses.pickupPose.orientation.z = pickupPointAngle.z();
-    SquarePoses.pickupPose.orientation.w = pickupPointAngle.w();
-
-    SquarePoses.preparePlacePose.position.x = -0.083375;
-    SquarePoses.preparePlacePose.position.y = -0.07575;
-    SquarePoses.preparePlacePose.position.z = 0.08;
-    SquarePoses.preparePlacePose.orientation.x = puzzleAngle.x();
-    SquarePoses.preparePlacePose.orientation.y = puzzleAngle.y();
-    SquarePoses.preparePlacePose.orientation.z = puzzleAngle.z();
-    SquarePoses.preparePlacePose.orientation.w = puzzleAngle.w();
+    SquarePoses.pickupPose.orientation.x = pickupPointQuaternion.x();
+    SquarePoses.pickupPose.orientation.y = pickupPointQuaternion.y();
+    SquarePoses.pickupPose.orientation.z = pickupPointQuaternion.z();
+    SquarePoses.pickupPose.orientation.w = pickupPointQuaternion.w();
 
     SquarePoses.placePose.position.x = -0.083375;
     SquarePoses.placePose.position.y = -0.07575;
@@ -174,81 +135,53 @@ void initializePoses()
      * Rectangle5 POSES                  *
      *************************************/
 
-    Rectangle1Poses.preparePickupPose.position.x = -0.02;
-    Rectangle1Poses.preparePickupPose.position.y = 0.2695;
-    Rectangle1Poses.preparePickupPose.position.z = 0.09295;
-    Rectangle1Poses.preparePickupPose.orientation.x = pickupPointAngle.x();
-    Rectangle1Poses.preparePickupPose.orientation.y = pickupPointAngle.y();
-    Rectangle1Poses.preparePickupPose.orientation.z = pickupPointAngle.z();
-    Rectangle1Poses.preparePickupPose.orientation.w = pickupPointAngle.w();
-
     Rectangle1Poses.pickupPose.position.x = -0.02;
-    Rectangle1Poses.pickupPose.position.y = 0.245;
-    Rectangle1Poses.pickupPose.position.z = 0.0845;
-    Rectangle1Poses.pickupPose.orientation.x = pickupPointAngle.x();
-    Rectangle1Poses.pickupPose.orientation.y = pickupPointAngle.y();
-    Rectangle1Poses.pickupPose.orientation.z = pickupPointAngle.z();
-    Rectangle1Poses.pickupPose.orientation.w = pickupPointAngle.w();
+    Rectangle1Poses.pickupPose.position.y = 0.249844;
+    Rectangle1Poses.pickupPose.position.z = 0.0854;
+    Rectangle1Poses.pickupPose.orientation.x = pickupPointQuaternion.x();
+    Rectangle1Poses.pickupPose.orientation.y = pickupPointQuaternion.y();
+    Rectangle1Poses.pickupPose.orientation.z = pickupPointQuaternion.z();
+    Rectangle1Poses.pickupPose.orientation.w = pickupPointQuaternion.w();
 
-    Rectangle1Poses.preparePlacePose.position.x = 0.1;
-    Rectangle1Poses.preparePlacePose.position.y = 0.1;
-    Rectangle1Poses.preparePlacePose.position.z = 0.2;
-    Rectangle1Poses.preparePlacePose.orientation.x = puzzleAngle.x();
-    Rectangle1Poses.preparePlacePose.orientation.y = puzzleAngle.y();
-    Rectangle1Poses.preparePlacePose.orientation.z = puzzleAngle.z();
-    Rectangle1Poses.preparePlacePose.orientation.w = puzzleAngle.w();
 
-    Rectangle1Poses.placePose.position.x = 0.1;
-    Rectangle1Poses.placePose.position.y = 0.1;
-    Rectangle1Poses.placePose.position.z = 0.2;
-    Rectangle1Poses.placePose.orientation.x = puzzleAngle.x();
-    Rectangle1Poses.placePose.orientation.y = puzzleAngle.y();
-    Rectangle1Poses.placePose.orientation.z = puzzleAngle.z();
-    Rectangle1Poses.placePose.orientation.w = puzzleAngle.w();
+    Rectangle1Poses.placePose.position.x = 0.08635;
+    Rectangle1Poses.placePose.position.y = 0.099;
+    Rectangle1Poses.placePose.position.z = 0.01;
+    Rectangle1Poses.placePose.orientation.x = puzzleAngleRectangle.x();
+    Rectangle1Poses.placePose.orientation.y = puzzleAngleRectangle.y();
+    Rectangle1Poses.placePose.orientation.z = puzzleAngleRectangle.z();
+    Rectangle1Poses.placePose.orientation.w = puzzleAngleRectangle.w();
 
     /*************************************
      * Rectangle 9 POSES                  *
      *************************************/
 
-    Rectangle2Poses.preparePickupPose.position.x = 0.02;
-    Rectangle2Poses.preparePickupPose.position.y = 0.2739;
-    Rectangle2Poses.preparePickupPose.position.z = 0.09295;
-    Rectangle2Poses.preparePickupPose.orientation.x = pickupPointAngle.x();
-    Rectangle2Poses.preparePickupPose.orientation.y = pickupPointAngle.y();
-    Rectangle2Poses.preparePickupPose.orientation.z = pickupPointAngle.z();
-    Rectangle2Poses.preparePickupPose.orientation.w = pickupPointAngle.w();
-
     Rectangle2Poses.pickupPose.position.x = 0.02;
     Rectangle2Poses.pickupPose.position.y = 0.249844;
-    Rectangle2Poses.pickupPose.position.z = 0.08540;
-    Rectangle2Poses.pickupPose.orientation.x = pickupPointAngle.x();
-    Rectangle2Poses.pickupPose.orientation.y = pickupPointAngle.y();
-    Rectangle2Poses.pickupPose.orientation.z = pickupPointAngle.z();
-    Rectangle2Poses.pickupPose.orientation.w = pickupPointAngle.w();
+    Rectangle2Poses.pickupPose.position.z = 0.0854;
+    Rectangle2Poses.pickupPose.orientation.x = pickupPointQuaternion.x();
+    Rectangle2Poses.pickupPose.orientation.y = pickupPointQuaternion.y();
+    Rectangle2Poses.pickupPose.orientation.z = pickupPointQuaternion.z();
+    Rectangle2Poses.pickupPose.orientation.w = pickupPointQuaternion.w();
 
-    Rectangle2Poses.preparePlacePose.position.x = 0.1;
-    Rectangle2Poses.preparePlacePose.position.y = 0.1;
-    Rectangle2Poses.preparePlacePose.position.z = 0.2;
-    Rectangle2Poses.preparePlacePose.orientation.x = puzzleAngle.x();
-    Rectangle2Poses.preparePlacePose.orientation.y = puzzleAngle.y();
-    Rectangle2Poses.preparePlacePose.orientation.z = puzzleAngle.z();
-    Rectangle2Poses.preparePlacePose.orientation.w = puzzleAngle.w();
+    Rectangle2Poses.placePose.position.x = 0.08635;
+    Rectangle2Poses.placePose.position.y = 0.099;
+    Rectangle2Poses.placePose.position.z = 0.01;
+    Rectangle2Poses.placePose.orientation.x = puzzleAngleRectangle2.x();
+    Rectangle2Poses.placePose.orientation.y = puzzleAngleRectangle2.y();
+    Rectangle2Poses.placePose.orientation.z = puzzleAngleRectangle2.z();
+    Rectangle2Poses.placePose.orientation.w = puzzleAngleRectangle2.w();
 
-    Rectangle2Poses.placePose.position.x = 0.1;
-    Rectangle2Poses.placePose.position.y = 0.1;
-    Rectangle2Poses.placePose.position.z = 0.2;
-    Rectangle2Poses.placePose.orientation.x = puzzleAngle.x();
-    Rectangle2Poses.placePose.orientation.y = puzzleAngle.y();
-    Rectangle2Poses.placePose.orientation.z = puzzleAngle.z();
-    Rectangle2Poses.placePose.orientation.w = puzzleAngle.w();
+
+
 
     PICKUP_POINT_MOVE_PIECE.position.x = 0;
     PICKUP_POINT_MOVE_PIECE.position.y = 0.248;
-    PICKUP_POINT_MOVE_PIECE.position.z = 0.30; // 0.08
-    PICKUP_POINT_MOVE_PIECE.orientation.x = pickupPointAngle.x();
-    PICKUP_POINT_MOVE_PIECE.orientation.y = pickupPointAngle.y();
-    PICKUP_POINT_MOVE_PIECE.orientation.z = pickupPointAngle.z();
-    PICKUP_POINT_MOVE_PIECE.orientation.w = pickupPointAngle.w();
+    PICKUP_POINT_MOVE_PIECE.position.z = 0.30;
+    PICKUP_POINT_MOVE_PIECE.orientation.x = pickupPointQuaternion.x();
+    PICKUP_POINT_MOVE_PIECE.orientation.y = pickupPointQuaternion.y();
+    PICKUP_POINT_MOVE_PIECE.orientation.z = pickupPointQuaternion.z();
+    PICKUP_POINT_MOVE_PIECE.orientation.w = pickupPointQuaternion.w();
 
     /**
      * Poses seen from the eyes of the Puzzle
@@ -258,26 +191,6 @@ void initializePoses()
      * circle right up = induc 2
      * square = induc 3
      */
-}
-
-geometry_msgs::Pose getPreparePickup();
-
-geometry_msgs::Pose getPuzzlePiecePreparePickup(Shape puzzlePiece)
-{
-    switch (puzzlePiece)
-    {
-    case Shape::CIRCLE:
-        return CirclePoses.preparePickupPose;
-    case Shape::SQUARE:
-        return SquarePoses.preparePickupPose;
-    case Shape::RECTANGLE_1:
-        return Rectangle1Poses.preparePickupPose;
-    case Shape::RECTANGLE_2:
-        return Rectangle2Poses.preparePickupPose;
-    default:
-        return CirclePoses.preparePickupPose;
-    }
-    return CirclePoses.preparePickupPose;
 }
 
 geometry_msgs::Pose getPuzzlePiecePickup(Shape puzzlePiece)
@@ -298,29 +211,12 @@ geometry_msgs::Pose getPuzzlePiecePickup(Shape puzzlePiece)
     return CirclePoses.pickupPose;
 }
 
-geometry_msgs::Pose getPuzzlePiecePreparePlace(Shape puzzlePiece)
+geometry_msgs::Pose getPuzzlePiecePreparePickup(Shape puzzlePiece)
 {
-    
-    switch (puzzlePiece)
-    {
-    case Shape::CIRCLE:
-        ROS_ERROR("CIRCLE");
-        return CirclePoses.preparePlacePose;
-    case Shape::SQUARE:
-        ROS_ERROR("SQUARE");
-        return SquarePoses.preparePlacePose;
-    case Shape::RECTANGLE_1:
-        ROS_ERROR("RECTANGLE_1");
-        return Rectangle1Poses.preparePlacePose;
-    case Shape::RECTANGLE_2:
-        ROS_ERROR("RECTANGLE_2");
-        return Rectangle2Poses.preparePlacePose;
-    case Shape::UNKNOWN:
-        ROS_ERROR("UNKNOWN");
-    default:
-        return CirclePoses.preparePlacePose;
-    }
-    return CirclePoses.pickupPose;
+    geometry_msgs::Pose pickupPoint = getPuzzlePiecePickup(puzzlePiece);
+    pickupPoint.position.y = pickupPoint.position.y - prepareDistance * cos(pickupPointAngle);
+    pickupPoint.position.z = pickupPoint.position.z + prepareDistance * sin(pickupPointAngle);
+    return pickupPoint;
 }
 
 geometry_msgs::Pose getPuzzlePiecePlace(Shape puzzlePiece)
@@ -340,3 +236,12 @@ geometry_msgs::Pose getPuzzlePiecePlace(Shape puzzlePiece)
     }
     return CirclePoses.pickupPose;
 }
+
+geometry_msgs::Pose getPuzzlePiecePreparePlace(Shape puzzlePiece)
+{
+
+    geometry_msgs::Pose placePoint = getPuzzlePiecePlace(puzzlePiece);
+    placePoint.position.z = placePoint.position.z + prepareDistance;
+    return placePoint;
+}
+

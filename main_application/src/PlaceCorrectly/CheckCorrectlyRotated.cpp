@@ -16,12 +16,16 @@ CheckCorrectlyRotated::~CheckCorrectlyRotated() {}
 void CheckCorrectlyRotated::entryAction(SubContext *context)
 {
         subContext = context;
+        puzzlePieceID = puzzlePieceToInt(context->getParentContext()->getCurrentPuzzlePiece());
+        if(puzzlePieceID == RECTANGLE_2){
+                puzzlePieceID = RECTANGLE_1;
+        }
         inductiveMeasurementSubscriber = context->getNodeHandler().subscribe(INDUCTIVE_TOPIC, QUEUE_SIZE, &CheckCorrectlyRotated::measurementCallback, this);
 }
 
 void CheckCorrectlyRotated::doActivity(SubContext *context)
 {
-        if (nonActivateCount > 1000 && context->getParentContext()->getCurrentPuzzlePiece() != Shape::CIRCLE)
+        if (nonActivateCount > 25 && context->getParentContext()->getCurrentPuzzlePiece() != Shape::CIRCLE)
         {
                 context->setState(std::make_shared<LiftPiece>());
         }
@@ -36,7 +40,7 @@ void CheckCorrectlyRotated::measurementCallback(const inductive_sensor::inductiv
         ROS_ERROR("inductive message received!");
         if (std::find(std::begin(allowedSensorIDs), std::end(allowedSensorIDs), msg->id) != std::end(allowedSensorIDs))
         {
-                if (msg->activated)
+                if (msg->activated && msg->id == puzzlePieceID)
                 {
                         ROS_WARN("inductive message received!");
                         abb_controller::StopRobot msg;

@@ -4,5 +4,7 @@
     <node name="PuzzleBroadcaster" type="PuzzleBroadcaster" pkg="simulation" args="EmptyPuzzle -0.3 0 0.09 0 -0.5 -0.5"/>
     <node name="inductive_sensor_plugin1" type="inductive_sensor_plugin" pkg="inductive_sensor" args="1"/>
     <node name="inductive_sensor_plugin3" type="inductive_sensor_plugin" pkg="inductive_sensor" args="3"/>
+    <node name="inductive_sensor_plugin5" type="inductive_sensor_plugin" pkg="inductive_sensor" args="5"/>
+    <node name="inductive_sensor_plugin9" type="inductive_sensor_plugin" pkg="inductive_sensor" args="9"/>
     <node name="main_application" type="main_application" pkg="main_application" args=""/>
 </launch>

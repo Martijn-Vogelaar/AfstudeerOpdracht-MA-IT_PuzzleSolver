@@ -18,7 +18,6 @@ void RotateGripperServer::goalCallback(const abb_controller::RotateGripperGoalCo
     joints = move_group.getCurrentJointValues();
     double originalJoint = joints.at(GRIPPER_JOINT_INDEX);
     joints.at(GRIPPER_JOINT_INDEX) += goal->rotation;
-    ROS_ERROR(std::string(std::to_string(joints.at(GRIPPER_JOINT_INDEX))).c_str());
     if (joints.at(GRIPPER_JOINT_INDEX) > MAX_JOINT_BOUND)
     {
         ROS_WARN("Reached maximum bounds! Not moving!");

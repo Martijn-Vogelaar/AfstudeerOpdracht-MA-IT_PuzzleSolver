@@ -13,9 +13,7 @@
 
 struct PuzzlePiecePoses
 {
-    geometry_msgs::Pose preparePickupPose;
     geometry_msgs::Pose pickupPose;
-    geometry_msgs::Pose preparePlacePose;
     geometry_msgs::Pose placePose;
 };
 
