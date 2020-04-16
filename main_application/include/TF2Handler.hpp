@@ -34,6 +34,7 @@ public:
      *
      * @param aFromFrame From from which the transformation will be made
      * @param aToFrame From to which the transformation will be made
+     * @param aPose Pose which has to be transformed from the aFromFrame to the aToFrame
      * @return 
      */
     geometry_msgs::Pose calculatePosition(const std::string &aFromFrame,

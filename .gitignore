@@ -214,4 +214,7 @@ qtcreator-*
 # Catkin custom files
 CATKIN_IGNORE
 
+# Doxygen
+/doxygen/*
+
 # End of https://www.gitignore.io/api/ros,c++,cmake,python,opencv

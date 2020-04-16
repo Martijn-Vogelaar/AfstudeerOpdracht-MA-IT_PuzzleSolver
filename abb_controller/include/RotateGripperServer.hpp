@@ -25,6 +25,15 @@
 
 #define MIN_JOIN_BOUND -6.98132
 
+/**
+ * @class RotateGripperServer
+ * 
+ * @brief The class RotateGripperServer is a class which can be used to catch action requests from the RotateGripper action.
+ *        The class handles the incoming requests and provides feedback during the handling of the requests. Eventually
+ *        a result will be presented to the node which send the request.
+ * 
+ */ 
+
 class RotateGripperServer
 {
 protected:
@@ -39,10 +48,24 @@ protected:
     abb_controller::RotateGripperResult actionResult;
 
 public:
+    /**
+     * @brief Construct a new Rotate Gripper Server object
+     * 
+     * @param name Name which will be used to present this node to ROS
+     */
     RotateGripperServer(std::string name);
 
+    /**
+     * @brief Destroy the Rotate Gripper Server object
+     * 
+     */
     ~RotateGripperServer();
 
+    /**
+     * @brief Callback function which is called when any node uses the RotateGripper action.
+     * 
+     * @param goal Message with the request of the action.
+     */
     void goalCallback(const abb_controller::RotateGripperGoalConstPtr &goal);
 };
 

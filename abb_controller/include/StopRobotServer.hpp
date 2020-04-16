@@ -27,7 +27,7 @@
 /**
    * @class StopRobotServer
    *
-   * @brief StopRobotServer is the class which handles stop robotmovements
+   * @brief StopRobotServer is the class which handles requests to stop a robot.
    *
    */
 class StopRobotServer
@@ -49,6 +49,11 @@ private:
     ros::NodeHandle nodeHandler;
     moveit::planning_interface::MoveGroupInterface move_group;
 
+    /**
+     * @brief Callback function which is called when any node uses sends an StopRobot message.
+     * 
+     * @param msg is the message send by the node.
+     */
     void stopRobotCallback(const abb_controller::StopRobotConstPtr &msg);
 };
 #endif // STOP_ROBOT_HPP

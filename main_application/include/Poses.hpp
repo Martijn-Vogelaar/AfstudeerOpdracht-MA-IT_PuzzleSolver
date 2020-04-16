@@ -10,7 +10,10 @@
 #include <string>
 
 
-
+/**
+ * @brief PuzzlePiecePoses stores the pose where a puzzlepiece has to be pickedup and where it should be placed
+ * 
+ */
 struct PuzzlePiecePoses
 {
     geometry_msgs::Pose pickupPose;
@@ -39,6 +42,10 @@ extern geometry_msgs::Pose PICKUP_POINT_MOVE_PIECE;
 
 extern geometry_msgs::Pose ROBOT_HOME_POSE;
 
+/**
+ * @brief Initializes all poses
+ * 
+ */
 extern void initializePoses();
 
 extern geometry_msgs::Pose getPuzzlePiecePreparePickup(Shape puzzlePiece);

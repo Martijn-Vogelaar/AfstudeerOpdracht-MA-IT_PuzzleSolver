@@ -17,6 +17,16 @@
 #include <tf/transform_datatypes.h>
 #define PLANNING_GROUP "manipulator"
 
+
+/**
+ * @class MoveEndEffectorStraightNoRotationServer
+ * 
+ * @brief The class MoveEndEffectorStraightNoRotationServer is a class which can be used to catch action requests from the MoveEndEffectorStraightNoRotation action.
+ *        The class handles the incoming requests and provides feedback during the handling of the requests. Eventually
+ *        a result will be presented to the node which send the request.
+ * 
+ */ 
+
 class MoveEndEffectorStraightNoRotationServer
 {
 protected:
@@ -29,10 +39,25 @@ protected:
     bool executeMovement(geometry_msgs::Pose goalPose);
 
 public:
+    /**
+     * @brief Construct a new Move End Effector Straight No Rotation Server object
+     * 
+     * @param name Name which will be used to present this node to ROS
+     */
     MoveEndEffectorStraightNoRotationServer(std::string name);
 
+
+    /**
+     * @brief Destroy the Move End Effector Straight No Rotation Server object
+     * 
+     */
     ~MoveEndEffectorStraightNoRotationServer();
 
+    /**
+     * @brief Callback function which is called when any node uses the MoveEndEffectorStraightNoRotation action.
+     * 
+     * @param goal Message with the request of the action.
+     */
     void goalCallback(const abb_controller::MoveEndEffectorStraightNoRotationGoalConstPtr &goal);
 };
 

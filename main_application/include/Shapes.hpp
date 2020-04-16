@@ -2,6 +2,7 @@
 #define SHAPES_HPP
 #include <stdint.h>
 
+
 enum class Shape
 {
     CIRCLE,
