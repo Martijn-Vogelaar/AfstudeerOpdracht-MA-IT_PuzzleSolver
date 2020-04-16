@@ -1,0 +1,6 @@
+<launch>
+    <!-- <node name="circle1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model Circle1 -x 0.38 -y -0.2 -z 0.28 -file $(find simulation)/models/Circle1/model.sdf" launch-prefix="bash -c 'sleep 3; $0 $@' "/> -->
+    <node name="Square" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model Square -x 0.38 -y -0.2 -z 0.28 -file $(find simulation)/models/Square/model.sdf" launch-prefix="bash -c 'sleep 3; $0 $@' "/>
+    <!-- <node name="Rectangle" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model Rectangle -x 0.38 -y -0.2 -z 0.28 -file $(find simulation)/models/Rectangle/model.sdf" launch-prefix="bash -c 'sleep 40; $0 $@' "/>
+    <node name="circle2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model Circle2 -x 0.38 -y -0.2 -z 0.28 -file $(find simulation)/models/Circle2/model.sdf" launch-prefix="bash -c 'sleep 60; $0 $@' "/> -->
+</launch>

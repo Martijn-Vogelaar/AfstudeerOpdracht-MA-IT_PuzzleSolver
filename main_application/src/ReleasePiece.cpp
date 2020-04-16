@@ -1,6 +1,7 @@
 #include "ReleasePiece.hpp"
 #include "Poses.hpp"
 #include "Context.hpp"
+#include "PutPieceInPickupPoint.hpp"
 #include <memory>
 
 ReleasePiece::ReleasePiece()
@@ -18,10 +19,8 @@ void ReleasePiece::entryAction(Context *context)
 
 void ReleasePiece::doActivity(Context *context)
 {
-    geometry_msgs::Pose goal = getPuzzlePiecePreparePlace(context->getCurrentPuzzlePiece());
-    geometry_msgs::Pose circlePrepare = tf2Handler.calculatePosition(PUZZLE, BASE, goal);
-    context->getMoveRobotClient().MoveRobotNormal(0, circlePrepare);
     context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE);
+    context->setState(std::make_shared<PutPieceInPickupPoint>());
 }
 
 void ReleasePiece::exitAction(Context *)

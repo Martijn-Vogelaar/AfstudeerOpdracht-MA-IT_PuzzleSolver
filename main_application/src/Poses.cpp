@@ -23,10 +23,13 @@ const double prepareDistance = 0.04; //cm
 void initializePoses()
 {
     tf2::Quaternion pickupPointQuaternion;
-    pickupPointQuaternion.setRPY(0, 2.105, M_PI / 2);
+    pickupPointQuaternion.setRPY(0, pickupPointAngle, M_PI / 2);
 
-    tf2::Quaternion puzzleAngle;
-    puzzleAngle.setRPY(0, M_PI / 2, M_PI / 4);
+    tf2::Quaternion puzzleAngleCircle;
+    puzzleAngleCircle.setRPY(-M_PI, M_PI / 2, 0);
+
+    tf2::Quaternion puzzleAngleSquare;
+    puzzleAngleSquare.setRPY(0, M_PI / 2, M_PI/4);
 
     tf2::Quaternion puzzleAngleRectangle;
     puzzleAngleRectangle.setRPY(0, M_PI / 2, -M_PI / 4);
@@ -106,10 +109,10 @@ void initializePoses()
     CirclePoses.placePose.position.x = -0.07315;
     CirclePoses.placePose.position.y = 0.143;
     CirclePoses.placePose.position.z = 0.012;
-    CirclePoses.placePose.orientation.x = pickupPointQuaternion.x();
-    CirclePoses.placePose.orientation.y = pickupPointQuaternion.y();
-    CirclePoses.placePose.orientation.z = pickupPointQuaternion.z();
-    CirclePoses.placePose.orientation.w = pickupPointQuaternion.w();
+    CirclePoses.placePose.orientation.x = puzzleAngleCircle.x();
+    CirclePoses.placePose.orientation.y = puzzleAngleCircle.y();
+    CirclePoses.placePose.orientation.z = puzzleAngleCircle.z();
+    CirclePoses.placePose.orientation.w = puzzleAngleCircle.w();
 
     /*************************************
      * Square POSES                      *
@@ -126,10 +129,10 @@ void initializePoses()
     SquarePoses.placePose.position.x = -0.083375;
     SquarePoses.placePose.position.y = -0.07575;
     SquarePoses.placePose.position.z = 0.01;
-    SquarePoses.placePose.orientation.x = puzzleAngle.x();
-    SquarePoses.placePose.orientation.y = puzzleAngle.y();
-    SquarePoses.placePose.orientation.z = puzzleAngle.z();
-    SquarePoses.placePose.orientation.w = puzzleAngle.w();
+    SquarePoses.placePose.orientation.x = puzzleAngleSquare.x();
+    SquarePoses.placePose.orientation.y = puzzleAngleSquare.y();
+    SquarePoses.placePose.orientation.z = puzzleAngleSquare.z();
+    SquarePoses.placePose.orientation.w = puzzleAngleSquare.w();
 
     /*************************************
      * Rectangle5 POSES                  *
@@ -171,9 +174,6 @@ void initializePoses()
     Rectangle2Poses.placePose.orientation.y = puzzleAngleRectangle2.y();
     Rectangle2Poses.placePose.orientation.z = puzzleAngleRectangle2.z();
     Rectangle2Poses.placePose.orientation.w = puzzleAngleRectangle2.w();
-
-
-
 
     PICKUP_POINT_MOVE_PIECE.position.x = 0;
     PICKUP_POINT_MOVE_PIECE.position.y = 0.248;
