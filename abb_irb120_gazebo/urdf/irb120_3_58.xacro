@@ -309,7 +309,7 @@
   <!-- Gazebo-specific link properties -->
   <gazebo reference="base_link">
     <material>Gazebo/Orange</material>
-    <turnGravityOff>false</turnGravityOff>
+    <turnGravityOff>true</turnGravityOff>
   </gazebo>
   <gazebo reference="link_1">
     <material>Gazebo/Orange</material>
@@ -356,7 +356,7 @@
        unless otherwise stated. -->
   <link name="head">
     <inertial>
-      <mass value="1"/>
+      <mass value="1000000"/>
       <origin rpy="0 0 -1.57079632679" xyz="0 0 0"/>
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
@@ -382,7 +382,7 @@
   </link>
   <link name="gripper1">
     <inertial>
-      <mass value="10000000000"/>
+      <mass value="0.1"/>
       <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
@@ -398,7 +398,7 @@
   </link>
   <link name="gripper2">
     <inertial>
-      <mass value="10000000000"/>
+      <mass value="0.1"/>
       <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
@@ -414,7 +414,7 @@
   </link>
   <link name="gripper3">
     <inertial>
-      <mass value="10000000000"/>
+      <mass value="0.1"/>
       <origin rpy="1.57079632679 0  -1.57079632679" xyz="0 0 0"/>
       <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
