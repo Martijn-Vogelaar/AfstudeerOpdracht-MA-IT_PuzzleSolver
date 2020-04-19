@@ -1,0 +1,3 @@
+<launch>
+    <node name="Rectangle" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model Rectangle -x 0.38 -y -0.2 -z 0.28 -file $(find simulation)/models/Rectangle/model.sdf"/> -->
+</launch>

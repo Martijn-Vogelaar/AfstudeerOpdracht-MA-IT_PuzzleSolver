@@ -96,6 +96,7 @@ src/TF2Handler.cpp
 src/UnknownPieceInPickupPoint.cpp
 src/PlacePiece.cpp
 src/MoveToUnexploredSpot.cpp
+src/ModelSpawner.cpp
 src/Shapes.cpp
 )
 

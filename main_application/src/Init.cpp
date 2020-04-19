@@ -6,7 +6,7 @@
 #include "MoveToRecognizedPiece.hpp"
 #include "MoveToUnexploredSpot.hpp"
 #include "Context.hpp"
-
+#include "Shapes.hpp"
 Init::Init()
 {
 }

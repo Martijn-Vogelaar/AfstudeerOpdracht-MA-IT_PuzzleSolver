@@ -18,7 +18,7 @@ void MoveEndEffectorStraightNoRotationServer::goalCallback(const abb_controller:
     goalPose.orientation = move_group.getCurrentPose().pose.orientation;
 
     actionResult.success = executeMovement(goalPose);
-
+    
     actionResult.robotID = goal->robotID;
     actionResult.position = move_group.getCurrentPose().pose.position;
     actionServer.setSucceeded(actionResult);
@@ -45,19 +45,18 @@ bool MoveEndEffectorStraightNoRotationServer::executeMovement(geometry_msgs::Pos
     {
 
         my_plan.trajectory_ = trajectory;
-        ROS_WARN("We start");
+        ROS_WARN("We start1");
 
         status = move_group.execute(my_plan);
 
-        ROS_WARN("We end");
+        ROS_WARN("We end1");
     }else{
         ROS_WARN("No bueno");
     }
     if (status != moveit_msgs::MoveItErrorCodes::SUCCESS)
     {
         success = false;
-        ROS_ERROR("We failed and caught it!");
-        // executeMovement(goalPose);
+        ROS_ERROR("We failed and caught it!1");
     }
     return success;
 }

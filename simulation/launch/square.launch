@@ -1,0 +1,3 @@
+<launch>
+    <node name="Square" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-sdf -model Square -x 0.38 -y -0.2 -z 0.28 -file $(find simulation)/models/Square/model.sdf"/>
+</launch>

@@ -14,6 +14,7 @@ void PowerOff::entryAction(Context *)
 
 void PowerOff::doActivity(Context *)
 {
+    ROS_ERROR("Poweroff!");
 }
 
 void PowerOff::exitAction(Context *)

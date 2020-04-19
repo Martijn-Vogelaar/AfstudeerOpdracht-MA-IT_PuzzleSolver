@@ -1,7 +1,7 @@
 #include "ReleasePiece.hpp"
 #include "Poses.hpp"
 #include "Context.hpp"
-#include "PutPieceInPickupPoint.hpp"
+#include "Ready.hpp"
 #include <memory>
 
 ReleasePiece::ReleasePiece()
@@ -20,7 +20,7 @@ void ReleasePiece::entryAction(Context *context)
 void ReleasePiece::doActivity(Context *context)
 {
     context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE);
-    context->setState(std::make_shared<PutPieceInPickupPoint>());
+    context->setState(std::make_shared<Ready>());
 }
 
 void ReleasePiece::exitAction(Context *)

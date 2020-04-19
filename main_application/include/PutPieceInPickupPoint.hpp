@@ -54,5 +54,6 @@ public:
 
 private:
     TF2Handler tf2Handler;
+    static uint8_t visitCount;
 };
 #endif // PUT_PIECE_IN_PICKUP_POINT_HPP

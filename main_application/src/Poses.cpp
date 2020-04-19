@@ -29,7 +29,7 @@ void initializePoses()
     puzzleAngleCircle.setRPY(-M_PI, M_PI / 2, 0);
 
     tf2::Quaternion puzzleAngleSquare;
-    puzzleAngleSquare.setRPY(0, M_PI / 2, M_PI/4);
+    puzzleAngleSquare.setRPY(0, M_PI / 2 , -M_PI/4*3);
 
     tf2::Quaternion puzzleAngleRectangle;
     puzzleAngleRectangle.setRPY(0, M_PI / 2, -M_PI / 4);

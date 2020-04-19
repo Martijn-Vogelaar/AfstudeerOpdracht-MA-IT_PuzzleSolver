@@ -6,6 +6,7 @@
 enum class Shape
 {
     CIRCLE,
+    CIRCLE2,
     SQUARE,
     RECTANGLE_1,
     RECTANGLE_2,
