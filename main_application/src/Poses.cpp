@@ -101,16 +101,16 @@ void initializePoses()
      *************************************/
 
     CirclePoses.pickupPose.position.x = 0;
-    CirclePoses.pickupPose.position.y = 0.248;
-    CirclePoses.pickupPose.position.z = 0.09;
+    CirclePoses.pickupPose.position.y = 0.2515;
+    CirclePoses.pickupPose.position.z = 0.092;
     CirclePoses.pickupPose.orientation.x = pickupPointQuaternion.x();
     CirclePoses.pickupPose.orientation.y = pickupPointQuaternion.y();
     CirclePoses.pickupPose.orientation.z = pickupPointQuaternion.z();
     CirclePoses.pickupPose.orientation.w = pickupPointQuaternion.w();
 
-    CirclePoses.placePose.position.x = -0.07315;
-    CirclePoses.placePose.position.y = 0.143;
-    CirclePoses.placePose.position.z = 0.012;
+    CirclePoses.placePose.position.x = -0.0735;
+    CirclePoses.placePose.position.y = 0.1430;
+    CirclePoses.placePose.position.z = 0.018;
     CirclePoses.placePose.orientation.x = puzzleAngleCircle.x();
     CirclePoses.placePose.orientation.y = puzzleAngleCircle.y();
     CirclePoses.placePose.orientation.z = puzzleAngleCircle.z();
@@ -244,7 +244,7 @@ geometry_msgs::Pose getPuzzlePiecePlace(Shape puzzlePiece)
 
     placePose.position.x = placePose.position.x / scaleCorrection;
     placePose.position.y = placePose.position.y / scaleCorrection;
-    placePose.position.z = placePose.position.z / scaleCorrection;
+    // placePose.position.z = placePose.position.z / scaleCorrection;
 
     return placePose;
 }

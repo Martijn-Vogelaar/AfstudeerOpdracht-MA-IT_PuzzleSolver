@@ -6,7 +6,7 @@
 #include "Shapes.hpp"
 #include <memory>
 
-CheckCorrectlyRotated::CheckCorrectlyRotated()
+CheckCorrectlyRotated::CheckCorrectlyRotated() : nonActivateCount(0)
 {
         stopRobotPublisher = nodeHandler.advertise<abb_controller::StopRobot>("StopRobot", 1000);
 }
