@@ -23,15 +23,15 @@ void Ready::entryAction(Context *)
     }
     else if (visitCount == 1)
     {
-        modelSpawner.spawnPuzzlePiece(Shape::CIRCLE);
+        modelSpawner.spawnPuzzlePiece(Shape::SQUARE);
     }
     else if (visitCount == 2)
     {
-        modelSpawner.spawnPuzzlePiece(Shape::SQUARE);
+        modelSpawner.spawnPuzzlePiece(Shape::CIRCLE);
     }
     else if (visitCount == 3)
     {
-        modelSpawner.spawnPuzzlePiece(Shape::CIRCLE);
+        modelSpawner.spawnPuzzlePiece(Shape::CIRCLE2);
     }
 }
 

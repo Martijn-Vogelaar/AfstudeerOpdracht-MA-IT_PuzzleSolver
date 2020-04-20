@@ -24,7 +24,7 @@
         <geometry>
           <mesh>
             <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/EmptyPuzzle.stl</uri>
-            <scale>1.1 1.1 1.1</scale>
+            <scale>1.01 1.01 1.01</scale>
           </mesh>
         </geometry>
         <material>
@@ -51,7 +51,7 @@
         <geometry>
           <mesh>
             <uri>/home/martijn/School/Afstuderen/thuis-werken/catkin_ws/src/simulation/stl/EmptyPuzzle.stl</uri>
-            <scale>1.1 1.1 1.1</scale>
+            <scale>1.01 1.01 1.01</scale>
           </mesh>
         </geometry>
         <surface>
@@ -123,7 +123,7 @@
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
           <box>
-            <size>0.462 0.3267 0.001</size>
+            <size>0.42 0.30 0.001</size>
           </box>
         </geometry>
         <material>
@@ -149,7 +149,7 @@
         <pose frame=''>0 0 0 0 0 0</pose>
         <geometry>
           <box>
-            <size>0.462 0.3267 0.001</size>
+            <size>0.42 0.30 0.001</size>
           </box>
         </geometry>
         <surface>
@@ -201,19 +201,19 @@
     </link>
     <include>
       <uri>model://InductiveSensor1</uri>
-      <pose>-0.0665 0.1075 -0.0001 0 -1.57 0</pose>
+      <pose>-0.0610 0.099 -0.0001 0 -1.57 0</pose>
     </include>
     <include>
       <uri>model://InductiveSensor2</uri>
-      <pose>0.0735 -0.06 -0.0001 0 -1.57 0</pose>
+      <pose>0.0675 -0.0551 -0.0001 0 -1.57 0</pose>
     </include>
     <include>
       <uri>model://InductiveSensor3</uri>
-      <pose>-0.08415 -0.02 -0.0001 0 -1.57 0</pose>
+      <pose>-0.077265 -0.017 -0.0001 0 -1.57 0</pose>
     </include>
     <include>
       <uri>model://InductiveSensor5</uri>
-      <pose>0.045 0.03 -0.0001 0 -1.57 0</pose>
+      <pose>0.039 0.0245 -0.0001 0 -1.57 0</pose>
     </include>
     <joint name='EmptyPuzzle_JOINT_0' type='fixed'>
       <parent>EmptyPuzzle</parent>

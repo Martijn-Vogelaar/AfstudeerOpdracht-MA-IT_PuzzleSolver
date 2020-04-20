@@ -11,7 +11,6 @@ LiftPiece::~LiftPiece() {}
 
 void LiftPiece::entryAction(SubContext *)
 {
-    ROS_WARN("LIFTPIECE");
 }
 
 void LiftPiece::doActivity(SubContext *context)

@@ -28,6 +28,7 @@ void MoveEndEffectorStraightServer::goalCallback(const abb_controller::MoveEndEf
 
 bool MoveEndEffectorStraightServer::executeMovement(geometry_msgs::Pose goalPose)
 {
+
     bool success = false;
     std::vector<geometry_msgs::Pose> waypoints;
     waypoints.push_back(goalPose);
@@ -35,7 +36,6 @@ bool MoveEndEffectorStraightServer::executeMovement(geometry_msgs::Pose goalPose
     moveit_msgs::RobotTrajectory trajectory;
     const double jump_threshold = 0.0;
     const double eef_step = 0.01;
-    ROS_WARN("We plan");
 
     double fraction = move_group.computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
     success = fraction > -1.0;
@@ -45,19 +45,14 @@ bool MoveEndEffectorStraightServer::executeMovement(geometry_msgs::Pose goalPose
     {
 
         my_plan.trajectory_ = trajectory;
-        ROS_WARN("We start");
 
         status = move_group.execute(my_plan);
 
-        ROS_WARN("We end");
-    }else{
-        ROS_WARN("No bueno");
     }
     if (status != moveit_msgs::MoveItErrorCodes::SUCCESS)
     {
         success = false;
         ROS_ERROR("We failed and caught it!");
-        // executeMovement(goalPose);
     }
     return success;
 }

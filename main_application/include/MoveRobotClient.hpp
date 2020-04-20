@@ -50,7 +50,7 @@ public:
      * @param aRobotID is the number of the robot which should be moved
      * @param aGoal contains the position(x,y,z) and orientation(x,y,z,w) where the robot should move towards
      */
-    void MoveRobotStraight(uint8_t aRobotID, geometry_msgs::Pose aGoal);
+    bool MoveRobotStraight(uint8_t aRobotID, geometry_msgs::Pose aGoal);
 
 
     /**
@@ -61,7 +61,7 @@ public:
      * @param aRobotID is the id of the robot which should be moved
      * @param aGoal contains the position(x,y,z)
      */
-    void MoveRobotStraightNoRotation(uint8_t aRobotID, geometry_msgs::Point aGoal);
+    bool MoveRobotStraightNoRotation(uint8_t aRobotID, geometry_msgs::Point aGoal);
 
     /**
      * @brief MoveRobotNormal will move a robot with a certain id ito a given Pose.
@@ -71,7 +71,7 @@ public:
      * @param aRobotID is the id of the robot which should be moved
      * @param aGoal contains the position(x,y,z) and orientation(x,y,z,w) where the robot should move towards
      */
-    void MoveRobotNormal(uint8_t aRobotID, geometry_msgs::Pose aGoal);
+    bool MoveRobotNormal(uint8_t aRobotID, geometry_msgs::Pose aGoal);
 
 
     /**
@@ -81,7 +81,7 @@ public:
      * @param aOpen indicates whether the gripper should be opened or closed
      * @param aPuzzleID 
      */
-    void ControlGripper(uint8_t aRobotID, bool aOpen, uint8_t aPuzzleID);
+    bool ControlGripper(uint8_t aRobotID, bool aOpen, uint8_t aPuzzleID);
 
     /**
      * @brief RotateGripper will rotate the gripper with a certain angle
@@ -90,7 +90,8 @@ public:
      * @param aRotation indicates how many radians it should be rotated
      * @param async
      */
-    void RotateGripper(uint8_t aRobotID, double aRotation, bool async);
+    bool RotateGripper(uint8_t aRobotID, double aRotation, bool async);
+
 
     /**
      * @brief Construct a new Move Robot Client object

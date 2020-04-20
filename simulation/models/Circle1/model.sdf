@@ -3,7 +3,7 @@
   <model name='Circle1'>
     <link name='circle_1_link_0'>
       <inertial>
-        <mass>1</mass>
+        <mass>10</mass>
         <inertia>
           <ixx>0.166667</ixx>
           <ixy>0</ixy>

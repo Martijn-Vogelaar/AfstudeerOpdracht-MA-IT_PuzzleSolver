@@ -25,7 +25,7 @@ void ModelSpawner::spawnPuzzlePiece(Shape puzzlePiece)
         break;
     case Shape::RECTANGLE_1:
     case Shape::RECTANGLE_2:
-        outcome = std::system("roslaunch simulation square.launch");
+        outcome = std::system("roslaunch simulation rectangle.launch");
         break;
     default:
         outcome = 1;

@@ -3,6 +3,7 @@
 
 // Local
 #include "SubState.hpp"
+#include <stdint.h>
 
 class SubContext;
 /**
@@ -50,5 +51,8 @@ public:
      * "outside world".
      */
     void exitAction(SubContext *aSubContext) override;
+
+private:
+    static int8_t unableToRotateFurther;
 };
 #endif // ROTATE_PIECE_ON_PLACE_HPP

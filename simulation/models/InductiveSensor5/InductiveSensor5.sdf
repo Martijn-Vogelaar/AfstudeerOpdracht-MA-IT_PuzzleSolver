@@ -26,7 +26,7 @@
                         <far>0.1</far>
                     </clip>
                 </camera>
-                <visualize>false</visualize>
+                <visualize>true</visualize>
                 <always_on>1</always_on>
             </sensor>
         </link>

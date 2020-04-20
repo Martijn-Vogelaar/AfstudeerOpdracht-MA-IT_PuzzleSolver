@@ -51,5 +51,9 @@ public:
      * "outside world".
      */
     void exitAction(SubContext *aSubContext) override;
+
+private:
+    static int8_t unableToRotateFurther;
+
 };
 #endif // ROTATE_PIECE_IN_AIR_HPP

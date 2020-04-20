@@ -184,11 +184,9 @@
 
 
     <joint name="pickuppoint_JOINT_1" type="prismatic">
-        <origin rpy="0 0 1.57" xyz="-0.025 0 0" />
+        <origin rpy="0 -0.00005 1.57" xyz="-0.025 0 0" />
         <parent link="pickuppoint" />
         <child link="slider" />
-        <spring_stiffness>111.1111</spring_stiffness>
-        <spring_reference>1.0</spring_reference>
         <damping>0.0</damping>
         <friction>0.0</friction>
         <limit effort="0" lower="0" upper="0.23" velocity="0" />

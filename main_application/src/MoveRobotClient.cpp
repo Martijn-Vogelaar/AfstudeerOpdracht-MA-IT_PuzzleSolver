@@ -13,7 +13,7 @@ MoveRobotClient::~MoveRobotClient()
 {
 }
 
-void MoveRobotClient::MoveRobotStraight(uint8_t aRobotID, geometry_msgs::Pose aGoal)
+bool MoveRobotClient::MoveRobotStraight(uint8_t aRobotID, geometry_msgs::Pose aGoal)
 {
     abb_controller::MoveEndEffectorStraightGoal goal;
     goal.robotID = aRobotID;
@@ -29,13 +29,11 @@ void MoveRobotClient::MoveRobotStraight(uint8_t aRobotID, geometry_msgs::Pose aG
     actionClientStraight.waitForResult();
 
     abb_controller::MoveEndEffectorStraightResultConstPtr result = actionClientStraight.getResult();
-    if (result->success)
-    {
-        ROS_ERROR("Success");
-    }
+
+    return result->success;
 }
 
-void MoveRobotClient::MoveRobotStraightNoRotation(uint8_t aRobotID, geometry_msgs::Point aGoal)
+bool MoveRobotClient::MoveRobotStraightNoRotation(uint8_t aRobotID, geometry_msgs::Point aGoal)
 {
     abb_controller::MoveEndEffectorStraightNoRotationGoal goal;
     goal.robotID = aRobotID;
@@ -47,13 +45,11 @@ void MoveRobotClient::MoveRobotStraightNoRotation(uint8_t aRobotID, geometry_msg
     actionClientStraightNoRotation.waitForResult();
 
     abb_controller::MoveEndEffectorStraightNoRotationResultConstPtr result = actionClientStraightNoRotation.getResult();
-    if (result->success)
-    {
-        ROS_ERROR("Success");
-    }
+
+    return result->success;
 }
 
-void MoveRobotClient::MoveRobotNormal(uint8_t aRobotID, geometry_msgs::Pose aGoal)
+bool MoveRobotClient::MoveRobotNormal(uint8_t aRobotID, geometry_msgs::Pose aGoal)
 {
     abb_controller::MoveEndEffectorGoal goal;
     goal.robotID = aRobotID;
@@ -70,13 +66,11 @@ void MoveRobotClient::MoveRobotNormal(uint8_t aRobotID, geometry_msgs::Pose aGoa
     actionClientNormal.waitForResult();
 
     abb_controller::MoveEndEffectorResultConstPtr result = actionClientNormal.getResult();
-    if (result->success)
-    {
-        ROS_ERROR("Success");
-    }
+
+    return result->success;
 }
 
-void MoveRobotClient::ControlGripper(uint8_t aRobotID, bool aOpen, uint8_t aPuzzleID)
+bool MoveRobotClient::ControlGripper(uint8_t aRobotID, bool aOpen, uint8_t aPuzzleID)
 {
     abb_controller::ControlGripperGoal goal;
     goal.robotID = aRobotID;
@@ -87,13 +81,11 @@ void MoveRobotClient::ControlGripper(uint8_t aRobotID, bool aOpen, uint8_t aPuzz
     actionClientControlGripper.waitForResult();
 
     abb_controller::ControlGripperResultConstPtr result = actionClientControlGripper.getResult();
-    if (result->success)
-    {
-        ROS_ERROR("Success");
-    }
+
+    return result->success;
 }
 
-void MoveRobotClient::RotateGripper(uint8_t aRobotID, double aRotation, bool async)
+bool MoveRobotClient::RotateGripper(uint8_t aRobotID, double aRotation, bool async)
 {
     abb_controller::RotateGripperGoal goal;
     goal.robotID = aRobotID;
@@ -104,8 +96,6 @@ void MoveRobotClient::RotateGripper(uint8_t aRobotID, double aRotation, bool asy
     actionClientRotateGripper.waitForResult();
 
     abb_controller::RotateGripperResultConstPtr result = actionClientRotateGripper.getResult();
-    if (result->success)
-    {
-        ROS_ERROR("Success");
-    }
+
+    return result->success;
 }

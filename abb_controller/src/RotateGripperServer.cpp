@@ -18,6 +18,7 @@ void RotateGripperServer::goalCallback(const abb_controller::RotateGripperGoalCo
     joints = move_group.getCurrentJointValues();
     double originalJoint = joints.at(GRIPPER_JOINT_INDEX);
     joints.at(GRIPPER_JOINT_INDEX) += goal->rotation;
+    actionResult.success = false;
     if (joints.at(GRIPPER_JOINT_INDEX) > MAX_JOINT_BOUND)
     {
         ROS_WARN("Reached maximum bounds! Not moving!");
@@ -28,17 +29,21 @@ void RotateGripperServer::goalCallback(const abb_controller::RotateGripperGoalCo
         ROS_WARN("Reached minimumbounds! Not moving!");
         joints.at(GRIPPER_JOINT_INDEX) = originalJoint;
     }
-    move_group.setJointValueTarget(joints);
-    if (goal->async)
-    {
-        move_group.asyncMove();
-    }
     else
     {
-        move_group.move();
+        move_group.setJointValueTarget(joints);
+        if (goal->async)
+        {
+            move_group.asyncMove();
+            actionResult.success = true;
+        }
+        else
+        {
+            move_group.move();
+            actionResult.success = true;
+        }
     }
     actionResult.robotID = goal->robotID;
     actionResult.rotation = joints.at(GRIPPER_JOINT_INDEX);
-    actionResult.success = true;
     actionServer.setSucceeded(actionResult);
 }

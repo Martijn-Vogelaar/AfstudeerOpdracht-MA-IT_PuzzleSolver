@@ -20,16 +20,18 @@ const double pickupPointAngle = 2.105; //radians
 
 const double prepareDistance = 0.04; //cm
 
+const double scaleCorrection = 1.08910891089; //Original = 1.1 new is 1.01
+
 void initializePoses()
 {
     tf2::Quaternion pickupPointQuaternion;
     pickupPointQuaternion.setRPY(0, pickupPointAngle, M_PI / 2);
 
     tf2::Quaternion puzzleAngleCircle;
-    puzzleAngleCircle.setRPY(-M_PI, M_PI / 2, 0);
+    puzzleAngleCircle.setRPY(-M_PI / 2, M_PI / 2, 0);
 
     tf2::Quaternion puzzleAngleSquare;
-    puzzleAngleSquare.setRPY(0, M_PI / 2 , -M_PI/4*3);
+    puzzleAngleSquare.setRPY(0, M_PI / 2, -M_PI / 4 * 3);
 
     tf2::Quaternion puzzleAngleRectangle;
     puzzleAngleRectangle.setRPY(0, M_PI / 2, -M_PI / 4);
@@ -146,7 +148,6 @@ void initializePoses()
     Rectangle1Poses.pickupPose.orientation.z = pickupPointQuaternion.z();
     Rectangle1Poses.pickupPose.orientation.w = pickupPointQuaternion.w();
 
-
     Rectangle1Poses.placePose.position.x = 0.08635;
     Rectangle1Poses.placePose.position.y = 0.099;
     Rectangle1Poses.placePose.position.z = 0.01;
@@ -221,20 +222,31 @@ geometry_msgs::Pose getPuzzlePiecePreparePickup(Shape puzzlePiece)
 
 geometry_msgs::Pose getPuzzlePiecePlace(Shape puzzlePiece)
 {
+    geometry_msgs::Pose placePose;
     switch (puzzlePiece)
     {
     case Shape::CIRCLE:
-        return CirclePoses.placePose;
+        placePose = CirclePoses.placePose;
+        break;
     case Shape::SQUARE:
-        return SquarePoses.placePose;
+        placePose = SquarePoses.placePose;
+        break;
     case Shape::RECTANGLE_1:
-        return Rectangle1Poses.placePose;
+        placePose = Rectangle1Poses.placePose;
+        break;
     case Shape::RECTANGLE_2:
-        return Rectangle2Poses.placePose;
+        placePose = Rectangle2Poses.placePose;
+        break;
     default:
-        return CirclePoses.placePose;
+        placePose = CirclePoses.placePose;
+        break;
     }
-    return CirclePoses.pickupPose;
+
+    placePose.position.x = placePose.position.x / scaleCorrection;
+    placePose.position.y = placePose.position.y / scaleCorrection;
+    placePose.position.z = placePose.position.z / scaleCorrection;
+
+    return placePose;
 }
 
 geometry_msgs::Pose getPuzzlePiecePreparePlace(Shape puzzlePiece)
@@ -244,4 +256,3 @@ geometry_msgs::Pose getPuzzlePiecePreparePlace(Shape puzzlePiece)
     placePoint.position.z = placePoint.position.z + prepareDistance;
     return placePoint;
 }
-

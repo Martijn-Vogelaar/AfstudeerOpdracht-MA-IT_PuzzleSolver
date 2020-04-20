@@ -3,6 +3,9 @@
 #include "PlaceCorrectly/SubContext.hpp"
 #include "Shapes.hpp"
 #include <math.h>
+
+int8_t RotatePieceInAir::unableToRotateFurther = 1;
+
 RotatePieceInAir::RotatePieceInAir()
 {
 }
@@ -15,15 +18,27 @@ void RotatePieceInAir::entryAction(SubContext *)
 
 void RotatePieceInAir::doActivity(SubContext *context)
 {
+    bool movementMade = true;
     if (context->getParentContext()->getCurrentPuzzlePiece() == Shape::SQUARE)
     {
-        context->getMoveRobotClient().RotateGripper(0, M_PI/2, false);
+        if (!context->getMoveRobotClient().RotateGripper(0, unableToRotateFurther * M_PI / 2, false))
+        {
+            unableToRotateFurther = -unableToRotateFurther;
+            movementMade = false;
+        }
     }
     else
     {
-        context->getMoveRobotClient().RotateGripper(0, M_PI, false);
+        if (!context->getMoveRobotClient().RotateGripper(0, unableToRotateFurther * M_PI, false))
+        {
+            unableToRotateFurther = -unableToRotateFurther;
+            movementMade = false;
+        }
     }
-    context->setState(std::make_shared<PlacePieceInPuzzle>());
+    if (movementMade)
+    {
+        context->setState(std::make_shared<PlacePieceInPuzzle>());
+    }
 }
 
 void RotatePieceInAir::exitAction(SubContext *)
