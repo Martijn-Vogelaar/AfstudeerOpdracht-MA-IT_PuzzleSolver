@@ -4,6 +4,8 @@
 #include <memory>
 #include "MoveRobotClient.hpp"
 #include "Shapes.hpp"
+#include "Puzzle.hpp"
+#include "PuzzlePieceSpot.hpp"
 
 #define QUEUE_SIZE 1000
 
@@ -38,6 +40,13 @@ public:
   ros::NodeHandle &getNodeHandler();
 
   /**
+   * @brief Get the Puzzle object
+   * 
+   * @return Puzzle& 
+   */
+  Puzzle &getPuzzle();
+
+  /**
      * @brief Set the currentState by supplying a shared_ptr to a state.
      *
      * @param state
@@ -65,16 +74,18 @@ public:
   void setCurrentPuzzlePiece(Shape aPuzzlePiece);
 
   /**
-   * @brief Get the Current Puzzle Piece object
+   * @brief Get the Current Puzzle Piece Spot object
    * 
-   * @return Shape 
+   * @return PuzzlePieceSpot 
    */
-  Shape getCurrentPuzzlePiece();
+  PuzzlePieceSpot getCurrentPuzzlePieceSpot();
 
 private:
   MoveRobotClient moveRobotClient;
   ros::NodeHandle nodeHandler;
   std::shared_ptr<State> mCurrentState;
   Shape currentPuzzlePiece;
+  PuzzlePieceSpot currentPuzzlePieceSpot;
+  Puzzle puzzle;
 };
 #endif // Context_HPP

@@ -13,7 +13,6 @@ RotateGripperServer::~RotateGripperServer()
 
 void RotateGripperServer::goalCallback(const abb_controller::RotateGripperGoalConstPtr &goal)
 {
-    // move_group.setMaxVelocityScalingFactor(0.2);
     std::vector<double> joints;
     joints = move_group.getCurrentJointValues();
     double originalJoint = joints.at(GRIPPER_JOINT_INDEX);

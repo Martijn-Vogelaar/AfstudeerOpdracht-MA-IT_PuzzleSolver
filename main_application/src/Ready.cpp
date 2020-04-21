@@ -3,6 +3,7 @@
 #include "PutPieceInPickupPoint.hpp"
 #include "ModelSpawner.hpp"
 #include "PowerOff.hpp"
+#include "Poses.hpp"
 #include <thread>
 #include <memory>
 
@@ -13,8 +14,9 @@ Ready::Ready()
 
 Ready::~Ready() {}
 
-void Ready::entryAction(Context *)
+void Ready::entryAction(Context *context)
 {
+    context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE);
     ModelSpawner modelSpawner;
 
     if (visitCount == 0)

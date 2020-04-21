@@ -27,7 +27,10 @@ void SubContext::setState(const std::shared_ptr<SubState> &state)
   currentSubState->entryAction(this);
 }
 
-
+PuzzlePieceSpot SubContext::getCurrentPuzzlePieceSpot()
+{
+  return parentContext->getCurrentPuzzlePieceSpot();
+}
 
 void SubContext::run()
 {

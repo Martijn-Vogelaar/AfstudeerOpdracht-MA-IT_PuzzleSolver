@@ -3,7 +3,7 @@ project(main_application
 
 )
 
-add_compile_options(-std=c++14 -Wall -Wextra -Wconversion -O2)
+add_compile_options(-std=c++17 -Wall -Wextra -Wconversion -O2)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(catkin REQUIRED
@@ -98,6 +98,8 @@ src/PlacePiece.cpp
 src/MoveToUnexploredSpot.cpp
 src/ModelSpawner.cpp
 src/Shapes.cpp
+src/Puzzle.cpp
+src/PuzzlePieceSpot.cpp
 )
 
 add_dependencies( lib_main

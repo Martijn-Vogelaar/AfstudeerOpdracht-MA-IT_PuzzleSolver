@@ -16,7 +16,7 @@ CheckCorrectlyRotated::~CheckCorrectlyRotated() {}
 void CheckCorrectlyRotated::entryAction(SubContext *context)
 {
         subContext = context;
-        puzzlePieceID = puzzlePieceToInt(context->getParentContext()->getCurrentPuzzlePiece());
+        puzzlePieceID = puzzlePieceToInt(context->getCurrentPuzzlePieceSpot().getShape());
         if (puzzlePieceID == RECTANGLE_2)
         {
                 puzzlePieceID = RECTANGLE_1;
@@ -26,7 +26,7 @@ void CheckCorrectlyRotated::entryAction(SubContext *context)
 
 void CheckCorrectlyRotated::doActivity(SubContext *context)
 {
-        if (nonActivateCount > NR_OF_MEASUREMENTS && context->getParentContext()->getCurrentPuzzlePiece() != Shape::CIRCLE)
+        if (nonActivateCount > NR_OF_MEASUREMENTS && context->getCurrentPuzzlePieceSpot().getShape() != Shape::CIRCLE)
         {
                 context->setState(std::make_shared<LiftPiece>());
         }
@@ -47,10 +47,10 @@ void CheckCorrectlyRotated::measurementCallback(const inductive_sensor::inductiv
         {
                 if (msg->activated && msg->id == puzzlePieceID)
                 {
-                        ROS_WARN("PuzzlePieceCorrect!");
                         abb_controller::StopRobot msg;
                         msg.stop = true;
                         stopRobotPublisher.publish(msg);
+                        subContext->getParentContext()->getPuzzle().setSpotFilled(subContext->getCurrentPuzzlePieceSpot().getID());
                         subContext->getParentContext()->setState(std::make_shared<ReleasePiece>());
                 }
                 else

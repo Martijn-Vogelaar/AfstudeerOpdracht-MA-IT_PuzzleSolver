@@ -17,8 +17,8 @@ void GrabPiece::entryAction(Context *)
 
 void GrabPiece::doActivity(Context *context)
 {
-    context->getMoveRobotClient().ControlGripper(0, true, puzzlePieceToInt(context->getCurrentPuzzlePiece()));
-    ros::Duration(0.2).sleep();
+    context->getMoveRobotClient().ControlGripper(0, true, puzzlePieceToInt(context->getCurrentPuzzlePieceSpot().getShape()));
+    // ros::Duration(0.2).sleep();
     context->setState(std::make_shared<MoveToUnexploredSpot>());
 }
 

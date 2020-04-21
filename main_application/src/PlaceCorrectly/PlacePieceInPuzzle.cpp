@@ -14,14 +14,14 @@ PlacePieceInPuzzle::~PlacePieceInPuzzle() {}
 
 void PlacePieceInPuzzle::entryAction(SubContext *context)
 {
-    geometry_msgs::Pose goal = getPuzzlePiecePlace(context->getParentContext()->getCurrentPuzzlePiece());
+    geometry_msgs::Pose goal = context->getParentContext()->getCurrentPuzzlePieceSpot().getPuzzlePiecePlace();
     geometry_msgs::Pose placePiece = tf2Handler.calculatePosition(PUZZLE, BASE, goal);
     context->getMoveRobotClient().MoveRobotStraightNoRotation(0, placePiece.position);
 }
 
 void PlacePieceInPuzzle::doActivity(SubContext *context)
 {
-    if (context->getParentContext()->getCurrentPuzzlePiece() == Shape::CIRCLE)
+    if (context->getCurrentPuzzlePieceSpot().getShape() == Shape::CIRCLE)
     {
         context->setState(std::make_shared<RotatePieceOnPlace>());
     }
