@@ -1,15 +1,15 @@
 <?xml version='1.0'?>
 <sdf version="1.6">
-    <model name='sensor/5'>
-        <pose>0.0 0.0 0 0 0 0</pose>
+    <model name='sensor/4'>
+        <pose>0.0 0.0 0.5 0 0 0</pose>
         <static>true</static>
         <link name="link">
             <sensor name="webcam" type="camera">
-                <update_rate>25.0</update_rate>
+                <update_rate>10.0</update_rate>
                 <plugin name="webcam_plugin" filename="libgazebo_ros_camera.so">
                     <imageTopicName>image_raw</imageTopicName>
                     <robotNamespace>camera_plugin</robotNamespace>
-                    <cameraName>webcam5</cameraName>
+                    <cameraName>webcam4</cameraName>
                 </plugin>
                 <camera>
                     <save enabled="false">

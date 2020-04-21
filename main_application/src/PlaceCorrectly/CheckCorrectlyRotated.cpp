@@ -16,11 +16,6 @@ CheckCorrectlyRotated::~CheckCorrectlyRotated() {}
 void CheckCorrectlyRotated::entryAction(SubContext *context)
 {
         subContext = context;
-        puzzlePieceID = puzzlePieceToInt(context->getCurrentPuzzlePieceSpot().getShape());
-        if (puzzlePieceID == RECTANGLE_2)
-        {
-                puzzlePieceID = RECTANGLE_1;
-        }
         inductiveMeasurementSubscriber = context->getNodeHandler().subscribe(INDUCTIVE_TOPIC, QUEUE_SIZE, &CheckCorrectlyRotated::measurementCallback, this);
 }
 
@@ -45,7 +40,7 @@ void CheckCorrectlyRotated::measurementCallback(const inductive_sensor::inductiv
 {
         if (std::find(std::begin(allowedSensorIDs), std::end(allowedSensorIDs), msg->id) != std::end(allowedSensorIDs))
         {
-                if (msg->activated && msg->id == puzzlePieceID)
+                if (msg->activated && msg->id == subContext->getParentContext()->getCurrentPuzzlePieceSpot().getID())
                 {
                         abb_controller::StopRobot msg;
                         msg.stop = true;

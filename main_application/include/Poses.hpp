@@ -24,7 +24,8 @@ const std::string BASE = "base";
 const std::string PICKUP_POINT = "pickuppoint";
 const std::string PUZZLE = "EmptyPuzzle";
 
-extern PuzzlePiecePoses CirclePoses;
+extern PuzzlePiecePoses Circle1Poses;
+extern PuzzlePiecePoses Circle2Poses;
 extern PuzzlePiecePoses SquarePoses;
 extern PuzzlePiecePoses Rectangle1Poses;
 extern PuzzlePiecePoses Rectangle2Poses;

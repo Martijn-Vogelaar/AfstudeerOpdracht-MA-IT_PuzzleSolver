@@ -11,7 +11,8 @@ geometry_msgs::Pose PICKUP_POINT_MOVE_SLIDER;
 geometry_msgs::Pose PICKUP_POINT_MOVE_PIECE;
 geometry_msgs::Pose ROBOT_HOME_POSE;
 
-PuzzlePiecePoses CirclePoses;
+PuzzlePiecePoses Circle1Poses;
+PuzzlePiecePoses Circle2Poses;
 PuzzlePiecePoses SquarePoses;
 PuzzlePiecePoses Rectangle1Poses;
 PuzzlePiecePoses Rectangle2Poses;
@@ -97,24 +98,46 @@ void initializePoses()
     ROBOT_HOME_POSE.orientation.w = 1.0;
 
     /*************************************
-     * Circle POSES                      *
+     * Circle1 POSES                      *
      *************************************/
 
-    CirclePoses.pickupPose.position.x = 0;
-    CirclePoses.pickupPose.position.y = 0.2515;
-    CirclePoses.pickupPose.position.z = 0.092;
-    CirclePoses.pickupPose.orientation.x = pickupPointQuaternion.x();
-    CirclePoses.pickupPose.orientation.y = pickupPointQuaternion.y();
-    CirclePoses.pickupPose.orientation.z = pickupPointQuaternion.z();
-    CirclePoses.pickupPose.orientation.w = pickupPointQuaternion.w();
+    Circle1Poses.pickupPose.position.x = 0;
+    Circle1Poses.pickupPose.position.y = 0.2515;
+    Circle1Poses.pickupPose.position.z = 0.092;
+    Circle1Poses.pickupPose.orientation.x = pickupPointQuaternion.x();
+    Circle1Poses.pickupPose.orientation.y = pickupPointQuaternion.y();
+    Circle1Poses.pickupPose.orientation.z = pickupPointQuaternion.z();
+    Circle1Poses.pickupPose.orientation.w = pickupPointQuaternion.w();
 
-    CirclePoses.placePose.position.x = -0.0735;
-    CirclePoses.placePose.position.y = 0.1430;
-    CirclePoses.placePose.position.z = 0.018;
-    CirclePoses.placePose.orientation.x = puzzleAngleCircle.x();
-    CirclePoses.placePose.orientation.y = puzzleAngleCircle.y();
-    CirclePoses.placePose.orientation.z = puzzleAngleCircle.z();
-    CirclePoses.placePose.orientation.w = puzzleAngleCircle.w();
+    Circle1Poses.placePose.position.x = -0.0735;
+    Circle1Poses.placePose.position.y = 0.1430;
+    Circle1Poses.placePose.position.z = 0.018;
+    Circle1Poses.placePose.orientation.x = puzzleAngleCircle.x();
+    Circle1Poses.placePose.orientation.y = puzzleAngleCircle.y();
+    Circle1Poses.placePose.orientation.z = puzzleAngleCircle.z();
+    Circle1Poses.placePose.orientation.w = puzzleAngleCircle.w();
+
+
+     /*************************************
+     * Circle2 POSES                      *
+     *************************************/
+
+    Circle2Poses.pickupPose.position.x = 0;
+    Circle2Poses.pickupPose.position.y = 0.2515;
+    Circle2Poses.pickupPose.position.z = 0.092;
+    Circle2Poses.pickupPose.orientation.x = pickupPointQuaternion.x();
+    Circle2Poses.pickupPose.orientation.y = pickupPointQuaternion.y();
+    Circle2Poses.pickupPose.orientation.z = pickupPointQuaternion.z();
+    Circle2Poses.pickupPose.orientation.w = pickupPointQuaternion.w();
+
+    Circle2Poses.placePose.position.x = 0.0787;
+    Circle2Poses.placePose.position.y = -0.120;
+    Circle2Poses.placePose.position.z = 0.018;
+    Circle2Poses.placePose.orientation.x = puzzleAngleCircle.x();
+    Circle2Poses.placePose.orientation.y = puzzleAngleCircle.y();
+    Circle2Poses.placePose.orientation.z = puzzleAngleCircle.z();
+    Circle2Poses.placePose.orientation.w = puzzleAngleCircle.w();
+
 
     /*************************************
      * Square POSES                      *
@@ -199,7 +222,7 @@ geometry_msgs::Pose getPuzzlePiecePickup(Shape puzzlePiece)
     switch (puzzlePiece)
     {
     case Shape::CIRCLE:
-        return CirclePoses.pickupPose;
+        return Circle1Poses.pickupPose;
     case Shape::SQUARE:
         return SquarePoses.pickupPose;
     case Shape::RECTANGLE_1:
@@ -207,9 +230,9 @@ geometry_msgs::Pose getPuzzlePiecePickup(Shape puzzlePiece)
     case Shape::RECTANGLE_2:
         return Rectangle2Poses.pickupPose;
     default:
-        return CirclePoses.pickupPose;
+        return Circle1Poses.pickupPose;
     }
-    return CirclePoses.pickupPose;
+    return Circle1Poses.pickupPose;
 }
 
 geometry_msgs::Pose getPuzzlePiecePreparePickup(Shape puzzlePiece)
@@ -226,7 +249,7 @@ geometry_msgs::Pose getPuzzlePiecePlace(Shape puzzlePiece)
     switch (puzzlePiece)
     {
     case Shape::CIRCLE:
-        placePose = CirclePoses.placePose;
+        placePose = Circle1Poses.placePose;
         break;
     case Shape::SQUARE:
         placePose = SquarePoses.placePose;
@@ -238,7 +261,7 @@ geometry_msgs::Pose getPuzzlePiecePlace(Shape puzzlePiece)
         placePose = Rectangle2Poses.placePose;
         break;
     default:
-        placePose = CirclePoses.placePose;
+        placePose = Circle1Poses.placePose;
         break;
     }
 

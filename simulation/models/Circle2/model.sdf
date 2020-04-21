@@ -19,7 +19,7 @@
       <kinematic>0</kinematic>
       <enable_wind>0</enable_wind>
       <visual name='visual'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose frame=''>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
             <uri>model://Circle2/Circle2.stl</uri>
@@ -50,14 +50,13 @@
         <geometry>
           <mesh>
             <uri>model://Circle2/Circle2.stl</uri>
-            <scale>0.95 0.95 0.5</scale>
+            <scale>0.98 0.98 0.5</scale>
           </mesh>
         </geometry>
         <surface>
           <friction>
             <ode>
-              <mu>0.01</mu>
-              <mu2>0.01</mu2>
+              <mu>0.1</mu>
               <fdir1>0 0 0</fdir1>
               <slip1>0</slip1>
               <slip2>0</slip2>
@@ -79,7 +78,7 @@
           <contact>
             <collide_without_contact>0</collide_without_contact>
             <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
-            <collide_bitmask>1</collide_bitmask>
+            <collide_bitmask>0x02</collide_bitmask>
             <ode>
               <soft_cfm>0</soft_cfm>
               <soft_erp>0.2</soft_erp>
@@ -111,18 +110,18 @@
           <iyz>0</iyz>
           <izz>0.125</izz>
         </inertia>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose frame=''>0 0 0 0 0 0</pose>
       </inertial>
       <gravity>1</gravity>
       <self_collide>0</self_collide>
       <kinematic>0</kinematic>
       <enable_wind>0</enable_wind>
       <visual name='visual'>
-        <pose frame=''>0 0.05 0 0 -0 0</pose>
+        <pose frame=''>0 0.05 0 0 0 0</pose>
         <geometry>
           <cylinder>
             <radius>0.0075</radius>
-            <length>0.01251</length>
+            <length>0.0126</length>
           </cylinder>
         </geometry>
         <material>
@@ -146,7 +145,7 @@
     <joint name='circle_2_link_0_JOINT_0' type='fixed'>
       <parent>circle_2_link_0</parent>
       <child>circle_2_link_1</child>
-      <pose frame=''>0 0 0 0 -0 0</pose>
+      <pose frame=''>0 0 0 0 0 0</pose>
       <physics>
         <ode>
           <limit>

@@ -3,6 +3,7 @@
 #include <algorithm>
 #include "UnknownPieceInPickupPoint.hpp"
 #include "MoveToRecognizedPiece.hpp"
+#include "PowerOff.hpp"
 #include <memory>
 
 RecognizePiece::RecognizePiece() : equalMeasurementCount(0), currentMeasurement(0)
@@ -16,15 +17,25 @@ void RecognizePiece::entryAction(Context *context)
     capacitiveMeasurementSubscriber = context->getNodeHandler().subscribe(CAPACITIVE_TOPIC, QUEUE_SIZE, &RecognizePiece::measurementCallback, this);
 }
 
-void RecognizePiece::doActivity(Context* context)
+void RecognizePiece::doActivity(Context *context)
 {
     if (equalMeasurementCount >= NUMBER_OF_EQUAL_MEASUREMENTS)
     {
-        if(std::find(std::begin(allowedMeasurements), std::end(allowedMeasurements), currentMeasurement) != std::end(allowedMeasurements)){
+        if (std::find(std::begin(allowedMeasurements), std::end(allowedMeasurements), currentMeasurement) != std::end(allowedMeasurements))
+        {
             ROS_ERROR(std::string("Found shape:" + std::to_string(currentMeasurement)).c_str());
             context->setCurrentPuzzlePiece(currentMeasurement);
-            context->setState(std::make_shared<MoveToRecognizedPiece>());
-        }else{
+            if (context->getCurrentPuzzlePieceSpot().getShape() != Shape::UNKNOWN)
+            {
+                context->setState(std::make_shared<MoveToRecognizedPiece>());
+            }
+            else
+            {
+                context->setState(std::make_shared<PowerOff>());
+            }
+        }
+        else
+        {
             context->setState(std::make_shared<UnknownPieceInPickupPoint>());
         }
     }
@@ -46,7 +57,7 @@ void RecognizePiece::measurementCallback(const capacitive_sensor::capacitive_sen
         else
         {
             equalMeasurementCount = 0;
-            currentMeasurement =  msg->value;
+            currentMeasurement = msg->value;
         }
     }
 }

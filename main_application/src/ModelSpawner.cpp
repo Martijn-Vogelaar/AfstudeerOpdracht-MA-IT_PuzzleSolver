@@ -11,14 +11,20 @@ ModelSpawner::~ModelSpawner()
 
 void ModelSpawner::spawnPuzzlePiece(Shape puzzlePiece)
 {
+    static uint8_t circleCount = 0;
     int outcome;
     switch (puzzlePiece)
     {
     case Shape::CIRCLE:
-        outcome = std::system("roslaunch simulation circle1.launch");
-        break;
-    case Shape::CIRCLE2:
-        outcome = std::system("roslaunch simulation circle2.launch");
+        if (circleCount == 0)
+        {
+            outcome = std::system("roslaunch simulation circle1.launch");
+            circleCount++;
+        }
+        else
+        {
+            outcome = std::system("roslaunch simulation circle2.launch");
+        }
         break;
     case Shape::SQUARE:
         outcome = std::system("roslaunch simulation square.launch");
