@@ -120,10 +120,10 @@
       <kinematic>0</kinematic>
       <enable_wind>0</enable_wind>
       <visual name='visual'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
+        <pose frame=''>0 0 -0.005 0 0 0</pose>
         <geometry>
           <box>
-            <size>0.42 0.30 0.001</size>
+            <size>0.4242 0.30 0.011</size>
           </box>
         </geometry>
         <material>
@@ -146,10 +146,10 @@
       <collision name='collision'>
         <laser_retro>0</laser_retro>
         <max_contacts>10</max_contacts>
-        <pose frame=''>0 0 0 0 0 0</pose>
+        <pose frame=''>0 0 -0.005 0 0 0</pose>
         <geometry>
           <box>
-            <size>0.42 0.30 0.001</size>
+            <size>0.4242 0.30 0.011</size>
           </box>
         </geometry>
         <surface>

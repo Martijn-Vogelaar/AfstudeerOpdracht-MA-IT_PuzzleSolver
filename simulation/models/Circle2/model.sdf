@@ -5,12 +5,12 @@
       <inertial>
         <mass>10</mass>
         <inertia>
-          <ixx>0.166667</ixx>
+          <ixx>0.014604168877626544</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.166667</iyy>
+          <iyy>0.014604168877626544</iyy>
           <iyz>0</iyz>
-          <izz>0.166667</izz>
+          <izz>0.028166671057542336</izz>
         </inertia>
         <pose frame=''>0 0 0 0 0 0</pose>
       </inertial>
@@ -23,7 +23,7 @@
         <geometry>
           <mesh>
             <uri>model://Circle2/Circle2.stl</uri>
-            <scale>1 1 0.5</scale>
+            <scale>0.98 0.98 0.5</scale>
           </mesh>
         </geometry>
         <material>
@@ -121,7 +121,7 @@
         <geometry>
           <cylinder>
             <radius>0.0075</radius>
-            <length>0.0126</length>
+            <length>0.012551</length>
           </cylinder>
         </geometry>
         <material>

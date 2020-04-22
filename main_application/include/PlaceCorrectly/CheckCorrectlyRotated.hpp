@@ -18,7 +18,7 @@
 
 #define NR_OF_MEASUREMENTS 15
 
-#define NR_OF_MEASUREMENTS_TIMEOUT 150
+#define NR_OF_MEASUREMENTS_TIMEOUT 230
 
 
 static const int allowedSensorIDs[] = {1, 2, 3, 4};

@@ -130,8 +130,8 @@ void initializePoses()
     Circle2Poses.pickupPose.orientation.z = pickupPointQuaternion.z();
     Circle2Poses.pickupPose.orientation.w = pickupPointQuaternion.w();
 
-    Circle2Poses.placePose.position.x = 0.0787;
-    Circle2Poses.placePose.position.y = -0.120;
+    Circle2Poses.placePose.position.x = 0.0792;
+    Circle2Poses.placePose.position.y = -0.118;
     Circle2Poses.placePose.position.z = 0.018;
     Circle2Poses.placePose.orientation.x = puzzleAngleCircle.x();
     Circle2Poses.placePose.orientation.y = puzzleAngleCircle.y();

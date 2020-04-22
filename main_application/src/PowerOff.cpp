@@ -10,11 +10,11 @@ PowerOff::~PowerOff() {}
 
 void PowerOff::entryAction(Context *)
 {
+    ROS_ERROR("Poweroff!");
 }
 
 void PowerOff::doActivity(Context *)
 {
-    ROS_ERROR("Poweroff!");
 }
 
 void PowerOff::exitAction(Context *)

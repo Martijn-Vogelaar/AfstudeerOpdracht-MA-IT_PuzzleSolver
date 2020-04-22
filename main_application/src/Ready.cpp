@@ -21,7 +21,7 @@ void Ready::entryAction(Context *context)
 
     if (visitCount == 0)
     {
-        modelSpawner.spawnPuzzlePiece(Shape::RECTANGLE_1);
+        modelSpawner.spawnPuzzlePiece(Shape::CIRCLE);
     }
     else if (visitCount == 1)
     {
@@ -29,7 +29,7 @@ void Ready::entryAction(Context *context)
     }
     else if (visitCount == 2)
     {
-        modelSpawner.spawnPuzzlePiece(Shape::CIRCLE);
+        modelSpawner.spawnPuzzlePiece(Shape::RECTANGLE_1);
     }
     else if (visitCount == 3)
     {
