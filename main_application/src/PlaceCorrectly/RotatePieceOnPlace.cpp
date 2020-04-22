@@ -17,6 +17,7 @@ void RotatePieceOnPlace::entryAction(SubContext *context)
     if (!context->getMoveRobotClient().RotateGripper(0, unableToRotateFurther * M_PI / 1, true))
     {
         unableToRotateFurther = -unableToRotateFurther;
+        context->setState(std::make_shared<RotatePieceOnPlace>());
     }
 }
 

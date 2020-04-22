@@ -21,10 +21,12 @@ void ControlGripperServer::goalCallback(const abb_controller::ControlGripperGoal
 {
     static bool secondCircle = false;
     bool open = goal->open;
-
     gazebo_ros_link_attacher::Attach srv;
-    srv.request.model_name_1 = "abb_irb120_3_58";
-    srv.request.link_name_1 = "link_6";
+    srv.request.model_name_1 = "EmptyPuzzle";
+    srv.request.link_name_1 = "bottom_plate";
+
+    // srv.request.model_name_1 = "abb_irb120_3_58";
+    // srv.request.link_name_1 = "link_6";
     if (goal->puzzleID == 1 && !secondCircle)
     {
         srv.request.model_name_2 = "Circle1";
@@ -48,6 +50,8 @@ void ControlGripperServer::goalCallback(const abb_controller::ControlGripperGoal
     std_msgs::Float64 message;
     if (open)
     {
+        srv.request.model_name_1 = "abb_irb120_3_58";
+        srv.request.link_name_1 = "link_6";
         message.data = 100;
         if (attachClient.call(srv))
         {
@@ -66,8 +70,12 @@ void ControlGripperServer::goalCallback(const abb_controller::ControlGripperGoal
             secondCircle = true;
         }
 
-        if (detachClient.call(srv))
+        if (attachClient.call(srv))
         {
+
+            srv.request.model_name_1 = "abb_irb120_3_58";
+            srv.request.link_name_1 = "link_6";
+            detachClient.call(srv);
             ROS_INFO("Detached!");
         }
         else
