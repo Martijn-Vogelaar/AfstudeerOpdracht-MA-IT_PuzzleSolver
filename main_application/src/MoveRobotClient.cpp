@@ -85,12 +85,13 @@ bool MoveRobotClient::ControlGripper(uint8_t aRobotID, bool aOpen, uint8_t aPuzz
     return result->success;
 }
 
-bool MoveRobotClient::RotateGripper(uint8_t aRobotID, double aRotation, bool async)
+bool MoveRobotClient::RotateGripper(uint8_t aRobotID, double aRotation, bool async, bool increase)
 {
     abb_controller::RotateGripperGoal goal;
     goal.robotID = aRobotID;
     goal.rotation = aRotation;
     goal.async = async;
+    goal.increase = increase;
     actionClientRotateGripper.sendGoal(goal);
 
     actionClientRotateGripper.waitForResult();

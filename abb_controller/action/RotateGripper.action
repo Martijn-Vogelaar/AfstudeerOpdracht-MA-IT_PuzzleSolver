@@ -1,6 +1,7 @@
 #goal
 uint8 robotID
 float64 rotation
+bool increase
 bool async
 ---
 #result

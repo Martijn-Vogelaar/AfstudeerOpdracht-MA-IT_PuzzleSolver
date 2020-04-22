@@ -18,12 +18,12 @@ void ModelSpawner::spawnPuzzlePiece(Shape puzzlePiece)
     case Shape::CIRCLE:
         if (circleCount == 0)
         {
-            outcome = std::system("roslaunch simulation circle1.launch");
+            outcome = std::system("roslaunch simulation circle2.launch");
             circleCount++;
         }
         else
         {
-            outcome = std::system("roslaunch simulation circle2.launch");
+            outcome = std::system("roslaunch simulation circle1.launch");
         }
         break;
     case Shape::SQUARE:

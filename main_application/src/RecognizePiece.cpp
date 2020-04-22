@@ -25,7 +25,7 @@ void RecognizePiece::doActivity(Context *context)
         {
             ROS_ERROR(std::string("Found shape:" + std::to_string(currentMeasurement)).c_str());
             context->setCurrentPuzzlePiece(currentMeasurement);
-            if (context->getCurrentPuzzlePieceSpot().getShape() != Shape::UNKNOWN)
+            if (context->getCurrentShape() != Shape::UNKNOWN)
             {
                 context->setState(std::make_shared<MoveToRecognizedPiece>());
             }

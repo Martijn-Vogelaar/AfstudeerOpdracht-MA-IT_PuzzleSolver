@@ -89,8 +89,9 @@ public:
      * @param aRobotID is the id of the robot which should be rotated
      * @param aRotation indicates how many radians it should be rotated
      * @param async
+     * @param increase Define whether it should be increased or moved to the given rotation
      */
-    bool RotateGripper(uint8_t aRobotID, double aRotation, bool async);
+    bool RotateGripper(uint8_t aRobotID, double aRotation, bool async, bool increase);
 
 
     /**

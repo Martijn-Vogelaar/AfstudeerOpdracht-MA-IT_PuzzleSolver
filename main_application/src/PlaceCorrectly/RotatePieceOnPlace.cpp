@@ -1,10 +1,10 @@
 #include "PlaceCorrectly/RotatePieceOnPlace.hpp"
 #include "PlaceCorrectly/CheckCorrectlyRotated.hpp"
 #include "PlaceCorrectly/SubContext.hpp"
+#include "PlacePiece.hpp"
+#include "Poses.hpp"
 #include <memory>
 #include <math.h>
-
-int8_t RotatePieceOnPlace::unableToRotateFurther = 1;
 
 RotatePieceOnPlace::RotatePieceOnPlace()
 {
@@ -14,10 +14,14 @@ RotatePieceOnPlace::~RotatePieceOnPlace() {}
 
 void RotatePieceOnPlace::entryAction(SubContext *context)
 {
-    if (!context->getMoveRobotClient().RotateGripper(0, unableToRotateFurther * M_PI / 1, true))
+    if (!context->getMoveRobotClient().RotateGripper(0, M_PI, true, true))
     {
-        unableToRotateFurther = -unableToRotateFurther;
-        context->setState(std::make_shared<RotatePieceOnPlace>());
+        ROS_ERROR("Move to other place!");
+        context->getParentContext()->getPuzzle().setSpotExplored(context->getCurrentPuzzlePieceSpot().getID());
+        geometry_msgs::Pose goal = context->getCurrentPuzzlePieceSpot().getPuzzlePiecePreparePlace();
+        geometry_msgs::Pose placePiecePrepare = tf2Handler.calculatePosition(PUZZLE, BASE, goal);
+        context->getMoveRobotClient().MoveRobotStraightNoRotation(0, placePiecePrepare.position);
+        context->getParentContext()->setState(std::make_shared<PlacePiece>());
     }
 }
 

@@ -5,7 +5,7 @@
 #include "PuzzlePieceSpot.hpp"
 #include <tf2/LinearMath/Quaternion.h>
 
-Context::Context() : currentPuzzlePiece(Shape::UNKNOWN), currentPuzzlePieceSpot(PuzzlePieceSpot())
+Context::Context() : currentPuzzlePieceShape(Shape::UNKNOWN), currentPuzzlePieceSpot(PuzzlePieceSpot())
 {
   setState(std::make_shared<Init>());
   puzzle.addPuzzlePieceSpot(PuzzlePieceSpot(Shape::RECTANGLE_1, Rectangle1Poses.placePose, 1));
@@ -43,23 +43,26 @@ void Context::setState(const std::shared_ptr<State> &state)
 
 void Context::setCurrentPuzzlePiece(uint8_t aPuzzlePiece)
 {
-  if (aPuzzlePiece == 0)
+  currentPuzzlePieceShape = puzzlePieceMeasurementToEnum(aPuzzlePiece);
+}
+
+void Context::findEmptyUnexploredPuzzleSpot()
+{
+  std::optional<PuzzlePieceSpot> foundSpot = puzzle.getEmptyPuzzleSpot(currentPuzzlePieceShape);
+  if (foundSpot) // Check if a spot was found
   {
-    currentPuzzlePieceSpot = PuzzlePieceSpot();
-  }
-  else
-  {
-    std::optional<PuzzlePieceSpot> foundSpot = puzzle.getEmptyPuzzleSpot(puzzlePieceMeasurementToEnum(aPuzzlePiece));
-    if (foundSpot) // Check if a spot was found
-    {
-      currentPuzzlePieceSpot = *foundSpot;
-    }
+    currentPuzzlePieceSpot = *foundSpot;
   }
 }
 
 PuzzlePieceSpot Context::getCurrentPuzzlePieceSpot()
 {
   return currentPuzzlePieceSpot;
+}
+
+Shape Context::getCurrentShape()
+{
+  return currentPuzzlePieceShape;
 }
 
 void Context::run()

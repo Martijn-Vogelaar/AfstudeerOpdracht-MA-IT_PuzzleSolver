@@ -25,6 +25,10 @@ public:
     
     std::optional<PuzzlePieceSpot> getEmptyPuzzleSpot(Shape shape);
 
+    void resetExplored();
+
+    void setSpotExplored(uint8_t puzzleID);
+
     void setSpotFilled(uint8_t puzzleID);
 
     void addPuzzlePieceSpot(PuzzlePieceSpot puzzlePieceSpot);

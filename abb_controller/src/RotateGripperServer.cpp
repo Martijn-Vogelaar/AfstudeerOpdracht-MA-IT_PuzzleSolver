@@ -16,7 +16,14 @@ void RotateGripperServer::goalCallback(const abb_controller::RotateGripperGoalCo
     std::vector<double> joints;
     joints = move_group.getCurrentJointValues();
     double originalJoint = joints.at(GRIPPER_JOINT_INDEX);
-    joints.at(GRIPPER_JOINT_INDEX) += goal->rotation;
+    if (goal->increase)
+    {
+        joints.at(GRIPPER_JOINT_INDEX) += goal->rotation;
+    }
+    else
+    {
+        joints.at(GRIPPER_JOINT_INDEX) = goal->rotation;
+    }
     actionResult.success = false;
     if (joints.at(GRIPPER_JOINT_INDEX) > MAX_JOINT_BOUND)
     {

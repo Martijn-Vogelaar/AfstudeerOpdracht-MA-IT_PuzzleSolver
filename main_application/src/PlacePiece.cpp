@@ -13,6 +13,7 @@ PlacePiece::~PlacePiece() {}
 
 void PlacePiece::entryAction(Context *context)
 {
+    context->findEmptyUnexploredPuzzleSpot();
     geometry_msgs::Pose goal = context->getCurrentPuzzlePieceSpot().getPuzzlePiecePreparePlace();
     geometry_msgs::Pose placePiecePrepare = tf2Handler.calculatePosition(PUZZLE, BASE, goal);
     context->getMoveRobotClient().MoveRobotNormal(0, placePiecePrepare);

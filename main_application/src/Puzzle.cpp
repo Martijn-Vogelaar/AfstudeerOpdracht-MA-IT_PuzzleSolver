@@ -6,9 +6,9 @@ Puzzle::~Puzzle() {}
 
 std::optional<PuzzlePieceSpot> Puzzle::getEmptyPuzzleSpot(Shape shape)
 {
-    for (PuzzlePieceSpot& spot : puzzleSpots)
+    for (PuzzlePieceSpot &spot : puzzleSpots)
     {
-        if (spot.getShape() == shape && !spot.isFilled())
+        if (spot.getShape() == shape && !spot.isFilled() && !spot.isExplored())
         {
             return spot;
         }
@@ -17,9 +17,28 @@ std::optional<PuzzlePieceSpot> Puzzle::getEmptyPuzzleSpot(Shape shape)
     return std::nullopt;
 }
 
+void Puzzle::resetExplored()
+{
+    for (PuzzlePieceSpot &spot : puzzleSpots)
+    {
+        spot.setExplored(false);
+    }
+}
+
+void Puzzle::setSpotExplored(uint8_t puzzleID)
+{
+    for (PuzzlePieceSpot &spot : puzzleSpots)
+    {
+        if (spot.getID() == puzzleID)
+        {
+            spot.setExplored(true);
+        }
+    }
+}
+
 void Puzzle::setSpotFilled(uint8_t puzzleID)
 {
-    for (PuzzlePieceSpot& spot : puzzleSpots)
+    for (PuzzlePieceSpot &spot : puzzleSpots)
     {
         if (spot.getID() == puzzleID)
         {

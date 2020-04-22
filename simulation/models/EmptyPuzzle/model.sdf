@@ -209,7 +209,7 @@
     </include>
     <include>
       <uri>model://InductiveSensor3</uri>
-      <pose>0.0675 -0.0551 -0.0001 0 -1.57 0</pose>
+      <pose>0.0675 -0.0571 -0.0001 0 -1.57 0</pose>
     </include>
     <include>
       <uri>model://InductiveSensor4</uri>

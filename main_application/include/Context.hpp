@@ -67,11 +67,10 @@ public:
   void setCurrentPuzzlePiece(uint8_t aPuzzlePiece);
 
   /**
-   * @brief Set the Current Puzzle Piece object
+   * @brief find a new empty and unexplored puzzlepiece spot
    * 
-   * @param aPuzzlePiece 
    */
-  void setCurrentPuzzlePiece(Shape aPuzzlePiece);
+  void findEmptyUnexploredPuzzleSpot();
 
   /**
    * @brief Get the Current Puzzle Piece Spot object
@@ -80,11 +79,13 @@ public:
    */
   PuzzlePieceSpot getCurrentPuzzlePieceSpot();
 
+  Shape getCurrentShape();
+
 private:
   MoveRobotClient moveRobotClient;
   ros::NodeHandle nodeHandler;
   std::shared_ptr<State> mCurrentState;
-  Shape currentPuzzlePiece;
+  Shape currentPuzzlePieceShape;
   PuzzlePieceSpot currentPuzzlePieceSpot;
   Puzzle puzzle;
 };

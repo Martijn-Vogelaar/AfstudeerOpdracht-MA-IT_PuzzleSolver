@@ -46,6 +46,7 @@ void CheckCorrectlyRotated::measurementCallback(const inductive_sensor::inductiv
                         msg.stop = true;
                         stopRobotPublisher.publish(msg);
                         subContext->getParentContext()->getPuzzle().setSpotFilled(subContext->getCurrentPuzzlePieceSpot().getID());
+                        subContext->getParentContext()->getPuzzle().resetExplored();
                         subContext->getParentContext()->setState(std::make_shared<ReleasePiece>());
                 }
                 else

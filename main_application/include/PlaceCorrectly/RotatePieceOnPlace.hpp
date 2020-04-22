@@ -3,6 +3,8 @@
 
 // Local
 #include "SubState.hpp"
+#include "TF2Handler.hpp"
+
 #include <stdint.h>
 
 class SubContext;
@@ -53,6 +55,6 @@ public:
     void exitAction(SubContext *aSubContext) override;
 
 private:
-    static int8_t unableToRotateFurther;
+    TF2Handler tf2Handler;
 };
 #endif // ROTATE_PIECE_ON_PLACE_HPP

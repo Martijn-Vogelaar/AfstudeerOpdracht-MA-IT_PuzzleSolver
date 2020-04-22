@@ -29,6 +29,8 @@ public:
     Shape getShape();
     bool isFilled();
     void setFilled(bool aFilled);
+    bool isExplored();
+    void setExplored(bool aExplored);
     uint8_t getID();
 
 private:
@@ -36,5 +38,6 @@ private:
     geometry_msgs::Pose puzzlePieceSpotPose;
     uint8_t id;
     bool filled;
+    bool explored;
 };
 #endif // PUZZLE_PIECE_SPOT_HPP
