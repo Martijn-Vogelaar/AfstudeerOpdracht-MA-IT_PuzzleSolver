@@ -13,7 +13,6 @@ std::optional<PuzzlePieceSpot> Puzzle::getEmptyPuzzleSpot(Shape shape)
             return spot;
         }
     }
-    ROS_ERROR("NOT FOUND!");
     return std::nullopt;
 }
 
@@ -42,7 +41,6 @@ void Puzzle::setSpotFilled(uint8_t puzzleID)
     {
         if (spot.getID() == puzzleID)
         {
-            ROS_ERROR("FILLED");
             spot.setFilled(true);
         }
     }

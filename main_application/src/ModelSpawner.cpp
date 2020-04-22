@@ -37,8 +37,4 @@ void ModelSpawner::spawnPuzzlePiece(Shape puzzlePiece)
         outcome = 1;
         break;
     }
-    if (outcome == 1)
-    {
-        std::cout << "Something went wrong spawning the puzzlePiece" << std::endl;
-    }
 }

@@ -64,7 +64,6 @@ void ControlGripperServer::goalCallback(const abb_controller::ControlGripperGoal
     {
         if (goal->puzzleID == 1)
         {
-            ROS_ERROR("SECOND CIRCLE");
             secondCircle = true;
         }
 

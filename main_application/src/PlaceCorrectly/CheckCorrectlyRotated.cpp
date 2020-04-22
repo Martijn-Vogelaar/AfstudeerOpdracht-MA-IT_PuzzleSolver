@@ -31,7 +31,6 @@ void CheckCorrectlyRotated::doActivity(SubContext *context)
                 static uint8_t circleRotateCount = 0;
                 if (circleRotateCount < 2)
                 {
-                        ROS_ERROR("Next!");
                         circleRotateCount++;
                         context->setState(std::make_shared<RotatePieceOnPlace>());
                 }else{

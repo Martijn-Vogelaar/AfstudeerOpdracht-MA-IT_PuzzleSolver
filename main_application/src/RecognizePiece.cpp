@@ -23,7 +23,6 @@ void RecognizePiece::doActivity(Context *context)
     {
         if (std::find(std::begin(allowedMeasurements), std::end(allowedMeasurements), currentMeasurement) != std::end(allowedMeasurements))
         {
-            ROS_ERROR(std::string("Found shape:" + std::to_string(currentMeasurement)).c_str());
             context->setCurrentPuzzlePiece(currentMeasurement);
             if (context->getCurrentShape() != Shape::UNKNOWN)
             {

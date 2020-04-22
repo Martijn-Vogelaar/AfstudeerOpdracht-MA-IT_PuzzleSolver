@@ -8,7 +8,6 @@
 CapacitiveSensor::CapacitiveSensor(uint8_t aId, uint8_t aNumberOfSensors) : id(aId), sensorValue(0), numberOfSensors(aNumberOfSensors)
 {
     p = n.advertise<capacitive_sensor::capacitive_sensor_measurements>("capacitive_sensor", 1000);
-    std::cout << (unsigned)numberOfSensors << std::endl;
     if (numberOfSensors > MAX_NUMBER_OF_SENSORS)
     {
         throw;

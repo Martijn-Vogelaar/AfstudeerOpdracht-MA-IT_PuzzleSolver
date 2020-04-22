@@ -13,12 +13,10 @@ ReleasePiece::~ReleasePiece() {}
 void ReleasePiece::entryAction(Context *context)
 {
     ros::Duration(0.5).sleep();
-    ROS_ERROR("RELEASE");
     context->getMoveRobotClient().ControlGripper(0, false, puzzlePieceToInt(context->getCurrentPuzzlePieceSpot().getShape()));
     geometry_msgs::Pose goal = context->getCurrentPuzzlePieceSpot().getPuzzlePiecePreparePlace();
     geometry_msgs::Pose pose = tf2Handler.calculatePosition(PUZZLE, BASE, goal);
     ros::Duration(0.5).sleep();
-    ROS_ERROR("Move up!");
 
     context->getMoveRobotClient().MoveRobotStraightNoRotation(0, pose.position);
     context->setCurrentPuzzlePiece(0);
