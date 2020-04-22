@@ -4,7 +4,6 @@
 // Local
 #include "State.hpp"
 #include "PlaceCorrectly/SubContext.hpp"
-#include "TF2Handler.hpp"
 
 class Context;
 
@@ -56,6 +55,5 @@ public:
 
 private:
     std::shared_ptr<SubContext> subContext;
-    TF2Handler tf2Handler;
 };
 #endif // PLACE_PIECE_HPP

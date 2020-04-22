@@ -3,8 +3,6 @@
 
 // Local
 #include "SubState.hpp"
-#include "TF2Handler.hpp"
-
 #include <stdint.h>
 
 class SubContext;
@@ -53,8 +51,5 @@ public:
      * "outside world".
      */
     void exitAction(SubContext *aSubContext) override;
-
-private:
-    TF2Handler tf2Handler;
 };
 #endif // ROTATE_PIECE_ON_PLACE_HPP

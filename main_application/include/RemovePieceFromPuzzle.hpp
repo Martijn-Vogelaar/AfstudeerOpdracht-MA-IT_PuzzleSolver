@@ -1,5 +1,5 @@
-#ifndef MOVE_TO_UNEXPLORED_SPOT_HPP
-#define MOVE_TO_UNEXPLORED_SPOT_HPP
+#ifndef REMOVE_PIECE_FROM_PUZZLE_HPP
+#define REMOVE_PIECE_FROM_PUZZLE_HPP
 
 // Local
 #include "State.hpp"
@@ -7,28 +7,28 @@
 
 class Context;
 /**
-   * @class MoveToUnexploredSpot
+   * @class RemovePieceFromPuzzle
    *
-   * @brief MoveToUnexploredSpot is the class which represents the MoveToUnexploredSpot state.
+   * @brief RemovePieceFromPuzzle is the class which represents the RemovePieceFromPuzzle state.
    *
    */
-class MoveToUnexploredSpot : public State
+class RemovePieceFromPuzzle : public State
 {
 public:
     /**
-     * @brief Construct a new MoveToUnexploredSpot object
+     * @brief Construct a new RemovePieceFromPuzzle object
      *
      */
-    MoveToUnexploredSpot();
+    RemovePieceFromPuzzle();
     /**
-     * @brief Destroy the MoveToUnexploredSpot object
+     * @brief Destroy the RemovePieceFromPuzzle object
      *
      */
-    ~MoveToUnexploredSpot();
+    ~RemovePieceFromPuzzle();
     /**
-     * @brief entryAction is being called when the MoveToUnexploredSpot state is being entered.
+     * @brief entryAction is being called when the RemovePieceFromPuzzle state is being entered.
      *
-     * @details When the MoveToUnexploredSpot state is entered the robotarm will be set to the
+     * @details When the RemovePieceFromPuzzle state is entered the robotarm will be set to the
      * begin position.
      *
      * @param aContext is an object which gives the states an interface to the
@@ -38,14 +38,14 @@ public:
 
     /**
      * @brief doActivity is continiously being called while the system is in the
-     * MoveToUnexploredSpot.
+     * RemovePieceFromPuzzle.
      *
      * @param aContext is an object which gives the states an interface to the
      * "outside world".
      */
     void doActivity(Context *aContext) override;
     /**
-     * @brief exitAction is being called when the MoveToUnexploredSpot state is being exited.
+     * @brief exitAction is being called when the RemovePieceFromPuzzle state is being exited.
      *
      * @param aContext is an object which gives the states an interface to the
      * "outside world".
@@ -55,4 +55,4 @@ public:
 private:
     TF2Handler tf2Handler;
 };
-#endif // MOVE_TO_UNEXPLORED_SPOT_HPP
+#endif // REMOVE_PIECE_FROM_PUZZLE_HPP

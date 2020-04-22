@@ -100,6 +100,7 @@ src/ModelSpawner.cpp
 src/Shapes.cpp
 src/Puzzle.cpp
 src/PuzzlePieceSpot.cpp
+src/RemovePieceFromPuzzle.cpp
 )
 
 add_dependencies( lib_main

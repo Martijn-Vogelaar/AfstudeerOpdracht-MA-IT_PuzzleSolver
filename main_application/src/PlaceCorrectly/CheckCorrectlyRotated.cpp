@@ -2,6 +2,7 @@
 #include "PlaceCorrectly/RotatePieceOnPlace.hpp"
 #include "PlaceCorrectly/LiftPiece.hpp"
 #include "PlaceCorrectly/SubContext.hpp"
+#include "RemovePieceFromPuzzle.hpp"
 #include "ReleasePiece.hpp"
 #include "Shapes.hpp"
 #include <memory>
@@ -27,8 +28,16 @@ void CheckCorrectlyRotated::doActivity(SubContext *context)
         }
         else if (nonActivateCount > NR_OF_MEASUREMENTS_TIMEOUT)
         {
-                ROS_ERROR("Next!");
-                context->setState(std::make_shared<RotatePieceOnPlace>());
+                static uint8_t circleRotateCount = 0;
+                if (circleRotateCount < 2)
+                {
+                        ROS_ERROR("Next!");
+                        circleRotateCount++;
+                        context->setState(std::make_shared<RotatePieceOnPlace>());
+                }else{
+                        circleRotateCount = 0;
+                        context->getParentContext()->setState(std::make_shared<RemovePieceFromPuzzle>());
+                }
         }
 }
 

@@ -47,7 +47,6 @@ void RecognizePiece::exitAction(Context *)
 
 void RecognizePiece::measurementCallback(const capacitive_sensor::capacitive_sensor_measurementsConstPtr &msg)
 {
-    std::cout << "message received!" << std::endl;
     if (msg->id == CAPACITIVE_SENSOR_ID)
     {
         if (currentMeasurement == msg->value)
