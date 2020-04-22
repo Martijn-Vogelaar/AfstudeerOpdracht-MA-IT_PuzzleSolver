@@ -1,6 +1,6 @@
-#include "PlaceCorrectly/LiftPiece.hpp"
-#include "PlaceCorrectly/SubContext.hpp"
-#include "PlaceCorrectly/RotatePieceInAir.hpp"
+#include "LiftPiece.hpp"
+#include "SubContext.hpp"
+#include "RotatePieceInAir.hpp"
 #include "Poses.hpp"
 #include "PuzzlePieceSpot.hpp"
 

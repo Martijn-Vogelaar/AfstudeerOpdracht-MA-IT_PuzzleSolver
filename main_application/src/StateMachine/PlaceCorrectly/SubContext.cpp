@@ -1,5 +1,5 @@
-#include "PlaceCorrectly/SubContext.hpp"
-#include "PlaceCorrectly/PlacePieceInPuzzle.hpp"
+#include "SubContext.hpp"
+#include "PlacePieceInPuzzle.hpp"
 
 SubContext::SubContext(Context *aParentContext) : parentContext(aParentContext)
 {

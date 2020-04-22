@@ -1,8 +1,8 @@
-#include "PlaceCorrectly/PlacePieceInPuzzle.hpp"
-#include "PlaceCorrectly/SubContext.hpp"
+#include "PlacePieceInPuzzle.hpp"
+#include "SubContext.hpp"
 #include "Poses.hpp"
-#include "PlaceCorrectly/RotatePieceOnPlace.hpp"
-#include "PlaceCorrectly/CheckCorrectlyRotated.hpp"
+#include "RotatePieceOnPlace.hpp"
+#include "CheckCorrectlyRotated.hpp"
 #include "Shapes.hpp"
 #include "Context.hpp"
 

@@ -3,7 +3,7 @@
 
 // Local
 #include "TF2Handler.hpp"
-#include "PlaceCorrectly/SubState.hpp"
+#include "SubState.hpp"
 
 class SubContext;
 /**

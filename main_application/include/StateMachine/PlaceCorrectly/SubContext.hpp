@@ -1,7 +1,7 @@
 #ifndef SUB_CONTEXT_HPP
 #define SUB_CONTEXT_HPP
 
-#include "PlaceCorrectly/SubState.hpp"
+#include "SubState.hpp"
 #include "MoveRobotClient.hpp"
 #include "Context.hpp"
 #include <memory>

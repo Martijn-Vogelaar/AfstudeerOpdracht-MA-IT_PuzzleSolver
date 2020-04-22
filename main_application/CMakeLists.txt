@@ -49,7 +49,8 @@ catkin_package(
 catkin_package(
   INCLUDE_DIRS 
     include
-    include/PlaceCorrectly
+    include/StateMachine
+    include/StateMachine/PlaceCorrectly
   LIBRARIES 
     lib_main
 )
@@ -59,48 +60,53 @@ include_directories(
   ${catkin_INCLUDE_DIRS} 
   ${Boost_INCLUDE_DIR} 
   ${EIGEN3_INCLUDE_DIRS}
+
 )
 
 
 include_directories(
   include
+  include/StateMachine
+  include/StateMachine/PlaceCorrectly
   SYSTEM
   ${catkin_INCLUDE_DIRS}
 )
 
 add_library(lib_main
-src/PlaceCorrectly/CheckCorrectlyRotated.cpp
-src/PlaceCorrectly/CheckCorrectlyRotated.cpp
-src/PlaceCorrectly/PlacePieceInPuzzle.cpp
-src/PlaceCorrectly/RotatePieceOnPlace.cpp
-src/PlaceCorrectly/LiftPiece.cpp
-src/PlaceCorrectly/RotatePieceInAir.cpp
-src/PlaceCorrectly/SubContext.cpp
-src/PlaceCorrectly/SubState.cpp
+src/StateMachine/PlaceCorrectly/CheckCorrectlyRotated.cpp
+src/StateMachine/PlaceCorrectly/CheckCorrectlyRotated.cpp
+src/StateMachine/PlaceCorrectly/PlacePieceInPuzzle.cpp
+src/StateMachine/PlaceCorrectly/RotatePieceOnPlace.cpp
+src/StateMachine/PlaceCorrectly/LiftPiece.cpp
+src/StateMachine/PlaceCorrectly/RotatePieceInAir.cpp
+src/StateMachine/PlaceCorrectly/SubContext.cpp
+src/StateMachine/PlaceCorrectly/SubState.cpp
 
-src/Context.cpp
-src/Poses.cpp
-src/GrabPiece.cpp
-src/PowerOff.cpp
-src/Init.cpp
-src/PutPieceInPickupPoint.cpp
+src/StateMachine/Context.cpp
+src/StateMachine/GrabPiece.cpp
+src/StateMachine/PowerOff.cpp
+src/StateMachine/Init.cpp
+src/StateMachine/PutPieceInPickupPoint.cpp
+src/StateMachine/Ready.cpp
+src/StateMachine/RecognizePiece.cpp
+src/StateMachine/MoveToRecognizedPiece.cpp
+src/StateMachine/ReleasePiece.cpp
+src/StateMachine/State.cpp
+src/StateMachine/MoveUnknownPiece.cpp
+src/StateMachine/UnknownPieceInPickupPoint.cpp
+src/StateMachine/PlacePiece.cpp
+src/StateMachine/MoveToUnexploredSpot.cpp
+src/StateMachine/RemovePieceFromPuzzle.cpp
+
 src/Main.cpp
-src/Ready.cpp
-src/MoveRobotClient.cpp
-src/RecognizePiece.cpp
-src/MoveToRecognizedPiece.cpp
-src/ReleasePiece.cpp
-src/State.cpp
-src/MoveUnknownPiece.cpp
-src/TF2Handler.cpp
-src/UnknownPieceInPickupPoint.cpp
-src/PlacePiece.cpp
-src/MoveToUnexploredSpot.cpp
 src/ModelSpawner.cpp
+src/MoveRobotClient.cpp
+src/TF2Handler.cpp
 src/Shapes.cpp
 src/Puzzle.cpp
 src/PuzzlePieceSpot.cpp
-src/RemovePieceFromPuzzle.cpp
+src/Poses.cpp
+
 )
 
 add_dependencies( lib_main
