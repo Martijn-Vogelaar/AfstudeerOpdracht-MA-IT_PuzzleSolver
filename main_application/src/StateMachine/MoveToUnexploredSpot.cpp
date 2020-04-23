@@ -20,7 +20,7 @@ void MoveToUnexploredSpot::entryAction(Context *)
 void MoveToUnexploredSpot::doActivity(Context *context)
 {
     context->findEmptyUnexploredPuzzleSpot();
-    if (context->getCurrentShape() != Shape::UNKNOWN)
+    if (context->getCurrentPuzzlePieceSpot().getShape() != Shape::UNKNOWN)
     {
         geometry_msgs::Pose goal = context->getCurrentPuzzlePieceSpot().getPuzzlePiecePreparePlace();
         geometry_msgs::Pose placePiecePrepare = tf2Handler.calculatePosition(PUZZLE, BASE, goal);

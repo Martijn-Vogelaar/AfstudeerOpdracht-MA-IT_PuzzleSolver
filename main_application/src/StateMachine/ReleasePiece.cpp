@@ -17,7 +17,6 @@ void ReleasePiece::entryAction(Context *context)
     geometry_msgs::Pose goal = context->getCurrentPuzzlePieceSpot().getPuzzlePiecePreparePlace();
     geometry_msgs::Pose pose = tf2Handler.calculatePosition(PUZZLE, BASE, goal);
     ros::Duration(0.5).sleep();
-
     context->getMoveRobotClient().MoveRobotStraightNoRotation(0, pose.position);
     context->setCurrentPuzzlePiece(0);
 }

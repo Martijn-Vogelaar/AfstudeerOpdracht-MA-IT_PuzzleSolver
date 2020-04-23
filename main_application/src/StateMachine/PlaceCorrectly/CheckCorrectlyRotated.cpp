@@ -28,12 +28,14 @@ void CheckCorrectlyRotated::doActivity(SubContext *context)
         }
         else if (nonActivateCount > NR_OF_MEASUREMENTS_TIMEOUT)
         {
-                static uint8_t circleRotateCount = 0;
+                static uint8_t circleRotateCount = 1;
                 if (circleRotateCount < 2)
                 {
                         circleRotateCount++;
                         context->setState(std::make_shared<RotatePieceOnPlace>());
-                }else{
+                }
+                else
+                {
                         circleRotateCount = 0;
                         context->getParentContext()->setState(std::make_shared<RemovePieceFromPuzzle>());
                 }

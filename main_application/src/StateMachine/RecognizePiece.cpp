@@ -24,14 +24,7 @@ void RecognizePiece::doActivity(Context *context)
         if (std::find(std::begin(allowedMeasurements), std::end(allowedMeasurements), currentMeasurement) != std::end(allowedMeasurements))
         {
             context->setCurrentPuzzlePiece(currentMeasurement);
-            if (context->getCurrentShape() != Shape::UNKNOWN)
-            {
-                context->setState(std::make_shared<MoveToRecognizedPiece>());
-            }
-            else
-            {
-                context->setState(std::make_shared<PowerOff>());
-            }
+            context->setState(std::make_shared<MoveToRecognizedPiece>());
         }
         else
         {
