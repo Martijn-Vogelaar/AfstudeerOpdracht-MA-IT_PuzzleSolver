@@ -217,4 +217,7 @@ CATKIN_IGNORE
 # Doxygen
 /doxygen/*
 
+# VsCode
+/.vscode/*
+
 # End of https://www.gitignore.io/api/ros,c++,cmake,python,opencv
