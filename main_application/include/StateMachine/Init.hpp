@@ -10,6 +10,8 @@ class Context;
    *
    * @brief Init is the class which represents the Init state.
    *
+   * @details   In the init state the system is being initialized.
+   *            After initialization a transition to the ready state is made.
    */
 class Init : public State
 {

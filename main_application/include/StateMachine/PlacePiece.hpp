@@ -12,6 +12,8 @@ class Context;
    *
    * @brief PlacePiece is the class which represents the PlacePiece state.
    *
+   * @details   The PlacePiece state represents a sub-statemachine which can be found in the
+   *            PlaceCorrectly folder. The entry-state is PlacePieceInPuzzle state.        
    */
 class PlacePiece : public State
 {

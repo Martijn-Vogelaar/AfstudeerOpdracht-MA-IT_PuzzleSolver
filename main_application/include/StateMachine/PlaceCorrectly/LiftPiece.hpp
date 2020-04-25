@@ -11,6 +11,11 @@ class SubContext;
    *
    * @brief LiftPiece is the class which represents the LiftPiece SubState.
    *
+   * @details   If a puzzlepiece cannot be rotated on it place, for example with angled shapes,
+   *            the puzzle needs to be lifted out of the puzzle before rotating. The state LiftPiece
+   *            lifts the puzzlepiece out of the puzzle straight up. After lifting a transition to
+   *            RotatePieceInAir is made.
+   *
    */
 class LiftPiece : public SubState
 {

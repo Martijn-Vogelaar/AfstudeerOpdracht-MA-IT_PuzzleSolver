@@ -11,6 +11,10 @@ class Context;
    *
    * @brief MoveToUnexploredSpot is the class which represents the MoveToUnexploredSpot state.
    *
+   *
+   * @details   The state MoveToUnexplored spot takes care of making the movement towards an
+   *            unexplored-spot and fitting spot in the puzzle. If no spot can be found a transition
+   *            to the MoveUnknownPiece state will be made.
    */
 class MoveToUnexploredSpot : public State
 {

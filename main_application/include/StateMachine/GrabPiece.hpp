@@ -12,6 +12,10 @@ class Context;
    *
    * @brief GrabPiece is the class which represents the GrabPiece state.
    *
+   * @details   The state grabpiece opens the grippers causing the gripper to hold the puzzle-
+   *            piece to be grabbed. The piece will furthermore be moved out of the pickuppoint
+   *            to the "home" position of the robot.
+   *
    */
 class GrabPiece : public State
 {

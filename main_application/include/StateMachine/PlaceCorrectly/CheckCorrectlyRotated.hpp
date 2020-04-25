@@ -28,6 +28,11 @@ static const int allowedSensorIDs[] = {1, 2, 3, 4};
    *
    * @brief CheckCorrectlyRotated is the class which represents the CheckCorrectlyRotated SubState.
    *
+   * @details   In the CheckCorrectlyRotated state the system checks whether the current puzzlepiece is
+   *            correctly rotated or not. If the rotation is correct, the sub-state PlaceCorrectly ends
+   *            and a transition to the ReleasePiece state of the parent statemachine is made.
+   *            If the rotation is incorrect a transition to either the state RotatePieceOnPlace or
+   *            LiftPiece is made, the transition depends on the shape of the puzzlepiece. 
    */
 class CheckCorrectlyRotated : public SubState
 {

@@ -25,6 +25,11 @@ static const int allowedMeasurements[] = {1,3,5,9};
    *
    * @brief RecognizePiece is the class which represents the RecognizePiece state.
    *
+   * @details   In the RecognizePiece state the system will attempt to recognize the PuzzlePiece
+   *            which is currently in the pickuppoint.
+   *            If a piece is successfully recognized a transition will be made to MoveToRecognizedPiece.
+   *            if the piece cannot be recognized a transition will be made to UnknownPieceInPickupPoint.
+   *
    */
 class RecognizePiece : public State
 {

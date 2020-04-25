@@ -11,6 +11,8 @@ class Context;
    *
    * @brief PutPieceInPickupPoint is the class which represents the PutPieceInPickupPoint state.
    *
+   * @details   In the PutPieceInPickupPoint state the robot makes a set of movements to put a puzzlepiece in the pickuppoint
+   *            After the movements a transition will be made to the RecognizePieceState.
    */
 class PutPieceInPickupPoint : public State
 {

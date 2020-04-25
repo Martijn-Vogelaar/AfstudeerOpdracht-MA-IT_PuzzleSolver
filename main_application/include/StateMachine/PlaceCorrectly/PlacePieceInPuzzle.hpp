@@ -12,6 +12,9 @@ class SubContext;
    *
    * @brief PlacePieceInPuzzle is the class which represents the PlacePieceInPuzzle SubState.
    *
+   * @details   The PlacePieceInPuzzle state places the current puzzle piece in the puzzle.
+   *            After placing the puzzlepiece in the puzzle a transition to the CheckCorrectRotated
+   *            state will be made.
    */
 class PlacePieceInPuzzle : public SubState
 {

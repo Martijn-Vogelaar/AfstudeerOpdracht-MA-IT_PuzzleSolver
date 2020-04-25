@@ -10,6 +10,9 @@ class Context;
    *
    * @brief MoveToRecognizedPiece is the class which represents the MoveToRecognizedPiece state.
    *
+   * @details   In the MoveToRecognizedPiece state the robotarm will pickup the PuzzlePiece which
+   *            is currently in the
+   *
    */
 class MoveToRecognizedPiece : public State
 {

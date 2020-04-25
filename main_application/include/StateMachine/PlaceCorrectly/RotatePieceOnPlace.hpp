@@ -11,6 +11,8 @@ class SubContext;
    *
    * @brief RotatePieceOnPlace is the class which represents the RotatePieceOnPlace SubState.
    *
+   * @details   RotatePieceOnPlace rotates a puzzlepiece which is currently placed in the puzzle.
+   *            After the rotation is started a transition to the CheckCorrectlyRotated state will be made.
    */
 class RotatePieceOnPlace : public SubState
 {

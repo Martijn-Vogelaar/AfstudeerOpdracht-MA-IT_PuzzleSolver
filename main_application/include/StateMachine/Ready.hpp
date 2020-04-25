@@ -10,6 +10,9 @@ class Context;
    *
    * @brief Ready is the class which represents the Ready state.
    *
+   * @details   In the ready state the system will move to the robot's home position.
+   *            If the puzzle is finished a transition will be made to the poweroff state.
+   *            If the puzzle is unfinished a transition will be made to the PutPieceInPickupPoint state.
    */
 class Ready : public State
 {

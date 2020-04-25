@@ -24,13 +24,62 @@ public:
      */
     ~PuzzlePieceSpot();
 
+    /**
+     * @brief Get the pose where the puzzlepiece should be moved before it is being placed.
+     * 
+     * @return geometry_msgs::Pose 
+     */
     geometry_msgs::Pose getPuzzlePiecePreparePlace();
+
+    /**
+     * @brief Get the pose where the puzzlepiece should be placed.
+     * 
+     * @return geometry_msgs::Pose 
+     */
     geometry_msgs::Pose getPuzzlePiecePlace();
+
+    /**
+     * @brief Get the Shape of the puzzlepiecespot.
+     * 
+     * @return Shape 
+     */
     Shape getShape();
+
+    /**
+     * @brief returns whether the spot is filled or not
+     * 
+     * @return true Spot is filled
+     * @return false Spot is not filled
+     */
     bool isFilled();
+    
+    /**
+     * @brief Set the whether the spot is filled or not.
+     * 
+     * @param aFilled 
+     */
     void setFilled(bool aFilled);
+
+    /**
+     * @brief Returns whether the spot is already explored previously.
+     * 
+     * @return true 
+     * @return false 
+     */
     bool isExplored();
+
+    /**
+     * @brief Set whether the spot is explored or not.
+     * 
+     * @param aExplored 
+     */
     void setExplored(bool aExplored);
+
+    /**
+     * @brief Get the ID of the spot.
+     * 
+     * @return uint8_t 
+     */
     uint8_t getID();
 
 private:

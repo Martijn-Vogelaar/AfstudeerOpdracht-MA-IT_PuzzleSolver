@@ -11,6 +11,10 @@ class SubContext;
    *
    * @brief RotatePieceInAir is the class which represents the RotatePieceInAir SubState.
    *
+   * @details   RotatePieceInAir rotates a puzzlepiece which is currently hovering above the puzzle.
+   *            Depending on the shape of the puzzlepiece different rotations can be made. After the
+   *            rotation is finished a transition to the CheckCorrectlyRotated state will be made.
+   *
    */
 class RotatePieceInAir : public SubState
 {

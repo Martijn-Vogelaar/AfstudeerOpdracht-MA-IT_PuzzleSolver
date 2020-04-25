@@ -11,6 +11,11 @@ class Context;
    *
    * @brief RemovePieceFromPuzzle is the class which represents the RemovePieceFromPuzzle state.
    *
+   * @details   If the PlaceCorrectly state has tried all possible rotation in the visisted spot.
+   *            The RemovePieceFromPuzzle will remove the piece frmo the puzzle by lifting the
+   *            piece straight up in a lineair manner. After this movement is finished a transition
+   *            to the MoveToUnexploredSpot state is made.
+   *            
    */
 class RemovePieceFromPuzzle : public State
 {

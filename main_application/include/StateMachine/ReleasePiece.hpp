@@ -11,6 +11,10 @@ class Context;
    *
    * @brief ReleasePiece is the class which represents the ReleasePiece state.
    *
+   * @details   In the ReleasePiece state the currently held puzzlepiece is released by "closing"
+   *            the gripper. After releasing it the robotarm will be moved in a lineair manner
+   *            to a position straight above the just placed puzzlepiece.
+   *            After the movement is finished a transition to the Ready state is made.
    */
 class ReleasePiece : public State
 {
