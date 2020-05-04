@@ -9,7 +9,7 @@
  */
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "capacitive_sensor");
+    ros::init(argc, argv, "capacitive_sensor_simulator");
     if (argc == 3)
     {
         CapacitiveSensor capacitiveSensor = CapacitiveSensor((uint8_t)atoi(argv[1]),(uint8_t)atoi(argv[2]));

@@ -78,8 +78,8 @@ SHOW_NAMESPACES        = YES
 #---------------------------------------------------------------------------
 
 INPUT                  = abb_controller \
-			             capacitive_sensor \
-                         inductive_sensor \
+			             capacitive_sensor_simulator \
+                         inductive_sensor_simulator \
                          main_application \
                          simulation
 

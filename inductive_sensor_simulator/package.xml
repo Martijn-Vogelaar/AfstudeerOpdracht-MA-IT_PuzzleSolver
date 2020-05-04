@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>capacitive_sensor</name>
+  <name>inductive_sensor_simulator</name>
   <version>1.0.0</version>
   <description>
-    a
+        a
   </description>
 
-  <maintainer email="martijn.j.vogelaar@gmail.com"></maintainer>
+  <maintainer email="Martijn.j.vogelaar@gmail.com"> </maintainer>
   <license>BSD</license>
 
   <test_depend>rosunit</test_depend>

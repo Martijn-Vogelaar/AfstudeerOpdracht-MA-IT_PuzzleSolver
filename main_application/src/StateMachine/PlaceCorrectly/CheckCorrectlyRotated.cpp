@@ -46,7 +46,7 @@ void CheckCorrectlyRotated::exitAction(SubContext *)
 {
 }
 
-void CheckCorrectlyRotated::measurementCallback(const inductive_sensor::inductive_sensor_measurementsConstPtr &msg)
+void CheckCorrectlyRotated::measurementCallback(const inductive_sensor_simulator::inductive_sensor_simulator_measurementsConstPtr &msg)
 {
         if (std::find(std::begin(allowedSensorIDs), std::end(allowedSensorIDs), msg->id) != std::end(allowedSensorIDs))
         {

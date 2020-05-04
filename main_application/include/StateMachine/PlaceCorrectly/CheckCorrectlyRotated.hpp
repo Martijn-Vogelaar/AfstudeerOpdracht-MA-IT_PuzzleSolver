@@ -4,13 +4,13 @@
 // Local
 #include "SubState.hpp"
 #include "SubContext.hpp"
-#include "inductive_sensor/inductive_sensor_measurements.h"
-#include "capacitive_sensor/capacitive_sensor_measurements.h"
+#include "inductive_sensor_simulator/inductive_sensor_simulator_measurements.h"
+#include "capacitive_sensor_simulator/capacitive_sensor_simulator_measurements.h"
 #include "abb_controller/StopRobot.h"
 #include "ros/ros.h"
 #include <map>
 
-#define INDUCTIVE_TOPIC "inductive_sensor"
+#define INDUCTIVE_TOPIC "inductive_sensor_simulator"
 
 #define MIN_NR_OF_EQUAL_MEASUREMENTS 1
 
@@ -80,7 +80,7 @@ private:
 
     ros::NodeHandle nodeHandler;
 
-    void measurementCallback(const inductive_sensor::inductive_sensor_measurementsConstPtr &msg);
+    void measurementCallback(const inductive_sensor_simulator::inductive_sensor_simulator_measurementsConstPtr &msg);
     SubContext* subContext;
     uint16_t nonActivateCount;
 };

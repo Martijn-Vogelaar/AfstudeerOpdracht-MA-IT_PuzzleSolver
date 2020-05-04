@@ -1,5 +1,5 @@
 #include "CapacitiveSensor.hpp"
-#include "capacitive_sensor/capacitive_sensor_measurements.h"
+#include "capacitive_sensor_simulator/capacitive_sensor_simulator_measurements.h"
 #include <gazebo/gazebo_client.hh>
 
 #define MAX_NUMBER_OF_SENSORS 8
@@ -7,7 +7,7 @@
 
 CapacitiveSensor::CapacitiveSensor(uint8_t aId, uint8_t aNumberOfSensors) : id(aId), sensorValue(0), numberOfSensors(aNumberOfSensors)
 {
-    p = n.advertise<capacitive_sensor::capacitive_sensor_measurements>("capacitive_sensor", 1000);
+    p = n.advertise<capacitive_sensor_simulator::capacitive_sensor_simulator_measurements>("capacitive_sensor_simulator", 1000);
     if (numberOfSensors > MAX_NUMBER_OF_SENSORS)
     {
         throw;
@@ -54,7 +54,7 @@ void CapacitiveSensor::distanceSensorCallback(ConstLaserScanStampedPtr &msg)
     }
     if (count % 4 == 0)
     {
-        capacitive_sensor::capacitive_sensor_measurements message;
+        capacitive_sensor_simulator::capacitive_sensor_simulator_measurements message;
         message.id = id;
         message.value = sensorValue;
         p.publish(message);

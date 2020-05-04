@@ -37,9 +37,9 @@ void RecognizePiece::exitAction(Context *)
 {
 }
 
-void RecognizePiece::measurementCallback(const capacitive_sensor::capacitive_sensor_measurementsConstPtr &msg)
+void RecognizePiece::measurementCallback(const capacitive_sensor_simulator::capacitive_sensor_simulator_measurementsConstPtr &msg)
 {
-    if (msg->id == CAPACITIVE_SENSOR_ID)
+    if (msg->id == capacitive_sensor_simulator_ID)
     {
         if (currentMeasurement == msg->value)
         {

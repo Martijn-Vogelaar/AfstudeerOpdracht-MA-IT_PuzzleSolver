@@ -68,8 +68,8 @@
   <build_depend>tf2_eigen</build_depend>
   <build_depend>tf2_geometry_msgs</build_depend>
   <build_depend>abb_controller</build_depend>
-  <build_depend>capacitive_sensor</build_depend>
-  <build_depend>inductive_sensor</build_depend>
+  <build_depend>capacitive_sensor_simulator</build_depend>
+  <build_depend>inductive_sensor_simulator</build_depend>
 
   <build_export_depend>roscpp</build_export_depend>
 

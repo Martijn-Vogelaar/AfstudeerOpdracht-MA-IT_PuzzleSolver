@@ -5,11 +5,11 @@
 #include "State.hpp"
 class Context;
 #include "ros/ros.h"
-#include "capacitive_sensor/capacitive_sensor_measurements.h"
+#include "capacitive_sensor_simulator/capacitive_sensor_simulator_measurements.h"
 
-#define CAPACITIVE_TOPIC "capacitive_sensor"
+#define CAPACITIVE_TOPIC "capacitive_sensor_simulator"
 
-#define CAPACITIVE_SENSOR_ID 0
+#define capacitive_sensor_simulator_ID 0
 
 /**
  * @brief Atleast 5 measurements in a row need to be equal to have a "Good" measurement 
@@ -78,6 +78,6 @@ private:
 
     uint8_t currentMeasurement;
 
-    void measurementCallback(const capacitive_sensor::capacitive_sensor_measurementsConstPtr& msg);
+    void measurementCallback(const capacitive_sensor_simulator::capacitive_sensor_simulator_measurementsConstPtr& msg);
 };
 #endif // RECOGNIZE_PIECE_HPP

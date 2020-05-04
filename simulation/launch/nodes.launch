@@ -1,10 +1,10 @@
 <launch>
     <node name="abb_controller" type="abb_controller" pkg="abb_controller"/>
-    <node name="capacitive_sensor_plugin" type="capacitive_sensor_plugin" pkg="capacitive_sensor" args="0 4"/>
+    <node name="capacitive_sensor_simulator_plugin" type="capacitive_sensor_simulator_plugin" pkg="capacitive_sensor_simulator" args="0 4"/>
     <node name="PuzzleBroadcaster" type="PuzzleBroadcaster" pkg="simulation" args="EmptyPuzzle -0.3 0 0.09 0 -0.5 -0.5"/>
-    <node name="inductive_sensor_plugin1" type="inductive_sensor_plugin" pkg="inductive_sensor" args="1"/>
-    <node name="inductive_sensor_plugin2" type="inductive_sensor_plugin" pkg="inductive_sensor" args="2"/>
-    <node name="inductive_sensor_plugin3" type="inductive_sensor_plugin" pkg="inductive_sensor" args="3"/>
-    <node name="inductive_sensor_plugin4" type="inductive_sensor_plugin" pkg="inductive_sensor" args="4"/>
+    <node name="inductive_sensor_simulator_plugin1" type="inductive_sensor_simulator_plugin" pkg="inductive_sensor_simulator" args="1"/>
+    <node name="inductive_sensor_simulator_plugin2" type="inductive_sensor_simulator_plugin" pkg="inductive_sensor_simulator" args="2"/>
+    <node name="inductive_sensor_simulator_plugin3" type="inductive_sensor_simulator_plugin" pkg="inductive_sensor_simulator" args="3"/>
+    <node name="inductive_sensor_simulator_plugin4" type="inductive_sensor_simulator_plugin" pkg="inductive_sensor_simulator" args="4"/>
     <node name="main_application" type="main_application" pkg="main_application" args=""/>
 </launch>
