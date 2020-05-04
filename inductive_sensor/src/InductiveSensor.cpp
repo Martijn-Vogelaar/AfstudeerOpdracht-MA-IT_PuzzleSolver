@@ -26,19 +26,24 @@ void InductiveSensor::runMeasurements()
 
     while (ros::ok())
     {
-        boost::asio::ip::tcp::socket socket(ios);
+        try{
+            boost::asio::ip::tcp::socket socket(ios);
 
-	    socket.connect(endpoint);
-        socket.write_some( boost::asio::buffer(request,sizeof(request)));
+            socket.connect(endpoint);
+            socket.write_some( boost::asio::buffer(request,sizeof(request)));
 
-        std::array<char,2> response;
-        socket.receive(boost::asio::buffer(response,sizeof(response)));
+            std::array<char,2> response;
+            socket.receive(boost::asio::buffer(response,sizeof(response)));
 
-        inductive_sensor::inductive_sensor_measurements message;
-        message.id = response[0];
-        message.activated = response[1];
-        p.publish(message);
-        socket.close();
-        r.sleep();
+            inductive_sensor::inductive_sensor_measurements message;
+            message.id = response[0];
+            message.activated = response[1];
+            p.publish(message);
+            socket.close();
+            r.sleep();
+        }
+        catch ( const boost::system::system_error& ex ){
+            ROS_ERROR("Socket failure!");
+        }
     }
 }
