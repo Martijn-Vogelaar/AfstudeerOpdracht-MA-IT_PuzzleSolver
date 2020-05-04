@@ -3,6 +3,7 @@
 #include <boost/asio.hpp>
 #include <array>
 
+#define MESSAGE_TYPE 2
 #define LOOP_RATE 1
 #define IP "192.168.125.1"
 #define PORT 2020
@@ -19,7 +20,7 @@ InductiveSensor::~InductiveSensor()
 void InductiveSensor::runMeasurements()
 {
     ros::Rate r(LOOP_RATE); // 10 hz
-    std::array<char,2> request = {2,id};
+    std::array<char,2> request = {MESSAGE_TYPE,id};
     boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(IP), PORT);
     boost::asio::io_service ios;	
 
