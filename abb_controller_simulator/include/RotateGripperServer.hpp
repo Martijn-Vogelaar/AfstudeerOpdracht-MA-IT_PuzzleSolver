@@ -2,7 +2,7 @@
 #define ROTATE_GRIPPER_SERVER_HPP
 
 #include <actionlib/server/simple_action_server.h>
-#include <abb_controller/RotateGripperAction.h>
+#include <abb_simulator_controller/RotateGripperAction.h>
 
 #include <moveit/move_group_interface/move_group_interface.h>
 
@@ -30,11 +30,11 @@ protected:
     moveit::planning_interface::MoveGroupInterface move_group;
 
     std::string actionName;
-    actionlib::SimpleActionServer<abb_controller::RotateGripperAction> actionServer;
+    actionlib::SimpleActionServer<abb_simulator_controller::RotateGripperAction> actionServer;
 
 
-    abb_controller::RotateGripperFeedback actionFeedback;
-    abb_controller::RotateGripperResult actionResult;
+    abb_simulator_controller::RotateGripperFeedback actionFeedback;
+    abb_simulator_controller::RotateGripperResult actionResult;
 
 public:
     /**
@@ -55,7 +55,7 @@ public:
      * 
      * @param goal Message with the request of the action.
      */
-    void goalCallback(const abb_controller::RotateGripperGoalConstPtr &goal);
+    void goalCallback(const abb_simulator_controller::RotateGripperGoalConstPtr &goal);
 };
 
 #endif //ROTATE_GRIPPER_SERVER_HPP

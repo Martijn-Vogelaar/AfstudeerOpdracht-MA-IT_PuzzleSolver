@@ -15,7 +15,7 @@ MoveRobotClient::~MoveRobotClient()
 
 bool MoveRobotClient::MoveRobotStraight(uint8_t aRobotID, geometry_msgs::Pose aGoal)
 {
-    abb_controller::MoveEndEffectorStraightGoal goal;
+    abb_simulator_controller::MoveEndEffectorStraightGoal goal;
     goal.robotID = aRobotID;
     goal.position.x = aGoal.position.x;
     goal.position.y = aGoal.position.y;
@@ -28,14 +28,14 @@ bool MoveRobotClient::MoveRobotStraight(uint8_t aRobotID, geometry_msgs::Pose aG
     actionClientStraight.sendGoal(goal);
     actionClientStraight.waitForResult();
 
-    abb_controller::MoveEndEffectorStraightResultConstPtr result = actionClientStraight.getResult();
+    abb_simulator_controller::MoveEndEffectorStraightResultConstPtr result = actionClientStraight.getResult();
 
     return result->success;
 }
 
 bool MoveRobotClient::MoveRobotStraightNoRotation(uint8_t aRobotID, geometry_msgs::Point aGoal)
 {
-    abb_controller::MoveEndEffectorStraightNoRotationGoal goal;
+    abb_simulator_controller::MoveEndEffectorStraightNoRotationGoal goal;
     goal.robotID = aRobotID;
     goal.position.x = aGoal.x;
     goal.position.y = aGoal.y;
@@ -44,14 +44,14 @@ bool MoveRobotClient::MoveRobotStraightNoRotation(uint8_t aRobotID, geometry_msg
     actionClientStraightNoRotation.sendGoal(goal);
     actionClientStraightNoRotation.waitForResult();
 
-    abb_controller::MoveEndEffectorStraightNoRotationResultConstPtr result = actionClientStraightNoRotation.getResult();
+    abb_simulator_controller::MoveEndEffectorStraightNoRotationResultConstPtr result = actionClientStraightNoRotation.getResult();
 
     return result->success;
 }
 
 bool MoveRobotClient::MoveRobotNormal(uint8_t aRobotID, geometry_msgs::Pose aGoal)
 {
-    abb_controller::MoveEndEffectorGoal goal;
+    abb_simulator_controller::MoveEndEffectorGoal goal;
     goal.robotID = aRobotID;
     goal.position.x = aGoal.position.x;
     goal.position.y = aGoal.position.y;
@@ -65,14 +65,14 @@ bool MoveRobotClient::MoveRobotNormal(uint8_t aRobotID, geometry_msgs::Pose aGoa
 
     actionClientNormal.waitForResult();
 
-    abb_controller::MoveEndEffectorResultConstPtr result = actionClientNormal.getResult();
+    abb_simulator_controller::MoveEndEffectorResultConstPtr result = actionClientNormal.getResult();
 
     return result->success;
 }
 
 bool MoveRobotClient::ControlGripper(uint8_t aRobotID, bool aOpen, uint8_t aPuzzleID)
 {
-    abb_controller::ControlGripperGoal goal;
+    abb_simulator_controller::ControlGripperGoal goal;
     goal.robotID = aRobotID;
     goal.open = aOpen;
     goal.puzzleID = aPuzzleID;
@@ -80,14 +80,14 @@ bool MoveRobotClient::ControlGripper(uint8_t aRobotID, bool aOpen, uint8_t aPuzz
 
     actionClientControlGripper.waitForResult();
 
-    abb_controller::ControlGripperResultConstPtr result = actionClientControlGripper.getResult();
+    abb_simulator_controller::ControlGripperResultConstPtr result = actionClientControlGripper.getResult();
 
     return result->success;
 }
 
 bool MoveRobotClient::RotateGripper(uint8_t aRobotID, double aRotation, bool async, bool increase)
 {
-    abb_controller::RotateGripperGoal goal;
+    abb_simulator_controller::RotateGripperGoal goal;
     goal.robotID = aRobotID;
     goal.rotation = aRotation;
     goal.async = async;
@@ -96,7 +96,7 @@ bool MoveRobotClient::RotateGripper(uint8_t aRobotID, double aRotation, bool asy
 
     actionClientRotateGripper.waitForResult();
 
-    abb_controller::RotateGripperResultConstPtr result = actionClientRotateGripper.getResult();
+    abb_simulator_controller::RotateGripperResultConstPtr result = actionClientRotateGripper.getResult();
 
     return result->success;
 }

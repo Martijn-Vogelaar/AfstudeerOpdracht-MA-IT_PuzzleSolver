@@ -9,7 +9,7 @@
 
 CheckCorrectlyRotated::CheckCorrectlyRotated() : nonActivateCount(0)
 {
-        stopRobotPublisher = nodeHandler.advertise<abb_controller::StopRobot>("StopRobot", 1000);
+        stopRobotPublisher = nodeHandler.advertise<abb_simulator_controller::StopRobot>("StopRobot", 1000);
 }
 
 CheckCorrectlyRotated::~CheckCorrectlyRotated() {}
@@ -52,7 +52,7 @@ void CheckCorrectlyRotated::measurementCallback(const inductive_sensor_simulator
         {
                 if (msg->activated && msg->id == subContext->getParentContext()->getCurrentPuzzlePieceSpot().getID())
                 {
-                        abb_controller::StopRobot msg;
+                        abb_simulator_controller::StopRobot msg;
                         msg.stop = true;
                         stopRobotPublisher.publish(msg);
                         subContext->getParentContext()->getPuzzle().setSpotFilled(subContext->getCurrentPuzzlePieceSpot().getID());

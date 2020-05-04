@@ -2,11 +2,11 @@
 #define MOVE_ROBOT_CLIENT_HPP
 
 #include <actionlib/client/simple_action_client.h>
-#include <abb_controller/MoveEndEffectorAction.h>
-#include <abb_controller/MoveEndEffectorStraightAction.h>
-#include <abb_controller/ControlGripperAction.h>
-#include <abb_controller/RotateGripperAction.h>
-#include <abb_controller/MoveEndEffectorStraightNoRotationAction.h>
+#include <abb_simulator_controller/MoveEndEffectorAction.h>
+#include <abb_simulator_controller/MoveEndEffectorStraightAction.h>
+#include <abb_simulator_controller/ControlGripperAction.h>
+#include <abb_simulator_controller/RotateGripperAction.h>
+#include <abb_simulator_controller/MoveEndEffectorStraightNoRotationAction.h>
 #include <geometry_msgs/Pose.h>
 #include <geometry_msgs/Point.h>
 
@@ -25,9 +25,9 @@
 /**
  * @class MoveRobotClient
  * 
- * @brief MoveRobotClient is an interface to easily use actions which requests movements form the abb_controller
+ * @brief MoveRobotClient is an interface to easily use actions which requests movements form the abb_simulator_controller
  * 
- * @details MoveRobotClient is an interface to easily use actions presented by the abb_controller
+ * @details MoveRobotClient is an interface to easily use actions presented by the abb_simulator_controller
  *          This includes:      Moving
  *                              Moving in a straight manner
  *                              Controller the gripper
@@ -37,11 +37,11 @@
 class MoveRobotClient
 {
 private:
-    actionlib::SimpleActionClient<abb_controller::MoveEndEffectorAction> actionClientNormal;
-    actionlib::SimpleActionClient<abb_controller::MoveEndEffectorStraightAction> actionClientStraight;
-    actionlib::SimpleActionClient<abb_controller::MoveEndEffectorStraightNoRotationAction> actionClientStraightNoRotation;
-    actionlib::SimpleActionClient<abb_controller::ControlGripperAction> actionClientControlGripper;
-    actionlib::SimpleActionClient<abb_controller::RotateGripperAction> actionClientRotateGripper;
+    actionlib::SimpleActionClient<abb_simulator_controller::MoveEndEffectorAction> actionClientNormal;
+    actionlib::SimpleActionClient<abb_simulator_controller::MoveEndEffectorStraightAction> actionClientStraight;
+    actionlib::SimpleActionClient<abb_simulator_controller::MoveEndEffectorStraightNoRotationAction> actionClientStraightNoRotation;
+    actionlib::SimpleActionClient<abb_simulator_controller::ControlGripperAction> actionClientControlGripper;
+    actionlib::SimpleActionClient<abb_simulator_controller::RotateGripperAction> actionClientRotateGripper;
 
 public:
     /**

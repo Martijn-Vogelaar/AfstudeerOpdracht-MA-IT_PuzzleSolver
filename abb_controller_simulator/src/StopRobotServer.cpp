@@ -8,7 +8,7 @@ StopRobotServer::StopRobotServer() : move_group(PLANNING_GROUP)
 
 StopRobotServer::~StopRobotServer() {}
 
-void StopRobotServer::stopRobotCallback(const abb_controller::StopRobotConstPtr &msg)
+void StopRobotServer::stopRobotCallback(const abb_simulator_controller::StopRobotConstPtr &msg)
 {
         ROS_ERROR("Stop message received!");
         if(msg->stop){

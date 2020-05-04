@@ -2,7 +2,7 @@
 #define CONTROL_GRIPPER_SERVER_HPP
 
 #include <actionlib/server/simple_action_server.h>
-#include <abb_controller/ControlGripperAction.h>
+#include <abb_simulator_controller/ControlGripperAction.h>
 #include <gazebo_ros_link_attacher/Attach.h>
 
 
@@ -21,13 +21,13 @@ protected:
     ros::Publisher pub1, pub2, pub3;
 
     std::string actionName;
-    actionlib::SimpleActionServer<abb_controller::ControlGripperAction> actionServer;
+    actionlib::SimpleActionServer<abb_simulator_controller::ControlGripperAction> actionServer;
 
     ros::ServiceClient attachClient;
     ros::ServiceClient detachClient;
 
-    abb_controller::ControlGripperFeedback actionFeedback;
-    abb_controller::ControlGripperResult actionResult;
+    abb_simulator_controller::ControlGripperFeedback actionFeedback;
+    abb_simulator_controller::ControlGripperResult actionResult;
 
 public:
     /**
@@ -48,7 +48,7 @@ public:
      * 
      * @param goal Message with the request of the action.
      */
-    void goalCallback(const abb_controller::ControlGripperGoalConstPtr &goal);
+    void goalCallback(const abb_simulator_controller::ControlGripperGoalConstPtr &goal);
 };
 
 #endif //CONTROL_GRIPPER_SERVER_HPP

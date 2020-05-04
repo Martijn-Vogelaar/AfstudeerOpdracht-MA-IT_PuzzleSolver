@@ -8,7 +8,7 @@
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "abb_controller");
+  ros::init(argc, argv, "abb_simulator_controller");
   ros::AsyncSpinner spinner(1);
   spinner.start();
 

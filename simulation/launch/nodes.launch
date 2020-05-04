@@ -1,5 +1,5 @@
 <launch>
-    <node name="abb_controller" type="abb_controller" pkg="abb_controller"/>
+    <node name="abb_simulator_controller" type="abb_simulator_controller" pkg="abb_simulator_controller"/>
     <node name="capacitive_sensor_simulator_plugin" type="capacitive_sensor_simulator_plugin" pkg="capacitive_sensor_simulator" args="0 4"/>
     <node name="PuzzleBroadcaster" type="PuzzleBroadcaster" pkg="simulation" args="EmptyPuzzle -0.3 0 0.09 0 -0.5 -0.5"/>
     <node name="inductive_sensor_simulator_plugin1" type="inductive_sensor_simulator_plugin" pkg="inductive_sensor_simulator" args="1"/>

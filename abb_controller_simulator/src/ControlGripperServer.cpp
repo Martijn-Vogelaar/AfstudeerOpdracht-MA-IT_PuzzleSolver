@@ -17,7 +17,7 @@ ControlGripperServer::~ControlGripperServer()
 {
 }
 
-void ControlGripperServer::goalCallback(const abb_controller::ControlGripperGoalConstPtr &goal)
+void ControlGripperServer::goalCallback(const abb_simulator_controller::ControlGripperGoalConstPtr &goal)
 {
     static bool secondCircle = false;
     bool open = goal->open;

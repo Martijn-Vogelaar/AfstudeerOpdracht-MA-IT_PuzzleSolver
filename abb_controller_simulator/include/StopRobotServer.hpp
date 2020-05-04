@@ -2,7 +2,7 @@
 #define STOP_ROBOT_HPP
 
 // Local
-#include "abb_controller/StopRobot.h"
+#include "abb_simulator_controller/StopRobot.h"
 
 #include <moveit/move_group_interface/move_group_interface.h>
 
@@ -43,6 +43,6 @@ private:
      * 
      * @param msg is the message send by the node.
      */
-    void stopRobotCallback(const abb_controller::StopRobotConstPtr &msg);
+    void stopRobotCallback(const abb_simulator_controller::StopRobotConstPtr &msg);
 };
 #endif // STOP_ROBOT_HPP

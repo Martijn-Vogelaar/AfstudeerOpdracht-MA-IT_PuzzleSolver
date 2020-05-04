@@ -10,7 +10,7 @@ MoveEndEffectorServer::~MoveEndEffectorServer()
 {
 }
 
-void MoveEndEffectorServer::goalCallback(const abb_controller::MoveEndEffectorGoalConstPtr &goal)
+void MoveEndEffectorServer::goalCallback(const abb_simulator_controller::MoveEndEffectorGoalConstPtr &goal)
 {
     geometry_msgs::Pose goalPose;
     goalPose.position = goal->position;
