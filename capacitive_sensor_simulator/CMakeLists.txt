@@ -1,7 +1,15 @@
 cmake_minimum_required(VERSION 3.7.2)
 project(capacitive_sensor_simulator)
-add_compile_options(-Wall -Wconversion -Wextra -std=c++14)
-SET(GCC_OPENCV_FLAGS "-lopencv_core -lopencv_highgui")
+if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+  # using Clang
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+  add_compile_options(-Wall -Wconversion -Wextra -std=c++14)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
+  # using Intel C++
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+  set(CMAKE_CXX_STANDARD 14)
+  set(CMAKE_CXX_EXTENSIONS OFF)
+endif()SET(GCC_OPENCV_FLAGS "-lopencv_core -lopencv_highgui")
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_OPENCV_FLAGS}")
 
 find_package(catkin REQUIRED COMPONENTS

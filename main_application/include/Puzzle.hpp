@@ -6,7 +6,6 @@
 #include <geometry_msgs/Pose.h>
 #include <vector>
 #include <utility>
-#include <optional>
 
 class Puzzle
 {
@@ -33,7 +32,7 @@ public:
      * @return  std::optional<PuzzlePieceSpot> An optional PuzzlePieceSpot is returned since it is possible that 
                 there are no suitable spots left.
      */
-    std::optional<PuzzlePieceSpot> getEmptyPuzzleSpot(Shape shape);
+    PuzzlePieceSpot* getEmptyPuzzleSpot(Shape shape);
 
     /**
      * @brief Resets all explored values of the available puzzlepiecespots, i.e.g all explored values are reset to false/

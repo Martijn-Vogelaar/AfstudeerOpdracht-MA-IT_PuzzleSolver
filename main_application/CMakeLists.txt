@@ -3,8 +3,16 @@ project(main_application
 
 )
 
-add_compile_options(-std=c++17 -Wall -Wextra -Wconversion -O2)
-set(CMAKE_CXX_EXTENSIONS OFF)
+if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+  # using Clang
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+  add_compile_options(-Wall -Wconversion -Wextra -std=c++14)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
+  # using Intel C++
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+  set(CMAKE_CXX_STANDARD 14)
+  set(CMAKE_CXX_EXTENSIONS OFF)
+endif()
 
 find_package(catkin REQUIRED
   COMPONENTS
@@ -60,7 +68,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS} 
   ${Boost_INCLUDE_DIR} 
   ${EIGEN3_INCLUDE_DIRS}
-
+  ${PROJECT_BINARY_DIR}
 )
 
 
@@ -72,52 +80,45 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_library(lib_main
-src/StateMachine/PlaceCorrectly/CheckCorrectlyRotated.cpp
-src/StateMachine/PlaceCorrectly/CheckCorrectlyRotated.cpp
-src/StateMachine/PlaceCorrectly/PlacePieceInPuzzle.cpp
-src/StateMachine/PlaceCorrectly/RotatePieceOnPlace.cpp
-src/StateMachine/PlaceCorrectly/LiftPiece.cpp
-src/StateMachine/PlaceCorrectly/RotatePieceInAir.cpp
-src/StateMachine/PlaceCorrectly/SubContext.cpp
-src/StateMachine/PlaceCorrectly/SubState.cpp
-
-src/StateMachine/Context.cpp
-src/StateMachine/GrabPiece.cpp
-src/StateMachine/PowerOff.cpp
-src/StateMachine/Init.cpp
-src/StateMachine/PutPieceInPickupPoint.cpp
-src/StateMachine/Ready.cpp
-src/StateMachine/RecognizePiece.cpp
-src/StateMachine/MoveToRecognizedPiece.cpp
-src/StateMachine/ReleasePiece.cpp
-src/StateMachine/State.cpp
-src/StateMachine/MoveUnknownPiece.cpp
-src/StateMachine/UnknownPieceInPickupPoint.cpp
-src/StateMachine/PlacePiece.cpp
-src/StateMachine/MoveToUnexploredSpot.cpp
-src/StateMachine/RemovePieceFromPuzzle.cpp
-
-src/Main.cpp
-src/ModelSpawner.cpp
-src/MoveRobotClient.cpp
-src/TF2Handler.cpp
-src/Shapes.cpp
-src/Puzzle.cpp
-src/PuzzlePieceSpot.cpp
-src/Poses.cpp
-
-)
-
-add_dependencies( lib_main
-  ${catkin_EXPORTED_TARGETS}
-)
-
 add_executable(main_application 
-  src/Main.cpp
+                src/StateMachine/PlaceCorrectly/CheckCorrectlyRotated.cpp
+                src/StateMachine/PlaceCorrectly/CheckCorrectlyRotated.cpp
+                src/StateMachine/PlaceCorrectly/PlacePieceInPuzzle.cpp
+                src/StateMachine/PlaceCorrectly/RotatePieceOnPlace.cpp
+                src/StateMachine/PlaceCorrectly/LiftPiece.cpp
+                src/StateMachine/PlaceCorrectly/RotatePieceInAir.cpp
+                src/StateMachine/PlaceCorrectly/SubContext.cpp
+                src/StateMachine/PlaceCorrectly/SubState.cpp
+
+                src/StateMachine/Context.cpp
+                src/StateMachine/GrabPiece.cpp
+                src/StateMachine/PowerOff.cpp
+                src/StateMachine/Init.cpp
+                src/StateMachine/PutPieceInPickupPoint.cpp
+                src/StateMachine/Ready.cpp
+                src/StateMachine/RecognizePiece.cpp
+                src/StateMachine/MoveToRecognizedPiece.cpp
+                src/StateMachine/ReleasePiece.cpp
+                src/StateMachine/State.cpp
+                src/StateMachine/MoveUnknownPiece.cpp
+                src/StateMachine/UnknownPieceInPickupPoint.cpp
+                src/StateMachine/PlacePiece.cpp
+                src/StateMachine/MoveToUnexploredSpot.cpp
+                src/StateMachine/RemovePieceFromPuzzle.cpp
+
+                src/Main.cpp
+                src/ModelSpawner.cpp
+                src/MoveRobotClient.cpp
+                src/TF2Handler.cpp
+                src/Shapes.cpp
+                src/Puzzle.cpp
+                src/PuzzlePieceSpot.cpp
+                src/Poses.cpp
+
 )
 
 target_link_libraries(main_application 
-lib_main
 ${catkin_LIBRARIES}
+${Boost_LIBRARIES} 
+${GAZEBO_LIBRARIES} 
 )

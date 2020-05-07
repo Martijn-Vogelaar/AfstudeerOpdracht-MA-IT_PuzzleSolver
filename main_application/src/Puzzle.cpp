@@ -4,16 +4,16 @@ Puzzle::Puzzle() {}
 
 Puzzle::~Puzzle() {}
 
-std::optional<PuzzlePieceSpot> Puzzle::getEmptyPuzzleSpot(Shape shape)
+PuzzlePieceSpot* Puzzle::getEmptyPuzzleSpot(Shape shape)
 {
     for (PuzzlePieceSpot &spot : puzzleSpots)
     {
         if (spot.getShape() == shape && !spot.isFilled() && !spot.isExplored())
         {
-            return spot;
+            return &spot;
         }
     }
-    return std::nullopt;
+    return NULL;
 }
 
 void Puzzle::resetExplored()
