@@ -6,7 +6,7 @@
 #include "SubContext.hpp"
 #include "inductive_sensor_simulator/inductive_sensor_simulator_measurements.h"
 #include "capacitive_sensor_simulator/capacitive_sensor_simulator_measurements.h"
-#include "abb_simulator_controller/StopRobot.h"
+#include "abb_controller_messages/StopRobot.h"
 #include "ros/ros.h"
 #include <map>
 

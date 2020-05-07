@@ -31,7 +31,7 @@ find_package(catkin REQUIRED
     tf2_eigen
     tf2_geometry_msgs
     roscpp
-    abb_simulator_controller
+    abb_controller_messages
     capacitive_sensor_simulator
     inductive_sensor_simulator
 )

@@ -1,7 +1,7 @@
-#include "ControlGripperServer.hpp"
+#include "ControlGripperServerSimulator.hpp"
 #include <std_msgs/Float64.h>
 
-ControlGripperServer::ControlGripperServer(std::string aName) : actionServer(nodeHandler, aName, boost::bind(&ControlGripperServer::goalCallback, this, _1), false),
+ControlGripperServerSimulator::ControlGripperServerSimulator(std::string aName) : actionServer(nodeHandler, aName, boost::bind(&ControlGripperServerSimulator::goalCallback, this, _1), false),
                                                                 actionName(aName)
 {
     attachClient = nodeHandler.serviceClient<gazebo_ros_link_attacher::Attach>("/link_attacher_node/attach");
@@ -13,11 +13,11 @@ ControlGripperServer::ControlGripperServer(std::string aName) : actionServer(nod
     actionServer.start();
 }
 
-ControlGripperServer::~ControlGripperServer()
+ControlGripperServerSimulator::~ControlGripperServerSimulator()
 {
 }
 
-void ControlGripperServer::goalCallback(const abb_simulator_controller::ControlGripperGoalConstPtr &goal)
+void ControlGripperServerSimulator::goalCallback(const abb_controller_messages::ControlGripperGoalConstPtr &goal)
 {
     static bool secondCircle = false;
     bool open = goal->open;

@@ -2,11 +2,11 @@
 #define MOVE_ROBOT_CLIENT_HPP
 
 #include <actionlib/client/simple_action_client.h>
-#include <abb_simulator_controller/MoveEndEffectorAction.h>
-#include <abb_simulator_controller/MoveEndEffectorStraightAction.h>
-#include <abb_simulator_controller/ControlGripperAction.h>
-#include <abb_simulator_controller/RotateGripperAction.h>
-#include <abb_simulator_controller/MoveEndEffectorStraightNoRotationAction.h>
+#include <abb_controller_messages/MoveEndEffectorAction.h>
+#include <abb_controller_messages/MoveEndEffectorStraightAction.h>
+#include <abb_controller_messages/ControlGripperAction.h>
+#include <abb_controller_messages/RotateGripperAction.h>
+#include <abb_controller_messages/MoveEndEffectorStraightNoRotationAction.h>
 #include <geometry_msgs/Pose.h>
 #include <geometry_msgs/Point.h>
 
@@ -37,11 +37,11 @@
 class MoveRobotClient
 {
 private:
-    actionlib::SimpleActionClient<abb_simulator_controller::MoveEndEffectorAction> actionClientNormal;
-    actionlib::SimpleActionClient<abb_simulator_controller::MoveEndEffectorStraightAction> actionClientStraight;
-    actionlib::SimpleActionClient<abb_simulator_controller::MoveEndEffectorStraightNoRotationAction> actionClientStraightNoRotation;
-    actionlib::SimpleActionClient<abb_simulator_controller::ControlGripperAction> actionClientControlGripper;
-    actionlib::SimpleActionClient<abb_simulator_controller::RotateGripperAction> actionClientRotateGripper;
+    actionlib::SimpleActionClient<abb_controller_messages::MoveEndEffectorAction> actionClientNormal;
+    actionlib::SimpleActionClient<abb_controller_messages::MoveEndEffectorStraightAction> actionClientStraight;
+    actionlib::SimpleActionClient<abb_controller_messages::MoveEndEffectorStraightNoRotationAction> actionClientStraightNoRotation;
+    actionlib::SimpleActionClient<abb_controller_messages::ControlGripperAction> actionClientControlGripper;
+    actionlib::SimpleActionClient<abb_controller_messages::RotateGripperAction> actionClientRotateGripper;
 
 public:
     /**

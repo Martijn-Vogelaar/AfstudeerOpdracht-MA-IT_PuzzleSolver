@@ -9,8 +9,7 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
   set(CMAKE_CXX_STANDARD 14)
   set(CMAKE_CXX_EXTENSIONS OFF)
-endif()SET(GCC_OPENCV_FLAGS "-lopencv_core -lopencv_highgui")
-SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_OPENCV_FLAGS}")
+endif()
 
 find_package(catkin REQUIRED COMPONENTS
         gazebo_msgs

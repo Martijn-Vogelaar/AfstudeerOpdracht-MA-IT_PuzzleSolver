@@ -11,7 +11,7 @@ MoveEndEffectorStraightServer::~MoveEndEffectorStraightServer()
 {
 }
 
-void MoveEndEffectorStraightServer::goalCallback(const abb_simulator_controller::MoveEndEffectorStraightGoalConstPtr &goal)
+void MoveEndEffectorStraightServer::goalCallback(const abb_controller_messages::MoveEndEffectorStraightGoalConstPtr &goal)
 {
     geometry_msgs::Pose goalPose;
     goalPose.position = goal->position;

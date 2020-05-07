@@ -36,7 +36,7 @@ void InductiveSensor::runMeasurements()
             socket.receive(boost::asio::buffer(response,sizeof(response)));
 
             inductive_sensor::inductive_sensor_measurements message;
-            message.id = response[0];
+            message.id = id;
             message.activated = response[1];
             p.publish(message);
             socket.close();

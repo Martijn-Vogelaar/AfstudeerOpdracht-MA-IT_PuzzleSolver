@@ -2,7 +2,7 @@
 #define MOVE_END_EFFECTOR_STRAIGHT_SERVER_HPP
 
 #include <actionlib/server/simple_action_server.h>
-#include <abb_simulator_controller/MoveEndEffectorStraightAction.h>
+#include <abb_controller_messages/MoveEndEffectorStraightAction.h>
 
 #include <moveit/move_group_interface/move_group_interface.h>
 
@@ -22,10 +22,10 @@ class MoveEndEffectorStraightServer
 protected:
     moveit::planning_interface::MoveGroupInterface move_group;
     ros::NodeHandle nodeHandler;
-    actionlib::SimpleActionServer<abb_simulator_controller::MoveEndEffectorStraightAction> actionServer;
+    actionlib::SimpleActionServer<abb_controller_messages::MoveEndEffectorStraightAction> actionServer;
     std::string actionName;
-    abb_simulator_controller::MoveEndEffectorStraightFeedback actionFeedback;
-    abb_simulator_controller::MoveEndEffectorStraightResult actionResult;
+    abb_controller_messages::MoveEndEffectorStraightFeedback actionFeedback;
+    abb_controller_messages::MoveEndEffectorStraightResult actionResult;
     bool executeMovement(geometry_msgs::Pose goalPose);
 
 public:
@@ -48,7 +48,7 @@ public:
      * 
      * @param goal Message with the request of the action.
      */
-    void goalCallback(const abb_simulator_controller::MoveEndEffectorStraightGoalConstPtr &goal);
+    void goalCallback(const abb_controller_messages::MoveEndEffectorStraightGoalConstPtr &goal);
 };
 
 

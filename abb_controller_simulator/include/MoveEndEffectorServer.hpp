@@ -3,7 +3,7 @@
 
 
 #include <actionlib/server/simple_action_server.h>
-#include <abb_simulator_controller/MoveEndEffectorAction.h>
+#include <abb_controller_messages/MoveEndEffectorAction.h>
 
 #include <moveit/move_group_interface/move_group_interface.h>
 
@@ -23,10 +23,10 @@ class MoveEndEffectorServer
 protected:
     moveit::planning_interface::MoveGroupInterface move_group;
     ros::NodeHandle nodeHandler;
-    actionlib::SimpleActionServer<abb_simulator_controller::MoveEndEffectorAction> actionServer;
+    actionlib::SimpleActionServer<abb_controller_messages::MoveEndEffectorAction> actionServer;
     std::string actionName;
-    abb_simulator_controller::MoveEndEffectorFeedback actionFeedback;
-    abb_simulator_controller::MoveEndEffectorResult actionResult;
+    abb_controller_messages::MoveEndEffectorFeedback actionFeedback;
+    abb_controller_messages::MoveEndEffectorResult actionResult;
     bool executeMovement(geometry_msgs::Pose goalPose);
 
 public:
@@ -49,7 +49,7 @@ public:
      * 
      * @param goal Message with the request of the action.
      */
-    void goalCallback(const abb_simulator_controller::MoveEndEffectorGoalConstPtr &goal);
+    void goalCallback(const abb_controller_messages::MoveEndEffectorGoalConstPtr &goal);
 };
 
 #endif //MOVE_END_EFFECTOR_SERVER_HPP

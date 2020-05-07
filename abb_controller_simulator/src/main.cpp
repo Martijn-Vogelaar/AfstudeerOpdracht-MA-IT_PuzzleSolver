@@ -2,7 +2,7 @@
 #include "MoveEndEffectorServer.hpp"
 #include "MoveEndEffectorStraightServer.hpp"
 #include "MoveEndEffectorStraightNoRotationServer.hpp"
-#include "ControlGripperServer.hpp"
+#include "ControlGripperServerSimulator.hpp"
 #include "RotateGripperServer.hpp"
 #include "StopRobotServer.hpp"
 
@@ -15,7 +15,7 @@ int main(int argc, char **argv)
   MoveEndEffectorServer moveNormalServer("MoveEndEffectorAction");
   MoveEndEffectorStraightServer moveStraightServer("MoveEndEffectorStraightAction");
   MoveEndEffectorStraightNoRotationServer moveStraightNoRotationServer("MoveEndEffectorStraightNoRotationAction");
-  ControlGripperServer controlGripperServer("ControlGripperAction");
+  ControlGripperServerSimulator controlGripperServer("ControlGripperActionSim");
   RotateGripperServer rotateGripperServer("RotateGripperAction");
   StopRobotServer stopRobotServer;
 

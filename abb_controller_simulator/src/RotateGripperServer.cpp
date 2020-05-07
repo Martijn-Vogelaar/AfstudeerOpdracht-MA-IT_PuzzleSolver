@@ -11,7 +11,7 @@ RotateGripperServer::~RotateGripperServer()
 {
 }
 
-void RotateGripperServer::goalCallback(const abb_simulator_controller::RotateGripperGoalConstPtr &goal)
+void RotateGripperServer::goalCallback(const abb_controller_messages::RotateGripperGoalConstPtr &goal)
 {
     std::vector<double> joints;
     joints = move_group.getCurrentJointValues();

@@ -1,8 +1,8 @@
-#ifndef CONTROL_GRIPPER_SERVER_HPP
-#define CONTROL_GRIPPER_SERVER_HPP
+#ifndef CONTROL_GRIPPER_SERVER_SIMULATORHPP
+#define CONTROL_GRIPPER_SERVER_SIMULATORHPP
 
 #include <actionlib/server/simple_action_server.h>
-#include <abb_simulator_controller/ControlGripperAction.h>
+#include <abb_controller_messages/ControlGripperAction.h>
 #include <gazebo_ros_link_attacher/Attach.h>
 
 
@@ -14,20 +14,20 @@
  *        a result will be presented to the node which send the request.
  * 
  */
-class ControlGripperServer
+class ControlGripperServerSimulator
 {
 protected:
     ros::NodeHandle nodeHandler;
     ros::Publisher pub1, pub2, pub3;
 
     std::string actionName;
-    actionlib::SimpleActionServer<abb_simulator_controller::ControlGripperAction> actionServer;
+    actionlib::SimpleActionServer<abb_controller_messages::ControlGripperAction> actionServer;
 
     ros::ServiceClient attachClient;
     ros::ServiceClient detachClient;
 
-    abb_simulator_controller::ControlGripperFeedback actionFeedback;
-    abb_simulator_controller::ControlGripperResult actionResult;
+    abb_controller_messages::ControlGripperFeedback actionFeedback;
+    abb_controller_messages::ControlGripperResult actionResult;
 
 public:
     /**
@@ -35,20 +35,20 @@ public:
      * 
      * @param name Name which will be used to present this node to ROS
      */
-    ControlGripperServer(std::string name);
+    ControlGripperServerSimulator(std::string name);
 
     /**
      * @brief Destroy the Control Gripper Server object
      * 
      */
-    ~ControlGripperServer();
+    ~ControlGripperServerSimulator();
 
     /**
      * @brief Callback function which is called when any node uses the ControlGripper action.
      * 
      * @param goal Message with the request of the action.
      */
-    void goalCallback(const abb_simulator_controller::ControlGripperGoalConstPtr &goal);
+    void goalCallback(const abb_controller_messages::ControlGripperGoalConstPtr &goal);
 };
 
 #endif //CONTROL_GRIPPER_SERVER_HPP

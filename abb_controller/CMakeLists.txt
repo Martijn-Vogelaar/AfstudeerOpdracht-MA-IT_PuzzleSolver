@@ -1,18 +1,8 @@
 cmake_minimum_required(VERSION 3.1.3)
-project(abb_simulator_controller)
+project(abb_controller)
 
-if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-  # using Clang
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-  add_compile_options(-Wall -Wconversion -Wextra -std=c++14)
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
-  # using Intel C++
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-  set(CMAKE_CXX_STANDARD 14)
-  set(CMAKE_CXX_EXTENSIONS OFF)
-endif()
-
-
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(catkin REQUIRED
   COMPONENTS
@@ -40,13 +30,14 @@ find_package(catkin REQUIRED
     actionlib_msgs
     gazebo_ros_link_attacher
     abb_controller_messages
-  )
+)
 
 find_package(gazebo REQUIRED)
 
 
 find_package(Eigen3 REQUIRED)
 find_package(Boost REQUIRED system filesystem date_time)
+
 
 generate_messages(
   DEPENDENCIES
@@ -90,23 +81,18 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(abb_simulator_controller 
+add_executable(abb_controller 
                 src/main.cpp 
-                src/MoveEndEffectorServer.cpp 
-                src/MoveEndEffectorStraightServer.cpp
-                src/MoveEndEffectorStraightNoRotationServer.cpp
-                src/ControlGripperServerSimulator.cpp
-                src/RotateGripperServer.cpp
-                src/StopRobotServer.cpp
+                src/ControlGripperServer.cpp
 )
 
-target_link_libraries(abb_simulator_controller ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${GAZEBO_LIBRARIES} )
+target_link_libraries(abb_controller ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${GAZEBO_LIBRARIES} )
 
-install(TARGETS abb_simulator_controller RUNTIME DESTINATION bin DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+install(TARGETS abb_controller RUNTIME DESTINATION bin DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(DIRECTORY launch RUNTIME DESTINATION bin DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
 add_dependencies(
-  abb_simulator_controller
-  ${abb_simulator_controller_EXPORTED_TARGETS}
+  abb_controller
+  ${abb_controller_EXPORTED_TARGETS}
 )
