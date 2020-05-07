@@ -1,8 +1,18 @@
 cmake_minimum_required(VERSION 3.1.3)
 project(abb_simulator_controller)
 
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_EXTENSIONS OFF)
+if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+  # using Clang
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+  add_compile_options(-Wall -Wconversion -Wextra -std=c++14)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
+  # using Intel C++
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+  set(CMAKE_CXX_STANDARD 14)
+  set(CMAKE_CXX_EXTENSIONS OFF)
+endif()
+
+
 
 find_package(catkin REQUIRED
   COMPONENTS
