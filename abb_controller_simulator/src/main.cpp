@@ -19,9 +19,9 @@ int main(int argc, char **argv)
   RotateGripperServer rotateGripperServer("RotateGripperAction");
   StopRobotServer stopRobotServer;
 
-  while (ros::ok)
-  {
-  }
+  ros::waitForShutdown();
+  ROS_ERROR("POWEROFF");
+  spinner.stop();
 
   return 0;
 }

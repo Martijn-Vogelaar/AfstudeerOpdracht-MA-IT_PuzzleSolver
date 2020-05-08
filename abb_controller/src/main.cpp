@@ -11,9 +11,8 @@ int main(int argc, char **argv)
  
   ControlGripperServer controlGripperServer("ControlGripperAction");
 
-  while (ros::ok)
-  {
-  }
-
+  ros::waitForShutdown();
+  ROS_ERROR("POWEROFF");
+  spinner.stop();
   return 0;
 }
