@@ -15,7 +15,7 @@ int main(int argc, char **argv)
   MoveEndEffectorServer moveNormalServer("MoveEndEffectorAction");
   MoveEndEffectorStraightServer moveStraightServer("MoveEndEffectorStraightAction");
   MoveEndEffectorStraightNoRotationServer moveStraightNoRotationServer("MoveEndEffectorStraightNoRotationAction");
-  ControlGripperServerSimulator controlGripperServer("ControlGripperActionSim");
+  ControlGripperServerSimulator controlGripperServer("ControlGripperAction");
   RotateGripperServer rotateGripperServer("RotateGripperAction");
   StopRobotServer stopRobotServer;
 

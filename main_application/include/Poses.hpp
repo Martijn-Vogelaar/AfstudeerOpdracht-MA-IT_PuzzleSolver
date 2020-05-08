@@ -42,6 +42,7 @@ extern geometry_msgs::Pose PICKUP_POINT_MOVE_PIECE;
 
 
 extern geometry_msgs::Pose ROBOT_HOME_POSE;
+extern geometry_msgs::Pose ROBOT_HOME_POSE2;
 
 /**
  * @brief Initializes all poses

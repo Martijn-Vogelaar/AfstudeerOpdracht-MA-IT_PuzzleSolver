@@ -10,6 +10,7 @@ geometry_msgs::Pose PICKUP_POINT_MOVE_BACK_2;
 geometry_msgs::Pose PICKUP_POINT_MOVE_SLIDER;
 geometry_msgs::Pose PICKUP_POINT_MOVE_PIECE;
 geometry_msgs::Pose ROBOT_HOME_POSE;
+geometry_msgs::Pose ROBOT_HOME_POSE2;
 
 PuzzlePiecePoses Circle1Poses;
 PuzzlePiecePoses Circle2Poses;
@@ -96,6 +97,14 @@ void initializePoses()
     ROBOT_HOME_POSE.orientation.y = 0.0;
     ROBOT_HOME_POSE.orientation.z = 0.0;
     ROBOT_HOME_POSE.orientation.w = 1.0;
+
+    ROBOT_HOME_POSE2.position.x = 0.424;
+    ROBOT_HOME_POSE2.position.y = 0;
+    ROBOT_HOME_POSE2.position.z = 0.45;
+    ROBOT_HOME_POSE2.orientation.x = 0.0;
+    ROBOT_HOME_POSE2.orientation.y = 0.0;
+    ROBOT_HOME_POSE2.orientation.z = 0.0;
+    ROBOT_HOME_POSE2.orientation.w = 1.0;
 
     /*************************************
      * Circle1 POSES                      *

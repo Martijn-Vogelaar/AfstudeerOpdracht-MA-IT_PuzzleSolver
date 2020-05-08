@@ -19,34 +19,37 @@ void Ready::entryAction(Context *context)
     context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE);
     ModelSpawner modelSpawner;
 
-    if (visitCount == 0)
-    {
-        modelSpawner.spawnPuzzlePiece(Shape::CIRCLE);
-    }
-    else if (visitCount == 1)
-    {
-        modelSpawner.spawnPuzzlePiece(Shape::CIRCLE);
-    }
-    else if (visitCount == 2)
-    {
-        modelSpawner.spawnPuzzlePiece(Shape::RECTANGLE_1);
-    }
-    else if (visitCount == 3)
-    {
-        modelSpawner.spawnPuzzlePiece(Shape::SQUARE);
-    }
+    // if (visitCount == 0)
+    // {
+    //     modelSpawner.spawnPuzzlePiece(Shape::CIRCLE);
+    // }
+    // else if (visitCount == 1)
+    // {
+    //     modelSpawner.spawnPuzzlePiece(Shape::CIRCLE);
+    // }
+    // else if (visitCount == 2)
+    // {
+    //     modelSpawner.spawnPuzzlePiece(Shape::RECTANGLE_1);
+    // }
+    // else if (visitCount == 3)
+    // {
+    //     modelSpawner.spawnPuzzlePiece(Shape::SQUARE);
+    // }
 }
 
 void Ready::doActivity(Context *context)
 {
-    if (visitCount > 3)
-    {
-        context->setState(std::make_shared<PowerOff>());
-    }
-    else
-    {
-        context->setState(std::make_shared<PutPieceInPickupPoint>());
-    }
+    context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE2);
+    context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE);
+
+    // if (visitCount > 3)
+    // {
+    //     context->setState(std::make_shared<PowerOff>());
+    // }
+    // else
+    // {
+    //     context->setState(std::make_shared<PutPieceInPickupPoint>());
+    // }
 }
 
 void Ready::exitAction(Context *)

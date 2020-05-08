@@ -9,7 +9,6 @@ find_package(catkin REQUIRED
     gazebo_ros
     interactive_markers
     moveit_core
-    moveit_visual_tools
     moveit_ros_planning
     moveit_ros_planning_interface
     moveit_ros_perception
@@ -52,7 +51,6 @@ catkin_package(
   CATKIN_DEPENDS
     geometry_msgs
     moveit_core
-    moveit_visual_tools
     moveit_ros_planning_interface
     message_runtime
     interactive_markers
