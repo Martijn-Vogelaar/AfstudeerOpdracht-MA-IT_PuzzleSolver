@@ -39,8 +39,9 @@ void Ready::entryAction(Context *context)
 
 void Ready::doActivity(Context *context)
 {
-    context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE2);
     context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE);
+    context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE2);
+    context->getMoveRobotClient().MoveRobotStraight(0, ROBOT_HOME_POSE3);
 
     // if (visitCount > 3)
     // {

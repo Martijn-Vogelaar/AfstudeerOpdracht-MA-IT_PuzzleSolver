@@ -25,9 +25,9 @@
 /**
  * @class MoveRobotClient
  * 
- * @brief MoveRobotClient is an interface to easily use actions which requests movements form the abb_simulator_controller
+ * @brief MoveRobotClient is an interface to easily use actions which requests movements form the abb_controller
  * 
- * @details MoveRobotClient is an interface to easily use actions presented by the abb_simulator_controller
+ * @details MoveRobotClient is an interface to easily use actions presented by the abb_controller
  *          This includes:      Moving
  *                              Moving in a straight manner
  *                              Controller the gripper

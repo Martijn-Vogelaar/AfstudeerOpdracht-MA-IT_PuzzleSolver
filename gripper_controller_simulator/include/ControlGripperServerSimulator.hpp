@@ -1,5 +1,5 @@
-#ifndef CONTROL_GRIPPER_SERVER_SIMULATORHPP
-#define CONTROL_GRIPPER_SERVER_SIMULATORHPP
+#ifndef CONTROL_GRIPPER_SERVER_SIMULATOR_HPP
+#define CONTROL_GRIPPER_SERVER_SIMULATOR_HPP
 
 #include <actionlib/server/simple_action_server.h>
 #include <abb_controller_messages/ControlGripperAction.h>

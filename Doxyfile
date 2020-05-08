@@ -77,7 +77,7 @@ SHOW_NAMESPACES        = YES
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
 
-INPUT                  = abb_simulator_controller \
+INPUT                  = abb_controller \
 			             capacitive_sensor_simulator \
                          inductive_sensor_simulator \
                          main_application \
