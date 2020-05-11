@@ -37,4 +37,7 @@ void ModelSpawner::spawnPuzzlePiece(Shape puzzlePiece)
         outcome = 1;
         break;
     }
+    if(outcome != 0){
+        throw outcome;
+    }
 }

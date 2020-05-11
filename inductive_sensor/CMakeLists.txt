@@ -4,7 +4,7 @@ project(inductive_sensor)
 if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   # using Clang
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-  add_compile_options(-Wall -Wconversion -Wextra -std=c++14)
+  add_compile_options( -Wall -Wconversion -Wextra -std=c++14)
   SET(GCC_OPENCV_FLAGS "-lopencv_core -lopencv_highgui")
   SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_OPENCV_FLAGS}")
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
@@ -23,7 +23,8 @@ find_package(catkin REQUIRED COMPONENTS
         message_generation
         roscpp
         sensor_msgs
-        std_msgs)
+        std_msgs
+        )
         
 find_package(OpenCV 3.2.0 REQUIRED)
 
@@ -36,6 +37,7 @@ find_package(Boost REQUIRED COMPONENTS
 )
 
 find_package(gazebo REQUIRED)
+
 add_message_files(
   FILES
   inductive_sensor_measurements.msg
@@ -45,10 +47,6 @@ generate_messages(
   DEPENDENCIES
   std_msgs
 )
-
-#Enable CTest which is used for the codecoverage
-include(CTest)
-enable_testing()
 
 link_directories(${GAZEBO_LIBRARY_DIRS})
 
@@ -64,7 +62,7 @@ catkin_package(
     message_runtime
     roscpp
     gazebo_ros
-    sensor_interfaces)
+  )
 
 add_executable(${PROJECT_NAME}_plugin src/main.cpp src/InductiveSensor.cpp)
 
@@ -80,40 +78,40 @@ target_link_libraries(${PROJECT_NAME}_plugin
 
 
 
-  include(CTest)
-  enable_testing()
-  
-  catkin_add_gtest(${PROJECT_NAME}_unit_tests unittests/gtest.cpp unittests/inductiveSensorTest.cpp src/InductiveSensor.cpp)
-  target_link_libraries(${PROJECT_NAME}_unit_tests  ${catkin_LIBRARIES})
-  
-  
-  if(CODE_COVERAGE)
-    #We want to measure the codecoverage with a Debug build
-    set(CMAKE_BUILD_TYPE Debug)
-  
-  
-    include(../cmake/CodeCoverage.cmake)
-      
-    #Files which will be excluded for the codecoverage
-    set(COVERAGE_LCOV_EXCLUDES
-      '*/gtest/*'
-      '/*/c++/*'
-      '*/*.py'
-      '*/unittests/*'
-      '*/*main.cpp'
-      '*/*Main.cpp'
-      '*/ros/*'
-      '*/boost/*'
-      '*/devel/*'
-    )
-  
-    APPEND_COVERAGE_COMPILER_FLAGS()
-  
-  
-    SETUP_TARGET_FOR_COVERAGE_LCOV(
-            NAME ${PROJECT_NAME}_coverage
-            EXECUTABLE ctest -j ${n_cores}
-            DEPENDENCIES
-            ${PROJECT_NAME}_unit_tests
-               )   
-  endif()
+include(CTest)
+enable_testing()
+
+catkin_add_gtest(${PROJECT_NAME}_unit_tests unittests/gtest.cpp unittests/inductiveSensorTest.cpp src/InductiveSensor.cpp)
+target_link_libraries(${PROJECT_NAME}_unit_tests  ${catkin_LIBRARIES})
+
+
+if(CODE_COVERAGE)
+  #We want to measure the codecoverage with a Debug build
+  set(CMAKE_BUILD_TYPE Debug)
+
+
+  include(../cmake/CodeCoverage.cmake)
+    
+  #Files which will be excluded for the codecoverage
+  set(COVERAGE_LCOV_EXCLUDES
+    '*/gtest/*'
+    '/*/c++/*'
+    '*/*.py'
+    '*/unittests/*'
+    '*/*main.cpp'
+    '*/*Main.cpp'
+    '*/ros/*'
+    '*/boost/*'
+    '*/devel/*'
+  )
+
+  APPEND_COVERAGE_COMPILER_FLAGS()
+
+
+  SETUP_TARGET_FOR_COVERAGE_LCOV(
+          NAME ${PROJECT_NAME}_coverage
+          EXECUTABLE ctest -j ${n_cores}
+          DEPENDENCIES
+          ${PROJECT_NAME}_unit_tests
+             )   
+endif()

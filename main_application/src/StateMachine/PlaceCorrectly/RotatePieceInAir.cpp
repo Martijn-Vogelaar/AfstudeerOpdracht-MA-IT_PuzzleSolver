@@ -23,7 +23,7 @@ void RotatePieceInAir::doActivity(SubContext *context)
     {
         if (!context->getMoveRobotClient().RotateGripper(0, unableToRotateFurther * M_PI / 2, false, true))
         {
-            unableToRotateFurther = -unableToRotateFurther;
+            unableToRotateFurther = (uint8_t)-unableToRotateFurther;
             movementMade = false;
         }
     }
@@ -31,7 +31,7 @@ void RotatePieceInAir::doActivity(SubContext *context)
     {
         if (!context->getMoveRobotClient().RotateGripper(0, unableToRotateFurther * M_PI, false, true))
         {
-            unableToRotateFurther = -unableToRotateFurther;
+            unableToRotateFurther = (uint8_t)-unableToRotateFurther;
             movementMade = false;
         }
     }

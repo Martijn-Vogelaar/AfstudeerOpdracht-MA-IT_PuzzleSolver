@@ -38,12 +38,7 @@ find_package(Eigen3 REQUIRED)
 find_package(Boost REQUIRED system filesystem date_time)
 
 
-generate_messages(
-  DEPENDENCIES
-  geometry_msgs
-  actionlib_msgs
-  std_msgs
-)
+
 
 catkin_package(
   LIBRARIES
@@ -58,7 +53,6 @@ catkin_package(
     gazebo_ros
   DEPENDS
     EIGEN3
-    gazebo
 )
 
 ###########
@@ -92,7 +86,7 @@ install(DIRECTORY launch RUNTIME DESTINATION bin DESTINATION ${CATKIN_PACKAGE_SH
 
 add_dependencies(
   gripper_controller
-  ${gripper_controller_EXPORTED_TARGETS}
+  ${catkin_EXPORTED_TARGETS}
 )
 
 

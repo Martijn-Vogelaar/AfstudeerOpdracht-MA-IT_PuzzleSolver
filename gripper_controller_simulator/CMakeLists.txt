@@ -37,14 +37,6 @@ find_package(gazebo REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(Boost REQUIRED system filesystem date_time)
 
-
-generate_messages(
-  DEPENDENCIES
-  geometry_msgs
-  actionlib_msgs
-  std_msgs
-)
-
 catkin_package(
   LIBRARIES
   INCLUDE_DIRS
@@ -58,7 +50,6 @@ catkin_package(
     gazebo_ros
   DEPENDS
     EIGEN3
-    gazebo
 )
 
 ###########
@@ -79,9 +70,16 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+
+
 add_executable(gripper_controller_simulator 
                 src/main.cpp 
                 src/ControlGripperServerSimulator.cpp
+)
+
+add_dependencies(
+  gripper_controller_simulator
+  ${catkin_EXPORTED_TARGETS}
 )
 
 target_link_libraries(gripper_controller_simulator ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${GAZEBO_LIBRARIES} )
@@ -90,7 +88,3 @@ install(TARGETS gripper_controller_simulator RUNTIME DESTINATION bin DESTINATION
 
 install(DIRECTORY launch RUNTIME DESTINATION bin DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
-add_dependencies(
-  gripper_controller_simulator
-  ${gripper_controller_simulator_EXPORTED_TARGETS}
-)

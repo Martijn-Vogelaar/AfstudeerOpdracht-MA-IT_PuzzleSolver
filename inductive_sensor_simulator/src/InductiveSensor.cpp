@@ -1,12 +1,12 @@
 #include "InductiveSensor.hpp"
-#include "inductive_sensor_simulator/inductive_sensor_simulator_measurements.h"
+#include "inductive_sensor/inductive_sensor_measurements.h"
 #include <gazebo/gazebo_client.hh>
 
 #define DEBUG false
 
 InductiveSensor::InductiveSensor(uint8_t aId) : id(aId)
 {
-    p = n.advertise<inductive_sensor_simulator::inductive_sensor_simulator_measurements>("inductive_sensor_simulator", 1000);
+    p = n.advertise<inductive_sensor::inductive_sensor_measurements>("inductive_sensor", 1000);
 }
 
 InductiveSensor::~InductiveSensor()
@@ -62,7 +62,7 @@ void InductiveSensor::cameraCallback(ConstImageStampedPtr &msg)
     cv::Mat image(height, width, CV_8UC3, data);
 
     bool activated = isActivated(image);
-    inductive_sensor_simulator::inductive_sensor_simulator_measurements message;
+    inductive_sensor::inductive_sensor_measurements message;
     message.id = id;
     message.activated = activated;
     p.publish(message);

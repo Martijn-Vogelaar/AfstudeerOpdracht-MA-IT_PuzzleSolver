@@ -6,7 +6,7 @@ project(main_application
 if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   # using Clang
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-  add_compile_options(-Wall -Wconversion -Wextra -std=c++14)
+  add_compile_options( -Wall -Wconversion -Wextra -std=c++14)
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
   # using Intel C++
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
@@ -31,8 +31,8 @@ find_package(catkin REQUIRED
     tf2_geometry_msgs
     roscpp
     abb_controller_messages
-    capacitive_sensor_simulator
-    inductive_sensor_simulator
+    capacitive_sensor
+    inductive_sensor
 )
 
 find_package(Eigen3 REQUIRED)
@@ -112,6 +112,8 @@ add_library(lib_main_application
                 src/PuzzlePieceSpot.cpp
                 src/Poses.cpp
 )
+add_dependencies(lib_main_application ${catkin_EXPORTED_TARGETS})
+
 
 add_executable(main_application 
 src/Main.cpp  

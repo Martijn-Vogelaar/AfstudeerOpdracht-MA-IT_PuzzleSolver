@@ -4,7 +4,7 @@ project(abb_controller)
 if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   # using Clang
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-  add_compile_options(-Wall -Wconversion -Wextra -std=c++14)
+  add_compile_options( -Wall -Wconversion -Wextra -std=c++14)
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
   # using Intel C++
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
@@ -47,12 +47,6 @@ find_package(gazebo REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(Boost REQUIRED system filesystem date_time)
 
-generate_messages(
-  DEPENDENCIES
-  geometry_msgs
-  actionlib_msgs
-  std_msgs
-)
 
 catkin_package(
   LIBRARIES
@@ -67,7 +61,6 @@ catkin_package(
     gazebo_ros
   DEPENDS
     EIGEN3
-    gazebo
 )
 
 ###########
@@ -105,7 +98,7 @@ install(DIRECTORY launch RUNTIME DESTINATION bin DESTINATION ${CATKIN_PACKAGE_SH
 
 add_dependencies(
   abb_controller
-  ${abb_controller_EXPORTED_TARGETS}
+  ${catkin_EXPORTED_TARGETS}
 )
 
 

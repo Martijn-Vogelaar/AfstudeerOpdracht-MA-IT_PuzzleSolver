@@ -29,7 +29,7 @@ void InductiveSensor::runMeasurements()
 
 void InductiveSensor::runMeasurement()
 {
-    std::array<char, 2> request = {MESSAGE_TYPE, id};
+    std::array<char, 2> request = {MESSAGE_TYPE, (char)id};
     boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(IP), PORT);
     boost::asio::io_service ios;
     try

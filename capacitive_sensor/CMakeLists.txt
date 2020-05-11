@@ -3,7 +3,7 @@ project(capacitive_sensor)
 if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   # using Clang
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-  add_compile_options(-Wall -Wconversion -Wextra -std=c++14)
+  add_compile_options( -Wall -Wconversion -Wextra -std=c++14)
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
   # using Intel C++
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
@@ -20,7 +20,8 @@ find_package(catkin REQUIRED COMPONENTS
         message_generation
         roscpp
         sensor_msgs
-        std_msgs)
+        std_msgs
+        )
         
 find_package(Boost REQUIRED COMPONENTS
   system
@@ -31,6 +32,8 @@ find_package(Boost REQUIRED COMPONENTS
 )
 
 find_package(gazebo REQUIRED)
+
+
 add_message_files(
   FILES
   capacitive_sensor_measurements.msg
@@ -41,9 +44,6 @@ generate_messages(
   std_msgs
 )
 
-#Enable CTest which is used for the codecoverage
-include(CTest)
-enable_testing()
 
 link_directories(${GAZEBO_LIBRARY_DIRS})
 
@@ -58,11 +58,11 @@ catkin_package(
     message_runtime
     roscpp
     gazebo_ros
-    sensor_interfaces)
+    )
 
 add_executable(${PROJECT_NAME}_plugin src/main.cpp src/CapacitiveSensor.cpp)
 
-add_dependencies(${PROJECT_NAME}_plugin ${catkin_EXPORTED_TARGETS})
+add_dependencies(${PROJECT_NAME}_plugin ${catkin_EXPORTED_TARGETS} capacitive_sensor_generate_messages_cpp)
 
 		
 target_link_libraries(${PROJECT_NAME}_plugin
