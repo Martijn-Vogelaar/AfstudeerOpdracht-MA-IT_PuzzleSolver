@@ -9,7 +9,7 @@ int main(int argc, char **argv)
   spinner.start();
   ROS_ERROR("Initialized");
  
-  ControlGripperServer controlGripperServer("ControlGripperAction");
+  ControlGripperServer controlGripperServer("ControlGripperAction", "192.168.125.1");
 
   ros::waitForShutdown();
   ROS_ERROR("POWEROFF");

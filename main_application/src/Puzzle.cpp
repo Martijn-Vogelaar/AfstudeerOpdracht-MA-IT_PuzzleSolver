@@ -4,7 +4,7 @@ Puzzle::Puzzle() {}
 
 Puzzle::~Puzzle() {}
 
-PuzzlePieceSpot* Puzzle::getEmptyPuzzleSpot(Shape shape)
+PuzzlePieceSpot *Puzzle::getEmptyPuzzleSpot(Shape shape)
 {
     for (PuzzlePieceSpot &spot : puzzleSpots)
     {
@@ -42,6 +42,7 @@ void Puzzle::setSpotFilled(uint8_t puzzleID)
         if (spot.getID() == puzzleID)
         {
             spot.setFilled(true);
+            resetExplored();
         }
     }
 }
@@ -53,5 +54,12 @@ void Puzzle::addPuzzlePieceSpot(PuzzlePieceSpot puzzlePieceSpot)
 
 bool Puzzle::puzzleFinished()
 {
-    return false;
+    for (PuzzlePieceSpot &spot : puzzleSpots)
+    {
+        if (!spot.isFilled())
+        {
+            return false;
+        }
+    }
+    return true;
 }

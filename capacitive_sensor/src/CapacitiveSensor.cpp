@@ -19,31 +19,37 @@ CapacitiveSensor::~CapacitiveSensor()
 void CapacitiveSensor::runMeasurements()
 {
     ros::Rate r(LOOP_RATE); // 10 hz
-    std::array<char,1> request = {MESSAGE_TYPE};
-    boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(IP), PORT);
-    boost::asio::io_service ios;	
 
     while (ros::ok())
     {
-        try{
-            boost::asio::ip::tcp::socket socket(ios);
-
-            socket.connect(endpoint);
-            socket.write_some( boost::asio::buffer(request,sizeof(request)));
-
-            std::array<char,2> response;
-            socket.receive(boost::asio::buffer(response,sizeof(response)));
-
-            capacitive_sensor::capacitive_sensor_measurements message;
-            message.id = response[0];
-            message.value = response[1];
-            p.publish(message);
-            socket.close();
-            r.sleep();
-        }
-        catch ( const boost::system::system_error& ex ){
-            ROS_ERROR("Socket failure!");
-        }
+        runMeasurement();
+        r.sleep();
     }
 }
-    
+
+void CapacitiveSensor::runMeasurement()
+{
+    std::array<char, 1> request = {MESSAGE_TYPE};
+    boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(IP), PORT);
+    boost::asio::io_service ios;
+    try
+    {
+        boost::asio::ip::tcp::socket socket(ios);
+
+        socket.connect(endpoint);
+        socket.write_some(boost::asio::buffer(request, sizeof(request)));
+
+        std::array<char, 2> response;
+        socket.receive(boost::asio::buffer(response, sizeof(response)));
+
+        capacitive_sensor::capacitive_sensor_measurements message;
+        message.id = response[0];
+        message.value = response[1];
+        p.publish(message);
+        socket.close();
+    }
+    catch (const boost::system::system_error &ex)
+    {
+        ROS_ERROR("Socket failure!");
+    }
+}

@@ -262,39 +262,3 @@ geometry_msgs::Pose getPuzzlePiecePreparePickup(Shape puzzlePiece)
     return pickupPoint;
 }
 
-geometry_msgs::Pose getPuzzlePiecePlace(Shape puzzlePiece)
-{
-    geometry_msgs::Pose placePose;
-    switch (puzzlePiece)
-    {
-    case Shape::CIRCLE:
-        placePose = Circle1Poses.placePose;
-        break;
-    case Shape::SQUARE:
-        placePose = SquarePoses.placePose;
-        break;
-    case Shape::RECTANGLE_1:
-        placePose = Rectangle1Poses.placePose;
-        break;
-    case Shape::RECTANGLE_2:
-        placePose = Rectangle2Poses.placePose;
-        break;
-    default:
-        placePose = Circle1Poses.placePose;
-        break;
-    }
-
-    placePose.position.x = placePose.position.x / scaleCorrection;
-    placePose.position.y = placePose.position.y / scaleCorrection;
-    // placePose.position.z = placePose.position.z / scaleCorrection;
-
-    return placePose;
-}
-
-geometry_msgs::Pose getPuzzlePiecePreparePlace(Shape puzzlePiece)
-{
-
-    geometry_msgs::Pose placePoint = getPuzzlePiecePlace(puzzlePiece);
-    placePoint.position.z = placePoint.position.z + prepareDistance;
-    return placePoint;
-}

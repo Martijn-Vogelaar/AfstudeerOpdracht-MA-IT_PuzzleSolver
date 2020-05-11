@@ -55,4 +55,6 @@ private:
      * 
      */
     ros::Publisher p;
+
+    void runMeasurement();
 };

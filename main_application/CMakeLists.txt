@@ -78,7 +78,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(main_application 
+add_library(lib_main_application
                 src/StateMachine/PlaceCorrectly/CheckCorrectlyRotated.cpp
                 src/StateMachine/PlaceCorrectly/CheckCorrectlyRotated.cpp
                 src/StateMachine/PlaceCorrectly/PlacePieceInPuzzle.cpp
@@ -104,7 +104,6 @@ add_executable(main_application
                 src/StateMachine/MoveToUnexploredSpot.cpp
                 src/StateMachine/RemovePieceFromPuzzle.cpp
 
-                src/Main.cpp
                 src/ModelSpawner.cpp
                 src/MoveRobotClient.cpp
                 src/TF2Handler.cpp
@@ -112,11 +111,58 @@ add_executable(main_application
                 src/Puzzle.cpp
                 src/PuzzlePieceSpot.cpp
                 src/Poses.cpp
-
 )
 
-target_link_libraries(main_application 
+add_executable(main_application 
+src/Main.cpp  
+)
+
+target_link_libraries(main_application
+lib_main_application
 ${catkin_LIBRARIES}
 ${Boost_LIBRARIES} 
 ${GAZEBO_LIBRARIES} 
 )
+
+
+
+#####Unittesting#####
+
+
+include(CTest)
+enable_testing()
+
+catkin_add_gtest(${PROJECT_NAME}_unit_tests unittests/gtest.cpp unittests/PuzzleTest.cpp unittests/ShapesTest.cpp)
+target_link_libraries(${PROJECT_NAME}_unit_tests lib_main_application ${catkin_LIBRARIES})
+
+
+if(CODE_COVERAGE)
+  #We want to measure the codecoverage with a Debug build
+  set(CMAKE_BUILD_TYPE Debug)
+
+
+  include(../cmake/CodeCoverage.cmake)
+    
+  #Files which will be excluded for the codecoverage
+  set(COVERAGE_LCOV_EXCLUDES
+    '*/gtest/*'
+    '/*/c++/*'
+    '*/*.py'
+    '*/unittests/*'
+    '*/*main.cpp'
+    '*/*Main.cpp'
+    '*/ros/*'
+    '*/boost/*'
+    '*/devel/*'
+  )
+
+  APPEND_COVERAGE_COMPILER_FLAGS()
+
+
+  SETUP_TARGET_FOR_COVERAGE_LCOV(
+          NAME ${PROJECT_NAME}_coverage
+          EXECUTABLE ctest -j ${n_cores}
+          DEPENDENCIES
+          ${PROJECT_NAME}_unit_tests
+             )   
+endif()

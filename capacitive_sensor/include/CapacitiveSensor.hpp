@@ -74,4 +74,7 @@ private:
      * 
      */
     uint8_t sensorValue;
+
+    void runMeasurement();
+
 };

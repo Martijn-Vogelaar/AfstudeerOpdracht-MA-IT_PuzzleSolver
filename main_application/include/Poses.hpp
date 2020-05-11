@@ -53,7 +53,5 @@ extern void initializePoses();
 
 extern geometry_msgs::Pose getPuzzlePiecePreparePickup(Shape puzzlePiece);
 extern geometry_msgs::Pose getPuzzlePiecePickup(Shape puzzlePiece);
-extern geometry_msgs::Pose getPuzzlePiecePreparePlace(Shape puzzlePiece);
-extern geometry_msgs::Pose getPuzzlePiecePlace(Shape puzzlePiece);
 
 #endif //POSES_HPP

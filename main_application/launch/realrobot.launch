@@ -3,6 +3,8 @@
       <arg name="sim" value="false"/>
       <arg name="robot_ip" value="192.168.125.1"/>
     </include>
+        <node name="PickuppointBroadcaster" type="PickuppointBroadcaster" pkg="pickuppoint" args="pickuppoint 0.2 -0.4 0.0 0 0 0 0"/>
+
     <node name="gripper_controller" type="gripper_controller" pkg="gripper_controller"/>
     <node name="abb_controller" type="abb_controller" pkg="abb_controller"/>
 </launch>

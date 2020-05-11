@@ -3,6 +3,7 @@
 
 #include <actionlib/server/simple_action_server.h>
 #include <abb_controller_messages/ControlGripperAction.h>
+#include <boost/asio.hpp>
 
 /**
  * @class ControlGripperServer
@@ -23,13 +24,15 @@ protected:
     abb_controller_messages::ControlGripperFeedback actionFeedback;
     abb_controller_messages::ControlGripperResult actionResult;
 
+    boost::asio::ip::address ipAddres;
+
 public:
     /**
      * @brief Construct a new Control Gripper Server object
      * 
      * @param name Name which will be used to present this node to ROS
      */
-    ControlGripperServer(std::string name);
+    ControlGripperServer(std::string name, std::string aIpAddress);
 
     /**
      * @brief Destroy the Control Gripper Server object

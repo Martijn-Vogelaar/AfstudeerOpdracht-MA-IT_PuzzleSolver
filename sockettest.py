@@ -13,23 +13,28 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
     # s.sendall(sys.argv[1].encode())
     my_bytes = bytearray()
-    if sys.argv[1] == "controlGripper" :
-        my_bytes.append(controlGripper)
-        if sys.argv[2] == "open":
-            my_bytes.append(open)
-        else: 
-            my_bytes.append(close)
-    elif sys.argv[1] == "readCapacitive":
-        my_bytes.append(readCapacitive)
-    elif sys.argv[1] == "readInductive":
-        my_bytes.append(readInductive)
-        my_bytes.append(int(sys.argv[2]))
-    elif sys.argv[1] == "controlSlider":
-        my_bytes.append(controlSlider)
-        if sys.argv[2] == "open":
-            my_bytes.append(open)
-        else: 
-            my_bytes.append(close)
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "controlGripper" :
+            my_bytes.append(controlGripper)
+            if sys.argv[2] == "open":
+                my_bytes.append(open)
+            else: 
+                my_bytes.append(close)
+        elif sys.argv[1] == "readCapacitive":
+            my_bytes.append(readCapacitive)
+        elif sys.argv[1] == "readInductive":
+            my_bytes.append(readInductive)
+            my_bytes.append(int(sys.argv[2]))
+        elif sys.argv[1] == "controlSlider":
+            my_bytes.append(controlSlider)
+            if sys.argv[2] == "open":
+                my_bytes.append(open)
+            else: 
+                my_bytes.append(close)
+        else:
+            my_bytes.append(5)
+    else:
+        my_bytes.append(5)
     
     print(my_bytes)
     s.sendall(my_bytes)

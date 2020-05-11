@@ -70,3 +70,43 @@ target_link_libraries(${PROJECT_NAME}_plugin
         ${catkin_LIBRARIES}
         ${OpenCV_LIBS}
         )
+
+
+
+include(CTest)
+enable_testing()
+
+catkin_add_gtest(${PROJECT_NAME}_unit_tests unittests/gtest.cpp unittests/capacitiveSensorTest.cpp src/CapacitiveSensor)
+target_link_libraries(${PROJECT_NAME}_unit_tests  ${catkin_LIBRARIES})
+
+
+if(CODE_COVERAGE)
+  #We want to measure the codecoverage with a Debug build
+  set(CMAKE_BUILD_TYPE Debug)
+
+
+  include(../cmake/CodeCoverage.cmake)
+    
+  #Files which will be excluded for the codecoverage
+  set(COVERAGE_LCOV_EXCLUDES
+    '*/gtest/*'
+    '/*/c++/*'
+    '*/*.py'
+    '*/unittests/*'
+    '*/*main.cpp'
+    '*/*Main.cpp'
+    '*/ros/*'
+    '*/boost/*'
+    '*/devel/*'
+  )
+
+  APPEND_COVERAGE_COMPILER_FLAGS()
+
+
+  SETUP_TARGET_FOR_COVERAGE_LCOV(
+          NAME ${PROJECT_NAME}_coverage
+          EXECUTABLE ctest -j ${n_cores}
+          DEPENDENCIES
+          ${PROJECT_NAME}_unit_tests
+             )   
+endif()
