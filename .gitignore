@@ -215,7 +215,7 @@ qtcreator-*
 CATKIN_IGNORE
 
 # Doxygen
-/doxygen/*
+*/doxygen/*
 
 # VsCode
 /.vscode/*

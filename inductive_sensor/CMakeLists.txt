@@ -83,7 +83,7 @@ target_link_libraries(${PROJECT_NAME}_plugin
   include(CTest)
   enable_testing()
   
-  catkin_add_gtest(${PROJECT_NAME}_unit_tests unittests/gtest.cpp unittests/InductiveSensorTest.cpp src/InductiveSensor.cpp)
+  catkin_add_gtest(${PROJECT_NAME}_unit_tests unittests/gtest.cpp unittests/inductiveSensorTest.cpp src/InductiveSensor.cpp)
   target_link_libraries(${PROJECT_NAME}_unit_tests  ${catkin_LIBRARIES})
   
   
