@@ -3,7 +3,10 @@
 
 #include <actionlib/server/simple_action_server.h>
 #include <abb_controller_messages/ControlGripperAction.h>
-#include <boost/asio.hpp>
+#include <actionlib/client/simple_action_client.h>
+#include "custom_server_client/TcpIpAction.h"
+
+#define TCP_IP_ACTION "customServerClient"
 
 /**
  * @class ControlGripperServer
@@ -20,11 +23,10 @@ protected:
 
     std::string actionName;
     actionlib::SimpleActionServer<abb_controller_messages::ControlGripperAction> actionServer;
+    actionlib::SimpleActionClient<custom_server_client::TcpIpAction> tcpIpActionClient;
 
     abb_controller_messages::ControlGripperFeedback actionFeedback;
     abb_controller_messages::ControlGripperResult actionResult;
-
-    boost::asio::ip::address ipAddres;
 
 public:
     /**
@@ -32,7 +34,7 @@ public:
      * 
      * @param name Name which will be used to present this node to ROS
      */
-    ControlGripperServer(std::string name, std::string aIpAddress);
+    ControlGripperServer(std::string name);
 
     /**
      * @brief Destroy the Control Gripper Server object

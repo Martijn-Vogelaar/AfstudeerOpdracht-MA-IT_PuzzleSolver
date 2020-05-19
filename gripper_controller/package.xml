@@ -19,6 +19,7 @@
   <build_depend>message_runtime</build_depend>
   <build_depend>pluginlib</build_depend>
   <build_depend>eigen</build_depend>
+  <build_depend>custom_server_client</build_depend>
   <build_depend>moveit_core</build_depend>
   <build_depend>moveit_ros_planning</build_depend>
   <build_depend>moveit_ros_planning_interface</build_depend>

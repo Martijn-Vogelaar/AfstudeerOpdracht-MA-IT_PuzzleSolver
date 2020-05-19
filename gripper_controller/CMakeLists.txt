@@ -29,6 +29,7 @@ find_package(catkin REQUIRED
     actionlib_msgs
     gazebo_ros_link_attacher
     abb_controller_messages
+    custom_server_client
 )
 
 find_package(gazebo REQUIRED)
