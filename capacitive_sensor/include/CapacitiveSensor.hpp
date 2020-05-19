@@ -1,6 +1,9 @@
 #include "ros/ros.h"
 #include <stdint.h>
-#include <boost/asio.hpp>
+#include <actionlib/client/simple_action_client.h>
+#include "custom_server_client/TcpIpAction.h"
+
+#define TCP_IP_ACTION "customServerClient"
 
 /**
  * @class CapacitiveSensor
@@ -75,9 +78,7 @@ private:
      */
     uint8_t sensorValue;
 
-    boost::asio::ip::tcp::endpoint endpoint;
-    boost::asio::io_service ios;
-    boost::asio::ip::tcp::socket socket;
+    actionlib::SimpleActionClient<custom_server_client::TcpIpAction> tcpIpActionClient;
 
     void runMeasurement();
 };

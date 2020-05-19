@@ -25,7 +25,6 @@ void CustomServerClient::goalCallBack(const custom_server_client::TcpIpGoalConst
         std::vector<int8_t> response;
         std::array<int8_t, 1> size;
         socket.receive(boost::asio::buffer(size, sizeof(size)));
-
         response.resize(size[0]);
         socket.receive(boost::asio::buffer(response));
 

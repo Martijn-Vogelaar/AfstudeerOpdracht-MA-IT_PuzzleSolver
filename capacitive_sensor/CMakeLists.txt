@@ -21,6 +21,7 @@ find_package(catkin REQUIRED COMPONENTS
         roscpp
         sensor_msgs
         std_msgs
+        custom_server_client
         )
         
 find_package(Boost REQUIRED COMPONENTS
