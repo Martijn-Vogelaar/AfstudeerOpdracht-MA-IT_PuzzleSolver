@@ -66,7 +66,7 @@ catkin_package(
 
 add_executable(${PROJECT_NAME}_plugin src/main.cpp src/InductiveSensor.cpp)
 
-add_dependencies(${PROJECT_NAME}_plugin ${catkin_EXPORTED_TARGETS})
+add_dependencies(${PROJECT_NAME}_plugin ${catkin_EXPORTED_TARGETS} inductive_sensor_generate_messages_cpp)
 
 		
 target_link_libraries(${PROJECT_NAME}_plugin

@@ -1,5 +1,6 @@
 #include "ros/ros.h"
 #include <stdint.h>
+#include <boost/asio.hpp>
 
 /**
  * @class CapacitiveSensor
@@ -25,7 +26,6 @@ public:
      *        The max number of sensors is 8 and the minimum is 1.
 
      */
-
 
     CapacitiveSensor(uint8_t aId);
 
@@ -75,6 +75,9 @@ private:
      */
     uint8_t sensorValue;
 
-    void runMeasurement();
+    boost::asio::ip::tcp::endpoint endpoint;
+    boost::asio::io_service ios;
+    boost::asio::ip::tcp::socket socket;
 
+    void runMeasurement();
 };
