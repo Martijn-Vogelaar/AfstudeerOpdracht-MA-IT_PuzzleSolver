@@ -24,6 +24,7 @@ find_package(catkin REQUIRED COMPONENTS
         roscpp
         sensor_msgs
         std_msgs
+        custom_server_client
         )
         
 find_package(OpenCV 3.2.0 REQUIRED)

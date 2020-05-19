@@ -6,7 +6,7 @@
         a
   </description>
 
-  <maintainer email="Martijn.j.vogelaar@gmail.com"> </maintainer>
+  <maintainer email="Martijn.j.vogelaar@gmail.com"></maintainer>
   <license>BSD</license>
 
   <test_depend>rosunit</test_depend>
@@ -19,6 +19,7 @@
   <build_depend>gazebo_plugins</build_depend>
   <build_depend>message_generation</build_depend>
   <build_depend>message_runtime</build_depend>
+  <build_depend>custom_server_client</build_depend>
   <build_export_depend>gazebo_ros</build_export_depend>
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
