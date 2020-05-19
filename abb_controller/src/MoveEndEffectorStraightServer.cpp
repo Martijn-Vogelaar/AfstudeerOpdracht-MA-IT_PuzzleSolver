@@ -35,7 +35,7 @@ bool MoveEndEffectorStraightServer::executeMovement(geometry_msgs::Pose goalPose
     moveit::planning_interface::MoveGroupInterface::Plan my_plan;
     moveit_msgs::RobotTrajectory trajectory;
     const double jump_threshold = 0.0;
-    const double eef_step = 0.01;
+    const double eef_step = 0.001;
 
     double fraction = move_group.computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
     success = fraction > -1.0;

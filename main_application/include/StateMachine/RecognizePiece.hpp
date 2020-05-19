@@ -15,7 +15,7 @@ class Context;
  * @brief Atleast 5 measurements in a row need to be equal to have a "Good" measurement 
  * 
  */
-#define NUMBER_OF_EQUAL_MEASUREMENTS 5
+#define NUMBER_OF_EQUAL_MEASUREMENTS 2
 
 static const int allowedMeasurements[] = {1,3,5,9};
 

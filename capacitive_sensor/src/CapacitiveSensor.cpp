@@ -3,7 +3,7 @@
 #include <boost/asio.hpp>
 
 #define MESSAGE_TYPE 1
-#define LOOP_RATE 1
+#define LOOP_RATE 1 //hz
 #define IP "192.168.125.1"
 #define PORT 2020
 
@@ -43,7 +43,7 @@ void CapacitiveSensor::runMeasurement()
         socket.receive(boost::asio::buffer(response, sizeof(response)));
 
         capacitive_sensor::capacitive_sensor_measurements message;
-        message.id = response[0];
+        message.id = id;
         message.value = response[1];
         p.publish(message);
         socket.close();
@@ -51,5 +51,6 @@ void CapacitiveSensor::runMeasurement()
     catch (const boost::system::system_error &ex)
     {
         ROS_ERROR("Socket failure!");
+        ROS_ERROR(ex.what());
     }
 }

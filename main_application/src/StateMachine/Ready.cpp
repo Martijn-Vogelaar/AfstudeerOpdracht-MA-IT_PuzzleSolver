@@ -8,6 +8,7 @@
 #include <memory>
 #include "TF2Handler.hpp"
 #include "Shapes.hpp"
+#include "RecognizePiece.hpp"
 uint8_t Ready::visitCount = 0;
 Ready::Ready()
 {
@@ -17,6 +18,7 @@ Ready::~Ready() {}
 
 void Ready::entryAction(Context *context)
 {
+    context->getMoveRobotClient().ControlGripper(0,false,0);
     context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE);
     ModelSpawner modelSpawner;
 
@@ -40,14 +42,7 @@ void Ready::entryAction(Context *context)
 
 void Ready::doActivity(Context *context)
 {
-    TF2Handler tf2Handler;
-    geometry_msgs::Pose goal = getPuzzlePiecePreparePickup(Shape::CIRCLE);
-    geometry_msgs::Pose pose = tf2Handler.calculatePosition(PICKUP_POINT, BASE, goal);
-    context->getMoveRobotClient().MoveRobotNormal(0, pose);
-    // context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE);
-    // context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE2);
-    // context->getMoveRobotClient().MoveRobotStraight(0, ROBOT_HOME_POSE3);
-
+   context->setState(std::make_shared<RecognizePiece>());
     // if (visitCount > 3)
     // {
     //     context->setState(std::make_shared<PowerOff>());

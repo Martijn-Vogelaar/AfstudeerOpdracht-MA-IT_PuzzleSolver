@@ -23,7 +23,8 @@ void GrabPiece::doActivity(Context *context)
 
 void GrabPiece::exitAction(Context *context)
 {
-    geometry_msgs::Pose goal = getPuzzlePiecePreparePickup(context->getCurrentShape());
+    geometry_msgs::Pose goal = getPuzzlePiecePickup(context->getCurrentShape());
+    goal.position.z = goal.position.z + 0.1;
     geometry_msgs::Pose pose = tf2Handler.calculatePosition(PICKUP_POINT, BASE, goal);
     context->getMoveRobotClient().MoveRobotStraightNoRotation(0, pose.position);
     context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE);

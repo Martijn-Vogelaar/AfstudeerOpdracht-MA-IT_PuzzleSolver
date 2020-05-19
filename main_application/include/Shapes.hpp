@@ -13,9 +13,9 @@ enum class Shape
 };
 const uint8_t UNKNOWN = 0;
 const uint8_t CIRCLE = 1;
-const uint8_t SQUARE = 3;
-const uint8_t RECTANGLE_1 = 5;
-const uint8_t RECTANGLE_2 = 9;
+const uint8_t SQUARE = 5;
+const uint8_t RECTANGLE_1 = 9;
+const uint8_t RECTANGLE_2 = 3;
 
 extern Shape puzzlePieceMeasurementToEnum(uint8_t measurement);
 extern uint8_t puzzlePieceToInt(Shape puzzlePiece);
