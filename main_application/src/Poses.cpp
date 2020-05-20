@@ -21,7 +21,7 @@ PuzzlePiecePoses SquarePoses;
 PuzzlePiecePoses Rectangle1Poses;
 PuzzlePiecePoses Rectangle2Poses;
 
-const double pickupPointAngle = 2.105; //radians
+const double pickupPointAngle = 2.10; //radians
 
 const double prepareDistance = 0.04; //cm
 
@@ -145,8 +145,8 @@ void initializePoses()
     Circle1Poses.pickupPose.orientation.z = pickupPointQuaternion.z();
     Circle1Poses.pickupPose.orientation.w = pickupPointQuaternion.w();
 
-    Circle1Poses.placePose.position.x = -0.0735;
-    Circle1Poses.placePose.position.y = 0.1430;
+    Circle1Poses.placePose.position.x = -0.065;
+    Circle1Poses.placePose.position.y = 0.102;
     Circle1Poses.placePose.position.z = 0.018;
     Circle1Poses.placePose.orientation.x = puzzleAngleCircle.x();
     Circle1Poses.placePose.orientation.y = puzzleAngleCircle.y();
@@ -166,8 +166,8 @@ void initializePoses()
     Circle2Poses.pickupPose.orientation.z = pickupPointQuaternion.z();
     Circle2Poses.pickupPose.orientation.w = pickupPointQuaternion.w();
 
-    Circle2Poses.placePose.position.x = 0.0792;
-    Circle2Poses.placePose.position.y = -0.118;
+    Circle2Poses.placePose.position.x = 0.0735;
+    Circle2Poses.placePose.position.y = -0.115;
     Circle2Poses.placePose.position.z = 0.018;
     Circle2Poses.placePose.orientation.x = puzzleAngleCircle.x();
     Circle2Poses.placePose.orientation.y = puzzleAngleCircle.y();
@@ -187,9 +187,9 @@ void initializePoses()
     SquarePoses.pickupPose.orientation.z = pickupPointQuaternion.z();
     SquarePoses.pickupPose.orientation.w = pickupPointQuaternion.w();
 
-    SquarePoses.placePose.position.x = -0.0735;
-    SquarePoses.placePose.position.y = -0.1430;
-    SquarePoses.placePose.position.z = 0.018;
+    SquarePoses.placePose.position.x = -0.0685;
+    SquarePoses.placePose.position.y = -0.07575;
+    SquarePoses.placePose.position.z = 0.016;
     SquarePoses.placePose.orientation.x = puzzleAngleSquare.x();
     SquarePoses.placePose.orientation.y = puzzleAngleSquare.y();
     SquarePoses.placePose.orientation.z = puzzleAngleSquare.z();

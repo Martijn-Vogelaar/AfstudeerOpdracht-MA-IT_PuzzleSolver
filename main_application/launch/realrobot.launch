@@ -3,10 +3,15 @@
       <arg name="sim" value="false"/>
       <arg name="robot_ip" value="192.168.125.1"/>
     </include>
-        <node name="PickuppointBroadcaster" type="PickuppointBroadcaster" pkg="pickuppoint" args="pickuppoint -0.033 -0.3025 0.01 0 0 -1.57"/>
-        <!-- <node name="PickuppointBroadcaster" type="PickuppointBroadcaster" pkg="pickuppoint" args="pickuppoint 0.2 -0.56 0.0 0 0 -1.57"/> -->
+        <node name="PickuppointBroadcaster" type="PickuppointBroadcaster" pkg="pickuppoint" args="pickuppoint -0.033 -0.3025 0.01 0 0 -1.57079632679"/>
+    <node name="PuzzleBroadcaster" type="PuzzleBroadcaster" pkg="simulation" args="EmptyPuzzle -0.0474 0.3296 0.1655 0 -0.78539816339 -1.57079632679"/>
 
     <node name="gripper_controller" type="gripper_controller" pkg="gripper_controller"/>
     <node name="abb_controller" type="abb_controller" pkg="abb_controller"/>
     <node name="capacitive_sensor_plugin" type="capacitive_sensor_plugin" pkg="capacitive_sensor" args="0"/>
+    <node name="custom_server_client_plugin" type="custom_server_client_plugin" pkg="custom_server_client" args="0"/>
+    <!-- <node name="inductive_sensor_plugin1" type="inductive_sensor_plugin" pkg="inductive_sensor" args="1"/>
+    <node name="inductive_sensor_plugin2" type="inductive_sensor_plugin" pkg="inductive_sensor" args="2"/>
+    <node name="inductive_sensor_plugin3" type="inductive_sensor_plugin" pkg="inductive_sensor" args="3"/>
+    <node name="inductive_sensor_plugin4" type="inductive_sensor_plugin" pkg="inductive_sensor" args="4"/> -->
 </launch>

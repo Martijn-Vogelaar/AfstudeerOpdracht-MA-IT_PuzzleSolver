@@ -6,7 +6,7 @@
 
 const double prepareDistance = 0.04; //cm
 
-const double scaleCorrection = 1.08910891089; //Original = 1.1 new is 1.01
+const double scaleCorrection = 1; //Original = 1.1 new is 1.01
 
 class PuzzlePieceSpot
 {
