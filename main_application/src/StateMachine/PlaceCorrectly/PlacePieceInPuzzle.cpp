@@ -30,14 +30,14 @@ void PlacePieceInPuzzle::entryAction(SubContext *context)
 
 void PlacePieceInPuzzle::doActivity(SubContext *context)
 {
-    // if (context->getCurrentPuzzlePieceSpot().getShape() == Shape::CIRCLE)
-    // {
-    //     context->setState(std::make_shared<RotatePieceOnPlace>());
-    // }
-    // else
-    // {
-    //     context->setState(std::make_shared<CheckCorrectlyRotated>());
-    // }
+    if (context->getCurrentPuzzlePieceSpot().getShape() == Shape::CIRCLE)
+    {
+        context->setState(std::make_shared<RotatePieceOnPlace>());
+    }
+    else
+    {
+        context->setState(std::make_shared<CheckCorrectlyRotated>());
+    }
 }
 
 void PlacePieceInPuzzle::exitAction(SubContext *)
