@@ -11,7 +11,7 @@ RotatePieceOnPlace::~RotatePieceOnPlace() {}
 
 void RotatePieceOnPlace::entryAction(SubContext *context)
 {
-    // context->getMoveRobotClient().RotateGripper(0, M_PI, true, true);
+    context->getMoveRobotClient().RotateGripper(0, 2*M_PI, true, true);
 }
 
 void RotatePieceOnPlace::doActivity(SubContext *context)

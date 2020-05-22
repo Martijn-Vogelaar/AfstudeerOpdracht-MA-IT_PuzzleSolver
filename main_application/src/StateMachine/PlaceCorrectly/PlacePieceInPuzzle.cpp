@@ -21,10 +21,10 @@ void PlacePieceInPuzzle::entryAction(SubContext *context)
     // context->getMoveRobotClient().MoveRobotStraightNoRotation(0, placePiece.position);
     geometry_msgs::Pose goal = context->getParentContext()->getCurrentPuzzlePieceSpot().getPuzzlePiecePlace();
     geometry_msgs::Pose placePiece = tf2Handler.calculatePosition(PUZZLE, BASE, goal);
-    // if (context->getCurrentPuzzlePieceSpot().getShape() == Shape::CIRCLE)
-    // {
-    //     context->getMoveRobotClient().RotateGripper(0, 0, false, false);
-    // }
+    if (context->getCurrentPuzzlePieceSpot().getShape() == Shape::CIRCLE)
+    {
+        context->getMoveRobotClient().RotateGripper(0, 0, false, false);
+    }
     context->getMoveRobotClient().MoveRobotStraightNoRotation(0, placePiece.position);
 }
 

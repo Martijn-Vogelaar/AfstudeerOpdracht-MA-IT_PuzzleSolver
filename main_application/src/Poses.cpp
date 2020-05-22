@@ -187,7 +187,7 @@ void initializePoses()
     SquarePoses.pickupPose.orientation.w = pickupPointQuaternion.w();
 
     SquarePoses.placePose.position.x = -0.067;
-    SquarePoses.placePose.position.y = -0.075;
+    SquarePoses.placePose.position.y = -0.076;
     SquarePoses.placePose.position.z = 0.016;
     SquarePoses.placePose.orientation.x = puzzleAngleSquare.x();
     SquarePoses.placePose.orientation.y = puzzleAngleSquare.y();
@@ -208,7 +208,7 @@ void initializePoses()
 
     Rectangle1Poses.placePose.position.x = 0.0780;
     Rectangle1Poses.placePose.position.y = 0.09;
-    Rectangle1Poses.placePose.position.z = 0.018;
+    Rectangle1Poses.placePose.position.z = 0.015;
     Rectangle1Poses.placePose.orientation.x = puzzleAngleRectangle.x();
     Rectangle1Poses.placePose.orientation.y = puzzleAngleRectangle.y();
     Rectangle1Poses.placePose.orientation.z = puzzleAngleRectangle.z();
@@ -228,7 +228,7 @@ void initializePoses()
 
     Rectangle2Poses.placePose.position.x = 0.0780;
     Rectangle2Poses.placePose.position.y = 0.09;
-    Rectangle2Poses.placePose.position.z = 0.018;
+    Rectangle2Poses.placePose.position.z = 0.015;
     Rectangle2Poses.placePose.orientation.x = puzzleAngleRectangle2.x();
     Rectangle2Poses.placePose.orientation.y = puzzleAngleRectangle2.y();
     Rectangle2Poses.placePose.orientation.z = puzzleAngleRectangle2.z();

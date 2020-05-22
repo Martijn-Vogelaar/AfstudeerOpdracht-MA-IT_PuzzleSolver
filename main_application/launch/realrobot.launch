@@ -10,8 +10,6 @@
     <node name="abb_controller" type="abb_controller" pkg="abb_controller"/>
     <node name="capacitive_sensor_plugin" type="capacitive_sensor_plugin" pkg="capacitive_sensor" args="0"/>
     <node name="custom_server_client_plugin" type="custom_server_client_plugin" pkg="custom_server_client" args="0"/>
-    <!-- <node name="inductive_sensor_plugin1" type="inductive_sensor_plugin" pkg="inductive_sensor" args="1"/>
-    <node name="inductive_sensor_plugin2" type="inductive_sensor_plugin" pkg="inductive_sensor" args="2"/>
-    <node name="inductive_sensor_plugin3" type="inductive_sensor_plugin" pkg="inductive_sensor" args="3"/>
-    <node name="inductive_sensor_plugin4" type="inductive_sensor_plugin" pkg="inductive_sensor" args="4"/> -->
-</launch>
+
+    <node name="inductive_sensor_plugin1" type="inductive_sensor_plugin" pkg="inductive_sensor" args="0 5"/>
+ </launch>

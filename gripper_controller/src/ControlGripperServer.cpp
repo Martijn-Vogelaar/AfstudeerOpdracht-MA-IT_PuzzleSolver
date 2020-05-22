@@ -19,7 +19,7 @@ void ControlGripperServer::goalCallback(const abb_controller_messages::ControlGr
     message.request.push_back(MESSAGE_TYPE);
     message.request.push_back((int8_t)goal->open);
     tcpIpActionClient.sendGoal(message);
-    tcpIpActionClient.waitForResult();
+    tcpIpActionClient.waitForResult(ros::Duration(0));
     custom_server_client::TcpIpResultConstPtr result = tcpIpActionClient.getResult();
     actionResult.robotID = goal->robotID;
     if (result->response[0] == MESSAGE_TYPE)

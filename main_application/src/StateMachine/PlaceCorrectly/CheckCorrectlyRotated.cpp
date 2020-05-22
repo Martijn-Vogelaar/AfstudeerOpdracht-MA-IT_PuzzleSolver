@@ -22,24 +22,14 @@ void CheckCorrectlyRotated::entryAction(SubContext *context)
 
 void CheckCorrectlyRotated::doActivity(SubContext *context)
 {
-        // if (nonActivateCount > NR_OF_MEASUREMENTS && context->getCurrentPuzzlePieceSpot().getShape() != Shape::CIRCLE)
-        // {
-        //         context->setState(std::make_shared<LiftPiece>());
-        // }
-        // else if (nonActivateCount > NR_OF_MEASUREMENTS_TIMEOUT)
-        // {
-        //         static uint8_t circleRotateCount = 1;
-        //         if (circleRotateCount < 2)
-        //         {
-        //                 circleRotateCount++;
-        //                 context->setState(std::make_shared<RotatePieceOnPlace>());
-        //         }
-        //         else
-        //         {
-        //                 circleRotateCount = 0;
-        //                 context->getParentContext()->setState(std::make_shared<RemovePieceFromPuzzle>());
-        //         }
-        // }
+        if (nonActivateCount > NR_OF_MEASUREMENTS && context->getCurrentPuzzlePieceSpot().getShape() != Shape::CIRCLE)
+        {
+                context->setState(std::make_shared<LiftPiece>());
+        }
+        else if (nonActivateCount > NR_OF_MEASUREMENTS_TIMEOUT)
+        {
+                context->getParentContext()->setState(std::make_shared<RemovePieceFromPuzzle>());
+        }
 }
 
 void CheckCorrectlyRotated::exitAction(SubContext *)
@@ -50,21 +40,21 @@ void CheckCorrectlyRotated::measurementCallback(const inductive_sensor::inductiv
 {
         if (std::find(std::begin(allowedSensorIDs), std::end(allowedSensorIDs), msg->id) != std::end(allowedSensorIDs))
         {
-                subContext->getParentContext()->getPuzzle().setSpotFilled(subContext->getCurrentPuzzlePieceSpot().getID());
-                subContext->getParentContext()->getPuzzle().resetExplored();
-                subContext->getParentContext()->setState(std::make_shared<ReleasePiece>());
-                // if (msg->activated && msg->id == subContext->getParentContext()->getCurrentPuzzlePieceSpot().getID())
-                // {
-                //         abb_controller_messages::StopRobot msg;
-                //         msg.stop = true;
-                //         stopRobotPublisher.publish(msg);
-                //         subContext->getParentContext()->getPuzzle().setSpotFilled(subContext->getCurrentPuzzlePieceSpot().getID());
-                //         subContext->getParentContext()->getPuzzle().resetExplored();
-                //         subContext->getParentContext()->setState(std::make_shared<ReleasePiece>());
-                // }
-                // else
-                // {
-                //         nonActivateCount++;
-                // }
+                // subContext->getParentContext()->getPuzzle().setSpotFilled(subContext->getCurrentPuzzlePieceSpot().getID());
+                // subContext->getParentContext()->getPuzzle().resetExplored();
+                // subContext->getParentContext()->setState(std::make_shared<ReleasePiece>());
+                if (msg->activated && msg->id == subContext->getParentContext()->getCurrentPuzzlePieceSpot().getID())
+                {
+                        abb_controller_messages::StopRobot msg;
+                        msg.stop = true;
+                        stopRobotPublisher.publish(msg);
+                        subContext->getParentContext()->getPuzzle().setSpotFilled(subContext->getCurrentPuzzlePieceSpot().getID());
+                        subContext->getParentContext()->getPuzzle().resetExplored();
+                        subContext->getParentContext()->setState(std::make_shared<ReleasePiece>());
+                }
+                else
+                {
+                        nonActivateCount++;
+                }
         }
 }

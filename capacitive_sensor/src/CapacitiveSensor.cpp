@@ -30,7 +30,7 @@ void CapacitiveSensor::runMeasurement()
     custom_server_client::TcpIpGoal goal;
     goal.request.push_back(MESSAGE_TYPE);
     tcpIpActionClient.sendGoal(goal);
-    tcpIpActionClient.waitForResult();
+    tcpIpActionClient.waitForResult(ros::Duration(0));
     custom_server_client::TcpIpResultConstPtr result = tcpIpActionClient.getResult();
     capacitive_sensor::capacitive_sensor_measurements message;
     message.id = id;

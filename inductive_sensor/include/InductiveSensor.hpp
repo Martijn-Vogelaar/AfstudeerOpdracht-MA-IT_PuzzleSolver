@@ -25,7 +25,7 @@ public:
      * @param aId is used to listen to the correct topic and send sensor readings with the
      *        right id of the sensor.
      */
-    InductiveSensor(uint8_t aId);
+    InductiveSensor(uint8_t aId, uint8_t aLoopRate);
 
     /**
      * @brief Destroy the Inductive Sensor object
@@ -47,6 +47,12 @@ private:
      *        right id of the sensor.
      */
     uint8_t id;
+
+    /**
+     * @brief loopRate is used to set the speed of which the sensor's status should be retrieved and published.
+     * 
+     */
+    uint8_t loopRate;
 
     /**
      * @brief n which is a nodeHandle is used to communicate using ROS
