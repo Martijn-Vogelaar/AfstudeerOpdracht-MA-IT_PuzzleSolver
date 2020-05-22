@@ -21,7 +21,7 @@ void RotatePieceInAir::doActivity(SubContext *context)
     bool movementMade = true;
     if (context->getCurrentPuzzlePieceSpot().getShape() == Shape::SQUARE)
     {
-        if (!context->getMoveRobotClient().RotateGripper(0, unableToRotateFurther * M_PI / 2, false, true))
+        if (!context->getMoveRobotClient().RotateGripper(0, unableToRotateFurther * M_PI / 2, 1.0, false, true))
         {
             unableToRotateFurther = (uint8_t)-unableToRotateFurther;
             movementMade = false;
@@ -29,7 +29,7 @@ void RotatePieceInAir::doActivity(SubContext *context)
     }
     else
     {
-        if (!context->getMoveRobotClient().RotateGripper(0, unableToRotateFurther * M_PI, false, true))
+        if (!context->getMoveRobotClient().RotateGripper(0, unableToRotateFurther * M_PI, 1.0, false, true))
         {
             unableToRotateFurther = (uint8_t)-unableToRotateFurther;
             movementMade = false;

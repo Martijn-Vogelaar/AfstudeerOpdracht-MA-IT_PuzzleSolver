@@ -1,6 +1,7 @@
 #goal
 uint8 robotID
 float64 rotation
+float64 speedFactor
 bool increase
 bool async
 ---

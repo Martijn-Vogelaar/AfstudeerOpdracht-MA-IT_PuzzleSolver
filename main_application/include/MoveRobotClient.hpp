@@ -88,10 +88,11 @@ public:
      * 
      * @param aRobotID is the id of the robot which should be rotated
      * @param aRotation indicates how many radians it should be rotated
+     * @param aSpeedfactor factor with which the rotation will be made. 1.0 equals the maximum speed, 0.1 equals 10% of the maximum speed etc.
      * @param async
      * @param increase Define whether it should be increased or moved to the given rotation
      */
-    bool RotateGripper(uint8_t aRobotID, double aRotation, bool async, bool increase);
+    bool RotateGripper(uint8_t aRobotID, double aRotation, double aSpeedfactor, bool async, bool increase);
 
 
     /**
