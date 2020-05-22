@@ -13,6 +13,7 @@ Context::Context() : currentPuzzlePieceShape(Shape::UNKNOWN), currentPuzzlePiece
   puzzle.addPuzzlePieceSpot(PuzzlePieceSpot(Shape::CIRCLE, Circle1Poses.placePose, 2));
   puzzle.addPuzzlePieceSpot(PuzzlePieceSpot(Shape::CIRCLE, Circle2Poses.placePose, 3));
   puzzle.addPuzzlePieceSpot(PuzzlePieceSpot(Shape::SQUARE, SquarePoses.placePose, 4));
+  // puzzle.setSpotFilled(2);
 }
 
 MoveRobotClient &Context::getMoveRobotClient()

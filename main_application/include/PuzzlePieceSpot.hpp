@@ -4,7 +4,7 @@
 #include "Shapes.hpp"
 #include <geometry_msgs/Pose.h>
 
-const double prepareDistance = 0.04; //cm
+const double prepareDistance = 0.06; //cm
 
 const double scaleCorrection = 1; //Original = 1.1 new is 1.01
 

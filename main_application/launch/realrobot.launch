@@ -3,7 +3,7 @@
       <arg name="sim" value="false"/>
       <arg name="robot_ip" value="192.168.125.1"/>
     </include>
-        <node name="PickuppointBroadcaster" type="PickuppointBroadcaster" pkg="pickuppoint" args="pickuppoint -0.033 -0.3025 0.01 0 0 -1.57079632679"/>
+        <node name="PickuppointBroadcaster" type="PickuppointBroadcaster" pkg="pickuppoint" args="pickuppoint -0.033 -0.3035 0.01 0 0 -1.57079632679"/>
     <node name="PuzzleBroadcaster" type="PuzzleBroadcaster" pkg="simulation" args="EmptyPuzzle -0.0474 0.3296 0.1655 0 -0.78539816339 -1.57079632679"/>
 
     <node name="gripper_controller" type="gripper_controller" pkg="gripper_controller"/>

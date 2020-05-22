@@ -25,7 +25,6 @@ const double pickupPointAngle = 2.10; //radians
 
 const double prepareDistance = 0.04; //cm
 
-const double scaleCorrection = 1.08910891089; //Original = 1.1 new is 1.01
 
 void initializePoses()
 {
@@ -147,7 +146,7 @@ void initializePoses()
 
     Circle1Poses.placePose.position.x = -0.065;
     Circle1Poses.placePose.position.y = 0.102;
-    Circle1Poses.placePose.position.z = 0.018;
+    Circle1Poses.placePose.position.z = 0.015;
     Circle1Poses.placePose.orientation.x = puzzleAngleCircle.x();
     Circle1Poses.placePose.orientation.y = puzzleAngleCircle.y();
     Circle1Poses.placePose.orientation.z = puzzleAngleCircle.z();
@@ -166,9 +165,9 @@ void initializePoses()
     Circle2Poses.pickupPose.orientation.z = pickupPointQuaternion.z();
     Circle2Poses.pickupPose.orientation.w = pickupPointQuaternion.w();
 
-    Circle2Poses.placePose.position.x = 0.0735;
+    Circle2Poses.placePose.position.x = 0.074;
     Circle2Poses.placePose.position.y = -0.115;
-    Circle2Poses.placePose.position.z = 0.018;
+    Circle2Poses.placePose.position.z = 0.015;
     Circle2Poses.placePose.orientation.x = puzzleAngleCircle.x();
     Circle2Poses.placePose.orientation.y = puzzleAngleCircle.y();
     Circle2Poses.placePose.orientation.z = puzzleAngleCircle.z();
