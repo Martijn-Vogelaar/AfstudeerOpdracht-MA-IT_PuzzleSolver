@@ -2,9 +2,9 @@
 #define SUB_CONTEXT_HPP
 
 #include "SubState.hpp"
-#include "MoveRobotClient.hpp"
 #include "Context.hpp"
 #include <memory>
+#include <future>
 
 #define QUEUE_SIZE 1000
 
@@ -47,6 +47,12 @@ public:
     * @return PuzzlePieceSpot 
     */
    PuzzlePieceSpot getCurrentPuzzlePieceSpot();
+
+   /**
+    * @brief Thread used to run the rotation in.
+    * 
+    */
+   std::future<bool> rotateTask;
 
 private:
    Context *parentContext;

@@ -49,10 +49,14 @@ void Context::setCurrentPuzzlePiece(uint8_t aPuzzlePiece)
 
 void Context::findEmptyUnexploredPuzzleSpot()
 {
-  PuzzlePieceSpot* foundSpot = puzzle.getEmptyPuzzleSpot(currentPuzzlePieceShape);
+  PuzzlePieceSpot *foundSpot = puzzle.getEmptyPuzzleSpot(currentPuzzlePieceShape);
   if (foundSpot) // Check if a spot was found
   {
     currentPuzzlePieceSpot = *foundSpot;
+  }
+  else
+  {
+    currentPuzzlePieceSpot = PuzzlePieceSpot();
   }
 }
 

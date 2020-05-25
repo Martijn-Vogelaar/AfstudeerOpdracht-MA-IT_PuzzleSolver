@@ -6,6 +6,8 @@
 #include "ReleasePiece.hpp"
 #include "Shapes.hpp"
 #include <memory>
+#include <future>
+
 
 CheckCorrectlyRotated::CheckCorrectlyRotated() : nonActivateCount(0)
 {
@@ -26,8 +28,9 @@ void CheckCorrectlyRotated::doActivity(SubContext *context)
         {
                 context->setState(std::make_shared<LiftPiece>());
         }
-        else if (nonActivateCount > NR_OF_MEASUREMENTS_TIMEOUT)
+        else if (context->getCurrentPuzzlePieceSpot().getShape() == Shape::CIRCLE && std::future_status::ready == context->rotateTask.wait_for(std::chrono::nanoseconds(1)))
         {
+                ROS_WARN("JOINED");
                 context->getParentContext()->setState(std::make_shared<RemovePieceFromPuzzle>());
         }
 }
@@ -40,9 +43,6 @@ void CheckCorrectlyRotated::measurementCallback(const inductive_sensor::inductiv
 {
         if (std::find(std::begin(allowedSensorIDs), std::end(allowedSensorIDs), msg->id) != std::end(allowedSensorIDs))
         {
-                // subContext->getParentContext()->getPuzzle().setSpotFilled(subContext->getCurrentPuzzlePieceSpot().getID());
-                // subContext->getParentContext()->getPuzzle().resetExplored();
-                // subContext->getParentContext()->setState(std::make_shared<ReleasePiece>());
                 if (msg->activated && msg->id == subContext->getParentContext()->getCurrentPuzzlePieceSpot().getID())
                 {
                         abb_controller_messages::StopRobot msg;
