@@ -186,7 +186,7 @@ void initializePoses()
     SquarePoses.pickupPose.orientation.z = pickupPointQuaternion.z();
     SquarePoses.pickupPose.orientation.w = pickupPointQuaternion.w();
 
-    SquarePoses.placePose.position.x = -0.067;
+    SquarePoses.placePose.position.x = -0.0675;
     SquarePoses.placePose.position.y = -0.076;
     SquarePoses.placePose.position.z = 0.016;
     SquarePoses.placePose.orientation.x = puzzleAngleSquare.x();
