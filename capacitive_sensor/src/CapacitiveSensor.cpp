@@ -30,13 +30,22 @@ void CapacitiveSensor::runMeasurement()
     custom_server_client::TcpIpGoal goal;
     goal.request.push_back(MESSAGE_TYPE);
     tcpIpActionClient.sendGoal(goal);
-    tcpIpActionClient.waitForResult(ros::Duration(0));
+    tcpIpActionClient.waitForResult(ros::Duration(2));
+
     custom_server_client::TcpIpResultConstPtr result = tcpIpActionClient.getResult();
+
     capacitive_sensor::capacitive_sensor_measurements message;
     message.id = id;
-    message.value = result->response[1];
-    if (result->response[0] == MESSAGE_TYPE)
+    if (result->response.size() == 2) //In rare occasions the message send is empty. 
     {
-        p.publish(message);
+        message.value = result->response[1];
+        if (result->response[0] == MESSAGE_TYPE)
+        {
+            p.publish(message);
+        }
+    }
+    else
+    {
+        ROS_ERROR("Incorrect message received!");
     }
 }

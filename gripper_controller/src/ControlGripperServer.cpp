@@ -1,9 +1,9 @@
 #include "ControlGripperServer.hpp"
 
-#define MESSAGE_TYPE 0 
+#define MESSAGE_TYPE 0
 
 ControlGripperServer::ControlGripperServer(std::string aName) : actionServer(nodeHandler, aName, boost::bind(&ControlGripperServer::goalCallback, this, _1), false),
-                                                                                        actionName(aName), tcpIpActionClient(TCP_IP_ACTION)
+                                                                actionName(aName), tcpIpActionClient(TCP_IP_ACTION)
 {
     tcpIpActionClient.waitForServer();
     actionServer.start();
@@ -22,13 +22,21 @@ void ControlGripperServer::goalCallback(const abb_controller_messages::ControlGr
     tcpIpActionClient.waitForResult(ros::Duration(0));
     custom_server_client::TcpIpResultConstPtr result = tcpIpActionClient.getResult();
     actionResult.robotID = goal->robotID;
-    if (result->response[0] == MESSAGE_TYPE)
+    if (result->response.size() == 2)
     {
-        actionResult.open = result->response[1];
-        actionResult.success = result->response[1] == goal->open;
+        if (result->response[0] == MESSAGE_TYPE)
+        {
+            actionResult.open = result->response[1];
+            actionResult.success = result->response[1] == goal->open;
+        }
+        else
+        {
+            actionResult.success = false;
+        }
     }
     else
     {
+        actionResult.open = (int8_t)!goal->open;
         actionResult.success = false;
     }
     actionServer.setSucceeded(actionResult);
