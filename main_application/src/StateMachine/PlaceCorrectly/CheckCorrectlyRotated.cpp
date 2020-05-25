@@ -30,7 +30,6 @@ void CheckCorrectlyRotated::doActivity(SubContext *context)
         }
         else if (context->getCurrentPuzzlePieceSpot().getShape() == Shape::CIRCLE && std::future_status::ready == context->rotateTask.wait_for(std::chrono::nanoseconds(1)))
         {
-                ROS_WARN("JOINED");
                 context->getParentContext()->setState(std::make_shared<RemovePieceFromPuzzle>());
         }
 }

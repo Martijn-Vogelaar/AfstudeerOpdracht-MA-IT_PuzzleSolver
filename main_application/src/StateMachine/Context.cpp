@@ -73,3 +73,8 @@ void Context::run()
 {
   mCurrentState->doActivity(this);
 }
+
+std::shared_ptr<State> Context::getCurrentState()
+{
+  return mCurrentState;
+}

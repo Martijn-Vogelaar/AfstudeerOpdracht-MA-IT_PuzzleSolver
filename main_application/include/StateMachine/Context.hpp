@@ -27,6 +27,12 @@ public:
   Context();
 
   /**
+   * @brief Destroy the Context object
+   * 
+   */
+  ~Context() = default;
+
+  /**
     * @brief Get the Move Robot Client object
     * 
     */
@@ -79,7 +85,19 @@ public:
    */
   PuzzlePieceSpot getCurrentPuzzlePieceSpot();
 
+  /**
+   * @brief Get the Current Shape object
+   * 
+   * @return Shape 
+   */
   Shape getCurrentShape();
+
+  /**
+   * @brief Get the Current State object
+   * 
+   * @return State 
+   */
+  std::shared_ptr<State> getCurrentState();
 
 private:
   MoveRobotClient moveRobotClient;

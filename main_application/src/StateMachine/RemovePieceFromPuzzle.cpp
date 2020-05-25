@@ -12,7 +12,6 @@ RemovePieceFromPuzzle::~RemovePieceFromPuzzle() {}
 
 void RemovePieceFromPuzzle::entryAction(Context *context)
 {
-    ROS_ERROR("RemovePieceFromPuzzle");
     context->getPuzzle().setSpotExplored(context->getCurrentPuzzlePieceSpot().getID());
     geometry_msgs::Pose goal = context->getCurrentPuzzlePieceSpot().getPuzzlePiecePreparePlace();
     geometry_msgs::Pose placePiecePrepare = tf2Handler.calculatePosition(PUZZLE, BASE, goal);
