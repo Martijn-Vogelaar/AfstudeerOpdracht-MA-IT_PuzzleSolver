@@ -3,8 +3,9 @@
 
 // Local
 #include "State.hpp"
+#include "slider_controller/control_slider.h"
+#include "ros/ros.h"
 class Context;
-#include "TF2Handler.hpp"
 
 /**
    * @class PutPieceInPickupPoint
@@ -55,7 +56,6 @@ public:
     void exitAction(Context *aContext) override;
 
 private:
-    TF2Handler tf2Handler;
-    static uint8_t visitCount;
+    ros::Publisher controlSliderPublisher;
 };
 #endif // PUT_PIECE_IN_PICKUP_POINT_HPP

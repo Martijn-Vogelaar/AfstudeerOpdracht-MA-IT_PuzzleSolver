@@ -1,7 +1,7 @@
 #include "ReleasePiece.hpp"
 #include "Poses.hpp"
 #include "Context.hpp"
-#include "Ready.hpp"
+#include "PutPieceInPickupPoint.hpp"
 #include <memory>
 
 ReleasePiece::ReleasePiece()
@@ -23,7 +23,7 @@ void ReleasePiece::entryAction(Context *context)
 
 void ReleasePiece::doActivity(Context *context)
 {
-    context->setState(std::make_shared<Ready>());
+    context->setState(std::make_shared<PutPieceInPickupPoint>());
 }
 
 void ReleasePiece::exitAction(Context *)

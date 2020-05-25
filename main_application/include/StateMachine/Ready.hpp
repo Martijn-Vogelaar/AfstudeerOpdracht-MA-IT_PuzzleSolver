@@ -53,8 +53,5 @@ public:
      * "outside world".
      */
     void exitAction(Context *aContext) override;
-
-private:
-    static uint8_t visitCount;
 };
 #endif // READY_HPP
