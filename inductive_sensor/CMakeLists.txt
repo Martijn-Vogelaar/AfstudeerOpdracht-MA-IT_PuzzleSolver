@@ -104,6 +104,7 @@ if(CODE_COVERAGE)
     '*/ros/*'
     '*/boost/*'
     '*/devel/*'
+    '*/gmock/*'
   )
 
   APPEND_COVERAGE_COMPILER_FLAGS()

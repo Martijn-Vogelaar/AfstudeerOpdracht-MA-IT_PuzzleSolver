@@ -1,0 +1,4 @@
+<launch>
+    <node name="custom_server_client_plugin" type="custom_server_client_plugin" pkg="custom_server_client" args="0"/>
+    <test test-name="gripper_controller_unit_tests" pkg="gripper_controller" type="gripper_controller_unit_tests" time-limit="10.0" />
+ </launch>

@@ -16,7 +16,7 @@ void measurementCallback(const capacitive_sensor::capacitive_sensor_measurements
     }
 }
 
-TEST(CapacitiveSensor, readmeasurement)
+TEST(CapacitiveSensor, runMeasurement)
 {
     CapacitiveSensor capacitiveSensor(1);
     ros::NodeHandle nodeHandler;
@@ -34,3 +34,21 @@ TEST(CapacitiveSensor, readmeasurement)
     capacitiveSensorThread.join();
 }
 
+TEST(CapacitiveSensor, runMeasurements)
+{
+    CapacitiveSensor capacitiveSensor(1);
+    ros::NodeHandle nodeHandler;
+    ros::Subscriber capacitiveMeasurementSubscriber = nodeHandler.subscribe("capacitive_sensor", 1000, measurementCallback);
+    std::thread capacitiveSensorThread (&CapacitiveSensor::runMeasurements, &capacitiveSensor);
+    std::clock_t start;
+    double duration;
+
+    start = std::clock();
+    while(( std::clock() - start ) / (double) CLOCKS_PER_SEC < 2 && !messageReceived){
+        ros::spinOnce();
+    }
+    EXPECT_TRUE(messageReceived);
+    messageReceived = false;
+    ros::shutdown();
+    capacitiveSensorThread.join();
+}

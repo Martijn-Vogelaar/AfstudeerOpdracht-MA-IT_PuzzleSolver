@@ -5,7 +5,7 @@
 
 TEST(ControlGripper, openGripper)
 {
-    ControlGripperServer gripperServer("gripperServer","192.168.125.1");
+    ControlGripperServer gripperServer("gripperServer");
     abb_controller_messages::ControlGripperGoal msg;
     msg.robotID = 0;
     msg.open = true;
@@ -13,11 +13,12 @@ TEST(ControlGripper, openGripper)
     abb_controller_messages::ControlGripperGoalConstPtr goal(new abb_controller_messages::ControlGripperGoal(msg));
     gripperServer.goalCallback(goal);
     EXPECT_TRUE(gripperServer.actionResult.success);
+    EXPECT_EQ(msg.open, gripperServer.actionResult.open);
 }
 
 TEST(ControlGripper, closeGripper)
 {
-    ControlGripperServer gripperServer("gripperServer","192.168.125.1");
+    ControlGripperServer gripperServer("gripperServer");
     abb_controller_messages::ControlGripperGoal msg;
     msg.robotID = 0;
     msg.open = false;
@@ -25,4 +26,5 @@ TEST(ControlGripper, closeGripper)
     abb_controller_messages::ControlGripperGoalConstPtr goal(new abb_controller_messages::ControlGripperGoal(msg));
     gripperServer.goalCallback(goal);
     EXPECT_TRUE(gripperServer.actionResult.success);
+    EXPECT_EQ(msg.open, gripperServer.actionResult.open);
 }

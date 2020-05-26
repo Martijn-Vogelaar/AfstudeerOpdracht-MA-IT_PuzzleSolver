@@ -41,6 +41,4 @@ void InductiveSensor::runMeasurement()
             p.publish(message);
         }
     }
-    
-
 }
