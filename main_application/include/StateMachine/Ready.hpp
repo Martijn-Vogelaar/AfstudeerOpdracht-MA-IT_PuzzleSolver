@@ -3,7 +3,6 @@
 
 // Local
 #include "State.hpp"
-#include "ModelSpawner.hpp"
 class Context;
 /**
    * @class Ready

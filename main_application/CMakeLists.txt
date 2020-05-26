@@ -33,6 +33,7 @@ find_package(catkin REQUIRED
     abb_controller_messages
     capacitive_sensor
     inductive_sensor
+    slider_controller
 )
 
 find_package(Eigen3 REQUIRED)
@@ -104,7 +105,6 @@ add_library(lib_main_application
                 src/StateMachine/MoveToUnexploredSpot.cpp
                 src/StateMachine/RemovePieceFromPuzzle.cpp
 
-                src/ModelSpawner.cpp
                 src/MoveRobotClient.cpp
                 src/TF2Handler.cpp
                 src/Shapes.cpp
@@ -134,7 +134,7 @@ ${GAZEBO_LIBRARIES}
 include(CTest)
 enable_testing()
 
-catkin_add_gtest(${PROJECT_NAME}_unit_tests unittests/gtest.cpp unittests/PuzzleTest.cpp unittests/ShapesTest.cpp)
+catkin_add_gtest(${PROJECT_NAME}_unit_tests unittests/gtest.cpp unittests/PuzzleTest.cpp unittests/ShapesTest.cpp unittests/TF2Test.cpp unittests/MoveRobotTest.cpp)
 target_link_libraries(${PROJECT_NAME}_unit_tests lib_main_application ${catkin_LIBRARIES})
 
 

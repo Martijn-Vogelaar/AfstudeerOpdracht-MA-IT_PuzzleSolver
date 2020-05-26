@@ -1,0 +1,13 @@
+<launch>
+    <include file="$(find abb_irb120_moveit_config)/launch/moveit_planning_execution.launch">
+        <arg name="sim" value="false"/>
+        <arg name="robot_ip" value="192.168.125.1"/>
+    </include>
+    <node name="PickuppointBroadcaster" type="PickuppointBroadcaster" pkg="pickuppoint" args="pickuppoint 1 0 0 0 0 1"/>
+    <node name="PuzzleBroadcaster" type="PuzzleBroadcaster" pkg="simulation" args="EmptyPuzzle 1 0 1 0 0 1"/>
+    <node name="abb_controller" type="abb_controller" pkg="abb_controller"/>
+    <node name="custom_server_client_plugin" type="custom_server_client_plugin" pkg="custom_server_client" args="0"/>
+    <node name="gripper_controller" type="gripper_controller" pkg="gripper_controller"/>
+
+    <test test-name="main_application_unit_tests" pkg="main_application" type="main_application_unit_tests" time-limit="10.0" />
+</launch>
