@@ -1,6 +1,6 @@
 <launch>
     <include file="$(find simulation)/launch/models.launch" />
-    <include file="$(find simulation)/launch/gripper.launch"/>
+    <!-- <include file="$(find simulation)/launch/gripper.launch"/> -->
     <include file="$(find simulation)/launch/nodes.launch"/>
     <include file="$(find simulation)/launch/robot.launch"/>
 </launch>

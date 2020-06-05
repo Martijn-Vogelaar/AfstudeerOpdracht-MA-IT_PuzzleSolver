@@ -32,7 +32,7 @@
     </link>
     <link name='slider'>
         <inertial>
-            <mass value="0.1"/>
+            <mass value="1.0"/>
             <origin rpy="0 0 -1.57" xyz="0 0 0" />
             <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
         </inertial>
