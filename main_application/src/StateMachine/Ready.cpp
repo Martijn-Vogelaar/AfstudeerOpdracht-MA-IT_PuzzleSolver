@@ -11,7 +11,7 @@ Ready::~Ready() {}
 
 void Ready::entryAction(Context *context)
 {
-    context->getMoveRobotClient().ControlGripper(0, false, 0);
+    context->getMoveRobotClient().ControlGripper(0, false, 99);
     context->getMoveRobotClient().MoveRobotNormal(0, ROBOT_HOME_POSE);
 }
 

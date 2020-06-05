@@ -23,7 +23,7 @@ void PutPieceInPickupPoint::doActivity(Context *context)
     request.id = 0;
     request.open = true;
     controlSliderPublisher.publish(request);
-    ros::Duration(10.5).sleep();
+    ros::Duration(1.5).sleep();
     slider_controller::control_slider request2;
     request2.id = 0;
     request2.open = false;

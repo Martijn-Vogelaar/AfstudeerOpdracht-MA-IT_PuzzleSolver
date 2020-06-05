@@ -29,18 +29,19 @@ void SliderControllerSimulator::requestCallback(const slider_controller_simulato
 {
     if (msg->open)
     {
-        modelSpawner.spawnPuzzlePiece();
         while (world->ModelByName("pickuppoint")->GetJoint("pickuppoint_JOINT_1")->Position() < 0.22)
         {
-            world->ModelByName("pickuppoint")->GetJoint("pickuppoint_JOINT_1")->SetVelocity(0, 0.1);
+            world->ModelByName("pickuppoint")->GetJoint("pickuppoint_JOINT_1")->SetVelocity(0, 0.3);
         }
     }
     else
     {
         while (world->ModelByName("pickuppoint")->GetJoint("pickuppoint_JOINT_1")->Position() > 0.01)
         {
-            world->ModelByName("pickuppoint")->GetJoint("pickuppoint_JOINT_1")->SetVelocity(0, -0.1);
+            world->ModelByName("pickuppoint")->GetJoint("pickuppoint_JOINT_1")->SetVelocity(0, -0.05);
         }
+        modelSpawner.spawnPuzzlePiece();
     }
+    world->ModelByName("pickuppoint")->GetJoint("pickuppoint_JOINT_1")->SetForce(0, 0.0);
     world->ModelByName("pickuppoint")->GetJoint("pickuppoint_JOINT_1")->SetVelocity(0, 0.0);
 }

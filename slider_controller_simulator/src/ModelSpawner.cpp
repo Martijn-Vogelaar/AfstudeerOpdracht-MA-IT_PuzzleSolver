@@ -16,15 +16,12 @@ void ModelSpawner::spawnPuzzlePiece()
     switch (count)
     {
     case 0:
-        outcome = std::system("roslaunch simulation circle2.launch");
-        break;
-    case 1:
         outcome = std::system("roslaunch simulation circle1.launch");
         break;
-    case 2:
+    case 1:
         outcome = std::system("roslaunch simulation square.launch");
         break;
-    case 3:
+    case 2:
         outcome = std::system("roslaunch simulation rectangle.launch");
         break;
     default:

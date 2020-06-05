@@ -2,7 +2,7 @@
 #include <std_msgs/Float64.h>
 
 ControlGripperServerSimulator::ControlGripperServerSimulator(std::string aName) : actionServer(nodeHandler, aName, boost::bind(&ControlGripperServerSimulator::goalCallback, this, _1), false),
-                                                                actionName(aName)
+                                                                                  actionName(aName)
 {
     attachClient = nodeHandler.serviceClient<gazebo_ros_link_attacher::Attach>("/link_attacher_node/attach");
     detachClient = nodeHandler.serviceClient<gazebo_ros_link_attacher::Attach>("/link_attacher_node/detach");
@@ -51,13 +51,16 @@ void ControlGripperServerSimulator::goalCallback(const abb_controller_messages::
         srv.request.model_name_1 = "abb_irb120_3_58";
         srv.request.link_name_1 = "link_6";
         message.data = 100;
-        if (attachClient.call(srv))
+        if (goal->puzzleID != 99)
         {
-            ROS_INFO("Attached!");
-        }
-        else
-        {
-            ROS_ERROR("Something went wrong attaching!!");
+            if (attachClient.call(srv))
+            {
+                ROS_INFO("Attached!");
+            }
+            else
+            {
+                ROS_ERROR("Something went wrong attaching!!");
+            }
         }
     }
     else
@@ -66,18 +69,20 @@ void ControlGripperServerSimulator::goalCallback(const abb_controller_messages::
         {
             secondCircle = true;
         }
-
-        if (attachClient.call(srv))
+        if (goal->puzzleID != 99)
         {
+            if (attachClient.call(srv))
+            {
 
-            srv.request.model_name_1 = "abb_irb120_3_58";
-            srv.request.link_name_1 = "link_6";
-            detachClient.call(srv);
-            ROS_INFO("Detached!");
-        }
-        else
-        {
-            ROS_ERROR("Something went wrong detaching!!");
+                srv.request.model_name_1 = "abb_irb120_3_58";
+                srv.request.link_name_1 = "link_6";
+                detachClient.call(srv);
+                ROS_INFO("Detached!");
+            }
+            else
+            {
+                ROS_ERROR("Something went wrong detaching!!");
+            }
         }
         message.data = -100;
     }
@@ -85,7 +90,6 @@ void ControlGripperServerSimulator::goalCallback(const abb_controller_messages::
     pub1.publish(message);
     pub2.publish(message);
     pub3.publish(message);
-
     actionResult.robotID = goal->robotID;
     actionResult.open = !open;
     actionResult.success = true;
