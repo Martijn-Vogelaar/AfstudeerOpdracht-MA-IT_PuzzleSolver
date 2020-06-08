@@ -2,16 +2,19 @@ import socket
 import sys
 HOST = '192.168.125.1'
 PORT = 2020
+
 controlGripper = 0
-open = 1
-close = 0
 readCapacitive = 1
 readInductive = 2
 controlSlider = 3
 
+open = 1
+close = 0
+
+unknownMessage = 5
+
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
-    # s.sendall(sys.argv[1].encode())
     my_bytes = bytearray()
     if len(sys.argv) > 1:
         if sys.argv[1] == "controlGripper" :
@@ -32,9 +35,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             else: 
                 my_bytes.append(close)
         else:
-            my_bytes.append(5)
+            my_bytes.append(unknownMessage)
     else:
-        my_bytes.append(5)
+        my_bytes.append(unknownMessage)
     
     print(my_bytes)
     s.sendall(my_bytes)
